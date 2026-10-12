@@ -1,8 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
-import Header from '@/components/Header';
+import React from 'react';
 import Hero from '@/components/Hero';
+import SightingsTicker from '@/components/SightingsTicker';
 import VehicleComparison from '@/components/VehicleComparison';
 import FeaturedPackages from '@/components/FeaturedPackages';
 import ServicesGrid from '@/components/ServicesGrid';
@@ -12,97 +12,53 @@ import Testimonials from '@/components/Testimonials';
 import TravelGuide from '@/components/TravelGuide';
 import FaqSection from '@/components/FaqSection';
 import QuickEnquirySection from '@/components/QuickEnquirySection';
-import Footer from '@/components/Footer';
-import BookingModal from '@/components/BookingModal';
-import FloatingMobileBar from '@/components/FloatingMobileBar';
-import { MessageCircle } from 'lucide-react';
+import { useBookingModal } from '@/context/BookingModalContext';
 
 export default function HomePage() {
-  const [modalOpen, setModalOpen] = useState(false);
-  const [prefill, setPrefill] = useState<Record<string, string> | undefined>(undefined);
-
-  const handleOpenModal = (prefillData?: Record<string, string>) => {
-    setPrefill(prefillData);
-    setModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setModalOpen(false);
-    setPrefill(undefined);
-  };
+  const { openBookingModal } = useBookingModal();
 
   return (
-    <div className="min-h-screen bg-[#121110] text-[#f4efea] flex flex-col relative selection:bg-[#ea580c] selection:text-white">
-      {/* Navigation Header */}
-      <Header onOpenBookingModal={handleOpenModal} />
+    <>
+      {/* 1. Hero Section with Live Availability Calculator */}
+      <Hero onOpenBookingModal={openBookingModal} />
 
-      {/* Main Page Flow */}
-      <main className="flex-1">
-        {/* 1. Hero Section with Live Availability Calculator */}
-        <Hero onOpenBookingModal={handleOpenModal} />
+      {/* 1.5 Real-Time Live Sightings & Safari News Dispatch Marquee */}
+      <SightingsTicker onOpenBookingModal={openBookingModal} />
 
-        {/* 2. Safari Vehicle Comparison: Jeep vs Canter */}
-        <VehicleComparison
-          onSelectVehicle={(vehicleName) => handleOpenModal({ vehicle: vehicleName })}
-        />
-
-        {/* 3. Featured Tour Packages with Filter Tabs */}
-        <FeaturedPackages
-          onSelectPackage={(packageName) => handleOpenModal({ packageName })}
-        />
-
-        {/* 4. Approved Services Grid */}
-        <ServicesGrid
-          onSelectService={(serviceTitle) => handleOpenModal({ vehicle: serviceTitle })}
-        />
-
-        {/* 5. Safari Zones & Shift Timings Explorer */}
-        <ZoneGuide />
-
-        {/* 6. About Ranthambore Wild Life Tour & Trust Pillars */}
-        <AboutCompany onOpenBookingModal={() => handleOpenModal()} />
-
-        {/* 7. Authentic Customer Testimonials */}
-        <Testimonials />
-
-        {/* 8. Wildlife Travel Guide & Preparation Insights */}
-        <TravelGuide
-          onOpenArticle={(title) => handleOpenModal({ notes: `Interested in: ${title}` })}
-        />
-
-        {/* 9. Frequently Asked Questions Accordion */}
-        <FaqSection />
-
-        {/* 10. Direct Safari Enquiry Form */}
-        <QuickEnquirySection />
-      </main>
-
-      {/* Footer with Independent Operator Disclaimers */}
-      <Footer />
-
-      {/* Interactive Booking & Quote Modal */}
-      <BookingModal
-        isOpen={modalOpen}
-        onClose={handleCloseModal}
-        prefillData={prefill}
+      {/* 2. Safari Vehicle Comparison: Jeep vs Canter */}
+      <VehicleComparison
+        onSelectVehicle={(vehicleName) => openBookingModal({ vehicle: vehicleName })}
       />
 
-      {/* Sticky Mobile Conversion Bar */}
-      <FloatingMobileBar onOpenBookingModal={() => handleOpenModal()} />
+      {/* 3. Featured Tour Packages with Filter Tabs */}
+      <FeaturedPackages
+        onSelectPackage={(packageName) => openBookingModal({ packageName })}
+      />
 
-      {/* Floating Desktop WhatsApp Button */}
-      <aside aria-label="WhatsApp quick chat" className="fixed bottom-6 right-6 z-40 hidden lg:block">
-        <a
-          href="https://wa.me/919971965629?text=Hello%20Ranthambore%20Wild%20Life%20Tour,%20I%20would%20like%20to%20check%20safari%20availability."
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-2 px-4 py-3 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs shadow-2xl shadow-emerald-900/50 hover:scale-105 transition duration-300 border border-emerald-400/40"
-          aria-label="WhatsApp quick chat"
-        >
-          <MessageCircle className="w-5 h-5 fill-current" />
-          <span>Chat on WhatsApp</span>
-        </a>
-      </aside>
-    </div>
+      {/* 4. Approved Services Grid */}
+      <ServicesGrid
+        onSelectService={(serviceTitle) => openBookingModal({ vehicle: serviceTitle })}
+      />
+
+      {/* 5. Safari Zones & Shift Timings Explorer */}
+      <ZoneGuide />
+
+      {/* 6. About Ranthambore Wild Life Tour & Trust Pillars */}
+      <AboutCompany onOpenBookingModal={() => openBookingModal()} />
+
+      {/* 7. Authentic Customer Testimonials */}
+      <Testimonials />
+
+      {/* 8. Wildlife Travel Guide & Preparation Insights */}
+      <TravelGuide
+        onOpenArticle={(title) => openBookingModal({ notes: `Interested in: ${title}` })}
+      />
+
+      {/* 9. Frequently Asked Questions Accordion */}
+      <FaqSection />
+
+      {/* 10. Direct Safari Enquiry Form */}
+      <QuickEnquirySection />
+    </>
   );
 }

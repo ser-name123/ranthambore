@@ -2,6 +2,8 @@
 
 import React from 'react';
 import { Star, Quote, CheckCircle2 } from 'lucide-react';
+import { motion } from 'framer-motion';
+import SpotlightCard from './SpotlightCard';
 
 export default function Testimonials() {
   const reviews = [
@@ -34,10 +36,35 @@ export default function Testimonials() {
     }
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const }
+    }
+  };
+
   return (
     <section className="py-24 bg-[#121110] relative">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-16 space-y-4"
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#f59e0b]/10 text-[#f59e0b] text-xs font-bold uppercase tracking-widest border border-[#f59e0b]/20">
             <Star className="w-3.5 h-3.5 fill-[#f59e0b]" />
             Guest Experiences
@@ -48,47 +75,56 @@ export default function Testimonials() {
           <p className="text-sm sm:text-base text-[#b8a794]">
             Read genuine feedback from wildlife photographers, families, and solo explorers who experienced Ranthambore with our team.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-40px' }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8"
+        >
           {reviews.map((rev, idx) => (
-            <div
-              key={idx}
-              className="glass-card p-7 rounded-2xl border border-[#2e261f] bg-[#181512] flex flex-col justify-between space-y-6 relative hover:border-[#ea580c] transition duration-300 shadow-xl"
-            >
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <div className="flex text-[#f59e0b]">
-                    {[...Array(rev.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-current" />
-                    ))}
+            <motion.div key={idx} variants={cardVariants} className="h-full flex flex-col">
+              <SpotlightCard
+                spotlightColor="rgba(245, 158, 11, 0.16)"
+                enableTilt={true}
+                className="glass-card p-7 rounded-2xl border border-[#2e261f] bg-[#181512] flex-1 flex flex-col justify-between space-y-6 relative hover:border-[#ea580c] transition duration-300 shadow-xl group"
+              >
+                <div className="space-y-4">
+                  <div className="flex items-center justify-between">
+                    <div className="flex text-[#f59e0b] gap-1">
+                      {[...Array(rev.rating)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-current transform group-hover:scale-110 transition duration-200" style={{ transitionDelay: `${i * 50}ms` }} />
+                      ))}
+                    </div>
+                    <Quote className="w-6 h-6 text-[#ea580c]/30 group-hover:text-[#ea580c]/70 transition duration-300" />
                   </div>
-                  <Quote className="w-6 h-6 text-[#ea580c]/30" />
+
+                  <p className="text-xs sm:text-sm text-[#cfc0ae] leading-relaxed italic">
+                    &ldquo;{rev.quote}&rdquo;
+                  </p>
                 </div>
 
-                <p className="text-xs sm:text-sm text-[#cfc0ae] leading-relaxed italic">
-                  &ldquo;{rev.quote}&rdquo;
-                </p>
-              </div>
-
-              <div className="pt-4 border-t border-[#29221b]">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h4 className="font-bold text-white text-sm">{rev.name}</h4>
-                    <p className="text-[11px] text-[#8c7f70]">{rev.location}</p>
+                <div className="pt-4 border-t border-[#29221b]">
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <h4 className="font-bold text-white text-sm group-hover:text-[#f59e0b] transition">{rev.name}</h4>
+                      <p className="text-[11px] text-[#8c7f70]">{rev.location}</p>
+                    </div>
+                    <span className="inline-flex items-center gap-1 text-[10px] text-emerald-400 font-semibold bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
+                      <CheckCircle2 className="w-3 h-3" />
+                      Verified Guest
+                    </span>
                   </div>
-                  <span className="inline-flex items-center gap-1 text-[10px] text-emerald-400 font-semibold bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
-                    <CheckCircle2 className="w-3 h-3" />
-                    Verified Guest
-                  </span>
+                  <div className="mt-2 text-[10px] text-[#f59e0b] font-medium">
+                    {rev.tour} • {rev.date}
+                  </div>
                 </div>
-                <div className="mt-2 text-[10px] text-[#f59e0b] font-medium">
-                  {rev.tour} • {rev.date}
-                </div>
-              </div>
-            </div>
+              </SpotlightCard>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

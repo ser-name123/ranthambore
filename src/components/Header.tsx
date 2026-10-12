@@ -4,13 +4,23 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Phone, MessageCircle, Clock, ShieldCheck, Menu, X, ArrowRight } from 'lucide-react';
+import { useBookingModal } from '@/context/BookingModalContext';
 
 interface HeaderProps {
-  onOpenBookingModal: (prefill?: Record<string, string>) => void;
+  onOpenBookingModal?: (prefill?: Record<string, string>) => void;
 }
 
 export default function Header({ onOpenBookingModal }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { openBookingModal } = useBookingModal();
+
+  const handleOpen = (prefill?: Record<string, string>) => {
+    if (onOpenBookingModal) {
+      onOpenBookingModal(prefill);
+    } else {
+      openBookingModal(prefill);
+    }
+  };
 
   const phoneNumbers = [
     { display: '+91 99719 65629', raw: '+919971965629' },
@@ -112,7 +122,7 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
             {/* Action CTAs */}
             <div className="hidden sm:flex items-center gap-3">
               <button
-                onClick={() => onOpenBookingModal()}
+                onClick={() => handleOpen()}
                 className="px-4 py-2 rounded-lg bg-gradient-to-r from-[#ea580c] to-[#d97706] hover:from-[#f97316] hover:to-[#ea580c] text-white text-xs font-bold shadow-lg shadow-[#ea580c]/25 flex items-center gap-1.5 transition duration-300 cursor-pointer animate-glow"
               >
                 <span>Book Safari</span>
@@ -149,7 +159,7 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
-                  onOpenBookingModal();
+                  handleOpen();
                 }}
                 className="w-full py-2.5 rounded-lg bg-gradient-to-r from-[#ea580c] to-[#d97706] text-white text-sm font-bold text-center flex items-center justify-center gap-2 shadow-md"
               >

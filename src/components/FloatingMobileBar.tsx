@@ -2,12 +2,16 @@
 
 import React from 'react';
 import { Phone, MessageCircle, CalendarCheck } from 'lucide-react';
+import { useBookingModal } from '@/context/BookingModalContext';
 
 interface FloatingMobileBarProps {
-  onOpenBookingModal: () => void;
+  onOpenBookingModal?: () => void;
 }
 
 export default function FloatingMobileBar({ onOpenBookingModal }: FloatingMobileBarProps) {
+  const { openBookingModal } = useBookingModal();
+  const handleOpen = onOpenBookingModal || (() => openBookingModal());
+
   return (
     <div className="fixed bottom-0 inset-x-0 z-40 lg:hidden bg-[#141210]/95 backdrop-blur-lg border-t border-[#29221b] p-2.5 px-4 shadow-[0_-10px_25px_rgba(0,0,0,0.5)]">
       <div className="flex items-center gap-2 max-w-md mx-auto">
@@ -32,8 +36,8 @@ export default function FloatingMobileBar({ onOpenBookingModal }: FloatingMobile
         </a>
 
         <button
-          onClick={onOpenBookingModal}
-          className="flex-[1.2] py-2.5 rounded-xl bg-gradient-to-r from-[#ea580c] to-[#d97706] text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-lg shadow-[#ea580c]/30 transition active:scale-95"
+          onClick={handleOpen}
+          className="flex-[1.2] py-2.5 rounded-xl bg-gradient-to-r from-[#ea580c] to-[#d97706] text-white text-xs font-bold flex items-center justify-center gap-1.5 shadow-lg shadow-[#ea580c]/30 transition active:scale-95 cursor-pointer"
         >
           <CalendarCheck className="w-4 h-4" />
           <span>Book Safari</span>

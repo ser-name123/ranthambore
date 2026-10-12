@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
+import ClientLayout from "@/components/ClientLayout";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-serif",
@@ -80,7 +81,9 @@ export default function RootLayout({
         className="min-h-screen bg-[#121110] text-[#f4efea] font-sans antialiased selection:bg-[#ea580c] selection:text-white"
         suppressHydrationWarning
       >
-        {children}
+        <ClientLayout>
+          {children}
+        </ClientLayout>
       </body>
     </html>
   );

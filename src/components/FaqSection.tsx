@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { ChevronDown, HelpCircle, ShieldAlert } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -36,7 +37,13 @@ export default function FaqSection() {
   return (
     <section className="py-24 bg-[#121110] relative" id="faq">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16 space-y-4">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: '-50px' }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16 space-y-4"
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#f59e0b]/10 text-[#f59e0b] text-xs font-bold uppercase tracking-widest border border-[#f59e0b]/20">
             <HelpCircle className="w-3.5 h-3.5" />
             Clear Answers
@@ -47,42 +54,72 @@ export default function FaqSection() {
           <p className="text-sm sm:text-base text-[#b8a794]">
             Everything you need to know about Ranthambore permits, regulations, vehicle choices, and wildlife rules.
           </p>
-        </div>
+        </motion.div>
 
         <div className="space-y-4">
           {faqs.map((faq, idx) => {
             const isOpen = openIndex === idx;
             return (
-              <div
+              <motion.div
                 key={idx}
-                className="glass-card rounded-2xl border border-[#2b241e] overflow-hidden transition bg-[#171412]"
+                initial={{ opacity: 0, y: 15 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: idx * 0.06 }}
+                className={`glass-card rounded-2xl border transition-all duration-300 overflow-hidden bg-[#171412] ${
+                  isOpen ? 'border-[#ea580c]/60 shadow-lg shadow-[#ea580c]/5' : 'border-[#2b241e] hover:border-[#3d3329]'
+                }`}
               >
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
                   className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer hover:bg-[#1f1a16] transition"
                 >
-                  <span className="font-serif text-base sm:text-lg font-bold text-white">
+                  <span className={`font-serif text-base sm:text-lg font-bold transition duration-200 ${
+                    isOpen ? 'text-[#f59e0b]' : 'text-white'
+                  }`}>
                     {faq.q}
                   </span>
-                  <ChevronDown
-                    className={`w-5 h-5 text-[#ea580c] shrink-0 transition-transform duration-300 ${
-                      isOpen ? 'rotate-180 text-[#f59e0b]' : ''
-                    }`}
-                  />
+                  <motion.div
+                    animate={{ rotate: isOpen ? 180 : 0 }}
+                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    className="shrink-0"
+                  >
+                    <ChevronDown
+                      className={`w-5 h-5 transition-colors ${
+                        isOpen ? 'text-[#f59e0b]' : 'text-[#ea580c]'
+                      }`}
+                    />
+                  </motion.div>
                 </button>
 
-                {isOpen && (
-                  <div className="px-5 sm:px-6 pb-6 pt-1 text-xs sm:text-sm text-[#b8a794] leading-relaxed border-t border-[#261f19]">
-                    {faq.a}
-                  </div>
-                )}
-              </div>
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      key="content"
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: 'auto' }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.35, ease: [0.04, 0.62, 0.23, 0.98] }}
+                    >
+                      <div className="px-5 sm:px-6 pb-6 pt-1 text-xs sm:text-sm text-[#b8a794] leading-relaxed border-t border-[#261f19]">
+                        {faq.a}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             );
           })}
         </div>
 
-        <div className="mt-12 p-5 rounded-2xl bg-[#1a1613] border border-[#3b3127] text-xs text-[#a89985] flex items-center justify-between flex-wrap gap-4">
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mt-12 p-5 rounded-2xl bg-[#1a1613] border border-[#3b3127] text-xs text-[#a89985] flex items-center justify-between flex-wrap gap-4 shadow-md"
+        >
           <div className="flex items-center gap-3">
             <ShieldAlert className="w-5 h-5 text-[#f59e0b] shrink-0" />
             <span>Have a specific query about group bookings or foreign national permits?</span>
@@ -91,11 +128,12 @@ export default function FaqSection() {
             href="https://wa.me/919971965629?text=Hi%20Ranthambore%20Wild%20Life%20Tour,%20I%20have%20a%20question%20about%20Safari%20Booking."
             target="_blank"
             rel="noopener noreferrer"
-            className="text-[#ea580c] hover:text-[#f59e0b] font-bold"
+            className="text-[#ea580c] hover:text-[#f59e0b] font-bold transition flex items-center gap-1"
           >
-            Chat with our Helpdesk →
+            <span>Chat with our Helpdesk</span>
+            <span>→</span>
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

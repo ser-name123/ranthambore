@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react';
 import confetti from 'canvas-confetti';
-import { Send, CheckCircle2, MessageCircle, Phone, Sparkles, ShieldCheck, AlertCircle } from 'lucide-react';
+import { Send, CheckCircle2, MessageCircle, Phone, Sparkles, AlertCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export default function QuickEnquirySection() {
   const [formData, setFormData] = useState({
@@ -71,19 +72,30 @@ export default function QuickEnquirySection() {
   };
 
   return (
-    <section className="py-24 bg-[#171412] relative border-t border-[#29221b]" id="contact-us">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-[#171412] relative border-t border-[#29221b] overflow-hidden" id="contact-us">
+      {/* Ambient background glow */}
+      <div className="absolute top-1/3 right-0 w-96 h-96 bg-[#ea580c]/5 rounded-full blur-3xl pointer-events-none" />
+
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column: Assistance Context */}
-          <div className="lg:col-span-5 space-y-6">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-5 space-y-6"
+          >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ea580c]/10 text-[#ea580c] text-xs font-bold uppercase tracking-widest border border-[#ea580c]/20">
-              <Sparkles className="w-3.5 h-3.5" />
+              <Sparkles className="w-3.5 h-3.5 text-[#f59e0b]" />
               Direct Wildlife Concierge
             </div>
 
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight">
               Get an Instant Safari Quote &amp;{' '}
-              <span className="text-[#f59e0b]">Availability Check</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f59e0b] via-[#ea580c] to-[#fb923c]">
+                Availability Check
+              </span>
             </h2>
 
             <p className="text-sm sm:text-base text-[#cfc1b0] leading-relaxed">
@@ -91,7 +103,7 @@ export default function QuickEnquirySection() {
             </p>
 
             <div className="space-y-4 pt-2">
-              <div className="p-4 rounded-xl bg-[#141210] border border-[#2b241e] flex items-center gap-4">
+              <div className="p-4 rounded-xl bg-[#141210] border border-[#2b241e] flex items-center gap-4 hover:border-[#ea580c]/40 transition duration-300 shadow-md">
                 <div className="w-10 h-10 rounded-lg bg-[#ea580c]/20 text-[#ea580c] flex items-center justify-center shrink-0">
                   <Phone className="w-5 h-5" />
                 </div>
@@ -105,7 +117,7 @@ export default function QuickEnquirySection() {
                 </div>
               </div>
 
-              <div className="p-4 rounded-xl bg-[#141210] border border-[#2b241e] flex items-center gap-4">
+              <div className="p-4 rounded-xl bg-[#141210] border border-[#2b241e] flex items-center gap-4 hover:border-emerald-500/40 transition duration-300 shadow-md">
                 <div className="w-10 h-10 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
                   <MessageCircle className="w-5 h-5" />
                 </div>
@@ -127,11 +139,17 @@ export default function QuickEnquirySection() {
               <span className="font-bold text-[#e0d3c3]">Privacy Assurance: </span>
               Your contact details and travel dates are strictly used for your safari quotation. We never share visitor info with third parties or marketing spammers.
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Lead Form */}
-          <div className="lg:col-span-7">
-            <div className="glass-panel p-6 sm:p-8 rounded-2xl border border-[#ea580c]/30 shadow-2xl relative bg-[#181512]">
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: '-40px' }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-7"
+          >
+            <div className="glass-panel p-6 sm:p-8 rounded-2xl border border-[#ea580c]/35 shadow-2xl relative bg-[#181512] backdrop-blur-xl">
               {successResult ? (
                 <div className="py-8 text-center space-y-5 animate-fadeIn">
                   <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto border border-emerald-500/40">
@@ -161,7 +179,7 @@ export default function QuickEnquirySection() {
                     </a>
                     <button
                       onClick={() => setSuccessResult(null)}
-                      className="px-5 py-3 rounded-xl bg-[#2e261f] text-[#cfc0ae] hover:text-white text-xs font-bold transition"
+                      className="px-5 py-3 rounded-xl bg-[#2e261f] text-[#cfc0ae] hover:text-white text-xs font-bold transition cursor-pointer"
                     >
                       Submit Another Request
                     </button>
@@ -196,7 +214,7 @@ export default function QuickEnquirySection() {
                         placeholder="e.g. Rahul Sharma"
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full bg-[#141210] border border-[#3b3127] rounded-xl px-3.5 py-2.5 text-white text-xs sm:text-sm focus:outline-none focus:border-[#ea580c]"
+                        className="w-full bg-[#141210] border border-[#3b3127] rounded-xl px-3.5 py-2.5 text-white text-xs sm:text-sm focus:outline-none focus:border-[#ea580c] transition"
                       />
                     </div>
 
@@ -210,7 +228,7 @@ export default function QuickEnquirySection() {
                         placeholder="e.g. +91 98765 43210"
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full bg-[#141210] border border-[#3b3127] rounded-xl px-3.5 py-2.5 text-white text-xs sm:text-sm focus:outline-none focus:border-[#ea580c]"
+                        className="w-full bg-[#141210] border border-[#3b3127] rounded-xl px-3.5 py-2.5 text-white text-xs sm:text-sm focus:outline-none focus:border-[#ea580c] transition"
                       />
                     </div>
                   </div>
@@ -225,7 +243,7 @@ export default function QuickEnquirySection() {
                         placeholder="e.g. rahul@example.com"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full bg-[#141210] border border-[#3b3127] rounded-xl px-3.5 py-2.5 text-white text-xs sm:text-sm focus:outline-none focus:border-[#ea580c]"
+                        className="w-full bg-[#141210] border border-[#3b3127] rounded-xl px-3.5 py-2.5 text-white text-xs sm:text-sm focus:outline-none focus:border-[#ea580c] transition"
                       />
                     </div>
 
@@ -238,7 +256,7 @@ export default function QuickEnquirySection() {
                         required
                         value={formData.safari_date}
                         onChange={(e) => setFormData({ ...formData, safari_date: e.target.value })}
-                        className="w-full bg-[#141210] border border-[#3b3127] rounded-xl px-3.5 py-2.5 text-white text-xs sm:text-sm focus:outline-none focus:border-[#ea580c]"
+                        className="w-full bg-[#141210] border border-[#3b3127] rounded-xl px-3.5 py-2.5 text-white text-xs sm:text-sm focus:outline-none focus:border-[#ea580c] transition"
                       />
                     </div>
                   </div>
@@ -251,7 +269,7 @@ export default function QuickEnquirySection() {
                       <select
                         value={formData.safari_mode}
                         onChange={(e) => setFormData({ ...formData, safari_mode: e.target.value })}
-                        className="w-full bg-[#141210] border border-[#3b3127] rounded-xl px-2.5 py-2 text-white text-xs focus:outline-none focus:border-[#ea580c]"
+                        className="w-full bg-[#141210] border border-[#3b3127] rounded-xl px-2.5 py-2 text-white text-xs focus:outline-none focus:border-[#ea580c] transition"
                       >
                         <option>Maruti Gypsy (6-Seater 4x4)</option>
                         <option>Canter (20-Seater Bus)</option>
@@ -266,7 +284,7 @@ export default function QuickEnquirySection() {
                       <select
                         value={formData.timing_preference}
                         onChange={(e) => setFormData({ ...formData, timing_preference: e.target.value })}
-                        className="w-full bg-[#141210] border border-[#3b3127] rounded-xl px-2.5 py-2 text-white text-xs focus:outline-none focus:border-[#ea580c]"
+                        className="w-full bg-[#141210] border border-[#3b3127] rounded-xl px-2.5 py-2 text-white text-xs focus:outline-none focus:border-[#ea580c] transition"
                       >
                         <option>Morning (06:30 AM)</option>
                         <option>Afternoon (02:30 PM)</option>
@@ -281,7 +299,7 @@ export default function QuickEnquirySection() {
                       <select
                         value={formData.nationality}
                         onChange={(e) => setFormData({ ...formData, nationality: e.target.value })}
-                        className="w-full bg-[#141210] border border-[#3b3127] rounded-xl px-2.5 py-2 text-white text-xs focus:outline-none focus:border-[#ea580c]"
+                        className="w-full bg-[#141210] border border-[#3b3127] rounded-xl px-2.5 py-2 text-white text-xs focus:outline-none focus:border-[#ea580c] transition"
                       >
                         <option>Indian</option>
                         <option>Foreign National</option>
@@ -293,34 +311,38 @@ export default function QuickEnquirySection() {
                     <div className="flex items-center justify-between">
                       <span className="text-xs text-[#a89985]">Adults:</span>
                       <div className="flex items-center gap-2">
-                        <button
+                        <motion.button
+                          whileTap={{ scale: 0.85 }}
                           type="button"
                           onClick={() => setFormData({ ...formData, adults: Math.max(1, formData.adults - 1) })}
-                          className="w-6 h-6 rounded bg-[#2a221b] text-white hover:bg-[#ea580c] text-xs"
-                        >-</button>
+                          className="w-6 h-6 rounded bg-[#2a221b] text-white hover:bg-[#ea580c] text-xs transition cursor-pointer"
+                        >-</motion.button>
                         <span className="text-white font-bold text-xs">{formData.adults}</span>
-                        <button
+                        <motion.button
+                          whileTap={{ scale: 0.85 }}
                           type="button"
                           onClick={() => setFormData({ ...formData, adults: formData.adults + 1 })}
-                          className="w-6 h-6 rounded bg-[#2a221b] text-white hover:bg-[#ea580c] text-xs"
-                        >+</button>
+                          className="w-6 h-6 rounded bg-[#2a221b] text-white hover:bg-[#ea580c] text-xs transition cursor-pointer"
+                        >+</motion.button>
                       </div>
                     </div>
 
                     <div className="flex items-center justify-between">
                       <span className="text-xs text-[#a89985]">Children:</span>
                       <div className="flex items-center gap-2">
-                        <button
+                        <motion.button
+                          whileTap={{ scale: 0.85 }}
                           type="button"
                           onClick={() => setFormData({ ...formData, children: Math.max(0, formData.children - 1) })}
-                          className="w-6 h-6 rounded bg-[#2a221b] text-white hover:bg-[#ea580c] text-xs"
-                        >-</button>
+                          className="w-6 h-6 rounded bg-[#2a221b] text-white hover:bg-[#ea580c] text-xs transition cursor-pointer"
+                        >-</motion.button>
                         <span className="text-white font-bold text-xs">{formData.children}</span>
-                        <button
+                        <motion.button
+                          whileTap={{ scale: 0.85 }}
                           type="button"
                           onClick={() => setFormData({ ...formData, children: formData.children + 1 })}
-                          className="w-6 h-6 rounded bg-[#2a221b] text-white hover:bg-[#ea580c] text-xs"
-                        >+</button>
+                          className="w-6 h-6 rounded bg-[#2a221b] text-white hover:bg-[#ea580c] text-xs transition cursor-pointer"
+                        >+</motion.button>
                       </div>
                     </div>
                   </div>
@@ -334,7 +356,7 @@ export default function QuickEnquirySection() {
                       placeholder="e.g. Need hotel stay, railway pickup, or zone 3 preference..."
                       value={formData.notes}
                       onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                      className="w-full bg-[#141210] border border-[#3b3127] rounded-xl px-3.5 py-2 text-white text-xs sm:text-sm focus:outline-none focus:border-[#ea580c]"
+                      className="w-full bg-[#141210] border border-[#3b3127] rounded-xl px-3.5 py-2 text-white text-xs sm:text-sm focus:outline-none focus:border-[#ea580c] transition"
                     />
                   </div>
 
@@ -351,7 +373,9 @@ export default function QuickEnquirySection() {
                     </span>
                   </label>
 
-                  <button
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                     type="submit"
                     disabled={loading}
                     className="w-full py-3.5 rounded-xl bg-gradient-to-r from-[#ea580c] to-[#f59e0b] hover:from-[#f97316] hover:to-[#ea580c] text-white font-bold text-sm tracking-wide shadow-lg shadow-[#ea580c]/30 flex items-center justify-center gap-2 transition duration-200 cursor-pointer disabled:opacity-50"
@@ -364,11 +388,11 @@ export default function QuickEnquirySection() {
                         <span>Submit Safari Booking Request</span>
                       </>
                     )}
-                  </button>
+                  </motion.button>
                 </form>
               )}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
