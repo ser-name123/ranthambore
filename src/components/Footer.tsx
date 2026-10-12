@@ -286,7 +286,7 @@ export default function Footer({ onOpenBookingModal }: FooterProps) {
             <span>© 2026 Ranthambore Wild Life Tour. All Rights Reserved.</span>
             <span className="hidden sm:inline text-[#3d3328]">|</span>
             <div className="flex items-center gap-3 text-[#998877]">
-              <a href="#about-us" className="hover:text-white transition">Privacy Policy</a>
+              <Link href="/privacy-policy" className="hover:text-white transition">Privacy Policy</Link>
               <span>•</span>
               <a href="#about-us" className="hover:text-white transition">Terms &amp; Conditions</a>
               <span>•</span>

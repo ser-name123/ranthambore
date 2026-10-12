@@ -20,6 +20,7 @@
 # production
 /build
 /.build
+/.next_cache/
 
 # misc
 .DS_Store

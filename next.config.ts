@@ -11,6 +11,23 @@ const nextConfig: NextConfig = {
       },
     },
   },
+  async redirects() {
+    return [
+      {
+        source: '/privacy',
+        destination: '/privacy-policy',
+        permanent: true,
+      },
+    ];
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/api/enquiry',
+        destination: '/api/booking',
+      },
+    ];
+  },
 };
 
 export default nextConfig;
