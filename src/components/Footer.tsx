@@ -35,21 +35,22 @@ export default function Footer({ onOpenBookingModal }: FooterProps) {
   ];
 
   const safariLinks = [
-    { name: 'Maruti Gypsy Safari (6-Seater)', href: '#safari-booking' },
-    { name: 'Canter Safari Bus (20-Seater)', href: '#safari-booking' },
-    { name: 'Core Zones 1 to 5 Booking', href: '#zones' },
-    { name: 'Buffer Gates 6 to 10 Safaris', href: '#zones' },
-    { name: 'Wildlife Photography Expeditions', href: '#packages' },
-    { name: 'Safari Timings & Shifts (2026-27)', href: '#zones' },
+    { name: 'Maruti Gypsy Safari (6-Seater)', href: '/gypsy-safari' },
+    { name: 'Canter Safari Bus (20-Seater)', href: '/canter-safari' },
+    { name: 'Core Zones 1 to 5 Booking', href: '/core-zones-safari' },
+    { name: 'Buffer Gates 6 to 10 Safaris', href: '/buffer-zones-safari' },
+    { name: 'Wildlife Photography Expeditions', href: '/wildlife-photography-tour' },
+    { name: 'Safari Timings & Shifts (2026-27)', href: '/safari-timings' },
   ];
 
   const tourLinks = [
-    { name: '2N/3D Classic Wildlife Package', href: '#packages' },
-    { name: '3N/4D Royal Tiger Expedition', href: '#packages' },
-    { name: 'Luxury Forest Resort Stays', href: '#services' },
-    { name: 'Ranthambore Fort & Chambal Boating', href: '#services' },
-    { name: 'Jaipur & Delhi Cab Transfers', href: '#services' },
-    { name: 'Safari FAQs & ID Proof Rules', href: '#faq' },
+    { name: '2N/3D Classic Wildlife Package', href: '/packages/2n-3d-classic-wildlife' },
+    { name: '3N/4D Royal Tiger Expedition', href: '/packages/3n-4d-royal-tiger' },
+    { name: 'Luxury Forest Resort Stays', href: '/resort-booking' },
+    { name: 'Ranthambore Fort & Chambal Boating', href: '/chambal-safari' },
+    { name: 'Jaipur & Delhi Cab Transfers', href: '/taxi-transfers' },
+    { name: 'Cancellation & Refund Policy', href: '/cancellation-policy' },
+    { name: 'Safari FAQs & ID Proof Rules', href: '/safari-faq-rules' },
   ];
 
   const trustBadges = [
@@ -165,13 +166,13 @@ export default function Footer({ onOpenBookingModal }: FooterProps) {
             <ul className="space-y-2.5 text-xs sm:text-sm">
               {safariLinks.map((link) => (
                 <li key={link.name}>
-                  <a
+                  <Link
                     href={link.href}
                     className="group flex items-center gap-2 text-[#a89985] hover:text-[#ea580c] transition duration-200"
                   >
                     <ChevronRight className="w-3.5 h-3.5 text-[#5e5143] group-hover:text-[#ea580c] group-hover:translate-x-1 transition duration-200" />
                     <span>{link.name}</span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -186,13 +187,13 @@ export default function Footer({ onOpenBookingModal }: FooterProps) {
             <ul className="space-y-2.5 text-xs sm:text-sm">
               {tourLinks.map((link) => (
                 <li key={link.name}>
-                  <a
+                  <Link
                     href={link.href}
                     className="group flex items-center gap-2 text-[#a89985] hover:text-[#ea580c] transition duration-200"
                   >
                     <ChevronRight className="w-3.5 h-3.5 text-[#5e5143] group-hover:text-[#ea580c] group-hover:translate-x-1 transition duration-200" />
                     <span>{link.name}</span>
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -288,9 +289,14 @@ export default function Footer({ onOpenBookingModal }: FooterProps) {
             <div className="flex items-center gap-3 text-[#998877]">
               <Link href="/privacy-policy" className="hover:text-white transition">Privacy Policy</Link>
               <span>•</span>
-              <a href="#about-us" className="hover:text-white transition">Terms &amp; Conditions</a>
+              <Link href="/terms-conditions" className="hover:text-white transition">Terms &amp; Conditions</Link>
               <span>•</span>
-              <a href="#faq" className="hover:text-white transition">Cancellation Policy</a>
+              <Link href="/cancellation-policy" className="hover:text-white transition">Cancellation Policy</Link>
+              <span>•</span>
+              <Link href="/admin" className="hover:text-amber-400 transition flex items-center gap-1 text-[#b5a796]">
+                <ShieldCheck className="w-3 h-3 text-[#ea580c]" />
+                <span>Admin Portal</span>
+              </Link>
             </div>
           </div>
 

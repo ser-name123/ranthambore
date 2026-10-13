@@ -3,6 +3,8 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { usePathname } from 'next/navigation';
+import { motion } from 'framer-motion';
 import { Phone, MessageCircle, Clock, ShieldCheck, Menu, X, ArrowRight } from 'lucide-react';
 import { useBookingModal } from '@/context/BookingModalContext';
 
@@ -11,6 +13,7 @@ interface HeaderProps {
 }
 
 export default function Header({ onOpenBookingModal }: HeaderProps) {
+  const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { openBookingModal } = useBookingModal();
 
@@ -29,13 +32,13 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
 
   const navLinks = [
     { name: 'Home', href: '/' },
-    { name: 'Safari Booking', href: '#safari-booking' },
-    { name: 'Tour Packages', href: '#packages' },
-    { name: 'Services', href: '#services' },
-    { name: 'Safari Zones', href: '#zones' },
-    { name: 'About Us', href: '#about-us' },
-    { name: 'Travel Guide', href: '#travel-guide' },
-    { name: 'Contact Us', href: '#contact-us' },
+    { name: 'Safari Booking', href: '/safari-booking' },
+    { name: 'Tour Packages', href: '/tour-packages' },
+    { name: 'Services', href: '/services' },
+    { name: 'Safari Zones', href: '/safari-zones' },
+    { name: 'About Us', href: '/about-us' },
+    { name: 'Travel Guide', href: '/travel-guide' },
+    { name: 'Contact Us', href: '/contact-us' },
   ];
 
   return (
@@ -107,16 +110,33 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
           {/* Right Aligned Menu & Actions */}
           <div className="flex items-center gap-6 lg:gap-7">
             {/* Desktop Nav Links */}
-            <div className="hidden lg:flex items-center gap-6">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="text-sm font-medium text-[#c4b5a3] hover:text-[#ea580c] transition duration-200"
-                >
-                  {link.name}
-                </a>
-              ))}
+            <div className="hidden lg:flex items-center gap-1 xl:gap-2">
+              {navLinks.map((link) => {
+                const isActive = link.href === '/' 
+                  ? pathname === '/' 
+                  : pathname === link.href || pathname.startsWith(`${link.href}/`);
+
+                return (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className={`relative px-3 py-1.5 rounded-lg text-sm font-medium transition duration-200 ${
+                      isActive
+                        ? 'text-[#f59e0b] font-bold'
+                        : 'text-[#c4b5a3] hover:text-[#ea580c]'
+                    }`}
+                  >
+                    <span>{link.name}</span>
+                    {isActive && (
+                      <motion.span
+                        layoutId="activeHeaderNav"
+                        className="absolute bottom-0 left-2 right-2 h-[2.5px] bg-gradient-to-r from-[#ea580c] via-[#f59e0b] to-[#fb923c] rounded-full shadow-[0_0_8px_rgba(245,158,11,0.9)]"
+                        transition={{ type: 'spring', stiffness: 500, damping: 35 }}
+                      />
+                    )}
+                  </Link>
+                );
+              })}
             </div>
 
             {/* Action CTAs */}
@@ -143,17 +163,30 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden mt-3 pt-3 border-t border-[#29231d] space-y-2 pb-3">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="block px-3 py-2 rounded-md text-sm font-medium text-[#c4b5a3] hover:bg-[#251e18] hover:text-[#ea580c] transition"
-              >
-                {link.name}
-              </a>
-            ))}
+          <div className="lg:hidden mt-3 pt-3 border-t border-[#29231d] space-y-1.5 pb-3">
+            {navLinks.map((link) => {
+              const isActive = link.href === '/' 
+                ? pathname === '/' 
+                : pathname === link.href || pathname.startsWith(`${link.href}/`);
+
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-semibold transition ${
+                    isActive
+                      ? 'bg-gradient-to-r from-[#ea580c]/25 to-[#f59e0b]/15 text-[#fba156] border border-[#ea580c]/40 shadow-sm'
+                      : 'text-[#c4b5a3] hover:bg-[#251e18] hover:text-white'
+                  }`}
+                >
+                  <span>{link.name}</span>
+                  {isActive && (
+                    <span className="w-2 h-2 rounded-full bg-[#f59e0b] shadow-[0_0_6px_rgba(245,158,11,1)]" />
+                  )}
+                </Link>
+              );
+            })}
 
             <div className="pt-3 border-t border-[#29231d] flex flex-col gap-2">
               <button

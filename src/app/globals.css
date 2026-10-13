@@ -13,7 +13,8 @@
   }
 
   html {
-    scroll-behavior: smooth;
+    /* Instant scroll restoration on route changes */
+    scroll-behavior: auto;
   }
 }
 

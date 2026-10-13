@@ -3,6 +3,7 @@
 import React from 'react';
 import Hero from '@/components/Hero';
 import SightingsTicker from '@/components/SightingsTicker';
+import ParkSafariOverview from '@/components/ParkSafariOverview';
 import VehicleComparison from '@/components/VehicleComparison';
 import FeaturedPackages from '@/components/FeaturedPackages';
 import ServicesGrid from '@/components/ServicesGrid';
@@ -19,13 +20,13 @@ export default function HomePage() {
 
   return (
     <>
-      {/* 1. Hero Section with Live Availability Calculator */}
+      {/* 1. Full-Screen Hero Section with Live Availability Calculator & Docked Sightings Ticker */}
       <Hero onOpenBookingModal={openBookingModal} />
 
-      {/* 1.5 Real-Time Live Sightings & Safari News Dispatch Marquee */}
-      <SightingsTicker onOpenBookingModal={openBookingModal} />
+      {/* 2. Ranthambore Safari Overview, Brief Journey Timeline & Wildlife Catalog */}
+      <ParkSafariOverview onOpenBookingModal={openBookingModal} />
 
-      {/* 2. Safari Vehicle Comparison: Jeep vs Canter */}
+      {/* 3. Safari Vehicle Comparison: Jeep vs Canter */}
       <VehicleComparison
         onSelectVehicle={(vehicleName) => openBookingModal({ vehicle: vehicleName })}
       />

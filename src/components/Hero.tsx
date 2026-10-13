@@ -6,6 +6,7 @@ import { Calendar, Users, Compass, Clock, ShieldCheck, Sparkles, CheckCircle, Ar
 import { motion, AnimatePresence } from 'framer-motion';
 import FireflyCanvas from './FireflyCanvas';
 import AnimatedCounter from './AnimatedCounter';
+import SightingsTicker from './SightingsTicker';
 
 interface HeroProps {
   onOpenBookingModal: (prefill?: Record<string, string>) => void;
@@ -56,7 +57,7 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
   };
 
   return (
-    <section className="relative min-h-[calc(100vh-106px)] lg:h-[calc(100vh-106px)] flex items-center justify-center overflow-hidden py-6 lg:py-4">
+    <section className="relative min-h-[calc(100vh-98px)] lg:h-[calc(100vh-98px)] flex flex-col justify-between overflow-hidden">
       {/* Background Image with Cinematic Subtle Pulse / Zoom */}
       <div className="absolute inset-0 z-0 overflow-hidden">
         <motion.div
@@ -81,8 +82,8 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-[#121110] via-transparent to-black/60" />
       </div>
 
-      <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+      <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex items-center py-2 sm:py-3">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center w-full">
           {/* Left Column: Heading, Value Props & Social Proof with Framer Motion */}
           <motion.div
             variants={containerVariants}
@@ -415,6 +416,11 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
             </div>
           </motion.div>
         </div>
+      </div>
+
+      {/* Bottom Docked Live Sightings Ticker */}
+      <div className="relative z-20 w-full shrink-0">
+        <SightingsTicker onOpenBookingModal={onOpenBookingModal} />
       </div>
     </section>
   );

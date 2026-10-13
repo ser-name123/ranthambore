@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import confetti from 'canvas-confetti';
 import { X, Send, CheckCircle2, MessageCircle, AlertCircle, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -276,6 +277,17 @@ export default function BookingModal({ isOpen, onClose, prefillData }: BookingMo
                     </>
                   )}
                 </motion.button>
+
+                <p className="text-[11px] text-[#8c7f70] text-center pt-2">
+                  By submitting, you agree to our{' '}
+                  <Link href="/terms-conditions" className="text-[#ea580c] hover:underline" onClick={() => onClose()}>
+                    Terms &amp; Conditions
+                  </Link>{' '}
+                  and{' '}
+                  <Link href="/cancellation-policy" className="text-[#ea580c] hover:underline" onClick={() => onClose()}>
+                    Cancellation Policy
+                  </Link>.
+                </p>
               </form>
             )}
           </motion.div>

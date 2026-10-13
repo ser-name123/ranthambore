@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import Link from 'next/link';
 import confetti from 'canvas-confetti';
 import { Send, CheckCircle2, MessageCircle, Phone, Sparkles, AlertCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -368,8 +369,15 @@ export default function QuickEnquirySection() {
                       onChange={(e) => setFormData({ ...formData, consent: e.target.checked })}
                       className="mt-0.5 accent-[#ea580c]"
                     />
-                    <span>
-                      I agree to receive booking availability updates and safari quotation on WhatsApp / Phone.
+                    <span className="leading-relaxed">
+                      I agree to receive booking availability updates on WhatsApp / Phone, and accept the{' '}
+                      <Link href="/terms-conditions" className="text-[#ea580c] hover:underline font-medium">
+                        Terms &amp; Conditions
+                      </Link>{' '}
+                      and{' '}
+                      <Link href="/cancellation-policy" className="text-[#ea580c] hover:underline font-medium">
+                        Cancellation Policy
+                      </Link>.
                     </span>
                   </label>
 
