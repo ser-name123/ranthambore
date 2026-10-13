@@ -90,65 +90,78 @@ export default function SafariBookingPage() {
   ];
 
   return (
-    <div className="relative py-12 lg:py-20 overflow-hidden bg-[#120f0d]">
+    <div className="relative py-12 lg:py-20 overflow-hidden bg-[#06150f]">
       {/* Decorative ambient gradients */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#ea580c]/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/3 left-10 w-96 h-96 bg-[#f59e0b]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/3 left-10 w-96 h-96 bg-[#16432f]/20 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Breadcrumb Navigation */}
-        <nav aria-label="Breadcrumb" className="mb-8 flex items-center gap-2 text-xs text-[#a89985]">
-          <Link href="/" className="hover:text-[#ea580c] transition flex items-center gap-1.5 font-medium">
+        <nav aria-label="Breadcrumb" className="mb-8 flex items-center gap-2 text-xs text-[#86a898]">
+          <Link href="/" className="hover:text-emerald-400 transition flex items-center gap-1.5 font-medium">
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Home</span>
           </Link>
-          <ChevronRight className="w-3.5 h-3.5 text-zinc-600" />
+          <ChevronRight className="w-3.5 h-3.5 text-emerald-700" />
           <span className="text-[#f59e0b] font-semibold">Safari Booking</span>
         </nav>
 
-        {/* SECTION 1: Page Hero & Booking Trigger */}
-        <motion.div
-          initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-4xl mx-auto mb-16 space-y-4"
-        >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#ea580c]/15 text-[#fba156] text-xs font-bold uppercase tracking-widest border border-[#ea580c]/30 shadow-sm">
-            <Compass className="w-4 h-4 text-[#ea580c]" />
-            Official Safari Booking Portal (2026-2027)
+        {/* SECTION 1: Page Hero with Tiger Visual */}
+        <div className="relative rounded-3xl overflow-hidden border border-[#16432f] mb-16 shadow-2xl">
+          <div className="absolute inset-0">
+            <Image
+              src="/images/tiger_stalking.jpg"
+              alt="Bengal tiger walking majestically in Ranthambore"
+              fill
+              className="object-cover object-center opacity-35"
+              priority
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#06150f] via-[#06150f]/80 to-[#06150f]/40" />
           </div>
 
-          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
-            Book Ranthambore Safari:{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f59e0b] via-[#ea580c] to-[#fb923c]">
-              Gypsy &amp; Canter Permits
-            </span>
-          </h1>
+          <motion.div
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="relative z-10 text-center max-w-4xl mx-auto py-16 px-4 sm:px-8 space-y-4"
+          >
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/15 text-emerald-400 text-xs font-bold uppercase tracking-widest border border-emerald-500/30 shadow-sm">
+              <Compass className="w-4 h-4 text-emerald-400" />
+              Official Safari Booking Portal (2026-2027)
+            </div>
 
-          <p className="text-sm sm:text-base text-[#cfc0ae] leading-relaxed max-w-2xl mx-auto">
-            Reserve advance and Tatkal / current jungle safaris across all 10 zones. Regulated vehicle allocations, certified forest naturalists, and transparent booking fees.
-          </p>
+            <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
+              Book Ranthambore Safari:{' '}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-[#f59e0b]">
+                Gypsy &amp; Canter Permits
+              </span>
+            </h1>
 
-          <div className="pt-2 flex flex-wrap items-center justify-center gap-4">
-            <button
-              type="button"
-              onClick={() => openBookingModal()}
-              className="px-8 py-3.5 rounded-xl bg-gradient-to-r from-[#ea580c] to-[#f59e0b] hover:from-[#f97316] hover:to-[#ea580c] text-white font-bold text-sm shadow-xl shadow-[#ea580c]/30 flex items-center gap-2 cursor-pointer transition duration-300"
-            >
-              <span>Instant Safari Permit Request</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-            <a
-              href="https://wa.me/919971965629?text=Hello%20Ranthambore%20Wild%20Life%20Tour,%20I%20want%20to%20check%20safari%20booking%20dates."
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-6 py-3.5 rounded-xl bg-[#221c17] hover:bg-[#2b241e] text-white font-bold text-sm border border-[#3d3228] flex items-center gap-2 transition"
-            >
-              <MessageCircle className="w-4 h-4 text-emerald-400" />
-              <span>WhatsApp Helpline</span>
-            </a>
-          </div>
-        </motion.div>
+            <p className="text-sm sm:text-base text-[#c2d7cd] leading-relaxed max-w-2xl mx-auto">
+              Reserve advance and Tatkal jungle safaris across all 10 zones. Regulated vehicle allocations, certified forest naturalists, and transparent booking fees.
+            </p>
+
+            <div className="pt-3 flex flex-wrap items-center justify-center gap-4">
+              <button
+                type="button"
+                onClick={() => openBookingModal()}
+                className="px-8 py-3.5 rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-[#f59e0b] hover:from-emerald-500 hover:to-[#ea580c] text-white font-bold text-sm shadow-xl shadow-emerald-950/50 flex items-center gap-2 cursor-pointer transition duration-300"
+              >
+                <span>Instant Safari Permit Request</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+              <a
+                href="https://wa.me/919971965629?text=Hello%20Ranthambore%20Wild%20Life%20Tour,%20I%20want%20to%20check%20safari%20booking%20dates."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-6 py-3.5 rounded-xl bg-[#092218] hover:bg-[#113123] text-white font-bold text-sm border border-[#16432f] flex items-center gap-2 transition"
+              >
+                <MessageCircle className="w-4 h-4 text-emerald-400" />
+                <span>WhatsApp Helpline</span>
+              </a>
+            </div>
+          </motion.div>
+        </div>
 
         {/* SECTION 2: Live Sightings & Gate Status Ticker */}
         <div className="mb-20">
@@ -165,13 +178,13 @@ export default function SafariBookingPage() {
         {/* SECTION 4: Step-by-Step Booking Process */}
         <div className="mb-24">
           <div className="text-center max-w-2xl mx-auto mb-14 space-y-2">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#ea580c]">
+            <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">
               Seamless Workflow
             </span>
             <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
               How Your Safari Booking Works
             </h2>
-            <p className="text-xs sm:text-sm text-[#b8a794]">
+            <p className="text-xs sm:text-sm text-[#86a898]">
               Four simple steps from date selection to boarding your safari vehicle at Sawai Madhopur.
             </p>
           </div>
@@ -180,15 +193,15 @@ export default function SafariBookingPage() {
             {bookingSteps.map((step) => (
               <div
                 key={step.step}
-                className="p-6 rounded-2xl bg-[#171411] border border-[#2b241e] space-y-3 relative overflow-hidden group hover:border-[#ea580c]/50 transition duration-300"
+                className="p-6 rounded-2xl bg-[#092218] border border-[#16432f] space-y-3 relative overflow-hidden group hover:border-emerald-500/50 transition duration-300"
               >
-                <span className="text-2xl font-serif font-bold text-[#ea580c] block">
+                <span className="text-2xl font-serif font-bold text-emerald-400 block">
                   {step.step}
                 </span>
                 <h3 className="font-serif text-lg font-bold text-white group-hover:text-[#f59e0b] transition">
                   {step.title}
                 </h3>
-                <p className="text-xs text-[#a89985] leading-relaxed">
+                <p className="text-xs text-[#86a898] leading-relaxed">
                   {step.desc}
                 </p>
               </div>
@@ -205,7 +218,7 @@ export default function SafariBookingPage() {
             <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
               Safari Tariff &amp; Quota Matrix
             </h2>
-            <p className="text-xs sm:text-sm text-[#b8a794]">
+            <p className="text-xs sm:text-sm text-[#86a898]">
               Government forest entrance fees, vehicle fees, and naturalist guide charges included.
             </p>
           </div>
@@ -214,26 +227,26 @@ export default function SafariBookingPage() {
             {pricingTiers.map((tier) => (
               <SpotlightCard
                 key={tier.vehicle}
-                spotlightColor="rgba(234, 88, 12, 0.18)"
+                spotlightColor="rgba(16, 185, 129, 0.18)"
                 enableTilt={true}
                 className={`glass-card p-6 rounded-2xl border flex flex-col justify-between space-y-6 ${
-                  tier.popular ? 'border-[#ea580c] bg-[#1d1713]' : 'border-[#2d251e] bg-[#171411]'
+                  tier.popular ? 'border-emerald-500 bg-[#0c2c1f]' : 'border-[#16432f] bg-[#092218]'
                 }`}
               >
                 <div className="space-y-3">
                   {tier.popular && (
-                    <span className="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-[#ea580c] text-white">
+                    <span className="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-emerald-600 text-white">
                       Recommended
                     </span>
                   )}
                   <h3 className="font-serif text-lg font-bold text-white">{tier.vehicle}</h3>
-                  <span className="text-xs text-[#8c7f70] block">{tier.type}</span>
+                  <span className="text-xs text-[#86a898] block">{tier.type}</span>
                   <div className="pt-2">
                     <span className="text-2xl font-bold text-white">{tier.price}</span>
-                    <span className="text-xs text-[#a89985] block mt-0.5">{tier.quota}</span>
+                    <span className="text-xs text-[#86a898] block mt-0.5">{tier.quota}</span>
                   </div>
 
-                  <ul className="space-y-2 pt-3 text-xs text-[#bfae9b] border-t border-[#261f18]">
+                  <ul className="space-y-2 pt-3 text-xs text-[#c2d7cd] border-t border-[#16432f]">
                     {tier.features.map((feat, idx) => (
                       <li key={idx} className="flex items-center gap-2">
                         <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
@@ -246,7 +259,7 @@ export default function SafariBookingPage() {
                 <button
                   type="button"
                   onClick={() => openBookingModal({ vehicle: tier.vehicle })}
-                  className="w-full py-2.5 rounded-xl bg-gradient-to-r from-[#ea580c] to-[#f59e0b] hover:from-[#f97316] hover:to-[#ea580c] text-white font-bold text-xs shadow-md transition duration-200 cursor-pointer"
+                  className="w-full py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-[#f59e0b] hover:from-emerald-500 hover:to-[#ea580c] text-white font-bold text-xs shadow-md transition duration-200 cursor-pointer"
                 >
                   Book This Vehicle
                 </button>
@@ -256,38 +269,38 @@ export default function SafariBookingPage() {
         </div>
 
         {/* SECTION 6: Important Booking Reminders & Tatkal Protocol */}
-        <div className="mb-24 p-8 rounded-2xl bg-[#191512] border border-[#2b241e] space-y-6">
+        <div className="mb-24 p-8 rounded-2xl bg-[#092218] border border-[#16432f] space-y-6">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-[#ea580c]/15 text-[#ea580c] flex items-center justify-center font-bold">
+            <div className="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center font-bold">
               <IdCard className="w-5 h-5" />
             </div>
             <div>
               <h2 className="font-serif text-2xl font-bold text-white">
                 Mandatory Identification &amp; Boarding Reminders
               </h2>
-              <span className="text-xs text-[#a89985]">
+              <span className="text-xs text-[#86a898]">
                 Rajasthan Forest Department Statutory Entry Regulations
               </span>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-[#cfc0ae]">
-            <div className="p-4 rounded-xl bg-[#13110e] border border-[#261f18] space-y-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-[#c2d7cd]">
+            <div className="p-4 rounded-xl bg-[#06150f] border border-[#16432f] space-y-2">
               <h3 className="font-bold text-white flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400" />
                 Original Photo ID Proof
               </h3>
-              <p className="text-[#a89985] leading-relaxed">
+              <p className="text-[#86a898] leading-relaxed">
                 Every visitor must carry the exact original ID presented during booking (Aadhaar, Passport, or Voter ID). Forest officials verify names at entry gates before releasing boarding tokens.
               </p>
             </div>
 
-            <div className="p-4 rounded-xl bg-[#13110e] border border-[#261f18] space-y-2">
+            <div className="p-4 rounded-xl bg-[#06150f] border border-[#16432f] space-y-2">
               <h3 className="font-bold text-white flex items-center gap-2">
                 <Clock className="w-4 h-4 text-[#f59e0b]" />
                 15-Minute Prior Boarding
               </h3>
-              <p className="text-[#a89985] leading-relaxed">
+              <p className="text-[#86a898] leading-relaxed">
                 Tourists must arrive at the boarding location 15 minutes before the safari is due to leave. Late arrivals lead to permit forfeiture under strict gate closing rules.
               </p>
             </div>

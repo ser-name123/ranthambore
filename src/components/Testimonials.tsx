@@ -56,7 +56,7 @@ export default function Testimonials() {
   };
 
   return (
-    <section className="py-24 bg-[#121110] relative">
+    <section className="py-24 bg-[#06150f] relative border-t border-[#123324]">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 25 }}
@@ -65,14 +65,14 @@ export default function Testimonials() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16 space-y-4"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#f59e0b]/10 text-[#f59e0b] text-xs font-bold uppercase tracking-widest border border-[#f59e0b]/20">
-            <Star className="w-3.5 h-3.5 fill-[#f59e0b]" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-300 text-xs font-bold uppercase tracking-widest border border-emerald-500/30">
+            <Star className="w-3.5 h-3.5 fill-[#f59e0b] text-[#f59e0b]" />
             Guest Experiences
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
             Stories From The Wilderness
           </h2>
-          <p className="text-sm sm:text-base text-[#b8a794]">
+          <p className="text-sm sm:text-base text-[#bad3c6]">
             Read genuine feedback from wildlife photographers, families, and solo explorers who experienced Ranthambore with our team.
           </p>
         </motion.div>
@@ -87,9 +87,9 @@ export default function Testimonials() {
           {reviews.map((rev, idx) => (
             <motion.div key={idx} variants={cardVariants} className="h-full flex flex-col">
               <SpotlightCard
-                spotlightColor="rgba(245, 158, 11, 0.16)"
+                spotlightColor="rgba(52, 211, 153, 0.16)"
                 enableTilt={true}
-                className="glass-card p-7 rounded-2xl border border-[#2e261f] bg-[#181512] flex-1 flex flex-col justify-between space-y-6 relative hover:border-[#ea580c] transition duration-300 shadow-xl group"
+                className="glass-card p-7 rounded-2xl border border-[#16432f] bg-[#092218] flex-1 flex flex-col justify-between space-y-6 relative hover:border-emerald-400 transition duration-300 shadow-xl group"
               >
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
@@ -98,19 +98,19 @@ export default function Testimonials() {
                         <Star key={i} className="w-4 h-4 fill-current transform group-hover:scale-110 transition duration-200" style={{ transitionDelay: `${i * 50}ms` }} />
                       ))}
                     </div>
-                    <Quote className="w-6 h-6 text-[#ea580c]/30 group-hover:text-[#ea580c]/70 transition duration-300" />
+                    <Quote className="w-6 h-6 text-emerald-500/30 group-hover:text-emerald-400 transition duration-300" />
                   </div>
 
-                  <p className="text-xs sm:text-sm text-[#cfc0ae] leading-relaxed italic">
+                  <p className="text-xs sm:text-sm text-[#bad3c6] leading-relaxed italic">
                     &ldquo;{rev.quote}&rdquo;
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-[#29221b]">
+                <div className="pt-4 border-t border-[#143d2b]">
                   <div className="flex items-center justify-between">
                     <div>
-                      <h4 className="font-bold text-white text-sm group-hover:text-[#f59e0b] transition">{rev.name}</h4>
-                      <p className="text-[11px] text-[#8c7f70]">{rev.location}</p>
+                      <h4 className="font-bold text-white text-sm group-hover:text-emerald-300 transition">{rev.name}</h4>
+                      <p className="text-[11px] text-[#7fa391]">{rev.location}</p>
                     </div>
                     <span className="inline-flex items-center gap-1 text-[10px] text-emerald-400 font-semibold bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">
                       <CheckCircle2 className="w-3 h-3" />

@@ -97,7 +97,7 @@ export default function ZoneGuide() {
   const displayedZones = activeZoneTab === 'core' ? coreZones : bufferZones;
 
   return (
-    <section className="py-24 bg-[#121110] relative" id="zones">
+    <section className="py-24 bg-[#06150f] relative" id="zones">
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -107,35 +107,35 @@ export default function ZoneGuide() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16 space-y-4"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#f59e0b]/10 text-[#f59e0b] text-xs font-bold uppercase tracking-widest border border-[#f59e0b]/20">
-            <Compass className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-300 text-xs font-bold uppercase tracking-widest border border-emerald-500/30">
+            <Compass className="w-3.5 h-3.5 text-emerald-400" />
             Park Knowledge Base
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
             Safari Zones &amp; Shift Timings
           </h2>
-          <p className="text-sm sm:text-base text-[#b8a794]">
-            Ranthambore National Park is organized into 10 safari zones. Understand the difference between Core and Buffer routes and plan around current park schedules.
+          <p className="text-sm sm:text-base text-[#bad3c6]">
+            Ranthambore National Park is organized into 10 safari zones. Explore Core &amp; Buffer gates and plan around official forest department schedules.
           </p>
         </motion.div>
 
         {/* Zone Explorer Tabs with Animated Pill */}
         <div className="mb-14">
           <div className="flex justify-center mb-8">
-            <div className="bg-[#1b1714] p-1.5 rounded-xl border border-[#2e261f] inline-flex">
+            <div className="bg-[#061710] p-1.5 rounded-xl border border-[#16432f] inline-flex">
               <button
                 onClick={() => {
                   setActiveZoneTab('core');
                   setSelectedZone(null);
                 }}
                 className={`relative px-5 py-2.5 rounded-lg text-xs sm:text-sm font-bold transition duration-200 cursor-pointer ${
-                  activeZoneTab === 'core' ? 'text-white' : 'text-[#a89985] hover:text-white'
+                  activeZoneTab === 'core' ? 'text-white' : 'text-[#8cb39e] hover:text-white'
                 }`}
               >
                 {activeZoneTab === 'core' && (
                   <motion.div
                     layoutId="zoneTabPill"
-                    className="absolute inset-0 bg-[#ea580c] rounded-lg shadow-md -z-10"
+                    className="absolute inset-0 bg-emerald-600 rounded-lg shadow-md -z-10"
                     transition={{ type: 'spring', stiffness: 450, damping: 30 }}
                   />
                 )}
@@ -147,13 +147,13 @@ export default function ZoneGuide() {
                   setSelectedZone(null);
                 }}
                 className={`relative px-5 py-2.5 rounded-lg text-xs sm:text-sm font-bold transition duration-200 cursor-pointer ${
-                  activeZoneTab === 'buffer' ? 'text-white' : 'text-[#a89985] hover:text-white'
+                  activeZoneTab === 'buffer' ? 'text-white' : 'text-[#8cb39e] hover:text-white'
                 }`}
               >
                 {activeZoneTab === 'buffer' && (
                   <motion.div
                     layoutId="zoneTabPill"
-                    className="absolute inset-0 bg-[#ea580c] rounded-lg shadow-md -z-10"
+                    className="absolute inset-0 bg-emerald-600 rounded-lg shadow-md -z-10"
                     transition={{ type: 'spring', stiffness: 450, damping: 30 }}
                   />
                 )}
@@ -176,52 +176,52 @@ export default function ZoneGuide() {
                   className="h-full flex flex-col"
                 >
                   <SpotlightCard
-                    spotlightColor="rgba(245, 158, 11, 0.16)"
+                    spotlightColor="rgba(52, 211, 153, 0.16)"
                     enableTilt={true}
-                    className="glass-card p-6 rounded-2xl border border-[#29221b] hover:border-[#f59e0b] transition duration-300 bg-[#171411] space-y-4 flex-1 flex flex-col justify-between group shadow-lg"
+                    className="glass-card p-6 rounded-2xl border border-[#16432f] hover:border-emerald-400 transition duration-300 bg-[#092218] space-y-4 flex-1 flex flex-col justify-between group shadow-lg"
                   >
                     <div className="space-y-3">
                       <div className="flex items-center justify-between">
-                        <span className="px-2.5 py-1 rounded-md bg-[#ea580c]/20 text-[#f59e0b] text-xs font-bold border border-[#ea580c]/30">
+                        <span className="px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 text-xs font-bold border border-emerald-500/30">
                           {z.num}
                         </span>
-                        <span className="text-[11px] text-[#8c7f70]">
+                        <span className="text-[11px] text-[#7fa391]">
                           {activeZoneTab === 'core' ? 'Core Park Gate' : 'Scenic Buffer Gate'}
                         </span>
                       </div>
 
-                      <h4 className="font-serif text-lg font-bold text-white group-hover:text-[#f59e0b] transition">
+                      <h4 className="font-serif text-lg font-bold text-white group-hover:text-emerald-300 transition">
                         {z.name}
                       </h4>
 
-                      <p className="text-xs text-[#b8a794] leading-relaxed">
+                      <p className="text-xs text-[#bad3c6] leading-relaxed">
                         {z.features}
                       </p>
                     </div>
 
                     {/* Sighting Probability Animated Progress Bar */}
-                    <div className="pt-3 border-t border-[#251f18] space-y-2">
+                    <div className="pt-3 border-t border-[#143d2b] space-y-2">
                       <div className="flex items-center justify-between text-[11px]">
-                        <span className="text-[#8c7f70] flex items-center gap-1 font-medium">
-                          <Flame className="w-3.5 h-3.5 text-[#ea580c]" />
+                        <span className="text-[#7fa391] flex items-center gap-1 font-medium">
+                          <Flame className="w-3.5 h-3.5 text-[#f59e0b]" />
                           Historical Sighting Rate:
                         </span>
                         <span className="font-bold text-[#f59e0b]">{z.sightingRate}%</span>
                       </div>
 
                       {/* Animated Progress Track */}
-                      <div className="w-full h-2 bg-[#26201b] rounded-full overflow-hidden">
+                      <div className="w-full h-2 bg-[#061710] rounded-full overflow-hidden">
                         <motion.div
                           initial={{ width: 0 }}
                           whileInView={{ width: `${z.sightingRate}%` }}
                           viewport={{ once: true }}
                           transition={{ duration: 1.2, ease: 'easeOut', delay: 0.1 }}
-                          className="h-full bg-gradient-to-r from-[#ea580c] to-[#f59e0b] rounded-full"
+                          className="h-full bg-gradient-to-r from-emerald-500 to-[#f59e0b] rounded-full"
                         />
                       </div>
 
-                      <div className="text-[10px] text-[#8c7f70] truncate pt-0.5">
-                        <span className="text-[#a89985] font-semibold">Tigers:</span> {z.tigers}
+                      <div className="text-[10px] text-[#7fa391] truncate pt-0.5">
+                        <span className="text-[#bad3c6] font-semibold">Tigers:</span> {z.tigers}
                       </div>
                     </div>
                   </SpotlightCard>
@@ -237,17 +237,17 @@ export default function ZoneGuide() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="glass-card rounded-2xl p-6 sm:p-8 border border-[#2e261f] bg-[#171412] shadow-xl"
+          className="glass-card rounded-2xl p-6 sm:p-8 border border-[#16432f] bg-[#092218] shadow-xl"
         >
           <div className="flex items-center gap-3 mb-6">
-            <div className="w-10 h-10 rounded-xl bg-[#ea580c]/15 text-[#ea580c] flex items-center justify-center border border-[#ea580c]/30">
+            <div className="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center border border-emerald-500/30">
               <Clock className="w-5 h-5" />
             </div>
             <div>
               <h3 className="font-serif text-xl sm:text-2xl font-bold text-white">
                 Official Safari Shift Timings (2026-2027)
               </h3>
-              <p className="text-xs text-[#b8a794]">
+              <p className="text-xs text-[#93b5a4]">
                 Safari gates open twice daily. Entry closes strictly according to Forest Department regulations.
               </p>
             </div>
@@ -255,7 +255,7 @@ export default function ZoneGuide() {
 
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs sm:text-sm">
-              <thead className="bg-[#221c17] text-[#f59e0b] border-b border-[#362e26]">
+              <thead className="bg-[#061710] text-emerald-300 border-b border-[#143d2b]">
                 <tr>
                   <th className="p-3.5 font-bold">Season / Month</th>
                   <th className="p-3.5 font-bold">Morning Shift</th>
@@ -263,17 +263,17 @@ export default function ZoneGuide() {
                   <th className="p-3.5 font-bold">Status</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#261f19] text-[#cfc0ae]">
+              <tbody className="divide-y divide-[#143d2b] text-[#bad3c6]">
                 {timings.map((t, idx) => (
-                  <tr key={idx} className="hover:bg-[#1e1915] transition">
+                  <tr key={idx} className="hover:bg-[#0c281d] transition">
                     <td className="p-3.5 font-semibold text-white">{t.period}</td>
-                    <td className="p-3.5 text-[#e0d6c7]">{t.morning}</td>
-                    <td className="p-3.5 text-[#e0d6c7]">{t.afternoon}</td>
+                    <td className="p-3.5 text-[#d4e6dc]">{t.morning}</td>
+                    <td className="p-3.5 text-[#d4e6dc]">{t.afternoon}</td>
                     <td className="p-3.5">
                       <span className={`px-2.5 py-0.5 rounded text-[11px] font-bold ${
                         t.period.includes('Monsoon')
-                          ? 'bg-amber-500/20 text-amber-400'
-                          : 'bg-emerald-500/20 text-emerald-400'
+                          ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
+                          : 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
                       }`}>
                         {t.period.includes('Monsoon') ? 'Buffer Only' : 'All Gates Open'}
                       </span>
@@ -285,10 +285,10 @@ export default function ZoneGuide() {
           </div>
 
           {/* Allocation Disclaimer */}
-          <div className="mt-6 flex items-start gap-2.5 text-xs text-[#9c8e7e] bg-[#14110f] p-4 rounded-xl border border-[#261e18]">
-            <AlertCircle className="w-4 h-4 text-[#ea580c] shrink-0 mt-0.5" />
+          <div className="mt-6 flex items-start gap-2.5 text-xs text-[#8cb39e] bg-[#061710] p-4 rounded-xl border border-[#16432f]">
+            <AlertCircle className="w-4 h-4 text-[#f59e0b] shrink-0 mt-0.5" />
             <span>
-              <strong>Zone Allotment Transparency:</strong> Safari zones are assigned randomly by the Forest Department booking software at the time of permit issuance. We submit your preferred zone request with your application, but actual zone allocation remains subject to government lottery rules.
+              <strong>Zone Allotment Transparency:</strong> Safari zones are assigned randomly by the Forest Department booking software at the time of permit issuance. We submit your preferred zone request with your application.
             </span>
           </div>
         </motion.div>

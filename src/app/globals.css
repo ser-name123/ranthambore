@@ -5,32 +5,37 @@
     --tiger-orange: #ea580c;
     --tiger-amber: #f59e0b;
     --tiger-gold: #d97706;
-    --jungle-dark: #121110;
-    --jungle-card: #1c1a17;
-    --jungle-border: #2e2a24;
-    --sand-light: #fbf9f5;
-    --sand-muted: #f3efe6;
+    --jungle-dark: #06150f;
+    --jungle-canopy: #0a1e16;
+    --jungle-surface: #0d241b;
+    --jungle-card: #112a20;
+    --jungle-border: #1d4434;
+    --jungle-emerald: #10b981;
+    --jungle-mint: #34d399;
+    --sand-light: #f2f7f4;
+    --sand-muted: #a9c2b5;
   }
 
   html {
     /* Instant scroll restoration on route changes */
     scroll-behavior: auto;
+    background-color: #06150f;
   }
 }
 
-/* Custom Scrollbar */
+/* Custom Scrollbar - Jungle Theme */
 ::-webkit-scrollbar {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #121110;
+  background: #06150f;
 }
 ::-webkit-scrollbar-thumb {
-  background: #3a332a;
+  background: #1d4434;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #ea580c;
+  background: #10b981;
 }
 
 /* Shimmer animation */
@@ -154,19 +159,19 @@
   animation: gradient-flow 6s ease infinite;
 }
 
-/* Glassmorphism utility */
+/* Glassmorphism utility - Jungle Theme */
 .glass-panel {
-  background: rgba(28, 26, 23, 0.78);
+  background: rgba(10, 29, 21, 0.88);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(52, 211, 153, 0.18);
 }
 
 .glass-card {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(13, 36, 27, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(52, 211, 153, 0.12);
 }
 
 /* Spotlight Card Container */
@@ -185,8 +190,9 @@
   bottom: 0;
   background: radial-gradient(
     600px circle at var(--mouse-x, -1000px) var(--mouse-y, -1000px),
-    rgba(234, 88, 12, 0.14),
-    transparent 45%
+    rgba(52, 211, 153, 0.14),
+    rgba(234, 88, 12, 0.08),
+    transparent 50%
   );
   opacity: 0;
   transition: opacity 0.4s ease;

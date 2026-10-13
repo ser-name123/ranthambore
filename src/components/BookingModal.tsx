@@ -96,12 +96,12 @@ export default function BookingModal({ isOpen, onClose, prefillData }: BookingMo
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.92, y: 20 }}
             transition={{ type: 'spring', damping: 25, stiffness: 350 }}
-            className="relative w-full max-w-lg rounded-2xl bg-[#181512] border border-[#ea580c]/40 p-6 sm:p-7 shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto"
+            className="relative w-full max-w-lg rounded-2xl bg-[#092218] border border-emerald-500/40 p-6 sm:p-7 shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto"
           >
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 p-2 rounded-full bg-[#27201b] text-[#b8a794] hover:text-white transition duration-200 cursor-pointer"
+              className="absolute top-4 right-4 p-2 rounded-full bg-[#06150f] text-[#86a898] hover:text-white border border-[#16432f] transition duration-200 cursor-pointer"
               aria-label="Close modal"
             >
               <X className="w-5 h-5" />
@@ -113,7 +113,7 @@ export default function BookingModal({ isOpen, onClose, prefillData }: BookingMo
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
 
-                <span className="px-3 py-1 rounded-full bg-[#ea580c]/20 text-[#f59e0b] text-xs font-bold uppercase tracking-wider">
+                <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold uppercase tracking-wider">
                   Ref: {successResult.referenceId}
                 </span>
 
@@ -121,7 +121,7 @@ export default function BookingModal({ isOpen, onClose, prefillData }: BookingMo
                   Booking Request Received!
                 </h3>
 
-                <p className="text-xs sm:text-sm text-[#b8a794]">
+                <p className="text-xs sm:text-sm text-[#b2cebf]">
                   {successResult.message}
                 </p>
 
@@ -138,7 +138,7 @@ export default function BookingModal({ isOpen, onClose, prefillData }: BookingMo
 
                   <button
                     onClick={onClose}
-                    className="w-full py-2.5 rounded-xl bg-[#2e261f] text-[#cfc0ae] hover:text-white text-xs font-bold transition"
+                    className="w-full py-2.5 rounded-xl bg-[#113123] text-[#c2d7cd] hover:text-white text-xs font-bold transition"
                   >
                     Close
                   </button>
@@ -147,14 +147,14 @@ export default function BookingModal({ isOpen, onClose, prefillData }: BookingMo
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#ea580c]/20 text-[#f59e0b] text-[11px] font-bold uppercase tracking-wider">
-                    <Sparkles className="w-3 h-3" />
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 text-[11px] font-bold uppercase tracking-wider border border-emerald-500/30">
+                    <Sparkles className="w-3 h-3 text-[#f59e0b]" />
                     Quick Booking Request
                   </div>
                   <h3 className="font-serif text-2xl font-bold text-white mt-1">
                     Ranthambore Safari Enquiry
                   </h3>
-                  <p className="text-xs text-[#8c7f70]">
+                  <p className="text-xs text-[#86a898]">
                     We verify permits and reply with exact quotation
                   </p>
                 </div>
@@ -168,96 +168,96 @@ export default function BookingModal({ isOpen, onClose, prefillData }: BookingMo
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-semibold text-[#cfc0ae] mb-1">Your Name *</label>
+                    <label className="block text-xs font-semibold text-[#c2d7cd] mb-1">Your Name *</label>
                     <input
                       type="text"
                       required
                       placeholder="Full name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full bg-[#12100e] border border-[#3b3127] rounded-xl px-3 py-2 text-white text-xs focus:outline-none focus:border-[#ea580c] transition"
+                      className="w-full bg-[#06150f] border border-[#16432f] rounded-xl px-3 py-2 text-white text-xs focus:outline-none focus:border-emerald-400 transition"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-[#cfc0ae] mb-1">Mobile / WhatsApp *</label>
+                    <label className="block text-xs font-semibold text-[#c2d7cd] mb-1">Mobile / WhatsApp *</label>
                     <input
                       type="tel"
                       required
                       placeholder="+91 Mobile number"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full bg-[#12100e] border border-[#3b3127] rounded-xl px-3 py-2 text-white text-xs focus:outline-none focus:border-[#ea580c] transition"
+                      className="w-full bg-[#06150f] border border-[#16432f] rounded-xl px-3 py-2 text-white text-xs focus:outline-none focus:border-emerald-400 transition"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-semibold text-[#cfc0ae] mb-1">Safari Date</label>
+                    <label className="block text-xs font-semibold text-[#c2d7cd] mb-1">Safari Date</label>
                     <input
                       type="date"
                       value={formData.safari_date}
                       onChange={(e) => setFormData({ ...formData, safari_date: e.target.value })}
-                      className="w-full bg-[#12100e] border border-[#3b3127] rounded-xl px-3 py-2 text-white text-xs focus:outline-none focus:border-[#ea580c] transition"
+                      className="w-full bg-[#06150f] border border-[#16432f] rounded-xl px-3 py-2 text-white text-xs focus:outline-none focus:border-emerald-400 transition"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-[#cfc0ae] mb-1">Vehicle / Package</label>
+                    <label className="block text-xs font-semibold text-[#c2d7cd] mb-1">Vehicle / Package</label>
                     <input
                       type="text"
                       value={formData.safari_mode}
                       onChange={(e) => setFormData({ ...formData, safari_mode: e.target.value })}
-                      className="w-full bg-[#12100e] border border-[#3b3127] rounded-xl px-3 py-2 text-white text-xs focus:outline-none focus:border-[#ea580c] transition"
+                      className="w-full bg-[#06150f] border border-[#16432f] rounded-xl px-3 py-2 text-white text-xs focus:outline-none focus:border-emerald-400 transition"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-semibold text-[#cfc0ae] mb-1">Shift</label>
+                    <label className="block text-xs font-semibold text-[#c2d7cd] mb-1">Shift</label>
                     <select
                       value={formData.timing_preference}
                       onChange={(e) => setFormData({ ...formData, timing_preference: e.target.value })}
-                      className="w-full bg-[#12100e] border border-[#3b3127] rounded-xl px-2.5 py-2 text-white text-xs focus:outline-none focus:border-[#ea580c] transition"
+                      className="w-full bg-[#06150f] border border-[#16432f] rounded-xl px-2.5 py-2 text-white text-xs focus:outline-none focus:border-emerald-400 transition"
                     >
-                      <option>Morning (06:30 AM)</option>
-                      <option>Afternoon (02:30 PM)</option>
-                      <option>Both Shifts</option>
+                      <option className="bg-[#092218]">Morning (06:30 AM)</option>
+                      <option className="bg-[#092218]">Afternoon (02:30 PM)</option>
+                      <option className="bg-[#092218]">Both Shifts</option>
                     </select>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-[#cfc0ae] mb-1">Zone Preference</label>
+                    <label className="block text-xs font-semibold text-[#c2d7cd] mb-1">Zone Preference</label>
                     <select
                       value={formData.zone_preference}
                       onChange={(e) => setFormData({ ...formData, zone_preference: e.target.value })}
-                      className="w-full bg-[#12100e] border border-[#3b3127] rounded-xl px-2.5 py-2 text-white text-xs focus:outline-none focus:border-[#ea580c] transition"
+                      className="w-full bg-[#06150f] border border-[#16432f] rounded-xl px-2.5 py-2 text-white text-xs focus:outline-none focus:border-emerald-400 transition"
                     >
-                      <option>Zone 1-5 (Core)</option>
-                      <option>Zone 6-10 (Buffer)</option>
-                      <option>Any Available</option>
+                      <option className="bg-[#092218]">Zone 1-5 (Core)</option>
+                      <option className="bg-[#092218]">Zone 6-10 (Buffer)</option>
+                      <option className="bg-[#092218]">Any Available</option>
                     </select>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-[#cfc0ae] mb-1">Travellers</label>
-                  <div className="flex items-center gap-4 bg-[#12100e] p-2 rounded-xl border border-[#2e261f] text-xs">
-                    <span className="text-[#a89985]">Adults: <strong>{formData.adults}</strong></span>
-                    <span className="text-[#a89985]">Children: <strong>{formData.children}</strong></span>
+                  <label className="block text-xs font-semibold text-[#c2d7cd] mb-1">Travellers</label>
+                  <div className="flex items-center gap-4 bg-[#06150f] p-2 rounded-xl border border-[#16432f] text-xs">
+                    <span className="text-[#86a898]">Adults: <strong className="text-white">{formData.adults}</strong></span>
+                    <span className="text-[#86a898]">Children: <strong className="text-white">{formData.children}</strong></span>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-[#cfc0ae] mb-1">Notes / Preferences</label>
+                  <label className="block text-xs font-semibold text-[#c2d7cd] mb-1">Notes / Preferences</label>
                   <textarea
                     rows={2}
                     placeholder="Hotel required, railway pickup, etc."
                     value={formData.notes}
                     onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                    className="w-full bg-[#12100e] border border-[#3b3127] rounded-xl px-3 py-1.5 text-white text-xs focus:outline-none focus:border-[#ea580c] transition"
+                    className="w-full bg-[#06150f] border border-[#16432f] rounded-xl px-3 py-1.5 text-white text-xs focus:outline-none focus:border-emerald-400 transition"
                   />
                 </div>
 
@@ -266,7 +266,7 @@ export default function BookingModal({ isOpen, onClose, prefillData }: BookingMo
                   whileTap={{ scale: 0.98 }}
                   type="submit"
                   disabled={loading}
-                  className="w-full py-3 rounded-xl bg-gradient-to-r from-[#ea580c] to-[#f59e0b] hover:from-[#f97316] hover:to-[#ea580c] text-white font-bold text-sm tracking-wide shadow-lg shadow-[#ea580c]/30 flex items-center justify-center gap-2 transition duration-200 cursor-pointer disabled:opacity-50"
+                  className="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-[#f59e0b] hover:from-emerald-500 hover:to-[#ea580c] text-white font-bold text-sm tracking-wide shadow-lg shadow-emerald-950/50 flex items-center justify-center gap-2 transition duration-200 cursor-pointer disabled:opacity-50"
                 >
                   {loading ? (
                     <span>Checking Availability...</span>
@@ -278,13 +278,13 @@ export default function BookingModal({ isOpen, onClose, prefillData }: BookingMo
                   )}
                 </motion.button>
 
-                <p className="text-[11px] text-[#8c7f70] text-center pt-2">
+                <p className="text-[11px] text-[#86a898] text-center pt-2">
                   By submitting, you agree to our{' '}
-                  <Link href="/terms-conditions" className="text-[#ea580c] hover:underline" onClick={() => onClose()}>
+                  <Link href="/terms-conditions" className="text-emerald-400 hover:underline" onClick={() => onClose()}>
                     Terms &amp; Conditions
                   </Link>{' '}
                   and{' '}
-                  <Link href="/cancellation-policy" className="text-[#ea580c] hover:underline" onClick={() => onClose()}>
+                  <Link href="/cancellation-policy" className="text-emerald-400 hover:underline" onClick={() => onClose()}>
                     Cancellation Policy
                   </Link>.
                 </p>

@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { 
   Compass, 
   MapPin, 
@@ -39,7 +40,7 @@ export default function BufferZonesSafariPage() {
       territory: 'Rajbagh Naka, Chhiddir, Kushida, Jamun Deh',
       wildlife: 'Frequent leopard movement along escarpments, caracals, wild boars',
       highlights: 'High elevated plateaus with breathtaking panoramic views over the Aravali hills.',
-      accent: 'border-amber-500/40 text-amber-400',
+      accent: 'border-teal-500/40 text-teal-400',
     },
     {
       number: 'Zone 8 (Balas)',
@@ -47,7 +48,7 @@ export default function BufferZonesSafariPage() {
       territory: 'Neemli Dang, Kali Bhat, Balas Plateau, Mahakho',
       wildlife: 'Territorial tigers, leopards, striped hyenas, honey badgers',
       highlights: 'Rugged wild terrain with dramatic gorges and tranquil natural pools.',
-      accent: 'border-orange-500/40 text-orange-400',
+      accent: 'border-emerald-400/50 text-emerald-300',
     },
     {
       number: 'Zone 9 (Kuwalji / Qualji)',
@@ -63,7 +64,7 @@ export default function BufferZonesSafariPage() {
       territory: 'Halonda, Devpura Water Body, Antri, Bodal',
       wildlife: 'T-99, T-108, Nilgai herds, resident crocodiles in seasonal lakes',
       highlights: 'Lush valley pockets and quiet uncrowded forest tracks loved by naturalists.',
-      accent: 'border-yellow-500/40 text-yellow-400',
+      accent: 'border-[#f59e0b]/40 text-[#f59e0b]',
     },
   ];
 
@@ -94,53 +95,66 @@ export default function BufferZonesSafariPage() {
   ];
 
   return (
-    <div className="relative py-10 lg:py-16 bg-[#0e0d0c] text-[#f4efea] overflow-hidden">
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-emerald-600/10 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-1/3 left-10 w-96 h-96 bg-[#ea580c]/10 rounded-full blur-[140px] pointer-events-none" />
+    <div className="relative py-10 lg:py-16 bg-[#06150f] text-[#f2f7f4] overflow-hidden">
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-1/3 left-10 w-96 h-96 bg-[#16432f]/20 rounded-full blur-[140px] pointer-events-none" />
 
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16 lg:space-y-24">
+      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16 lg:space-y-20">
         
-        {/* SECTION 1: BREADCRUMB & HERO */}
+        {/* SECTION 1: BREADCRUMB & HERO WITH FOLIAGE TIGER PHOTO */}
         <section className="space-y-6">
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-[#a89985]">
-            <Link href="/" className="hover:text-[#ea580c] transition flex items-center gap-1.5 font-medium">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-[#86a898]">
+            <Link href="/" className="hover:text-emerald-400 transition flex items-center gap-1.5 font-medium">
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Home</span>
             </Link>
-            <ChevronRight className="w-3.5 h-3.5 text-zinc-600" />
+            <ChevronRight className="w-3.5 h-3.5 text-emerald-700" />
             <span className="text-emerald-400 font-semibold">Buffer Zones 6 to 10</span>
           </nav>
 
-          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 border-b border-[#26211b] pb-10">
-            <div className="space-y-4 max-w-3xl">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/15 text-emerald-400 text-xs font-bold uppercase tracking-wider border border-emerald-500/30">
-                <Mountain className="w-3.5 h-3.5" />
-                Raw Wilderness &amp; Escarpment Habitats
-              </div>
-              <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
-                Buffer Zones 6 to 10 <span className="text-emerald-400">Safari Booking</span>
-              </h1>
-              <p className="text-sm sm:text-base text-[#c4b5a3] leading-relaxed">
-                Untamed plateaus, secluded water ravines, and high tiger mobility. Buffer Zones 6 through 10 provide exceptional wildlife sightings, pristine solitude, and reliable last-minute booking availability.
-              </p>
+          <div className="relative rounded-3xl overflow-hidden border border-[#16432f] p-8 sm:p-12 shadow-2xl">
+            <div className="absolute inset-0">
+              <Image
+                src="/images/tiger_foliage.jpg"
+                alt="Bengal tiger peeking through lush green bamboo foliage in Ranthambore buffer forest"
+                fill
+                className="object-cover object-center opacity-30"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#06150f] via-[#06150f]/85 to-[#06150f]/50" />
             </div>
 
-            <div className="flex flex-wrap items-center gap-3 shrink-0">
-              <button
-                onClick={() => openBookingModal({ zonePreference: 'Buffer Zones (Zones 6-10)' })}
-                className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-600 to-[#ea580c] hover:from-emerald-500 hover:to-[#f97316] text-white font-bold text-sm shadow-xl shadow-emerald-950/40 transition transform hover:-translate-y-0.5 cursor-pointer"
-              >
-                Inquire Buffer Permits
-              </button>
-              <a
-                href="https://wa.me/919971965629?text=Hello,%20I%20want%20to%20check%20Buffer%20Zones%206%20to%2010%20safari%20permits."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-5 py-3.5 rounded-xl bg-emerald-600/20 hover:bg-emerald-600/30 text-emerald-400 border border-emerald-500/40 font-bold text-sm flex items-center gap-2 transition"
-              >
-                <MessageCircle className="w-4 h-4 fill-emerald-400/20" />
-                <span>WhatsApp Desk</span>
-              </a>
+            <div className="relative z-10 flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+              <div className="space-y-4 max-w-3xl">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/15 text-emerald-400 text-xs font-bold uppercase tracking-wider border border-emerald-500/30">
+                  <Mountain className="w-3.5 h-3.5" />
+                  Raw Wilderness &amp; Escarpment Habitats
+                </div>
+                <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
+                  Buffer Zones 6 to 10 <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-[#f59e0b]">Safari Booking</span>
+                </h1>
+                <p className="text-sm sm:text-base text-[#c2d7cd] leading-relaxed">
+                  Untamed plateaus, secluded water ravines, and high tiger mobility. Buffer Zones 6 through 10 provide exceptional wildlife sightings, pristine solitude, and reliable last-minute booking availability.
+                </p>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-3 shrink-0">
+                <button
+                  onClick={() => openBookingModal({ zonePreference: 'Buffer Zones (Zones 6-10)' })}
+                  className="px-7 py-3.5 rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-[#f59e0b] hover:from-emerald-500 hover:to-[#ea580c] text-white font-bold text-sm shadow-xl shadow-emerald-950/40 transition cursor-pointer"
+                >
+                  Inquire Buffer Permits
+                </button>
+                <a
+                  href="https://wa.me/919971965629?text=Hello,%20I%20want%20to%20check%20Buffer%20Zones%206%20to%2010%20safari%20permits."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-5 py-3.5 rounded-xl bg-[#092218] hover:bg-[#113123] text-emerald-400 border border-[#16432f] font-bold text-sm flex items-center gap-2 transition"
+                >
+                  <MessageCircle className="w-4 h-4 fill-emerald-400/20" />
+                  <span>WhatsApp Desk</span>
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -148,12 +162,12 @@ export default function BufferZonesSafariPage() {
         {/* SECTION 2: BUFFER ADVANTAGES */}
         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {bufferAdvantages.map((adv, i) => (
-            <div key={i} className="p-6 rounded-2xl bg-[#161412] border border-[#28221b] space-y-2">
+            <div key={i} className="p-6 rounded-2xl bg-[#092218] border border-[#16432f] space-y-2">
               <div className="w-8 h-8 rounded-lg bg-emerald-500/15 flex items-center justify-center text-emerald-400 font-bold text-xs">
                 0{i + 1}
               </div>
               <h3 className="font-bold text-white text-base">{adv.title}</h3>
-              <p className="text-xs text-[#8a8175] leading-relaxed">{adv.desc}</p>
+              <p className="text-xs text-[#86a898] leading-relaxed">{adv.desc}</p>
             </div>
           ))}
         </section>
@@ -164,7 +178,7 @@ export default function BufferZonesSafariPage() {
             <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white">
               Zones 6, 7, 8, 9 &amp; 10 Profile
             </h2>
-            <p className="text-xs sm:text-sm text-[#8a8175]">
+            <p className="text-xs sm:text-sm text-[#86a898]">
               Detailed habitat breakdown and wildlife records for Ranthambore&apos;s buffer ranges.
             </p>
           </div>
@@ -173,33 +187,33 @@ export default function BufferZonesSafariPage() {
             {bufferZones.map(zone => (
               <div
                 key={zone.number}
-                className="p-6 rounded-2xl bg-[#161412] border border-[#28221b] hover:border-emerald-500/40 transition space-y-4"
+                className="p-6 rounded-2xl bg-[#092218] border border-[#16432f] hover:border-emerald-500/40 transition space-y-4"
               >
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#26211b] pb-3">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#16432f] pb-3">
                   <div>
                     <h3 className="font-serif text-lg sm:text-xl font-bold text-white">{zone.number}</h3>
-                    <p className="text-xs text-[#8a8175] flex items-center gap-1.5 mt-0.5">
+                    <p className="text-xs text-[#86a898] flex items-center gap-1.5 mt-0.5">
                       <MapPin className="w-3.5 h-3.5 text-emerald-400" />
                       <span>Entry Gate: {zone.entryGate}</span>
                     </p>
                   </div>
-                  <span className={`px-3 py-1 rounded-full text-xs font-bold border ${zone.accent} bg-[#1f1a16] self-start sm:self-auto`}>
+                  <span className={`px-3 py-1 rounded-full text-xs font-bold border ${zone.accent} bg-[#06150f] self-start sm:self-auto`}>
                     Buffer Wild Range
                   </span>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
                   <div>
-                    <span className="text-[#73685c] block font-semibold mb-1">Key Landmarks</span>
-                    <p className="text-[#c4b5a3]">{zone.territory}</p>
+                    <span className="text-[#86a898] block font-semibold mb-1">Key Landmarks</span>
+                    <p className="text-[#c2d7cd]">{zone.territory}</p>
                   </div>
                   <div>
-                    <span className="text-[#73685c] block font-semibold mb-1">Resident Wildlife</span>
+                    <span className="text-[#86a898] block font-semibold mb-1">Resident Wildlife</span>
                     <p className="text-emerald-400 font-semibold">{zone.wildlife}</p>
                   </div>
                   <div>
-                    <span className="text-[#73685c] block font-semibold mb-1">Landscape Highlights</span>
-                    <p className="text-[#a89985]">{zone.highlights}</p>
+                    <span className="text-[#86a898] block font-semibold mb-1">Landscape Highlights</span>
+                    <p className="text-[#86a898]">{zone.highlights}</p>
                   </div>
                 </div>
               </div>
@@ -208,29 +222,29 @@ export default function BufferZonesSafariPage() {
         </section>
 
         {/* SECTION 4: THE MONSOON ADVANTAGE */}
-        <section className="p-6 sm:p-10 rounded-3xl bg-[#141210] border border-[#28221b] space-y-6">
+        <section className="p-6 sm:p-10 rounded-3xl bg-[#092218] border border-[#16432f] space-y-6">
           <div className="max-w-3xl space-y-2">
             <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">Exclusive Year-Round Access</span>
             <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white">
               Ranthambore Monsoon Safaris in Buffer Zones
             </h2>
-            <p className="text-xs sm:text-sm text-[#8a8175] leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#86a898] leading-relaxed">
               When core zones shut between July and September, nature flourishes with emerald greenery, cascading waterfalls, and active tiger movement in Buffer Zones 6, 7, 8, and 10. Monsoon safaris offer romantic mist, cloud-capped hills, and zero tourist crowd pressure.
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
-            <div className="p-4 rounded-xl bg-[#1c1815] border border-[#2d241d] space-y-1.5">
+            <div className="p-4 rounded-xl bg-[#06150f] border border-[#16432f] space-y-1.5">
               <span className="font-bold text-white">Lush Greenery</span>
-              <p className="text-[#8a8175]">Dramatic transformation from dry deciduous forest into a rainforest paradise.</p>
+              <p className="text-[#86a898]">Dramatic transformation from dry deciduous forest into a rainforest paradise.</p>
             </div>
-            <div className="p-4 rounded-xl bg-[#1c1815] border border-[#2d241d] space-y-1.5">
+            <div className="p-4 rounded-xl bg-[#06150f] border border-[#16432f] space-y-1.5">
               <span className="font-bold text-white">Rainy Season Birding</span>
-              <p className="text-[#8a8175]">Breeding plumage of Indian Pitta, Paradise Flycatcher, and Painted Storks.</p>
+              <p className="text-[#86a898]">Breeding plumage of Indian Pitta, Paradise Flycatcher, and Painted Storks.</p>
             </div>
-            <div className="p-4 rounded-xl bg-[#1c1815] border border-[#2d241d] space-y-1.5">
+            <div className="p-4 rounded-xl bg-[#06150f] border border-[#16432f] space-y-1.5">
               <span className="font-bold text-white">Off-Season Tariff Discounts</span>
-              <p className="text-[#8a8175]">Resorts offer up to 40% discount on luxury stays during monsoon months.</p>
+              <p className="text-[#86a898]">Resorts offer up to 40% discount on luxury stays during monsoon months.</p>
             </div>
           </div>
         </section>
@@ -241,21 +255,21 @@ export default function BufferZonesSafariPage() {
             Naturalist Tips for Buffer Zone Safaris
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
-            <div className="p-6 rounded-2xl bg-[#161412] border border-[#28221b] space-y-3">
-              <h3 className="font-bold text-white text-sm text-amber-400">Scan High Rock Escarpments</h3>
-              <p className="text-[#a89985] leading-relaxed">
+            <div className="p-6 rounded-2xl bg-[#092218] border border-[#16432f] space-y-3">
+              <h3 className="font-bold text-white text-sm text-[#f59e0b]">Scan High Rock Escarpments</h3>
+              <p className="text-[#c2d7cd] leading-relaxed">
                 Leopards in Zones 6, 7, and 8 frequently sunbathe on open rock ledges early in the morning before retreating into deep caves.
               </p>
             </div>
-            <div className="p-6 rounded-2xl bg-[#161412] border border-[#28221b] space-y-3">
+            <div className="p-6 rounded-2xl bg-[#092218] border border-[#16432f] space-y-3">
               <h3 className="font-bold text-white text-sm text-emerald-400">Listen for Deer Alarm Calls</h3>
-              <p className="text-[#a89985] leading-relaxed">
+              <p className="text-[#c2d7cd] leading-relaxed">
                 In dense ravine tracks, animal calls (especially spotted deer and langurs) provide vital audio cues long before you see the predator.
               </p>
             </div>
-            <div className="p-6 rounded-2xl bg-[#161412] border border-[#28221b] space-y-3">
-              <h3 className="font-bold text-white text-sm text-cyan-400">Watch Waterhole Depressions</h3>
-              <p className="text-[#a89985] leading-relaxed">
+            <div className="p-6 rounded-2xl bg-[#092218] border border-[#16432f] space-y-3">
+              <h3 className="font-bold text-white text-sm text-teal-400">Watch Waterhole Depressions</h3>
+              <p className="text-[#c2d7cd] leading-relaxed">
                 Natural springs like Kala Pani and Jamun Deh are perennial magnets for tigers, wild boars, and sloth bears during hot hours.
               </p>
             </div>
@@ -263,12 +277,12 @@ export default function BufferZonesSafariPage() {
         </section>
 
         {/* SECTION 6: MANDATORY GUIDELINES */}
-        <section className="p-6 sm:p-8 rounded-3xl bg-[#141210] border border-[#26211b] space-y-4">
+        <section className="p-6 sm:p-8 rounded-3xl bg-[#092218] border border-[#16432f] space-y-4">
           <h3 className="font-serif text-xl font-bold text-white flex items-center gap-2">
             <ShieldCheck className="w-5 h-5 text-emerald-400" />
             Buffer Safari Entry Regulations
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-[#a89985]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs text-[#86a898]">
             <p>• Government photo identity verification is strictly enforced at every buffer gate entry post.</p>
             <p>• Gypsy drivers adhere to the 20 km/h forest speed limit to prevent sudden animal collisions.</p>
             <p>• Zones 6 to 10 are protected tiger reserve zones with identical legal protection under Project Tiger.</p>
@@ -282,27 +296,27 @@ export default function BufferZonesSafariPage() {
             <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white">
               Buffer Zones Safari FAQs
             </h2>
-            <p className="text-xs sm:text-sm text-[#8a8175]">Helpful facts about Zones 6 through 10 bookings.</p>
+            <p className="text-xs sm:text-sm text-[#86a898]">Helpful facts about Zones 6 through 10 bookings.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
             {faqs.map((faq, i) => (
-              <div key={i} className="p-5 rounded-2xl bg-[#161412] border border-[#26211b] space-y-2">
+              <div key={i} className="p-5 rounded-2xl bg-[#092218] border border-[#16432f] space-y-2">
                 <h3 className="font-bold text-white text-sm flex items-center gap-2">
                   <HelpCircle className="w-4 h-4 text-emerald-400 shrink-0" />
                   <span>{faq.q}</span>
                 </h3>
-                <p className="text-[#a89985] leading-relaxed pl-6">{faq.a}</p>
+                <p className="text-[#c2d7cd] leading-relaxed pl-6">{faq.a}</p>
               </div>
             ))}
           </div>
 
-          <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-[#17201a] via-[#141713] to-[#211d14] border border-emerald-500/30 text-center space-y-6 shadow-2xl">
+          <div className="p-8 sm:p-12 rounded-3xl bg-[#092218] border border-emerald-500/30 text-center space-y-6 shadow-2xl">
             <div className="max-w-2xl mx-auto space-y-3">
               <h2 className="font-serif text-2xl sm:text-4xl font-bold text-white">
                 Reserve Buffer Safari Permits for Zones 6 to 10
               </h2>
-              <p className="text-xs sm:text-sm text-[#b8a794] leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#c2d7cd] leading-relaxed">
                 Looking for last-minute booking availability or high-probability leopard and tiger terrain? Connect with our desk today.
               </p>
             </div>
@@ -310,13 +324,13 @@ export default function BufferZonesSafariPage() {
             <div className="flex flex-wrap items-center justify-center gap-4">
               <button
                 onClick={() => openBookingModal({ zonePreference: 'Buffer Zones (Zones 6-10)' })}
-                className="px-8 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm shadow-xl transition cursor-pointer"
+                className="px-8 py-3.5 rounded-xl bg-gradient-to-r from-emerald-600 to-[#f59e0b] hover:from-emerald-500 hover:to-[#ea580c] text-white font-bold text-sm shadow-xl transition cursor-pointer"
               >
                 Inquire Buffer Availability
               </button>
               <a
                 href="tel:+919971965629"
-                className="px-6 py-3.5 rounded-xl bg-[#161412] hover:bg-[#201c18] border border-[#3a3026] text-white font-bold text-sm flex items-center gap-2 transition"
+                className="px-6 py-3.5 rounded-xl bg-[#06150f] hover:bg-[#113123] border border-[#16432f] text-white font-bold text-sm flex items-center gap-2 transition"
               >
                 <Phone className="w-4 h-4 text-emerald-400" />
                 <span>Call Desk: +91 99719 65629</span>

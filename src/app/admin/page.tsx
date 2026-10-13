@@ -516,10 +516,10 @@ export default function CompleteWebsiteAdmin() {
           </div>
 
           {/* Login Card */}
-          <div className="p-6 sm:p-8 rounded-3xl bg-[#141210]/95 border border-[#2b251f] shadow-2xl backdrop-blur-xl space-y-5 text-xs">
-            <div className="border-b border-[#241f1a] pb-3 text-center">
+          <div className="p-6 sm:p-8 rounded-3xl bg-[#092218]/95 border border-[#16432f] shadow-2xl backdrop-blur-xl space-y-5 text-xs">
+            <div className="border-b border-[#16432f] pb-3 text-center">
               <h2 className="text-sm font-bold text-white">Administrator Sign In</h2>
-              <p className="text-[11px] text-[#73685c] mt-0.5">Enter authorized credentials to access website management</p>
+              <p className="text-[11px] text-[#86a898] mt-0.5">Enter authorized credentials to access website management</p>
             </div>
 
             {loginError && (
@@ -639,7 +639,7 @@ export default function CompleteWebsiteAdmin() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0e0d0c] text-[#f4efea] flex flex-col font-sans selection:bg-[#ea580c] selection:text-white">
+    <div className="min-h-screen bg-[#06150f] text-[#f2f7f4] flex flex-col font-sans selection:bg-emerald-500 selection:text-white">
       {/* Toast Alert */}
       {toastMessage && (
         <div className="fixed top-5 right-5 z-50 flex items-center gap-2.5 px-4 py-3 rounded-xl bg-emerald-950/95 border border-emerald-500/50 text-emerald-200 text-xs font-bold shadow-2xl backdrop-blur-md">
@@ -649,16 +649,16 @@ export default function CompleteWebsiteAdmin() {
       )}
 
       {/* TOP HEADER */}
-      <header className="h-16 border-b border-[#26221d] bg-[#141210] px-4 sm:px-6 flex items-center justify-between sticky top-0 z-30">
+      <header className="h-16 border-b border-[#16432f] bg-[#092218] px-4 sm:px-6 flex items-center justify-between sticky top-0 z-30">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#ea580c] to-[#f59e0b] flex items-center justify-center text-lg shadow-md">
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center text-lg shadow-md">
             🐅
           </div>
           <div>
             <h1 className="font-serif text-base sm:text-lg font-bold text-white leading-tight">
-              Website CMS <span className="text-[#ea580c]">Control Panel</span>
+              Website CMS <span className="text-emerald-400">Control Panel</span>
             </h1>
-            <p className="text-[11px] text-[#8a8175]">
+            <p className="text-[11px] text-[#86a898]">
               Edit every text, image, card, package, and inquiry across the entire website
             </p>
           </div>
@@ -668,27 +668,27 @@ export default function CompleteWebsiteAdmin() {
           <Link
             href="/"
             target="_blank"
-            className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#1c1916] hover:bg-[#25211c] border border-[#2e2822] text-[#d6cec3] text-xs font-semibold transition"
+            className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#06150f] hover:bg-[#113123] border border-[#16432f] text-[#c2d7cd] text-xs font-semibold transition"
           >
-            <Globe className="w-3.5 h-3.5 text-amber-400" />
+            <Globe className="w-3.5 h-3.5 text-emerald-400" />
             <span className="hidden sm:inline">View Public Website</span>
-            <ExternalLink className="w-3 h-3 text-[#8a8175]" />
+            <ExternalLink className="w-3 h-3 text-[#86a898]" />
           </Link>
 
           {/* Admin Avatar Button */}
           <button
             onClick={() => setActiveTab('admin-profile')}
-            className={`flex items-center gap-2 pl-2 border-l border-[#26221d] hover:opacity-90 transition cursor-pointer ${
-              activeTab === 'admin-profile' ? 'ring-2 ring-amber-500/50 rounded-xl p-1 bg-[#1a1714]' : ''
+            className={`flex items-center gap-2 pl-2 border-l border-[#16432f] hover:opacity-90 transition cursor-pointer ${
+              activeTab === 'admin-profile' ? 'ring-2 ring-emerald-500/50 rounded-xl p-1 bg-[#113123]' : ''
             }`}
             title="Manage Admin Profile & Security"
           >
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-amber-600 to-[#ea580c] text-white font-bold text-xs flex items-center justify-center border border-amber-400/40 shadow-sm">
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 text-white font-bold text-xs flex items-center justify-center border border-emerald-400/40 shadow-sm">
               RS
             </div>
             <div className="hidden md:block text-left text-xs">
               <p className="font-bold text-white leading-none">{adminProfile.fullName.split(' ')[0]}</p>
-              <p className="text-[10px] text-amber-400/80 mt-0.5">Admin Profile</p>
+              <p className="text-[10px] text-emerald-400 mt-0.5">Admin Profile</p>
             </div>
           </button>
 
@@ -710,7 +710,7 @@ export default function CompleteWebsiteAdmin() {
       {/* MAIN CONTAINER */}
       <div className="flex-1 flex overflow-hidden">
         {/* SIDEBAR */}
-        <aside className="w-64 border-r border-[#26221d] bg-[#11100e] p-3 space-y-4 shrink-0 overflow-y-auto">
+        <aside className="w-64 border-r border-[#16432f] bg-[#06150f] p-3 space-y-4 shrink-0 overflow-y-auto">
           {/* MAIN */}
           <div>
             <p className="px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-[#73685c]">

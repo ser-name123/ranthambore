@@ -16,7 +16,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#121110",
+  themeColor: "#06150f",
   width: "device-width",
   initialScale: 1,
 };
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     siteName: "Ranthambore Wild Life Tour",
     images: [
       {
-        url: "/images/hero_tiger.jpg",
+        url: "/images/tiger_portrait.jpg",
         width: 1200,
         height: 630,
         alt: "Ranthambore Wild Life Tour - Royal Bengal Tiger"
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Ranthambore Safari & Wildlife Tours | Gypsy & Canter Booking",
     description: "Explore Ranthambore National Park with expert naturalists. Gypsy, Canter, and stay packages.",
-    images: ["/images/hero_tiger.jpg"],
+    images: ["/images/tiger_portrait.jpg"],
   },
   icons: {
     icon: "/logo.jpg",
@@ -78,7 +78,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body
-        className="min-h-screen bg-[#121110] text-[#f4efea] font-sans antialiased selection:bg-[#ea580c] selection:text-white"
+        className="min-h-screen bg-[#06150f] text-[#f2f7f4] font-sans antialiased selection:bg-[#10b981] selection:text-white"
         suppressHydrationWarning
       >
         <ClientLayout>
