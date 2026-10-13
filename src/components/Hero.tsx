@@ -37,22 +37,21 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
 
   // Animation variants
   const containerVariants = {
-    hidden: { opacity: 0 },
+    hidden: { opacity: 1 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.12,
-        delayChildren: 0.05,
+        staggerChildren: 0.06,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 24 },
+    hidden: { opacity: 1, y: 0 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const },
+      transition: { duration: 0.35, ease: [0.22, 1, 0.36, 1] as const },
     },
   };
 
@@ -208,11 +207,8 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
             </motion.div>
           </motion.div>
 
-          {/* Right Column: Interactive Live Safari Booking & Availability Card with Framer Motion */}
-          <motion.div
-            initial={{ opacity: 0, y: 30, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          {/* Right Column: Interactive Live Safari Booking & Availability Card */}
+          <div
             className="lg:col-span-5"
             id="safari-booking"
           >
@@ -414,7 +410,7 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
                 </span>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
 

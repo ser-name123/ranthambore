@@ -2,7 +2,6 @@
 
 import React, { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
-import { motion, AnimatePresence } from 'framer-motion';
 import { BookingModalProvider } from '@/context/BookingModalContext';
 import Header from './Header';
 import Footer from './Footer';
@@ -37,26 +36,15 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
   return (
     <BookingModalProvider>
       <div className="min-h-screen bg-[#121110] text-[#f4efea] flex flex-col relative selection:bg-[#ea580c] selection:text-white">
-        {/* Global Cinematic Preloader & Route Progress Bar */}
+        {/* Global Route Progress Bar */}
         <GlobalPreloader />
 
         {/* Global Navigation Header across all pages */}
         <Header />
 
-        {/* Dynamic Page Content with Smooth Page-to-Page Transition */}
-        <main className="flex-1 w-full overflow-x-hidden">
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.div
-              key={pathname}
-              initial={{ opacity: 0, y: 12 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-              className="w-full flex flex-col"
-            >
-              {children}
-            </motion.div>
-          </AnimatePresence>
+        {/* Dynamic Page Content */}
+        <main className="flex-1 w-full overflow-x-hidden flex flex-col">
+          {children}
         </main>
 
         {/* Global Footer across all pages */}
