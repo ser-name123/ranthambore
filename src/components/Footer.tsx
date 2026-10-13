@@ -62,9 +62,8 @@ export default function Footer({ onOpenBookingModal }: FooterProps) {
   ];
 
   return (
-    <footer className="relative bg-[#f4f8f5] text-[#375847] border-t border-[#d2e4d9] pt-16 pb-24 lg:pb-12 overflow-hidden">
-      {/* Botanical Jungle Canopy & Wildlife Tracks */}
-      <JungleTopCanopy className="opacity-70" />
+    <footer className="relative bg-[#f4f8f5] text-[#375847] border-t border-[#d2e4d9] pt-14 pb-24 lg:pb-12 overflow-hidden">
+      {/* Corner Foliage & Wildlife Tracks */}
       <JungleCornerBranch position="left" className="top-12 left-0" />
       <JungleCornerBranch position="right" className="bottom-12 right-0" />
       <TigerTrackWatermark count={6} className="top-1/3" />
@@ -74,20 +73,22 @@ export default function Footer({ onOpenBookingModal }: FooterProps) {
       <div className="absolute bottom-0 right-10 w-[450px] h-[350px] bg-[#d97706]/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="relative max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Top Callout Card: Safari Hotline */}
-        <div className="relative mb-16 rounded-3xl p-6 sm:p-10 border border-[#d2e4d9] bg-gradient-to-r from-emerald-900 via-emerald-800 to-[#92400e] text-white shadow-xl overflow-hidden">
-          <div className="absolute -right-16 -top-16 w-64 h-64 bg-white/10 rounded-full blur-3xl pointer-events-none" />
+        {/* Top Callout Card: Safari Hotline - Luxury Jungle Theme */}
+        <div className="relative mb-16 rounded-3xl p-6 sm:p-10 border-2 border-emerald-300/80 bg-gradient-to-br from-emerald-50/90 via-white to-amber-50/70 text-[#082318] shadow-xl shadow-emerald-950/5 overflow-hidden">
+          {/* Ambient subtle glow */}
+          <div className="absolute -right-16 -top-16 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute -left-16 -bottom-16 w-64 h-64 bg-[#d97706]/10 rounded-full blur-3xl pointer-events-none" />
 
           <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
             <div className="space-y-3 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/15 text-emerald-200 text-xs font-bold uppercase tracking-wider border border-white/20">
-                <Sparkles className="w-3.5 h-3.5 text-[#fbbf24]" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-100 text-[#064e3b] text-xs font-bold uppercase tracking-wider border border-emerald-300 shadow-xs">
+                <Sparkles className="w-3.5 h-3.5 text-[#d97706]" />
                 Planning Your Ranthambore Trip?
               </div>
-              <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-white tracking-tight">
+              <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-[#082318] tracking-tight">
                 Secure Your Jungle Safari Permits Before Quotas Fill Up
               </h3>
-              <p className="text-sm text-emerald-100 max-w-2xl leading-relaxed">
+              <p className="text-sm sm:text-base text-[#1b3a2a] max-w-2xl leading-relaxed font-normal">
                 Forest Department permits for core zones are strictly limited per shift. Speak directly with our Sawai Madhopur wildlife desk for instant date checking.
               </p>
             </div>
@@ -95,9 +96,9 @@ export default function Footer({ onOpenBookingModal }: FooterProps) {
             <div className="flex flex-wrap items-center justify-center gap-4 shrink-0">
               <a
                 href={`tel:${phoneNumbers[0].raw}`}
-                className="px-6 py-3.5 rounded-xl bg-white hover:bg-amber-50 text-[#082318] font-bold text-sm shadow-xl flex items-center gap-2.5 transition duration-300 transform hover:-translate-y-0.5"
+                className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-700 via-emerald-800 to-emerald-900 hover:from-emerald-800 hover:to-emerald-950 text-white font-bold text-sm shadow-lg shadow-emerald-900/20 flex items-center gap-2.5 transition duration-300 transform hover:-translate-y-0.5 cursor-pointer"
               >
-                <Phone className="w-4 h-4 text-emerald-700" />
+                <Phone className="w-4 h-4 text-emerald-200" />
                 <span>Call Safari Desk: +91 99719 65629</span>
               </a>
 
@@ -105,9 +106,9 @@ export default function Footer({ onOpenBookingModal }: FooterProps) {
                 href="https://wa.me/919971965629?text=Hello%20Ranthambore%20Wild%20Life%20Tour,%20I%20want%20to%20check%20safari%20availability."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-5 py-3.5 rounded-xl bg-emerald-700/80 hover:bg-emerald-600 text-white border border-emerald-400/40 font-bold text-sm flex items-center gap-2 transition duration-300"
+                className="px-5 py-3.5 rounded-xl bg-white hover:bg-emerald-50 text-[#082318] border-2 border-emerald-300 font-bold text-sm flex items-center gap-2 transition duration-300 shadow-sm cursor-pointer"
               >
-                <MessageCircle className="w-4 h-4 text-emerald-200" />
+                <MessageCircle className="w-4 h-4 text-emerald-700" />
                 <span>WhatsApp Quote</span>
               </a>
             </div>

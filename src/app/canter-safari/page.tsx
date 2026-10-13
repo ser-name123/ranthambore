@@ -351,28 +351,31 @@ export default function CanterSafariPage() {
             ))}
           </div>
 
-          <div className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-emerald-900 via-emerald-800 to-[#92400e] text-white text-center space-y-6 shadow-xl">
-            <div className="max-w-2xl mx-auto space-y-3">
-              <h2 className="font-serif text-2xl sm:text-4xl font-bold text-white">
+          <div className="p-8 sm:p-12 rounded-3xl border-2 border-emerald-300/80 bg-gradient-to-br from-emerald-50/90 via-white to-amber-50/70 text-[#082318] shadow-xl shadow-emerald-950/5 text-center space-y-6 relative overflow-hidden">
+            <div className="absolute -right-16 -top-16 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="absolute -left-16 -bottom-16 w-64 h-64 bg-[#d97706]/10 rounded-full blur-3xl pointer-events-none" />
+
+            <div className="relative z-10 max-w-2xl mx-auto space-y-3">
+              <h2 className="font-serif text-2xl sm:text-4xl font-bold text-[#082318]">
                 Book Your Canter Safari Seat in Seconds
               </h2>
-              <p className="text-xs sm:text-sm text-emerald-100 leading-relaxed">
+              <p className="text-xs sm:text-base text-[#1b3a2a] leading-relaxed">
                 Planning a trip with friends or family? Reserve your seats with instant date confirmation and official forest receipt.
               </p>
             </div>
 
-            <div className="flex flex-wrap items-center justify-center gap-4">
+            <div className="relative z-10 flex flex-wrap items-center justify-center gap-4">
               <button
                 onClick={() => openBookingModal({ vehicle: 'Canter Safari Bus (20-Seater)' })}
-                className="px-8 py-3.5 rounded-xl bg-white hover:bg-amber-50 text-[#082318] font-bold text-sm shadow-xl transition cursor-pointer"
+                className="px-8 py-3.5 rounded-xl bg-gradient-to-r from-emerald-700 via-emerald-800 to-emerald-900 hover:from-emerald-800 hover:to-emerald-950 text-white font-bold text-sm shadow-lg shadow-emerald-900/20 transition cursor-pointer"
               >
                 Check Canter Dates
               </button>
               <a
                 href="tel:+919971965629"
-                className="px-6 py-3.5 rounded-xl bg-emerald-700/80 hover:bg-emerald-600 border border-emerald-400/40 text-white font-bold text-sm flex items-center gap-2 transition"
+                className="px-6 py-3.5 rounded-xl bg-white hover:bg-emerald-50 border-2 border-emerald-300 text-[#082318] font-bold text-sm flex items-center gap-2 transition shadow-sm"
               >
-                <Phone className="w-4 h-4 text-emerald-200" />
+                <Phone className="w-4 h-4 text-emerald-700" />
                 <span>Call Helpdesk: +91 99719 65629</span>
               </a>
             </div>

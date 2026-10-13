@@ -122,19 +122,19 @@ export default function CancellationPolicyPage() {
         </motion.div>
 
         {/* Official Statutory Callout Banner */}
-        <div className="mb-16 p-6 sm:p-7 rounded-2xl bg-gradient-to-r from-emerald-900 via-emerald-800 to-[#92400e] border border-emerald-600/30 text-white text-xs sm:text-sm leading-relaxed shadow-xl">
-          <div className="flex items-start gap-4">
-            <div className="w-10 h-10 rounded-xl bg-white/10 text-emerald-300 flex items-center justify-center shrink-0 mt-0.5">
+        <div className="mb-16 p-6 sm:p-7 rounded-2xl border-2 border-emerald-300/80 bg-gradient-to-br from-emerald-50/90 via-white to-amber-50/70 text-[#082318] text-xs sm:text-sm leading-relaxed shadow-xl shadow-emerald-950/5 relative overflow-hidden">
+          <div className="flex items-start gap-4 relative z-10">
+            <div className="w-10 h-10 rounded-xl bg-amber-100 text-amber-800 border border-amber-300 flex items-center justify-center shrink-0 mt-0.5">
               <ShieldAlert className="w-5 h-5" />
             </div>
             <div className="space-y-2">
-              <h2 className="font-serif text-lg font-bold text-white">
+              <h2 className="font-serif text-lg font-bold text-[#082318]">
                 Core Statutory Notice of Ranthambore Tiger Reserve
               </h2>
-              <p className="text-emerald-50">
-                <strong>Canter Safari &amp; Jeep Safari:</strong> The amounts paid are not returnable. Charges for the Jeep Safari and Canter Safari are not refundable. If the safari booking is not confirmed, the current booking fees will be returned.
+              <p className="text-[#1b3a2a]">
+                <strong className="text-[#082318]">Canter Safari &amp; Jeep Safari:</strong> The amounts paid are not returnable. Charges for the Jeep Safari and Canter Safari are not refundable. If the safari booking is not confirmed, the current booking fees will be returned.
               </p>
-              <p className="text-emerald-100">
+              <p className="text-[#375847]">
                 Note that all bookings are provisional in nature and are subject to modification or cancellation by the Field Director, Ranthambore Tiger Reserve, without providing a reason. Your acceptance of the terms is implied upon booking.
               </p>
             </div>
@@ -164,38 +164,38 @@ export default function CancellationPolicyPage() {
             </div>
 
             {/* Quick Contact Helpdesk Widget */}
-            <div className="p-6 rounded-2xl bg-gradient-to-br from-emerald-900 via-emerald-800 to-emerald-950 border border-emerald-700/40 space-y-4 shadow-xl text-white">
+            <div className="p-6 rounded-2xl bg-gradient-to-br from-emerald-50/90 via-white to-amber-50/70 border-2 border-emerald-300/80 space-y-4 shadow-lg shadow-emerald-950/5 text-[#082318]">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl bg-white/10 text-emerald-300 flex items-center justify-center">
-                  <Phone className="w-4 h-4" />
+                <div className="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center border border-emerald-300">
+                  <Phone className="w-4 h-4 text-emerald-800" />
                 </div>
                 <div>
-                  <h4 className="font-serif text-base font-bold text-white">Have a Booking Query?</h4>
-                  <span className="text-[11px] text-emerald-200">Our Sawai Madhopur desk is active</span>
+                  <h4 className="font-serif text-base font-bold text-[#082318]">Have a Booking Query?</h4>
+                  <span className="text-[11px] text-emerald-700 font-medium">Our Sawai Madhopur desk is active</span>
                 </div>
               </div>
-              <p className="text-xs text-emerald-100 leading-relaxed">
+              <p className="text-xs text-[#1b3a2a] leading-relaxed">
                 If you have questions regarding booking confirmation status or gate permit allocations, contact our team directly.
               </p>
               <div className="space-y-2 pt-1 text-xs">
                 <a
                   href="tel:+919971965629"
-                  className="w-full py-2.5 px-3 rounded-lg bg-black/25 hover:bg-black/40 text-white border border-white/20 flex items-center justify-between font-semibold transition"
+                  className="w-full py-2.5 px-3 rounded-lg bg-white hover:bg-emerald-50 text-[#082318] border-2 border-emerald-300 flex items-center justify-between font-bold transition shadow-xs"
                 >
                   <span>+91 99719 65629</span>
-                  <span className="text-[10px] text-amber-300">Call</span>
+                  <span className="text-[10px] text-[#d97706] font-bold">Call</span>
                 </a>
                 <a
                   href="https://wa.me/919971965629?text=Hi%20Ranthambore%20Wild%20Life%20Tour,%20I%20have%20a%20question%20regarding%20the%20Cancellation%20Policy."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full py-2.5 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-between font-semibold transition"
+                  className="w-full py-2.5 px-3 rounded-lg bg-[#25D366] hover:bg-[#1ebe5b] text-white flex items-center justify-between font-semibold transition shadow-xs"
                 >
                   <span className="flex items-center gap-2">
                     <MessageCircle className="w-3.5 h-3.5" />
                     WhatsApp Desk
                   </span>
-                  <span className="text-[10px] text-emerald-200">Instant</span>
+                  <span className="text-[10px] text-emerald-950 font-bold bg-white/30 px-1.5 py-0.5 rounded">Instant</span>
                 </a>
               </div>
             </div>

@@ -186,38 +186,38 @@ export default function TermsAndConditionsPage() {
             </div>
 
             {/* Support Widget */}
-            <div className="p-6 rounded-2xl bg-gradient-to-br from-emerald-900 via-emerald-800 to-emerald-950 border border-emerald-700/40 space-y-4 shadow-xl text-white">
+            <div className="p-6 rounded-2xl bg-gradient-to-br from-emerald-50/90 via-white to-amber-50/70 border-2 border-emerald-300/80 space-y-4 shadow-lg shadow-emerald-950/5 text-[#082318]">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 rounded-xl bg-white/10 text-emerald-300 flex items-center justify-center">
-                  <Phone className="w-4 h-4" />
+                <div className="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center border border-emerald-300">
+                  <Phone className="w-4 h-4 text-emerald-800" />
                 </div>
                 <div>
-                  <h4 className="font-serif text-base font-bold text-white">Need Terms Clarification?</h4>
-                  <span className="text-[11px] text-emerald-200">Our booking office is here to help</span>
+                  <h4 className="font-serif text-base font-bold text-[#082318]">Need Terms Clarification?</h4>
+                  <span className="text-[11px] text-emerald-700 font-medium">Our booking office is here to help</span>
                 </div>
               </div>
-              <p className="text-xs text-emerald-100 leading-relaxed">
+              <p className="text-xs text-[#1b3a2a] leading-relaxed">
                 Speak directly with our Sawai Madhopur reservation specialists for any questions regarding permit rules.
               </p>
               <div className="space-y-2 pt-1 text-xs">
                 <a
                   href="tel:+919971965629"
-                  className="w-full py-2.5 px-3 rounded-lg bg-black/25 hover:bg-black/40 text-white border border-white/20 flex items-center justify-between font-semibold transition"
+                  className="w-full py-2.5 px-3 rounded-lg bg-white hover:bg-emerald-50 text-[#082318] border-2 border-emerald-300 flex items-center justify-between font-bold transition shadow-xs"
                 >
                   <span>+91 99719 65629</span>
-                  <span className="text-[10px] text-amber-300">Direct Call</span>
+                  <span className="text-[10px] text-[#d97706] font-bold">Direct Call</span>
                 </a>
                 <a
                   href="https://wa.me/919971965629?text=Hi%20Ranthambore%20Wild%20Life%20Tour,%20I%20have%20a%20question%20regarding%20Terms%20and%20Conditions."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full py-2.5 px-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white flex items-center justify-between font-semibold transition"
+                  className="w-full py-2.5 px-3 rounded-lg bg-[#25D366] hover:bg-[#1ebe5b] text-white flex items-center justify-between font-semibold transition shadow-xs"
                 >
                   <span className="flex items-center gap-2">
                     <MessageCircle className="w-3.5 h-3.5" />
                     WhatsApp Support
                   </span>
-                  <span className="text-[10px] text-emerald-200">Online</span>
+                  <span className="text-[10px] text-emerald-950 font-bold bg-white/30 px-1.5 py-0.5 rounded">Online</span>
                 </a>
               </div>
             </div>
@@ -327,20 +327,20 @@ export default function TermsAndConditionsPage() {
             </section>
 
             {/* Section 6: Field Director Authority */}
-            <section id="field-director" className="p-7 rounded-2xl bg-gradient-to-r from-emerald-900 via-emerald-800 to-[#92400e] border border-emerald-600/30 space-y-4 scroll-mt-28 shadow-xl text-white">
-              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-amber-300">
+            <section id="field-director" className="p-7 rounded-2xl border-2 border-emerald-300/80 bg-gradient-to-br from-emerald-50/90 via-white to-amber-50/70 space-y-4 scroll-mt-28 shadow-xl shadow-emerald-950/5 relative overflow-hidden">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#d97706]">
                 <span>Section 06</span>
                 <span>•</span>
                 <span>Statutory Authority</span>
               </div>
-              <h2 className="font-serif text-xl sm:text-2xl font-bold text-white">
+              <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#082318]">
                 6. Field Director Statutory Authority
               </h2>
-              <div className="text-xs sm:text-sm text-emerald-100 leading-relaxed space-y-3">
-                <p className="font-medium text-white">
+              <div className="text-xs sm:text-sm text-[#1b3a2a] leading-relaxed space-y-3">
+                <p className="font-medium text-[#082318]">
                   All safari bookings are provisional in nature and subject to operational modification by the Field Director, Ranthambore Tiger Reserve, as per state wildlife regulations.
                 </p>
-                <p className="p-3.5 rounded-xl bg-black/25 border border-white/20 text-amber-200">
+                <p className="p-3.5 rounded-xl bg-amber-50/80 border border-amber-300 text-amber-950 font-medium">
                   <strong>Confirmed forest permits cannot be rescheduled or refunded once issued by the government portal.</strong>
                 </p>
               </div>

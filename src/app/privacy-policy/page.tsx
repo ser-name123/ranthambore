@@ -156,31 +156,31 @@ export default function PrivacyPolicyPage() {
             </div>
 
             {/* Quick Contact Grievance Card */}
-            <div className="p-5 rounded-2xl bg-gradient-to-br from-emerald-900 via-emerald-800 to-emerald-950 border border-emerald-700/40 space-y-3.5 shadow-xl text-white">
-              <div className="flex items-center gap-2 text-xs font-bold text-amber-300">
-                <Mail className="w-4 h-4 text-emerald-300" />
+            <div className="p-5 rounded-2xl bg-gradient-to-br from-emerald-50/90 via-white to-amber-50/70 border-2 border-emerald-300/80 space-y-3.5 shadow-lg shadow-emerald-950/5 text-[#082318]">
+              <div className="flex items-center gap-2 text-xs font-bold text-[#d97706]">
+                <Mail className="w-4 h-4 text-emerald-800" />
                 <span>Privacy Contact Officer</span>
               </div>
-              <p className="text-xs text-emerald-100 leading-relaxed">
+              <p className="text-xs text-[#1b3a2a] leading-relaxed">
                 Contact Jungle Safari India if you have inquiries or concerns about privacy matters.
               </p>
-              <div className="flex items-center gap-2 bg-black/25 p-2.5 rounded-xl border border-white/20">
+              <div className="flex items-center gap-2 bg-white p-2.5 rounded-xl border border-emerald-200 shadow-xs">
                 <a
                   href="mailto:junglesafariranthambhore@gmail.com"
-                  className="text-xs text-white font-medium hover:text-amber-200 transition truncate flex-1"
+                  className="text-xs text-[#082318] font-bold hover:text-emerald-800 transition truncate flex-1"
                 >
                   junglesafariranthambhore@gmail.com
                 </a>
                 <button
                   onClick={handleCopyEmail}
-                  className="p-1.5 rounded-lg bg-white/10 text-white hover:bg-white/20 transition cursor-pointer"
+                  className="p-1.5 rounded-lg bg-emerald-50 text-emerald-800 hover:bg-emerald-100 transition cursor-pointer border border-emerald-200"
                   title="Copy email address"
                   aria-label="Copy email address"
                 >
                   {copiedEmail ? (
-                    <Check className="w-3.5 h-3.5 text-emerald-300" />
+                    <Check className="w-3.5 h-3.5 text-emerald-700" />
                   ) : (
-                    <Copy className="w-3.5 h-3.5" />
+                    <Copy className="w-3.5 h-3.5 text-emerald-800" />
                   )}
                 </button>
               </div>
@@ -355,20 +355,20 @@ export default function PrivacyPolicyPage() {
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-emerald-900 via-emerald-800 to-[#92400e] border border-emerald-600/30 space-y-4 shadow-xl text-white"
+              className="p-6 sm:p-8 rounded-2xl border-2 border-emerald-300/80 bg-gradient-to-br from-emerald-50/90 via-white to-amber-50/70 space-y-4 shadow-xl shadow-emerald-950/5 text-[#082318] relative overflow-hidden"
             >
-              <div className="flex items-center gap-2 text-amber-300 text-xs font-bold uppercase tracking-wider">
-                <HelpCircle className="w-4 h-4" />
+              <div className="flex items-center gap-2 text-[#d97706] text-xs font-bold uppercase tracking-wider">
+                <HelpCircle className="w-4 h-4 text-[#d97706]" />
                 <span>Clause 8</span>
               </div>
-              <h2 className="font-serif text-2xl font-bold text-white">
+              <h2 className="font-serif text-2xl font-bold text-[#082318]">
                 Contact &amp; Privacy Queries
               </h2>
-              <p className="text-xs sm:text-sm text-emerald-100 leading-relaxed">
+              <p className="text-xs sm:text-sm text-[#1b3a2a] leading-relaxed">
                 Contact <strong>Jungle Safari India</strong> at{' '}
                 <a
                   href="mailto:junglesafariranthambhore@gmail.com"
-                  className="text-amber-300 hover:text-white font-bold underline transition"
+                  className="text-emerald-800 hover:text-emerald-950 font-bold underline transition"
                 >
                   junglesafariranthambhore@gmail.com
                 </a>{' '}
@@ -378,16 +378,16 @@ export default function PrivacyPolicyPage() {
               <div className="pt-3 flex flex-wrap items-center gap-4">
                 <a
                   href="mailto:junglesafariranthambhore@gmail.com"
-                  className="px-5 py-2.5 rounded-xl bg-white hover:bg-amber-50 text-[#082318] font-bold text-xs shadow-md transition flex items-center gap-2 cursor-pointer border border-white/50"
+                  className="px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-700 via-emerald-800 to-emerald-900 hover:from-emerald-800 hover:to-emerald-950 text-white font-bold text-xs shadow-lg shadow-emerald-900/20 transition flex items-center gap-2 cursor-pointer"
                 >
-                  <Mail className="w-4 h-4 text-emerald-800" />
+                  <Mail className="w-4 h-4 text-emerald-200" />
                   <span>Email Privacy Officer</span>
                 </a>
                 <a
                   href="https://wa.me/919971965629?text=Hello%20Ranthambore%20Wild%20Life%20Tour,%20I%20have%20a%20question%20regarding%20the%20Privacy%20Policy."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-5 py-2.5 rounded-xl bg-black/25 text-white border border-white/20 hover:bg-black/40 font-bold text-xs transition flex items-center gap-2"
+                  className="px-6 py-3 rounded-xl bg-[#25D366] hover:bg-[#1ebe5b] text-white font-bold text-xs transition flex items-center gap-2 shadow-xs"
                 >
                   <span>Chat on WhatsApp</span>
                 </a>
