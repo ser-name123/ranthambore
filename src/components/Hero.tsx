@@ -243,43 +243,47 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
                     <button
                       type="button"
                       onClick={() => setVehicle('gypsy')}
-                      className={`relative z-10 p-2 rounded-lg text-left transition duration-200 cursor-pointer ${
+                      className={`relative p-2 rounded-lg text-left transition duration-200 cursor-pointer ${
                         vehicle === 'gypsy' ? 'text-[#064e3b]' : 'text-[#416352] hover:text-[#082318]'
                       }`}
                     >
                       {vehicle === 'gypsy' && (
                         <motion.div
                           layoutId="heroVehicleTab"
-                          className="absolute inset-0 bg-white border-2 border-emerald-600 rounded-lg shadow-sm -z-10"
+                          className="absolute inset-0 bg-white border-2 border-emerald-600 rounded-lg shadow-sm"
                           transition={{ type: 'spring', stiffness: 450, damping: 30 }}
                         />
                       )}
-                      <div className="flex items-center justify-between">
-                        <span className="font-bold text-xs sm:text-sm">Jeep (Gypsy)</span>
-                        <span className="text-[9px] bg-emerald-600 text-white px-1.5 py-0.2 rounded font-bold">6-Seater</span>
+                      <div className="relative z-10">
+                        <div className="flex items-center justify-between">
+                          <span className="font-bold text-xs sm:text-sm">Jeep (Gypsy)</span>
+                          <span className="text-[9px] bg-emerald-600 text-white px-1.5 py-0.2 rounded font-bold">6-Seater</span>
+                        </div>
+                        <p className="text-[10px] text-emerald-700 mt-0.5 font-semibold">₹2,300 / person</p>
                       </div>
-                      <p className="text-[10px] text-emerald-700 mt-0.5 font-semibold">₹2,300 / person</p>
                     </button>
 
                     <button
                       type="button"
                       onClick={() => setVehicle('canter')}
-                      className={`relative z-10 p-2 rounded-lg text-left transition duration-200 cursor-pointer ${
+                      className={`relative p-2 rounded-lg text-left transition duration-200 cursor-pointer ${
                         vehicle === 'canter' ? 'text-[#78350f]' : 'text-[#416352] hover:text-[#082318]'
                       }`}
                     >
                       {vehicle === 'canter' && (
                         <motion.div
                           layoutId="heroVehicleTab"
-                          className="absolute inset-0 bg-white border-2 border-[#d97706] rounded-lg shadow-sm -z-10"
+                          className="absolute inset-0 bg-white border-2 border-[#d97706] rounded-lg shadow-sm"
                           transition={{ type: 'spring', stiffness: 450, damping: 30 }}
                         />
                       )}
-                      <div className="flex items-center justify-between">
-                        <span className="font-bold text-xs sm:text-sm">Canter Safari</span>
-                        <span className="text-[9px] bg-[#d97706] text-white px-1.5 py-0.2 rounded font-bold">20-Seater</span>
+                      <div className="relative z-10">
+                        <div className="flex items-center justify-between">
+                          <span className="font-bold text-xs sm:text-sm">Canter Safari</span>
+                          <span className="text-[9px] bg-[#d97706] text-white px-1.5 py-0.2 rounded font-bold">20-Seater</span>
+                        </div>
+                        <p className="text-[10px] text-[#b45309] mt-0.5 font-semibold">₹1,800 / person</p>
                       </div>
-                      <p className="text-[10px] text-[#b45309] mt-0.5 font-semibold">₹1,800 / person</p>
                     </button>
                   </div>
                 </div>

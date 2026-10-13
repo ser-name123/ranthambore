@@ -158,19 +158,22 @@ export default function FeaturedPackages({ onSelectPackage }: FeaturedPackagesPr
             {tabs.map(tab => (
               <button
                 key={tab.id}
+                type="button"
                 onClick={() => setActiveTab(tab.id)}
-                className={`relative px-3.5 py-1.5 rounded-lg text-xs font-semibold transition duration-200 cursor-pointer ${
-                  activeTab === tab.id ? 'text-white' : 'text-[#416352] hover:text-[#082318]'
+                className={`relative px-4 py-2 rounded-lg text-xs font-bold transition-all duration-200 cursor-pointer ${
+                  activeTab === tab.id
+                    ? 'text-white shadow-sm'
+                    : 'text-[#082318] hover:text-emerald-900 hover:bg-white/70'
                 }`}
               >
                 {activeTab === tab.id && (
                   <motion.div
                     layoutId="packageTabPill"
-                    className="absolute inset-0 bg-gradient-to-r from-emerald-700 to-[#d97706] rounded-lg shadow-sm -z-10"
+                    className="absolute inset-0 bg-gradient-to-r from-emerald-800 via-emerald-700 to-emerald-900 rounded-lg shadow-sm"
                     transition={{ type: 'spring', stiffness: 450, damping: 30 }}
                   />
                 )}
-                {tab.label}
+                <span className="relative z-10">{tab.label}</span>
               </button>
             ))}
           </div>
