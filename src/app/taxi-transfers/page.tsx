@@ -102,27 +102,27 @@ export default function TaxiTransfersPage() {
   ];
 
   return (
-    <div className="relative py-10 lg:py-16 bg-[#06150f] text-[#f2f7f4] overflow-hidden">
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-1/3 left-10 w-96 h-96 bg-amber-500/10 rounded-full blur-[140px] pointer-events-none" />
+    <div className="relative py-10 lg:py-16 bg-white text-[#082318] overflow-hidden">
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-emerald-100/50 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-1/3 left-10 w-96 h-96 bg-amber-100/40 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12 lg:space-y-16">
         
         {/* SECTION 1: BREADCRUMB & HERO */}
         <section className="space-y-6">
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-[#86a898]">
-            <Link href="/" className="hover:text-emerald-400 transition flex items-center gap-1.5 font-medium">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-[#517362]">
+            <Link href="/" className="hover:text-emerald-700 transition flex items-center gap-1.5 font-medium">
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Home</span>
             </Link>
-            <ChevronRight className="w-3.5 h-3.5 text-[#16432f]" />
-            <Link href="/services" className="hover:text-emerald-400 transition">Services</Link>
-            <ChevronRight className="w-3.5 h-3.5 text-[#16432f]" />
-            <span className="text-amber-400 font-semibold">Jaipur &amp; Delhi Cab Transfers</span>
+            <ChevronRight className="w-3.5 h-3.5 text-[#d2e4d9]" />
+            <Link href="/services" className="hover:text-emerald-700 transition">Services</Link>
+            <ChevronRight className="w-3.5 h-3.5 text-[#d2e4d9]" />
+            <span className="text-[#d97706] font-semibold">Jaipur &amp; Delhi Cab Transfers</span>
           </nav>
 
           {/* Visual Hero Banner with Photo */}
-          <div className="relative rounded-3xl overflow-hidden border border-[#16432f] bg-[#092218] shadow-2xl">
+          <div className="relative rounded-3xl overflow-hidden border border-[#d2e4d9] bg-white shadow-xl">
             <div className="relative h-72 sm:h-96 w-full">
               <Image
                 src="/images/gypsy_encounter.jpg"
@@ -131,20 +131,20 @@ export default function TaxiTransfersPage() {
                 priority
                 className="object-cover object-center"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#06150f] via-[#06150f]/60 to-transparent" />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#06150f]/80 via-transparent to-[#06150f]/40" />
+              <div className="absolute inset-0 bg-gradient-to-t from-white via-white/70 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-transparent to-white/50" />
             </div>
 
             <div className="p-6 sm:p-10 -mt-24 sm:-mt-32 relative z-10 flex flex-col lg:flex-row lg:items-end justify-between gap-6">
               <div className="space-y-3 max-w-2xl">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/15 text-emerald-400 text-xs font-bold uppercase tracking-wider border border-emerald-500/30 backdrop-blur-md">
-                  <Car className="w-3.5 h-3.5" />
+                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-bold uppercase tracking-wider border border-emerald-200">
+                  <Car className="w-3.5 h-3.5 text-emerald-700" />
                   Intercity Private Chauffeur Fleet
                 </div>
-                <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
-                  Jaipur &amp; Delhi Cab <span className="text-amber-400">Transfers</span>
+                <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#082318] tracking-tight">
+                  Jaipur &amp; Delhi Cab <span className="text-[#d97706]">Transfers</span>
                 </h1>
-                <p className="text-sm sm:text-base text-[#c2d7cd] leading-relaxed">
+                <p className="text-sm sm:text-base text-[#375847] leading-relaxed">
                   Seamless door-to-door private cab service connecting Ranthambore with Jaipur Airport, Delhi NCR, Agra Golden Triangle, and Sawai Madhopur Junction with transparent, fixed pricing.
                 </p>
               </div>
@@ -152,7 +152,7 @@ export default function TaxiTransfersPage() {
               <div className="flex flex-wrap items-center gap-3 shrink-0">
                 <button
                   onClick={() => openBookingModal({ notes: 'Interested in Private Cab Transfer' })}
-                  className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-sm shadow-xl transition cursor-pointer border border-emerald-400/30"
+                  className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-700 to-teal-700 hover:from-emerald-800 hover:to-teal-800 text-white font-bold text-sm shadow-xl transition cursor-pointer border border-emerald-600/30"
                 >
                   Get Instant Cab Quote
                 </button>
@@ -160,9 +160,9 @@ export default function TaxiTransfersPage() {
                   href="https://wa.me/919971965629?text=Hello,%20I%20need%20a%20private%20cab%20transfer%20to%20Ranthambore."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="px-5 py-3.5 rounded-xl bg-[#092218] hover:bg-[#113123] text-emerald-400 border border-[#16432f] font-bold text-sm flex items-center gap-2 transition"
+                  className="px-5 py-3.5 rounded-xl bg-white hover:bg-emerald-50 text-emerald-800 border border-[#d2e4d9] font-bold text-sm flex items-center gap-2 transition shadow-sm"
                 >
-                  <MessageCircle className="w-4 h-4" />
+                  <MessageCircle className="w-4 h-4 text-emerald-700" />
                   <span>WhatsApp Dispatch</span>
                 </a>
               </div>
@@ -171,41 +171,41 @@ export default function TaxiTransfersPage() {
         </section>
 
         {/* SECTION 2: POPULAR ROUTES & PRICING TABLE */}
-        <section className="space-y-6 rounded-3xl bg-[#092218] border border-[#16432f] p-6 sm:p-10">
+        <section className="space-y-6 rounded-3xl bg-[#f4f8f5] border border-[#d2e4d9] p-6 sm:p-10">
           <div className="space-y-1">
-            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white">
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#082318]">
               Popular Intercity Highway Routes
             </h2>
-            <p className="text-xs sm:text-sm text-[#86a898]">
+            <p className="text-xs sm:text-sm text-[#517362]">
               Fixed one-way private taxi rates with all toll taxes and driver allowances included.
             </p>
           </div>
 
-          <div className="overflow-x-auto">
+          <div className="overflow-x-auto rounded-2xl border border-[#d2e4d9] bg-white shadow-sm">
             <table className="w-full text-left border-collapse text-xs sm:text-sm">
               <thead>
-                <tr className="border-b border-[#16432f] text-[#86a898] uppercase text-[11px] font-bold">
+                <tr className="border-b border-[#d2e4d9] text-emerald-950 uppercase text-[11px] font-bold bg-[#edf5f0]">
                   <th className="py-3 px-4">Highway Route</th>
                   <th className="py-3 px-4">Distance &amp; Time</th>
-                  <th className="py-3 px-4 text-white">AC Sedan (Dzire)</th>
-                  <th className="py-3 px-4 text-emerald-400">AC Ertiga / SUV</th>
-                  <th className="py-3 px-4 text-amber-400">Innova Crysta</th>
+                  <th className="py-3 px-4 text-[#082318]">AC Sedan (Dzire)</th>
+                  <th className="py-3 px-4 text-emerald-800">AC Ertiga / SUV</th>
+                  <th className="py-3 px-4 text-[#d97706]">Innova Crysta</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#16432f]">
+              <tbody className="divide-y divide-[#e2ede6]">
                 {routes.map((r, idx) => (
-                  <tr key={idx} className="hover:bg-[#06150f] transition">
+                  <tr key={idx} className="hover:bg-[#f8faf8] transition">
                     <td className="py-4 px-4">
-                      <p className="font-semibold text-white">{r.route}</p>
-                      <span className="text-[11px] text-[#86a898]">{r.highways}</span>
+                      <p className="font-semibold text-[#082318]">{r.route}</p>
+                      <span className="text-[11px] text-[#517362]">{r.highways}</span>
                     </td>
-                    <td className="py-4 px-4 text-[#c2d7cd] font-mono">
+                    <td className="py-4 px-4 text-[#375847] font-mono">
                       <div>{r.distance}</div>
-                      <span className="text-[11px] text-[#86a898]">{r.duration}</span>
+                      <span className="text-[11px] text-[#517362]">{r.duration}</span>
                     </td>
-                    <td className="py-4 px-4 font-bold text-white font-mono">{r.sedanPrice}</td>
-                    <td className="py-4 px-4 font-bold text-emerald-400 font-mono">{r.suvPrice}</td>
-                    <td className="py-4 px-4 font-bold text-amber-400 font-mono">{r.crystaPrice}</td>
+                    <td className="py-4 px-4 font-bold text-[#082318] font-mono">{r.sedanPrice}</td>
+                    <td className="py-4 px-4 font-bold text-emerald-800 font-mono">{r.suvPrice}</td>
+                    <td className="py-4 px-4 font-bold text-[#d97706] font-mono">{r.crystaPrice}</td>
                   </tr>
                 ))}
               </tbody>
@@ -216,28 +216,28 @@ export default function TaxiTransfersPage() {
         {/* SECTION 3: FLEET OVERVIEW */}
         <section className="space-y-6">
           <div className="space-y-1">
-            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white">
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#082318]">
               Our Premium Intercity Taxi Fleet
             </h2>
-            <p className="text-xs sm:text-sm text-[#86a898]">Choose the ideal vehicle size and comfort level for your party.</p>
+            <p className="text-xs sm:text-sm text-[#517362]">Choose the ideal vehicle size and comfort level for your party.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {fleet.map(v => (
-              <div key={v.vehicle} className="p-6 rounded-3xl bg-[#092218] border border-[#16432f] space-y-4 flex flex-col justify-between hover:border-emerald-500/40 transition">
+              <div key={v.vehicle} className="p-6 rounded-3xl bg-white border border-[#d2e4d9] space-y-4 flex flex-col justify-between hover:border-emerald-500/50 hover:shadow-lg transition">
                 <div className="space-y-3">
-                  <span className="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold uppercase bg-emerald-500/15 text-emerald-400 border border-emerald-500/30">
+                  <span className="inline-block px-2.5 py-0.5 rounded text-[10px] font-bold uppercase bg-emerald-50 text-emerald-800 border border-emerald-200">
                     {v.badge}
                   </span>
                   <div>
-                    <h3 className="font-bold text-white text-base">{v.vehicle}</h3>
-                    <p className="text-xs text-amber-400 font-semibold mt-0.5">{v.capacity}</p>
+                    <h3 className="font-bold text-[#082318] text-base">{v.vehicle}</h3>
+                    <p className="text-xs text-[#d97706] font-semibold mt-0.5">{v.capacity}</p>
                   </div>
-                  <p className="text-xs text-[#86a898] leading-relaxed">{v.desc}</p>
+                  <p className="text-xs text-[#517362] leading-relaxed">{v.desc}</p>
                 </div>
                 <button
                   onClick={() => openBookingModal({ notes: `Booking request for ${v.vehicle}` })}
-                  className="w-full py-2.5 rounded-xl bg-[#06150f] hover:bg-emerald-600 hover:text-white text-[#c2d7cd] border border-[#16432f] text-xs font-bold transition cursor-pointer"
+                  className="w-full py-2.5 rounded-xl bg-[#edf5f0] hover:bg-emerald-700 hover:text-white text-[#082318] border border-[#d2e4d9] text-xs font-bold transition cursor-pointer"
                 >
                   Book This Vehicle
                 </button>
@@ -249,65 +249,65 @@ export default function TaxiTransfersPage() {
         {/* SECTION 4: SERVICE GUARANTEES */}
         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {guarantees.map((g, i) => (
-            <div key={i} className="p-5 sm:p-6 rounded-2xl bg-[#092218] border border-[#16432f] hover:border-emerald-500/40 transition space-y-2">
-              <div className="w-8 h-8 rounded-lg bg-emerald-500/15 flex items-center justify-center text-emerald-400 font-bold text-xs">
+            <div key={i} className="p-5 sm:p-6 rounded-2xl bg-white border border-[#d2e4d9] hover:border-emerald-500/50 hover:shadow-md transition space-y-2">
+              <div className="w-8 h-8 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-800 font-bold text-xs">
                 0{i + 1}
               </div>
-              <h3 className="font-bold text-white text-base">{g.title}</h3>
-              <p className="text-xs text-[#86a898] leading-relaxed">{g.desc}</p>
+              <h3 className="font-bold text-[#082318] text-base">{g.title}</h3>
+              <p className="text-xs text-[#517362] leading-relaxed">{g.desc}</p>
             </div>
           ))}
         </section>
 
         {/* SECTION 5: HIGHWAY DRIVING INSIGHTS */}
-        <section className="p-6 sm:p-10 rounded-3xl bg-[#092218] border border-[#16432f] space-y-6">
-          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white">
+        <section className="p-6 sm:p-10 rounded-3xl bg-[#f4f8f5] border border-[#d2e4d9] space-y-6">
+          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#082318]">
             Highway Driving Insights &amp; Stops
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs">
-            <div className="p-5 rounded-2xl bg-[#06150f] border border-[#16432f] space-y-2">
-              <Navigation className="w-5 h-5 text-amber-400" />
-              <h3 className="font-bold text-white text-sm">Delhi-Mumbai Expressway (NE-4)</h3>
-              <p className="text-[#86a898]">World-class 8-lane expressway with modern wayside rest plazas, food courts, and clean fuel stops.</p>
+            <div className="p-5 rounded-2xl bg-white border border-[#d2e4d9] space-y-2 shadow-sm">
+              <Navigation className="w-5 h-5 text-[#d97706]" />
+              <h3 className="font-bold text-[#082318] text-sm">Delhi-Mumbai Expressway (NE-4)</h3>
+              <p className="text-[#517362]">World-class 8-lane expressway with modern average speeds, roadside rest plazas, food courts, and clean fuel stops.</p>
             </div>
-            <div className="p-5 rounded-2xl bg-[#06150f] border border-[#16432f] space-y-2">
-              <Fuel className="w-5 h-5 text-emerald-400" />
-              <h3 className="font-bold text-white text-sm">Jaipur to Ranthambore Highway</h3>
-              <p className="text-[#86a898]">Smooth 4-lane stretch via Lalsot with picturesque rural mustard crops and mountain views.</p>
+            <div className="p-5 rounded-2xl bg-white border border-[#d2e4d9] space-y-2 shadow-sm">
+              <Fuel className="w-5 h-5 text-emerald-700" />
+              <h3 className="font-bold text-[#082318] text-sm">Jaipur to Ranthambore Highway</h3>
+              <p className="text-[#517362]">Smooth 4-lane stretch via Lalsot with picturesque rural mustard crops and mountain views.</p>
             </div>
-            <div className="p-5 rounded-2xl bg-[#06150f] border border-[#16432f] space-y-2">
-              <Clock className="w-5 h-5 text-teal-400" />
-              <h3 className="font-bold text-white text-sm">Custom Meal &amp; Chai Breaks</h3>
-              <p className="text-[#86a898]">Chauffeurs gladly pause at hygienic roadside stops for fresh kulhad chai and hot parathas.</p>
+            <div className="p-5 rounded-2xl bg-white border border-[#d2e4d9] space-y-2 shadow-sm">
+              <Clock className="w-5 h-5 text-teal-700" />
+              <h3 className="font-bold text-[#082318] text-sm">Custom Meal &amp; Chai Breaks</h3>
+              <p className="text-[#517362]">Chauffeurs gladly pause at hygienic roadside stops for fresh kulhad chai and hot parathas.</p>
             </div>
           </div>
         </section>
 
         {/* SECTION 6: FAQS */}
         <section className="space-y-6">
-          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white">
+          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#082318]">
             Cab Transfer FAQs
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
             {faqs.map((faq, i) => (
-              <div key={i} className="p-5 rounded-2xl bg-[#092218] border border-[#16432f] space-y-2">
-                <h3 className="font-bold text-white text-sm flex items-center gap-2">
-                  <HelpCircle className="w-4 h-4 text-amber-400 shrink-0" />
+              <div key={i} className="p-5 rounded-2xl bg-white border border-[#d2e4d9] space-y-2 shadow-sm">
+                <h3 className="font-bold text-[#082318] text-sm flex items-center gap-2">
+                  <HelpCircle className="w-4 h-4 text-[#d97706] shrink-0" />
                   <span>{faq.q}</span>
                 </h3>
-                <p className="text-[#86a898] leading-relaxed pl-6">{faq.a}</p>
+                <p className="text-[#517362] leading-relaxed pl-6">{faq.a}</p>
               </div>
             ))}
           </div>
         </section>
 
         {/* SECTION 7: HIGH-CONVERSION BOOKING BANNER */}
-        <section className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-[#092218] via-[#0d2e20] to-[#092218] border border-emerald-500/30 text-center space-y-6 shadow-2xl">
+        <section className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-emerald-900 via-emerald-800 to-[#92400e] border border-emerald-600/30 text-center space-y-6 shadow-xl text-white">
           <div className="max-w-2xl mx-auto space-y-3">
             <h2 className="font-serif text-2xl sm:text-4xl font-bold text-white">
               Reserve Your Private Intercity Cab Transfer
             </h2>
-            <p className="text-xs sm:text-sm text-[#c2d7cd] leading-relaxed">
+            <p className="text-xs sm:text-sm text-emerald-100 leading-relaxed">
               Arrive relaxed, safely, and on time for your jungle safari drive. Book private taxi transfers with verified drivers.
             </p>
           </div>
@@ -315,15 +315,15 @@ export default function TaxiTransfersPage() {
           <div className="flex flex-wrap items-center justify-center gap-4">
             <button
               onClick={() => openBookingModal({ notes: 'Interested in Private Cab Transfer' })}
-              className="px-8 py-3.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-sm shadow-xl transition cursor-pointer border border-emerald-400/30"
+              className="px-8 py-3.5 rounded-xl bg-white hover:bg-amber-50 text-[#082318] font-bold text-sm shadow-xl transition cursor-pointer border border-white/50"
             >
               Book Cab Transfer
             </button>
             <a
               href="tel:+919971965629"
-              className="px-6 py-3.5 rounded-xl bg-[#06150f] hover:bg-[#092218] border border-[#16432f] text-white font-bold text-sm flex items-center gap-2 transition"
+              className="px-6 py-3.5 rounded-xl bg-black/25 hover:bg-black/40 border border-white/20 text-white font-bold text-sm flex items-center gap-2 transition"
             >
-              <Phone className="w-4 h-4 text-emerald-400" />
+              <Phone className="w-4 h-4 text-amber-300" />
               <span>Transport Desk: +91 99719 65629</span>
             </a>
           </div>

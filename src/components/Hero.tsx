@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import FireflyCanvas from './FireflyCanvas';
 import AnimatedCounter from './AnimatedCounter';
 import SightingsTicker from './SightingsTicker';
+import { JungleTopCanopy, JungleCornerBranch, JungleGodRays, JungleSavannahGrass } from './JungleFoliageDecorations';
 
 interface HeroProps {
   onOpenBookingModal: (prefill?: Record<string, string>) => void;
@@ -76,10 +77,16 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
         {/* Ambient Firefly / Ember Particles Overlay */}
         <FireflyCanvas />
 
-        {/* Cinematic Multi-stop Overlay - Jungle Atmosphere */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#06150f]/95 via-[#06150f]/80 to-[#06150f]/50" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#06150f] via-transparent to-black/50" />
+        {/* Cinematic Multi-stop Overlay - Jungle with White Theme */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-white/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-white/40" />
       </div>
+
+      {/* Hanging Jungle Canopy Vines, Sunbeams & Tree Foliage */}
+      <JungleGodRays />
+      <JungleTopCanopy className="opacity-90" />
+      <JungleCornerBranch position="right" className="top-16 right-0 opacity-70" />
+      <JungleSavannahGrass className="bottom-14 hidden sm:block" />
 
       <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex items-center py-2 sm:py-3">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center w-full">
@@ -92,14 +99,14 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
           >
             {/* Live Status & Trust Pill */}
             <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-2.5">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/40 text-emerald-300 text-xs font-semibold tracking-wide backdrop-blur-md shadow-sm">
-                <Sparkles className="w-3.5 h-3.5 text-[#f59e0b] animate-spin" style={{ animationDuration: '6s' }} />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold tracking-wide backdrop-blur-md shadow-sm">
+                <Sparkles className="w-3.5 h-3.5 text-[#d97706] animate-spin" style={{ animationDuration: '6s' }} />
                 <span>Official Safari Bookings 2026-2027</span>
               </div>
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-950/70 border border-emerald-700/50 text-[11px] text-emerald-300 font-medium relative">
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-100/70 border border-emerald-300 text-[11px] text-emerald-900 font-medium relative">
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-600 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600" />
                 </span>
                 <span>Govt. Reg. Operator</span>
               </div>
@@ -108,10 +115,10 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
             {/* H1 Heading with Gradient Reveal */}
             <motion.h1
               variants={itemVariants}
-              className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-[1.15]"
+              className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#082318] tracking-tight leading-[1.15]"
             >
               Ranthambore Safari &amp;{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-[#f59e0b] to-[#fb923c] animate-gradient">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 via-[#ea580c] to-[#d97706]">
                 Wildlife Tours
               </span>
             </motion.h1>
@@ -119,7 +126,7 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
             {/* Subheading - Concise & Punchy */}
             <motion.p
               variants={itemVariants}
-              className="text-sm sm:text-base text-[#bad3c6] leading-relaxed max-w-2xl font-normal"
+              className="text-sm sm:text-base text-[#1b3a2a] leading-relaxed max-w-2xl font-normal"
             >
               Step into the realm of the Royal Bengal Tiger. Authorized 4x4 Maruti Gypsy and 20-seater Canter permits, luxury jungle resort stays, and expert naturalist trackers across Zones 1 to 10.
             </motion.p>
@@ -136,9 +143,9 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
                   key={idx}
                   whileHover={{ scale: 1.03, x: 2 }}
                   transition={{ duration: 0.2 }}
-                  className="flex items-center gap-2 text-xs sm:text-sm text-[#e0eee6]"
+                  className="flex items-center gap-2 text-xs sm:text-sm text-[#183d2a] font-medium"
                 >
-                  <CheckCircle className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                  <CheckCircle className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                   <span>{point}</span>
                 </motion.div>
               ))}
@@ -150,9 +157,8 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
                 whileHover={{ scale: 1.04, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 onClick={() => onOpenBookingModal()}
-                className="px-5 py-3 rounded-xl bg-gradient-to-r from-emerald-600 via-[#ea580c] to-[#d97706] hover:from-emerald-500 hover:to-[#ea580c] text-white font-bold text-sm shadow-xl shadow-emerald-950/40 flex items-center gap-2 cursor-pointer animate-glow relative overflow-hidden group"
+                className="px-5 py-3 rounded-xl bg-gradient-to-r from-emerald-700 via-[#ea580c] to-[#d97706] hover:from-emerald-600 hover:to-[#ea580c] text-white font-bold text-sm shadow-xl shadow-emerald-950/20 flex items-center gap-2 cursor-pointer relative overflow-hidden group"
               >
-                {/* Button shine sweep effect */}
                 <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform pointer-events-none" />
                 <span>Request Safari Booking</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition" />
@@ -162,7 +168,7 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
                 whileHover={{ scale: 1.03, y: -1 }}
                 whileTap={{ scale: 0.98 }}
                 href="#packages"
-                className="px-5 py-3 rounded-xl bg-[#0e2a1e]/80 hover:bg-[#133526] text-[#e0eee6] font-semibold text-sm border border-[#1b4834] transition duration-200 flex items-center gap-1.5"
+                className="px-5 py-3 rounded-xl bg-white hover:bg-emerald-50 text-[#082318] font-semibold text-sm border border-[#cbe0d3] shadow-sm transition duration-200 flex items-center gap-1.5"
               >
                 <span>View Packages</span>
               </motion.a>
@@ -172,7 +178,7 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
                 href="https://wa.me/919971965629?text=Hi%20Ranthambore%20Wild%20Life%20Tour,%20I%20am%20looking%20for%20a%20Custom%20Quote."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-400 hover:text-emerald-300 transition px-2 py-1"
+                className="inline-flex items-center gap-2 text-sm font-semibold text-[#047857] hover:text-[#065f46] transition px-3 py-1 rounded-lg bg-emerald-50 border border-emerald-200"
               >
                 <MessageCircle className="w-4 h-4 fill-current" />
                 <span>WhatsApp Quote</span>
@@ -182,25 +188,25 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
             {/* Balanced Stats Bar with Animated Counter */}
             <motion.div
               variants={itemVariants}
-              className="pt-2 border-t border-[#143828] grid grid-cols-3 gap-3 max-w-lg"
+              className="pt-2 border-t border-[#d8eae0] grid grid-cols-3 gap-3 max-w-lg"
             >
               <div>
-                <span className="block font-serif text-lg sm:text-xl font-bold text-white">
+                <span className="block font-serif text-lg sm:text-xl font-bold text-[#082318]">
                   <AnimatedCounter value={12} suffix="+ Yrs" duration={1.8} />
                 </span>
-                <span className="block text-[11px] text-[#7fa391]">Wildlife Experience</span>
+                <span className="block text-[11px] text-[#4d6f5f]">Wildlife Experience</span>
               </div>
               <div>
-                <span className="block font-serif text-lg sm:text-xl font-bold text-[#f59e0b]">
+                <span className="block font-serif text-lg sm:text-xl font-bold text-[#ea580c]">
                   <AnimatedCounter value={4.9} decimals={1} suffix=" / 5.0" duration={2} />
                 </span>
-                <span className="block text-[11px] text-[#7fa391]">1,400+ Reviews</span>
+                <span className="block text-[11px] text-[#4d6f5f]">1,400+ Reviews</span>
               </div>
               <div>
-                <span className="block font-serif text-lg sm:text-xl font-bold text-emerald-400">
+                <span className="block font-serif text-lg sm:text-xl font-bold text-[#047857]">
                   <AnimatedCounter value={100} suffix="%" duration={1.5} />
                 </span>
-                <span className="block text-[11px] text-[#7fa391]">Verified Permits</span>
+                <span className="block text-[11px] text-[#4d6f5f]">Verified Permits</span>
               </div>
             </motion.div>
           </motion.div>
@@ -210,41 +216,41 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
             className="lg:col-span-5"
             id="safari-booking"
           >
-            <div className="glass-panel p-4 sm:p-5 rounded-2xl border border-emerald-500/30 bg-[#092218]/90 shadow-2xl relative backdrop-blur-xl">
+            <div className="p-4 sm:p-5 rounded-2xl border border-[#d2e5da] bg-white/95 shadow-2xl relative backdrop-blur-xl">
               {/* Header inside widget */}
-              <div className="flex items-center justify-between border-b border-[#173e2c] pb-2.5 mb-3.5">
+              <div className="flex items-center justify-between border-b border-[#e2ede6] pb-2.5 mb-3.5">
                 <div>
-                  <h3 className="font-serif text-lg sm:text-xl font-bold text-white flex items-center gap-2">
+                  <h3 className="font-serif text-lg sm:text-xl font-bold text-[#082318] flex items-center gap-2">
                     <span>Check Safari Availability</span>
-                    <span className="inline-block w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                   </h3>
-                  <p className="text-[11px] text-[#93b5a4]">
+                  <p className="text-[11px] text-[#4d6f5f]">
                     Select date &amp; preference for real-time quote
                   </p>
                 </div>
-                <span className="px-2 py-0.5 rounded bg-emerald-500/20 border border-emerald-500/40 text-emerald-300 text-[10px] font-bold uppercase tracking-wider">
+                <span className="px-2 py-0.5 rounded bg-emerald-50 border border-emerald-200 text-emerald-800 text-[10px] font-bold uppercase tracking-wider">
                   2026-27 Rates
                 </span>
               </div>
 
               <form onSubmit={handleWidgetSubmit} className="space-y-3">
-                {/* Vehicle Selection Tabs with Animated Pill Transition */}
+                {/* Vehicle Selection Tabs */}
                 <div>
-                  <label className="block text-[11px] font-semibold text-[#bad3c6] mb-1.5 uppercase tracking-wider">
+                  <label className="block text-[11px] font-semibold text-[#183d2a] mb-1.5 uppercase tracking-wider">
                     1. Choose Safari Vehicle
                   </label>
-                  <div className="grid grid-cols-2 gap-2 relative bg-[#061710] p-1 rounded-xl border border-[#16432f]">
+                  <div className="grid grid-cols-2 gap-2 relative bg-[#f0f6f2] p-1 rounded-xl border border-[#d2e4d9]">
                     <button
                       type="button"
                       onClick={() => setVehicle('gypsy')}
                       className={`relative z-10 p-2 rounded-lg text-left transition duration-200 cursor-pointer ${
-                        vehicle === 'gypsy' ? 'text-white' : 'text-[#8cb39e] hover:text-white'
+                        vehicle === 'gypsy' ? 'text-[#064e3b]' : 'text-[#416352] hover:text-[#082318]'
                       }`}
                     >
                       {vehicle === 'gypsy' && (
                         <motion.div
                           layoutId="heroVehicleTab"
-                          className="absolute inset-0 bg-gradient-to-r from-emerald-600/40 to-[#ea580c]/30 border border-emerald-400 rounded-lg shadow-md -z-10"
+                          className="absolute inset-0 bg-white border-2 border-emerald-600 rounded-lg shadow-sm -z-10"
                           transition={{ type: 'spring', stiffness: 450, damping: 30 }}
                         />
                       )}
@@ -252,20 +258,20 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
                         <span className="font-bold text-xs sm:text-sm">Jeep (Gypsy)</span>
                         <span className="text-[9px] bg-emerald-600 text-white px-1.5 py-0.2 rounded font-bold">6-Seater</span>
                       </div>
-                      <p className="text-[10px] text-emerald-300 mt-0.5 font-medium">₹2,300 / person</p>
+                      <p className="text-[10px] text-emerald-700 mt-0.5 font-semibold">₹2,300 / person</p>
                     </button>
 
                     <button
                       type="button"
                       onClick={() => setVehicle('canter')}
                       className={`relative z-10 p-2 rounded-lg text-left transition duration-200 cursor-pointer ${
-                        vehicle === 'canter' ? 'text-white' : 'text-[#8cb39e] hover:text-white'
+                        vehicle === 'canter' ? 'text-[#78350f]' : 'text-[#416352] hover:text-[#082318]'
                       }`}
                     >
                       {vehicle === 'canter' && (
                         <motion.div
                           layoutId="heroVehicleTab"
-                          className="absolute inset-0 bg-gradient-to-r from-emerald-600/40 to-[#ea580c]/30 border border-emerald-400 rounded-lg shadow-md -z-10"
+                          className="absolute inset-0 bg-white border-2 border-[#d97706] rounded-lg shadow-sm -z-10"
                           transition={{ type: 'spring', stiffness: 450, damping: 30 }}
                         />
                       )}
@@ -273,16 +279,16 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
                         <span className="font-bold text-xs sm:text-sm">Canter Safari</span>
                         <span className="text-[9px] bg-[#d97706] text-white px-1.5 py-0.2 rounded font-bold">20-Seater</span>
                       </div>
-                      <p className="text-[10px] text-[#f59e0b] mt-0.5 font-medium">₹1,800 / person</p>
+                      <p className="text-[10px] text-[#b45309] mt-0.5 font-semibold">₹1,800 / person</p>
                     </button>
                   </div>
                 </div>
 
                 {/* Safari Date Input */}
                 <div>
-                  <label className="block text-[11px] font-semibold text-[#bad3c6] mb-1 uppercase tracking-wider flex items-center justify-between">
+                  <label className="block text-[11px] font-semibold text-[#183d2a] mb-1 uppercase tracking-wider flex items-center justify-between">
                     <span>2. Safari Date</span>
-                    <span className="text-[9px] text-[#f59e0b] font-normal">Advance booking advised</span>
+                    <span className="text-[9px] text-[#ea580c] font-medium">Advance booking advised</span>
                   </label>
                   <div className="relative">
                     <input
@@ -290,7 +296,7 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
                       required
                       value={safariDate}
                       onChange={(e) => setSafariDate(e.target.value)}
-                      className="w-full bg-[#0a2016] border border-[#164532] rounded-xl px-3 py-1.5 text-white text-xs focus:outline-none focus:border-emerald-400 transition duration-200"
+                      className="w-full bg-[#f8faf8] border border-[#c4dcce] rounded-xl px-3 py-1.5 text-[#082318] text-xs focus:outline-none focus:border-emerald-600 transition duration-200"
                     />
                   </div>
                 </div>
@@ -298,13 +304,13 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
                 {/* Shift & Zone Dropdowns */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                   <div>
-                    <label className="block text-[11px] font-semibold text-[#bad3c6] mb-1 uppercase tracking-wider">
+                    <label className="block text-[11px] font-semibold text-[#183d2a] mb-1 uppercase tracking-wider">
                       Shift Timing
                     </label>
                     <select
                       value={shift}
                       onChange={(e) => setShift(e.target.value)}
-                      className="w-full bg-[#0a2016] border border-[#164532] rounded-xl px-2.5 py-1.5 text-white text-xs focus:outline-none focus:border-emerald-400 transition"
+                      className="w-full bg-[#f8faf8] border border-[#c4dcce] rounded-xl px-2.5 py-1.5 text-[#082318] text-xs focus:outline-none focus:border-emerald-600 transition"
                     >
                       <option>Morning (06:30 AM - 10:00 AM)</option>
                       <option>Afternoon (02:30 PM - 06:00 PM)</option>
@@ -313,13 +319,13 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
                   </div>
 
                   <div>
-                    <label className="block text-[11px] font-semibold text-[#bad3c6] mb-1 uppercase tracking-wider">
+                    <label className="block text-[11px] font-semibold text-[#183d2a] mb-1 uppercase tracking-wider">
                       Preferred Zone
                     </label>
                     <select
                       value={zone}
                       onChange={(e) => setZone(e.target.value)}
-                      className="w-full bg-[#0a2016] border border-[#164532] rounded-xl px-2.5 py-1.5 text-white text-xs focus:outline-none focus:border-emerald-400 transition"
+                      className="w-full bg-[#f8faf8] border border-[#c4dcce] rounded-xl px-2.5 py-1.5 text-[#082318] text-xs focus:outline-none focus:border-emerald-600 transition"
                     >
                       <option>Zone 1 to 5 (Core Gates)</option>
                       <option>Zone 6 to 10 (Buffer Gates)</option>
@@ -329,24 +335,24 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
                 </div>
 
                 {/* Guest Counters */}
-                <div className="grid grid-cols-2 gap-2.5 bg-[#061710] p-2 rounded-xl border border-[#16432f]">
+                <div className="grid grid-cols-2 gap-2.5 bg-[#f0f6f2] p-2 rounded-xl border border-[#d2e4d9]">
                   <div>
-                    <span className="text-[10px] text-[#8cb39e] block">Adults (12+ yrs)</span>
+                    <span className="text-[10px] text-[#416352] block font-medium">Adults (12+ yrs)</span>
                     <div className="flex items-center gap-2 mt-0.5">
                       <motion.button
                         whileTap={{ scale: 0.85 }}
                         type="button"
                         onClick={() => setAdults(Math.max(1, adults - 1))}
-                        className="w-6 h-6 rounded bg-[#133526] text-white hover:bg-emerald-600 transition flex items-center justify-center font-bold text-xs"
+                        className="w-6 h-6 rounded bg-white border border-[#c4dcce] text-[#082318] hover:bg-emerald-50 transition flex items-center justify-center font-bold text-xs"
                       >
                         -
                       </motion.button>
-                      <span className="text-white font-bold text-xs">{adults}</span>
+                      <span className="text-[#082318] font-bold text-xs">{adults}</span>
                       <motion.button
                         whileTap={{ scale: 0.85 }}
                         type="button"
                         onClick={() => setAdults(adults + 1)}
-                        className="w-6 h-6 rounded bg-[#133526] text-white hover:bg-emerald-600 transition flex items-center justify-center font-bold text-xs"
+                        className="w-6 h-6 rounded bg-white border border-[#c4dcce] text-[#082318] hover:bg-emerald-50 transition flex items-center justify-center font-bold text-xs"
                       >
                         +
                       </motion.button>
@@ -354,22 +360,22 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
                   </div>
 
                   <div>
-                    <span className="text-[10px] text-[#8cb39e] block">Children (5-11 yrs)</span>
+                    <span className="text-[10px] text-[#416352] block font-medium">Children (5-11 yrs)</span>
                     <div className="flex items-center gap-2 mt-0.5">
                       <motion.button
                         whileTap={{ scale: 0.85 }}
                         type="button"
                         onClick={() => setChildren(Math.max(0, children - 1))}
-                        className="w-6 h-6 rounded bg-[#133526] text-white hover:bg-emerald-600 transition flex items-center justify-center font-bold text-xs"
+                        className="w-6 h-6 rounded bg-white border border-[#c4dcce] text-[#082318] hover:bg-emerald-50 transition flex items-center justify-center font-bold text-xs"
                       >
                         -
                       </motion.button>
-                      <span className="text-white font-bold text-xs">{children}</span>
+                      <span className="text-[#082318] font-bold text-xs">{children}</span>
                       <motion.button
                         whileTap={{ scale: 0.85 }}
                         type="button"
                         onClick={() => setChildren(children + 1)}
-                        className="w-6 h-6 rounded bg-[#133526] text-white hover:bg-emerald-600 transition flex items-center justify-center font-bold text-xs"
+                        className="w-6 h-6 rounded bg-white border border-[#c4dcce] text-[#082318] hover:bg-emerald-50 transition flex items-center justify-center font-bold text-xs"
                       >
                         +
                       </motion.button>
@@ -379,12 +385,12 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
 
                 {/* Live Estimated Price with Animated Number */}
                 <div className="flex items-center justify-between px-1 text-xs">
-                  <span className="text-[#8cb39e] text-[11px]">Estimated Safari Cost:</span>
+                  <span className="text-[#082318] text-[11px] font-semibold">Estimated Safari Cost:</span>
                   <div className="text-right">
-                    <span className="text-base font-bold text-[#f59e0b] inline-block">
+                    <span className="text-base font-bold text-[#ea580c] inline-block">
                       ₹{estimatedTotal.toLocaleString('en-IN')}
                     </span>
-                    <span className="text-[9px] text-[#6d917f] block">
+                    <span className="text-[9px] text-[#2e5241] font-medium block">
                       Incl. permit, vehicle &amp; naturalist guide
                     </span>
                   </div>
@@ -395,7 +401,7 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   type="submit"
-                  className="w-full py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 via-[#ea580c] to-[#d97706] hover:from-emerald-500 hover:to-[#ea580c] text-white font-bold text-xs sm:text-sm tracking-wide shadow-lg shadow-emerald-950/40 flex items-center justify-center gap-2 transition duration-200 cursor-pointer"
+                  className="w-full py-2.5 rounded-xl bg-gradient-to-r from-emerald-700 via-[#ea580c] to-[#d97706] hover:from-emerald-600 hover:to-[#ea580c] text-white font-bold text-xs sm:text-sm tracking-wide shadow-md shadow-emerald-950/20 flex items-center justify-center gap-2 transition duration-200 cursor-pointer"
                 >
                   <span>Check Availability &amp; Get Quote</span>
                   <ArrowRight className="w-4 h-4" />
@@ -403,7 +409,7 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
               </form>
 
               <div className="mt-2 text-center">
-                <span className="text-[10px] text-[#6d917f]">
+                <span className="text-[10px] text-[#082318] font-medium">
                   🔒 No advance payment needed • Fast 15-min response
                 </span>
               </div>

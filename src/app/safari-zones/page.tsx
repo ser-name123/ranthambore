@@ -85,33 +85,33 @@ export default function SafariZonesPage() {
   ];
 
   return (
-    <div className="relative py-12 lg:py-20 overflow-hidden bg-[#06150f]">
+    <div className="relative py-12 lg:py-20 overflow-hidden bg-white">
       {/* Ambient background glows */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/3 left-10 w-96 h-96 bg-[#16432f]/20 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/3 left-10 w-96 h-96 bg-amber-500/5 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Breadcrumb Navigation */}
-        <nav aria-label="Breadcrumb" className="mb-8 flex items-center gap-2 text-xs text-[#86a898]">
-          <Link href="/" className="hover:text-emerald-400 transition flex items-center gap-1.5 font-medium">
+        <nav aria-label="Breadcrumb" className="mb-8 flex items-center gap-2 text-xs text-[#517362]">
+          <Link href="/" className="hover:text-emerald-700 transition flex items-center gap-1.5 font-medium">
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Home</span>
           </Link>
-          <ChevronRight className="w-3.5 h-3.5 text-emerald-700" />
-          <span className="text-[#f59e0b] font-semibold">Safari Zones</span>
+          <ChevronRight className="w-3.5 h-3.5 text-emerald-600" />
+          <span className="text-[#b45309] font-semibold">Safari Zones</span>
         </nav>
 
         {/* SECTION 1: Hero Header with Tiger Lake Visual */}
-        <div className="relative rounded-3xl overflow-hidden border border-[#16432f] mb-16 shadow-2xl">
+        <div className="relative rounded-3xl overflow-hidden border border-[#d2e4d9] mb-16 shadow-xl">
           <div className="absolute inset-0">
             <Image
               src="/images/tiger_lake.jpg"
               alt="Bengal tiger resting near Padam Talao lake and fort ruins in Ranthambore"
               fill
-              className="object-cover object-center opacity-35"
+              className="object-cover object-center opacity-30"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#06150f] via-[#06150f]/80 to-[#06150f]/40" />
+            <div className="absolute inset-0 bg-gradient-to-t from-white via-white/85 to-white/40" />
           </div>
 
           <motion.div
@@ -120,19 +120,19 @@ export default function SafariZonesPage() {
             transition={{ duration: 0.6 }}
             className="relative z-10 text-center max-w-4xl mx-auto py-16 px-4 sm:px-8 space-y-4"
           >
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/15 text-emerald-400 text-xs font-bold uppercase tracking-widest border border-emerald-500/30 shadow-sm">
-              <Compass className="w-4 h-4 text-emerald-400" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-bold uppercase tracking-widest border border-emerald-200 shadow-sm">
+              <Compass className="w-4 h-4 text-emerald-700" />
               Official Zone Directory &amp; Territorial Map (2026-2027)
             </div>
 
-            <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
+            <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#082318] tracking-tight leading-tight">
               Ranthambore Safari Zones:{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-[#f59e0b]">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 via-teal-700 to-[#d97706]">
                 1 to 10 Gate Explorer
               </span>
             </h1>
 
-            <p className="text-sm sm:text-base text-[#c2d7cd] leading-relaxed max-w-2xl mx-auto">
+            <p className="text-sm sm:text-base text-[#375847] leading-relaxed max-w-2xl mx-auto">
               Discover the landscape, watering holes, prominent resident tigers, and seasonal shift timings for each of Ranthambore Tiger Reserve&apos;s 10 designated safari zones.
             </p>
 
@@ -140,7 +140,7 @@ export default function SafariZonesPage() {
               <button
                 type="button"
                 onClick={() => openBookingModal({ zone: 'Zone 1-5 (Core)' })}
-                className="px-8 py-3.5 rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-[#f59e0b] hover:from-emerald-500 hover:to-[#ea580c] text-white font-bold text-sm shadow-xl shadow-emerald-950/50 flex items-center gap-2 cursor-pointer transition duration-300"
+                className="px-8 py-3.5 rounded-xl bg-gradient-to-r from-emerald-700 via-emerald-600 to-[#d97706] hover:from-emerald-800 hover:to-[#b45309] text-white font-bold text-sm shadow-md flex items-center gap-2 cursor-pointer transition duration-300"
               >
                 <span>Check Zone Availability</span>
                 <ArrowRight className="w-4 h-4" />
@@ -149,9 +149,9 @@ export default function SafariZonesPage() {
                 href="https://wa.me/919971965629?text=Hello%20Ranthambore%20Wild%20Life%20Tour,%20which%20safari%20zone%20has%20the%20best%20tiger%20sightings%20currently?"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3.5 rounded-xl bg-[#092218] hover:bg-[#113123] text-white font-bold text-sm border border-[#16432f] flex items-center gap-2 transition"
+                className="px-6 py-3.5 rounded-xl bg-white hover:bg-[#f0f6f2] text-[#082318] font-bold text-sm border border-[#d2e4d9] flex items-center gap-2 transition shadow-sm"
               >
-                <MessageCircle className="w-4 h-4 text-emerald-400" />
+                <MessageCircle className="w-4 h-4 text-emerald-700" />
                 <span>Ask Sighting Specialist</span>
               </a>
             </div>
@@ -164,16 +164,16 @@ export default function SafariZonesPage() {
         </div>
 
         {/* SECTION 3: Seasonal Safari Shift Timings Table */}
-        <div className="mb-24 p-8 rounded-2xl bg-[#092218] border border-[#16432f] space-y-6">
+        <div className="mb-24 p-8 rounded-2xl bg-[#f4f8f5] border border-[#d2e4d9] space-y-6 shadow-sm">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center font-bold">
+            <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold border border-emerald-200">
               <Clock className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="font-serif text-2xl font-bold text-white">
+              <h2 className="font-serif text-2xl font-bold text-[#082318]">
                 Official Safari Shift Timings (By Season)
               </h2>
-              <span className="text-xs text-[#86a898]">
+              <span className="text-xs text-[#517362]">
                 Rajasthan Forest Department Gate Opening &amp; Closing Schedule
               </span>
             </div>
@@ -182,20 +182,20 @@ export default function SafariZonesPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs sm:text-sm">
               <thead>
-                <tr className="border-b border-[#16432f] text-emerald-400 uppercase font-bold text-[11px] tracking-wider">
+                <tr className="border-b border-[#d2e4d9] text-emerald-800 uppercase font-bold text-[11px] tracking-wider">
                   <th className="py-3 px-4">Period / Month</th>
                   <th className="py-3 px-4">Morning Shift</th>
                   <th className="py-3 px-4">Afternoon Shift</th>
                   <th className="py-3 px-4">Wild Sighting Dynamics</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-[#16432f] text-[#c2d7cd]">
+              <tbody className="divide-y divide-[#e2ede6] text-[#375847]">
                 {seasonalTimings.map((item, idx) => (
-                  <tr key={idx} className="hover:bg-[#0c2a1e] transition">
-                    <td className="py-3.5 px-4 font-semibold text-white">{item.months}</td>
-                    <td className="py-3.5 px-4 text-emerald-400 font-mono">{item.morning}</td>
-                    <td className="py-3.5 px-4 text-[#f59e0b] font-mono">{item.afternoon}</td>
-                    <td className="py-3.5 px-4 text-xs text-[#86a898]">{item.highlight}</td>
+                  <tr key={idx} className="hover:bg-white transition">
+                    <td className="py-3.5 px-4 font-semibold text-[#082318]">{item.months}</td>
+                    <td className="py-3.5 px-4 text-emerald-700 font-mono font-medium">{item.morning}</td>
+                    <td className="py-3.5 px-4 text-[#b45309] font-mono font-medium">{item.afternoon}</td>
+                    <td className="py-3.5 px-4 text-xs text-[#517362]">{item.highlight}</td>
                   </tr>
                 ))}
               </tbody>
@@ -206,13 +206,13 @@ export default function SafariZonesPage() {
         {/* SECTION 4: Prominent Tiger Territories Breakdown */}
         <div className="mb-24">
           <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
-            <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">
+            <span className="text-xs font-bold uppercase tracking-widest text-emerald-800">
               Predator Range Map
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
+            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-[#082318]">
               Tiger Territories Across Zones
             </h2>
-            <p className="text-xs sm:text-sm text-[#86a898]">
+            <p className="text-xs sm:text-sm text-[#517362]">
               Where Ranthambore&apos;s most iconic Bengal tigers establish their home ranges.
             </p>
           </div>
@@ -221,25 +221,25 @@ export default function SafariZonesPage() {
             {tigerTerritories.map((item) => (
               <SpotlightCard
                 key={item.zone}
-                spotlightColor="rgba(16, 185, 129, 0.16)"
+                spotlightColor="rgba(4, 120, 87, 0.12)"
                 enableTilt={true}
-                className="glass-card p-6 rounded-2xl border border-[#16432f] bg-[#092218] space-y-3 flex flex-col justify-between"
+                className="bg-white p-6 rounded-2xl border border-[#d2e4d9] space-y-3 flex flex-col justify-between shadow-md hover:border-emerald-600 hover:shadow-xl transition duration-300"
               >
                 <div className="space-y-2">
-                  <span className="text-[10px] font-bold uppercase px-2.5 py-0.5 rounded bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+                  <span className="text-[10px] font-bold uppercase px-2.5 py-0.5 rounded bg-emerald-50 text-emerald-900 border border-emerald-300">
                     {item.zone}
                   </span>
-                  <h3 className="font-serif text-base font-bold text-white">{item.name}</h3>
-                  <div className="text-xs text-[#f59e0b] font-medium pt-1">
+                  <h3 className="font-serif text-base font-bold text-[#082318]">{item.name}</h3>
+                  <div className="text-xs text-[#b45309] font-medium pt-1">
                     <span>Key Tigers: </span>
-                    <span className="text-white font-semibold">{item.tigers}</span>
+                    <span className="text-[#082318] font-bold">{item.tigers}</span>
                   </div>
-                  <p className="text-xs text-[#86a898] leading-relaxed pt-1">{item.features}</p>
+                  <p className="text-xs text-[#1b3a2a] leading-relaxed font-normal pt-1">{item.features}</p>
                 </div>
                 <button
                   type="button"
                   onClick={() => openBookingModal({ zone: item.zone })}
-                  className="w-full mt-3 py-2 rounded-xl bg-[#06150f] hover:bg-emerald-600 text-white font-bold text-xs border border-[#16432f] hover:border-emerald-500 transition cursor-pointer"
+                  className="w-full mt-3 py-2 rounded-xl bg-emerald-50 hover:bg-emerald-700 text-[#082318] hover:text-white font-bold text-xs border border-emerald-200 hover:border-emerald-700 transition cursor-pointer shadow-xs"
                 >
                   Request {item.zone}
                 </button>
@@ -249,36 +249,36 @@ export default function SafariZonesPage() {
         </div>
 
         {/* SECTION 5: Core vs Buffer Zones Comparison */}
-        <div className="mb-24 p-8 rounded-2xl bg-[#092218] border border-[#16432f] space-y-6">
+        <div className="mb-24 p-8 rounded-2xl bg-[#f4f8f5] border border-[#d2e4d9] space-y-6 shadow-sm">
           <div className="text-center max-w-2xl mx-auto space-y-2">
-            <span className="text-xs font-bold uppercase tracking-widest text-[#f59e0b]">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#b45309]">
               Zone Architecture
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white">
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#082318]">
               Core Zones (1–5) vs Buffer Gates (6–10)
             </h2>
-            <p className="text-xs text-[#86a898]">
+            <p className="text-xs text-[#517362]">
               Understanding the ecological diversity between historical lake basins and rugged buffer hills.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm text-[#c2d7cd]">
-            <div className="p-6 rounded-xl bg-[#06150f] border border-[#16432f] space-y-3">
-              <h3 className="font-serif text-base font-bold text-white flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm text-[#375847]">
+            <div className="p-6 rounded-xl bg-white border border-[#d2e4d9] space-y-3 shadow-sm">
+              <h3 className="font-serif text-base font-bold text-[#082318] flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-600" />
                 Core Zones (Gates 1 to 5)
               </h3>
-              <p className="leading-relaxed text-[#86a898]">
+              <p className="leading-relaxed text-[#517362]">
                 Covers the historical heart of Ranthambore featuring ancient Chauhan dynasty ruins, Banyan trees, Padam Talao, Rajbagh Lake, and Malik Lake. Highest prey concentration of Sambar and spotted deer with world-famous waterbody tiger sightings.
               </p>
             </div>
 
-            <div className="p-6 rounded-xl bg-[#06150f] border border-[#16432f] space-y-3">
-              <h3 className="font-serif text-base font-bold text-white flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#f59e0b]" />
+            <div className="p-6 rounded-xl bg-white border border-[#d2e4d9] space-y-3 shadow-sm">
+              <h3 className="font-serif text-base font-bold text-[#082318] flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#d97706]" />
                 Buffer Zones (Gates 6 to 10)
               </h3>
-              <p className="leading-relaxed text-[#86a898]">
+              <p className="leading-relaxed text-[#517362]">
                 Surrounding woodlands including Sawai Mansingh Sanctuary and Chambal corridors. Dramatic escarpments, deep ravines, and high leopard density. Far less vehicular congestion, providing peaceful birdwatching and elusive big cat tracking.
               </p>
             </div>
@@ -286,11 +286,11 @@ export default function SafariZonesPage() {
         </div>
 
         {/* SECTION 6: Zone Allotment Transparency Notice */}
-        <div className="mb-24 p-6 sm:p-7 rounded-2xl bg-[#092218] border border-emerald-500/30 text-xs text-[#86a898] flex items-start gap-3">
-          <Info className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+        <div className="mb-24 p-6 sm:p-7 rounded-2xl bg-emerald-50 border border-emerald-200 text-xs text-[#375847] flex items-start gap-3">
+          <Info className="w-5 h-5 text-emerald-700 shrink-0 mt-0.5" />
           <div className="space-y-1">
-            <span className="font-bold text-white">Official Zone Allotment Notice: </span>
-            <p className="leading-relaxed text-[#c2d7cd]">
+            <span className="font-bold text-[#082318]">Official Zone Allotment Notice: </span>
+            <p className="leading-relaxed text-[#375847]">
               While we submit your zone preference (Zones 1-5 or 6-10), the final zone number is assigned through the Rajasthan Forest Department computerised lottery system on the day of the safari. Both core and buffer zones host thriving tiger populations.
             </p>
           </div>

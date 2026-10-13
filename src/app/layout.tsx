@@ -16,7 +16,7 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#06150f",
+  themeColor: "#ffffff",
   width: "device-width",
   initialScale: 1,
 };
@@ -78,7 +78,7 @@ export default function RootLayout({
       suppressHydrationWarning
     >
       <body
-        className="min-h-screen bg-[#06150f] text-[#f2f7f4] font-sans antialiased selection:bg-[#10b981] selection:text-white"
+        className="min-h-screen bg-[#ffffff] text-[#082318] font-sans antialiased selection:bg-[#047857] selection:text-white"
         suppressHydrationWarning
       >
         <ClientLayout>

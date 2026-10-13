@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { ChevronDown, HelpCircle, ShieldAlert } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { JungleCornerBranch, TigerTrackWatermark, BambooStalks } from './JungleFoliageDecorations';
 
 export default function FaqSection() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -35,8 +36,14 @@ export default function FaqSection() {
   ];
 
   return (
-    <section className="py-24 bg-[#06150f] relative border-t border-[#123324]" id="faq">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="py-24 bg-white relative border-t border-[#e2ede6] overflow-hidden" id="faq">
+      {/* Botanical Jungle Foliage & Tracks */}
+      <JungleCornerBranch position="left" className="top-12 left-0" />
+      <JungleCornerBranch position="right" className="top-28 right-0" />
+      <TigerTrackWatermark count={4} className="top-1/2" />
+      <BambooStalks className="bottom-0 right-4 opacity-30" />
+
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -44,14 +51,14 @@ export default function FaqSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16 space-y-4"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/15 text-emerald-300 text-xs font-bold uppercase tracking-widest border border-emerald-500/30">
-            <HelpCircle className="w-3.5 h-3.5 text-emerald-400" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-bold uppercase tracking-widest border border-emerald-200">
+            <HelpCircle className="w-3.5 h-3.5 text-emerald-700" />
             Clear Answers
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#082318]">
             Frequently Asked Questions
           </h2>
-          <p className="text-sm sm:text-base text-[#bad3c6]">
+          <p className="text-sm sm:text-base text-[#1b3a2a]">
             Everything you need to know about Ranthambore permits, regulations, vehicle choices, and wildlife rules.
           </p>
         </motion.div>
@@ -66,17 +73,17 @@ export default function FaqSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.06 }}
-                className={`glass-card rounded-2xl border transition-all duration-300 overflow-hidden bg-[#092218] ${
-                  isOpen ? 'border-emerald-400/60 shadow-lg shadow-emerald-950/20' : 'border-[#16432f] hover:border-[#1d523a]'
+                className={`rounded-2xl border transition-all duration-300 overflow-hidden bg-white shadow-sm ${
+                  isOpen ? 'border-emerald-600 bg-emerald-50/30 shadow-md' : 'border-[#d2e4d9] hover:border-emerald-600'
                 }`}
               >
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
-                  className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer hover:bg-[#0c2a1e] transition"
+                  className="w-full p-5 sm:p-6 text-left flex items-center justify-between gap-4 cursor-pointer hover:bg-[#f0f6f2] transition"
                 >
                   <span className={`font-serif text-base sm:text-lg font-bold transition duration-200 ${
-                    isOpen ? 'text-emerald-300' : 'text-white'
+                    isOpen ? 'text-emerald-900' : 'text-[#082318]'
                   }`}>
                     {faq.q}
                   </span>
@@ -87,7 +94,7 @@ export default function FaqSection() {
                   >
                     <ChevronDown
                       className={`w-5 h-5 transition-colors ${
-                        isOpen ? 'text-emerald-300' : 'text-emerald-400'
+                        isOpen ? 'text-emerald-800' : 'text-emerald-600'
                       }`}
                     />
                   </motion.div>
@@ -102,7 +109,7 @@ export default function FaqSection() {
                       exit={{ opacity: 0, height: 0 }}
                       transition={{ duration: 0.35, ease: [0.04, 0.62, 0.23, 0.98] }}
                     >
-                      <div className="px-5 sm:px-6 pb-6 pt-1 text-xs sm:text-sm text-[#bad3c6] leading-relaxed border-t border-[#143d2b]">
+                      <div className="px-5 sm:px-6 pb-6 pt-1 text-xs sm:text-sm text-[#1b3a2a] font-normal leading-relaxed border-t border-[#e2ede6]">
                         {faq.a}
                       </div>
                     </motion.div>
@@ -118,17 +125,17 @@ export default function FaqSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="mt-12 p-5 rounded-2xl bg-[#092218] border border-[#16432f] text-xs text-[#8cb39e] flex items-center justify-between flex-wrap gap-4 shadow-md"
+          className="mt-12 p-5 rounded-2xl bg-[#f4f8f5] border border-[#d2e4d9] text-xs text-[#375847] flex items-center justify-between flex-wrap gap-4 shadow-sm"
         >
           <div className="flex items-center gap-3">
-            <ShieldAlert className="w-5 h-5 text-[#f59e0b] shrink-0" />
+            <ShieldAlert className="w-5 h-5 text-[#d97706] shrink-0" />
             <span>Have a specific query about group bookings or foreign national permits?</span>
           </div>
           <a
             href="https://wa.me/919971965629?text=Hi%20Ranthambore%20Wild%20Life%20Tour,%20I%20have%20a%20question%20about%20Safari%20Booking."
             target="_blank"
             rel="noopener noreferrer"
-            className="text-emerald-400 hover:text-emerald-300 font-bold transition flex items-center gap-1"
+            className="text-emerald-700 hover:text-emerald-900 font-bold transition flex items-center gap-1"
           >
             <span>Chat with our Helpdesk</span>
             <span>→</span>

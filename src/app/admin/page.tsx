@@ -516,10 +516,10 @@ export default function CompleteWebsiteAdmin() {
           </div>
 
           {/* Login Card */}
-          <div className="p-6 sm:p-8 rounded-3xl bg-[#092218]/95 border border-[#16432f] shadow-2xl backdrop-blur-xl space-y-5 text-xs">
-            <div className="border-b border-[#16432f] pb-3 text-center">
-              <h2 className="text-sm font-bold text-white">Administrator Sign In</h2>
-              <p className="text-[11px] text-[#86a898] mt-0.5">Enter authorized credentials to access website management</p>
+          <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#d2e4d9] shadow-xl backdrop-blur-xl space-y-5 text-xs text-[#082318]">
+            <div className="border-b border-[#d2e4d9] pb-3 text-center">
+              <h2 className="text-sm font-bold text-[#082318]">Administrator Sign In</h2>
+              <p className="text-[11px] text-[#517362] mt-0.5">Enter authorized credentials to access website management</p>
             </div>
 
             {loginError && (
@@ -639,26 +639,26 @@ export default function CompleteWebsiteAdmin() {
   }
 
   return (
-    <div className="min-h-screen bg-[#06150f] text-[#f2f7f4] flex flex-col font-sans selection:bg-emerald-500 selection:text-white">
+    <div className="min-h-screen bg-white text-[#082318] flex flex-col font-sans selection:bg-emerald-700 selection:text-white">
       {/* Toast Alert */}
       {toastMessage && (
-        <div className="fixed top-5 right-5 z-50 flex items-center gap-2.5 px-4 py-3 rounded-xl bg-emerald-950/95 border border-emerald-500/50 text-emerald-200 text-xs font-bold shadow-2xl backdrop-blur-md">
+        <div className="fixed top-5 right-5 z-50 flex items-center gap-2.5 px-4 py-3 rounded-xl bg-emerald-900 border border-emerald-500/50 text-white text-xs font-bold shadow-2xl backdrop-blur-md">
           <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
           <span>{toastMessage}</span>
         </div>
       )}
 
       {/* TOP HEADER */}
-      <header className="h-16 border-b border-[#16432f] bg-[#092218] px-4 sm:px-6 flex items-center justify-between sticky top-0 z-30">
+      <header className="h-16 border-b border-[#d2e4d9] bg-white px-4 sm:px-6 flex items-center justify-between sticky top-0 z-30 shadow-sm">
         <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 flex items-center justify-center text-lg shadow-md">
+          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-emerald-700 to-teal-600 flex items-center justify-center text-lg shadow-md">
             🐅
           </div>
           <div>
-            <h1 className="font-serif text-base sm:text-lg font-bold text-white leading-tight">
-              Website CMS <span className="text-emerald-400">Control Panel</span>
+            <h1 className="font-serif text-base sm:text-lg font-bold text-[#082318] leading-tight">
+              Website CMS <span className="text-emerald-800">Control Panel</span>
             </h1>
-            <p className="text-[11px] text-[#86a898]">
+            <p className="text-[11px] text-[#517362]">
               Edit every text, image, card, package, and inquiry across the entire website
             </p>
           </div>
@@ -668,27 +668,27 @@ export default function CompleteWebsiteAdmin() {
           <Link
             href="/"
             target="_blank"
-            className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#06150f] hover:bg-[#113123] border border-[#16432f] text-[#c2d7cd] text-xs font-semibold transition"
+            className="flex items-center gap-1.5 px-3 py-2 rounded-xl bg-[#edf5f0] hover:bg-emerald-50 border border-[#d2e4d9] text-[#082318] text-xs font-semibold transition"
           >
-            <Globe className="w-3.5 h-3.5 text-emerald-400" />
+            <Globe className="w-3.5 h-3.5 text-emerald-700" />
             <span className="hidden sm:inline">View Public Website</span>
-            <ExternalLink className="w-3 h-3 text-[#86a898]" />
+            <ExternalLink className="w-3 h-3 text-[#517362]" />
           </Link>
 
           {/* Admin Avatar Button */}
           <button
             onClick={() => setActiveTab('admin-profile')}
-            className={`flex items-center gap-2 pl-2 border-l border-[#16432f] hover:opacity-90 transition cursor-pointer ${
-              activeTab === 'admin-profile' ? 'ring-2 ring-emerald-500/50 rounded-xl p-1 bg-[#113123]' : ''
+            className={`flex items-center gap-2 pl-2 border-l border-[#d2e4d9] hover:opacity-90 transition cursor-pointer ${
+              activeTab === 'admin-profile' ? 'ring-2 ring-emerald-500/50 rounded-xl p-1 bg-emerald-50' : ''
             }`}
             title="Manage Admin Profile & Security"
           >
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-emerald-600 to-teal-500 text-white font-bold text-xs flex items-center justify-center border border-emerald-400/40 shadow-sm">
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-emerald-700 to-teal-600 text-white font-bold text-xs flex items-center justify-center border border-emerald-600/40 shadow-sm">
               RS
             </div>
             <div className="hidden md:block text-left text-xs">
-              <p className="font-bold text-white leading-none">{adminProfile.fullName.split(' ')[0]}</p>
-              <p className="text-[10px] text-emerald-400 mt-0.5">Admin Profile</p>
+              <p className="font-bold text-[#082318] leading-none">{adminProfile.fullName.split(' ')[0]}</p>
+              <p className="text-[10px] text-emerald-800 mt-0.5 font-semibold">Admin Profile</p>
             </div>
           </button>
 
@@ -698,7 +698,7 @@ export default function CompleteWebsiteAdmin() {
               setIsAuthenticated(false);
               showToast('Logged out of Admin Console safely.');
             }}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-300 hover:text-rose-200 border border-rose-500/20 text-xs font-semibold transition cursor-pointer"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 hover:text-rose-800 border border-rose-200 text-xs font-semibold transition cursor-pointer"
             title="Sign Out of Admin Console"
           >
             <LogOut className="w-3.5 h-3.5" />
@@ -710,7 +710,7 @@ export default function CompleteWebsiteAdmin() {
       {/* MAIN CONTAINER */}
       <div className="flex-1 flex overflow-hidden">
         {/* SIDEBAR */}
-        <aside className="w-64 border-r border-[#16432f] bg-[#06150f] p-3 space-y-4 shrink-0 overflow-y-auto">
+        <aside className="w-64 border-r border-[#d2e4d9] bg-[#f4f8f5] p-3 space-y-4 shrink-0 overflow-y-auto">
           {/* MAIN */}
           <div>
             <p className="px-3 py-1 text-[10px] font-extrabold uppercase tracking-wider text-[#73685c]">

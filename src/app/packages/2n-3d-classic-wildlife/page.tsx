@@ -90,62 +90,62 @@ export default function ClassicWildlifePackagePage() {
   ];
 
   return (
-    <div className="relative py-10 lg:py-16 bg-[#06150f] text-[#f2f7f4] overflow-hidden">
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-1/3 left-10 w-96 h-96 bg-amber-500/10 rounded-full blur-[140px] pointer-events-none" />
+    <div className="relative py-10 lg:py-16 bg-white text-[#082318] overflow-hidden">
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-emerald-500/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-1/3 left-10 w-96 h-96 bg-amber-500/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12 lg:space-y-16">
         
         {/* SECTION 1: BREADCRUMB & HERO */}
         <section className="space-y-6">
-          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-[#86a898]">
-            <Link href="/" className="hover:text-emerald-400 transition flex items-center gap-1.5 font-medium">
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-[#517362]">
+            <Link href="/" className="hover:text-emerald-700 transition flex items-center gap-1.5 font-medium">
               <ArrowLeft className="w-3.5 h-3.5" />
               <span>Home</span>
             </Link>
-            <ChevronRight className="w-3.5 h-3.5 text-[#16432f]" />
-            <Link href="/tour-packages" className="hover:text-emerald-400 transition">Tour Packages</Link>
-            <ChevronRight className="w-3.5 h-3.5 text-[#16432f]" />
-            <span className="text-amber-400 font-semibold">2N/3D Classic Wildlife</span>
+            <ChevronRight className="w-3.5 h-3.5 text-emerald-600" />
+            <Link href="/tour-packages" className="hover:text-emerald-700 transition">Tour Packages</Link>
+            <ChevronRight className="w-3.5 h-3.5 text-emerald-600" />
+            <span className="text-[#d97706] font-semibold">2N/3D Classic Wildlife</span>
           </nav>
 
           {/* Visual Hero Banner with Tiger Photo */}
-          <div className="relative rounded-3xl overflow-hidden border border-[#16432f] bg-[#092218] shadow-2xl">
+          <div className="relative rounded-3xl overflow-hidden border border-[#d2e4d9] bg-[#f4f8f5] shadow-xl">
             <div className="relative h-72 sm:h-96 w-full">
               <Image
                 src="/images/tiger_portrait.jpg"
                 alt="Royal Bengal Tiger in Ranthambore"
                 fill
                 priority
-                className="object-cover object-center"
+                className="object-cover object-center opacity-30"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#06150f] via-[#06150f]/60 to-transparent" />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#06150f]/80 via-transparent to-[#06150f]/40" />
+              <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-transparent to-white/50" />
             </div>
 
             <div className="p-6 sm:p-10 -mt-24 sm:-mt-32 relative z-10 flex flex-col lg:flex-row lg:items-end justify-between gap-6">
               <div className="space-y-3 max-w-2xl">
-                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/15 text-emerald-400 text-xs font-bold uppercase tracking-wider border border-emerald-500/30 backdrop-blur-md">
-                  <Package className="w-3.5 h-3.5" />
+                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-bold uppercase tracking-wider border border-emerald-200 backdrop-blur-md">
+                  <Package className="w-3.5 h-3.5 text-[#d97706]" />
                   Weekend Wildlife Retreat • 2 Nights / 3 Days
                 </div>
-                <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
-                  2N/3D Classic Wildlife <span className="text-amber-400">Package</span>
+                <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#082318] tracking-tight">
+                  2N/3D Classic Wildlife <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 to-[#d97706]">Package</span>
                 </h1>
-                <p className="text-sm sm:text-base text-[#c2d7cd] leading-relaxed">
+                <p className="text-sm sm:text-base text-[#375847] leading-relaxed">
                   The ideal weekend wilderness escape. Includes 2 game drives into prime tiger territory, 4-star resort stay, buffet meals, and station transfers.
                 </p>
               </div>
 
-              <div className="p-5 rounded-2xl bg-[#092218]/95 backdrop-blur-md border border-[#16432f] space-y-3 shrink-0 text-center sm:text-left shadow-xl">
-                <span className="text-xs text-[#86a898] block">All-inclusive from</span>
+              <div className="p-5 rounded-2xl bg-white/95 backdrop-blur-md border border-[#d2e4d9] space-y-3 shrink-0 text-center sm:text-left shadow-lg">
+                <span className="text-xs text-[#517362] block font-medium">All-inclusive from</span>
                 <div className="flex items-baseline gap-1">
-                  <span className="font-serif text-3xl font-bold text-white">₹9,500</span>
-                  <span className="text-xs text-[#86a898]">/ person</span>
+                  <span className="font-serif text-3xl font-bold text-[#082318]">₹9,500</span>
+                  <span className="text-xs text-[#517362]">/ person</span>
                 </div>
                 <button
                   onClick={() => openBookingModal({ packageSelected: '2N/3D Classic Wildlife Package' })}
-                  className="w-full py-2.5 px-6 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs shadow-lg transition cursor-pointer border border-emerald-400/30"
+                  className="w-full py-2.5 px-6 rounded-xl bg-gradient-to-r from-emerald-700 via-emerald-600 to-[#d97706] hover:from-emerald-600 hover:to-[#ea580c] text-white font-bold text-xs shadow-md transition cursor-pointer"
                 >
                   Book Package Now
                 </button>
@@ -157,12 +157,12 @@ export default function ClassicWildlifePackagePage() {
         {/* SECTION 2: HIGHLIGHTS */}
         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {packageHighlights.map((hl, i) => (
-            <div key={i} className="p-5 sm:p-6 rounded-2xl bg-[#092218] border border-[#16432f] hover:border-emerald-500/40 transition space-y-2">
-              <div className="w-8 h-8 rounded-lg bg-emerald-500/15 flex items-center justify-center text-emerald-400 font-bold text-xs">
+            <div key={i} className="p-5 sm:p-6 rounded-2xl bg-white border border-[#d2e4d9] shadow-sm hover:border-emerald-600 transition space-y-2">
+              <div className="w-8 h-8 rounded-lg bg-emerald-50 border border-emerald-200 flex items-center justify-center text-emerald-700 font-bold text-xs">
                 0{i + 1}
               </div>
-              <h3 className="font-bold text-white text-base">{hl.title}</h3>
-              <p className="text-xs text-[#86a898] leading-relaxed">{hl.desc}</p>
+              <h3 className="font-bold text-[#082318] text-base">{hl.title}</h3>
+              <p className="text-xs text-[#517362] leading-relaxed">{hl.desc}</p>
             </div>
           ))}
         </section>
@@ -170,24 +170,24 @@ export default function ClassicWildlifePackagePage() {
         {/* SECTION 3: DAY-WISE ITINERARY */}
         <section className="space-y-6">
           <div className="space-y-1">
-            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white">
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#082318]">
               Day-by-Day Safari Itinerary
             </h2>
-            <p className="text-xs sm:text-sm text-[#86a898]">Action-packed wildlife schedule crafted for optimal tiger viewing.</p>
+            <p className="text-xs sm:text-sm text-[#517362]">Action-packed wildlife schedule crafted for optimal tiger viewing.</p>
           </div>
 
           <div className="space-y-4">
             {itinerary.map((dayItem, idx) => (
-              <div key={idx} className="p-6 sm:p-8 rounded-3xl bg-[#092218] border border-[#16432f] space-y-4">
-                <div className="border-b border-[#16432f] pb-3 flex items-center justify-between">
-                  <h3 className="font-serif text-lg sm:text-xl font-bold text-amber-400">{dayItem.day}</h3>
-                  <span className="text-xs font-bold text-[#86a898]">Step 0{idx + 1}</span>
+              <div key={idx} className="p-6 sm:p-8 rounded-3xl bg-white border border-[#d2e4d9] shadow-sm space-y-4">
+                <div className="border-b border-[#e2ede6] pb-3 flex items-center justify-between">
+                  <h3 className="font-serif text-lg sm:text-xl font-bold text-[#d97706]">{dayItem.day}</h3>
+                  <span className="text-xs font-bold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">Step 0{idx + 1}</span>
                 </div>
                 <div className="space-y-2.5">
                   {dayItem.schedule.map((item, i) => (
                     <div key={i} className="flex items-start gap-4 text-xs">
-                      <span className="w-20 shrink-0 font-mono font-bold text-emerald-400 pt-0.5">{item.time}</span>
-                      <p className="text-[#c2d7cd] leading-relaxed">{item.activity}</p>
+                      <span className="w-20 shrink-0 font-mono font-bold text-emerald-700 pt-0.5">{item.time}</span>
+                      <p className="text-[#375847] leading-relaxed">{item.activity}</p>
                     </div>
                   ))}
                 </div>
@@ -198,30 +198,30 @@ export default function ClassicWildlifePackagePage() {
 
         {/* SECTION 4: INCLUSIONS & EXCLUSIONS */}
         <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div className="p-6 sm:p-8 rounded-3xl bg-[#092218] border border-emerald-500/30 space-y-4">
-            <h3 className="font-serif text-xl font-bold text-emerald-400 flex items-center gap-2">
-              <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+          <div className="p-6 sm:p-8 rounded-3xl bg-white border border-emerald-300 shadow-sm space-y-4">
+            <h3 className="font-serif text-xl font-bold text-emerald-800 flex items-center gap-2">
+              <CheckCircle2 className="w-5 h-5 text-emerald-700" />
               What is Included
             </h3>
-            <ul className="space-y-2.5 text-xs text-[#c2d7cd]">
+            <ul className="space-y-2.5 text-xs text-[#375847]">
               {inclusions.map(inc => (
                 <li key={inc} className="flex items-start gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700 shrink-0 mt-0.5" />
                   <span>{inc}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="p-6 sm:p-8 rounded-3xl bg-[#092218] border border-[#16432f] space-y-4">
-            <h3 className="font-serif text-xl font-bold text-[#86a898] flex items-center gap-2">
-              <ShieldCheck className="w-5 h-5 text-[#86a898]" />
+          <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#d2e4d9] shadow-sm space-y-4">
+            <h3 className="font-serif text-xl font-bold text-[#517362] flex items-center gap-2">
+              <ShieldCheck className="w-5 h-5 text-[#517362]" />
               What is Excluded
             </h3>
-            <ul className="space-y-2.5 text-xs text-[#86a898]">
+            <ul className="space-y-2.5 text-xs text-[#517362]">
               {exclusions.map(exc => (
                 <li key={exc} className="flex items-start gap-2">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#16432f] shrink-0 mt-1.5" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#d2e4d9] shrink-0 mt-1.5" />
                   <span>{exc}</span>
                 </li>
               ))}
@@ -230,54 +230,54 @@ export default function ClassicWildlifePackagePage() {
         </section>
 
         {/* SECTION 5: RESORT CHOICES */}
-        <section className="p-6 sm:p-10 rounded-3xl bg-[#092218] border border-[#16432f] space-y-6">
-          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white">
+        <section className="p-6 sm:p-10 rounded-3xl bg-[#f4f8f5] border border-[#d2e4d9] shadow-sm space-y-6">
+          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#082318]">
             Comfortable Jungle Resort Stays
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-xs">
-            <div className="p-5 rounded-2xl bg-[#06150f] border border-[#16432f] space-y-2">
-              <Hotel className="w-6 h-6 text-amber-400" />
-              <h3 className="font-bold text-white text-sm">Deluxe AC Cottages</h3>
-              <p className="text-[#86a898]">Spacious cottages with ensuite bathrooms, wooden furniture & private garden verandas.</p>
+            <div className="p-5 rounded-2xl bg-white border border-[#d2e4d9] shadow-sm space-y-2">
+              <Hotel className="w-6 h-6 text-[#d97706]" />
+              <h3 className="font-bold text-[#082318] text-sm">Deluxe AC Cottages</h3>
+              <p className="text-[#517362]">Spacious cottages with ensuite bathrooms, wooden furniture & private garden verandas.</p>
             </div>
-            <div className="p-5 rounded-2xl bg-[#06150f] border border-[#16432f] space-y-2">
-              <Coffee className="w-6 h-6 text-emerald-400" />
-              <h3 className="font-bold text-white text-sm">Delicious Buffet Dining</h3>
-              <p className="text-[#86a898]">Hygienic multi-cuisine spreads with Indian curries, continental breakfast & Rajasthani Dal Baati.</p>
+            <div className="p-5 rounded-2xl bg-white border border-[#d2e4d9] shadow-sm space-y-2">
+              <Coffee className="w-6 h-6 text-emerald-700" />
+              <h3 className="font-bold text-[#082318] text-sm">Delicious Buffet Dining</h3>
+              <p className="text-[#517362]">Hygienic multi-cuisine spreads with Indian curries, continental breakfast & Rajasthani Dal Baati.</p>
             </div>
-            <div className="p-5 rounded-2xl bg-[#06150f] border border-[#16432f] space-y-2">
-              <Sparkles className="w-6 h-6 text-teal-400" />
-              <h3 className="font-bold text-white text-sm">Swimming Pool & Lawns</h3>
-              <p className="text-[#86a898]">Relax amidst green manicured lawns, take a refreshing dip, or enjoy stargazing by the open bonfire.</p>
+            <div className="p-5 rounded-2xl bg-white border border-[#d2e4d9] shadow-sm space-y-2">
+              <Sparkles className="w-6 h-6 text-teal-700" />
+              <h3 className="font-bold text-[#082318] text-sm">Swimming Pool & Lawns</h3>
+              <p className="text-[#517362]">Relax amidst green manicured lawns, take a refreshing dip, or enjoy stargazing by the open bonfire.</p>
             </div>
           </div>
         </section>
 
         {/* SECTION 6: FAQS */}
         <section className="space-y-6">
-          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white">
+          <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#082318]">
             Package FAQs
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
             {faqs.map((faq, i) => (
-              <div key={i} className="p-5 rounded-2xl bg-[#092218] border border-[#16432f] space-y-2">
-                <h3 className="font-bold text-white text-sm flex items-center gap-2">
-                  <HelpCircle className="w-4 h-4 text-amber-400 shrink-0" />
+              <div key={i} className="p-5 rounded-2xl bg-white border border-[#d2e4d9] shadow-sm space-y-2">
+                <h3 className="font-bold text-[#082318] text-sm flex items-center gap-2">
+                  <HelpCircle className="w-4 h-4 text-[#d97706] shrink-0" />
                   <span>{faq.q}</span>
                 </h3>
-                <p className="text-[#86a898] leading-relaxed pl-6">{faq.a}</p>
+                <p className="text-[#375847] leading-relaxed pl-6">{faq.a}</p>
               </div>
             ))}
           </div>
         </section>
 
         {/* SECTION 7: HIGH-CONVERSION BOOKING BANNER */}
-        <section className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-[#092218] via-[#0d2e20] to-[#092218] border border-emerald-500/30 text-center space-y-6 shadow-2xl">
+        <section className="p-8 sm:p-12 rounded-3xl bg-gradient-to-r from-emerald-900 via-emerald-800 to-[#92400e] text-white text-center space-y-6 shadow-xl">
           <div className="max-w-2xl mx-auto space-y-3">
             <h2 className="font-serif text-2xl sm:text-4xl font-bold text-white">
               Reserve Your 2N/3D Weekend Wildlife Tour
             </h2>
-            <p className="text-xs sm:text-sm text-[#c2d7cd] leading-relaxed">
+            <p className="text-xs sm:text-sm text-emerald-100 leading-relaxed">
               Customizable for couples, families, and wildlife enthusiasts. Lock in early permits and best resort cottages with our local team.
             </p>
           </div>
@@ -285,15 +285,15 @@ export default function ClassicWildlifePackagePage() {
           <div className="flex flex-wrap items-center justify-center gap-4">
             <button
               onClick={() => openBookingModal({ packageSelected: '2N/3D Classic Wildlife Package' })}
-              className="px-8 py-3.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-sm shadow-xl transition cursor-pointer border border-emerald-400/30"
+              className="px-8 py-3.5 rounded-xl bg-white hover:bg-amber-50 text-[#082318] font-bold text-sm shadow-xl transition cursor-pointer"
             >
               Book 2N/3D Package
             </button>
             <a
               href="tel:+919971965629"
-              className="px-6 py-3.5 rounded-xl bg-[#06150f] hover:bg-[#092218] border border-[#16432f] text-white font-bold text-sm flex items-center gap-2 transition"
+              className="px-6 py-3.5 rounded-xl bg-emerald-700/80 hover:bg-emerald-600 border border-emerald-400/40 text-white font-bold text-sm flex items-center gap-2 transition"
             >
-              <Phone className="w-4 h-4 text-emerald-400" />
+              <Phone className="w-4 h-4 text-emerald-200" />
               <span>Call Specialist: +91 99719 65629</span>
             </a>
           </div>

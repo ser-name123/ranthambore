@@ -89,19 +89,19 @@ export default function BookingModal({ isOpen, onClose, prefillData }: BookingMo
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.25 }}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md"
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.92, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.92, y: 20 }}
             transition={{ type: 'spring', damping: 25, stiffness: 350 }}
-            className="relative w-full max-w-lg rounded-2xl bg-[#092218] border border-emerald-500/40 p-6 sm:p-7 shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto"
+            className="relative w-full max-w-lg rounded-2xl bg-white border border-[#d2e4d9] p-6 sm:p-7 shadow-2xl overflow-hidden max-h-[90vh] overflow-y-auto"
           >
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="absolute top-4 right-4 p-2 rounded-full bg-[#06150f] text-[#86a898] hover:text-white border border-[#16432f] transition duration-200 cursor-pointer"
+              className="absolute top-4 right-4 p-2 rounded-full bg-[#f4f8f5] text-[#082318] hover:bg-[#e4ede7] border border-[#d2e4d9] transition duration-200 cursor-pointer shadow-xs"
               aria-label="Close modal"
             >
               <X className="w-5 h-5" />
@@ -109,19 +109,19 @@ export default function BookingModal({ isOpen, onClose, prefillData }: BookingMo
 
             {successResult ? (
               <div className="py-6 text-center space-y-4">
-                <div className="w-14 h-14 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center mx-auto border border-emerald-500/30">
+                <div className="w-14 h-14 rounded-full bg-emerald-50 text-emerald-700 flex items-center justify-center mx-auto border border-emerald-200">
                   <CheckCircle2 className="w-8 h-8" />
                 </div>
 
-                <span className="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-bold uppercase tracking-wider">
+                <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-900 text-xs font-bold uppercase tracking-wider border border-emerald-200">
                   Ref: {successResult.referenceId}
                 </span>
 
-                <h3 className="font-serif text-2xl font-bold text-white">
+                <h3 className="font-serif text-2xl font-bold text-[#082318]">
                   Booking Request Received!
                 </h3>
 
-                <p className="text-xs sm:text-sm text-[#b2cebf]">
+                <p className="text-xs sm:text-sm text-[#1b3a2a] leading-relaxed font-normal">
                   {successResult.message}
                 </p>
 
@@ -130,7 +130,7 @@ export default function BookingModal({ isOpen, onClose, prefillData }: BookingMo
                     href={successResult.whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg transition"
+                    className="w-full py-3 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md transition"
                   >
                     <MessageCircle className="w-4 h-4" />
                     <span>Confirm on WhatsApp Now</span>
@@ -138,7 +138,7 @@ export default function BookingModal({ isOpen, onClose, prefillData }: BookingMo
 
                   <button
                     onClick={onClose}
-                    className="w-full py-2.5 rounded-xl bg-[#113123] text-[#c2d7cd] hover:text-white text-xs font-bold transition"
+                    className="w-full py-2.5 rounded-xl bg-[#f0f6f2] text-[#082318] hover:bg-emerald-100 border border-[#d2e4d9] text-xs font-bold transition cursor-pointer"
                   >
                     Close
                   </button>
@@ -147,20 +147,20 @@ export default function BookingModal({ isOpen, onClose, prefillData }: BookingMo
             ) : (
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 text-[11px] font-bold uppercase tracking-wider border border-emerald-500/30">
-                    <Sparkles className="w-3 h-3 text-[#f59e0b]" />
+                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-900 text-[11px] font-bold uppercase tracking-wider border border-emerald-200">
+                    <Sparkles className="w-3 h-3 text-[#d97706]" />
                     Quick Booking Request
                   </div>
-                  <h3 className="font-serif text-2xl font-bold text-white mt-1">
+                  <h3 className="font-serif text-2xl font-bold text-[#082318] mt-1">
                     Ranthambore Safari Enquiry
                   </h3>
-                  <p className="text-xs text-[#86a898]">
+                  <p className="text-xs text-[#1b3a2a] font-medium">
                     We verify permits and reply with exact quotation
                   </p>
                 </div>
 
                 {errorMessage && (
-                  <div className="p-3 rounded-lg bg-red-950/60 border border-red-800 text-red-300 text-xs flex items-center gap-2">
+                  <div className="p-3 rounded-lg bg-red-50 border border-red-200 text-red-800 text-xs flex items-center gap-2">
                     <AlertCircle className="w-4 h-4 shrink-0" />
                     <span>{errorMessage}</span>
                   </div>
@@ -168,96 +168,96 @@ export default function BookingModal({ isOpen, onClose, prefillData }: BookingMo
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-semibold text-[#c2d7cd] mb-1">Your Name *</label>
+                    <label className="block text-xs font-semibold text-[#082318] mb-1">Your Name *</label>
                     <input
                       type="text"
                       required
                       placeholder="Full name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full bg-[#06150f] border border-[#16432f] rounded-xl px-3 py-2 text-white text-xs focus:outline-none focus:border-emerald-400 transition"
+                      className="w-full bg-[#f8faf8] border border-[#d2e4d9] rounded-xl px-3 py-2 text-[#082318] text-xs focus:outline-none focus:border-emerald-600 focus:bg-white transition"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-[#c2d7cd] mb-1">Mobile / WhatsApp *</label>
+                    <label className="block text-xs font-semibold text-[#082318] mb-1">Mobile / WhatsApp *</label>
                     <input
                       type="tel"
                       required
                       placeholder="+91 Mobile number"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full bg-[#06150f] border border-[#16432f] rounded-xl px-3 py-2 text-white text-xs focus:outline-none focus:border-emerald-400 transition"
+                      className="w-full bg-[#f8faf8] border border-[#d2e4d9] rounded-xl px-3 py-2 text-[#082318] text-xs focus:outline-none focus:border-emerald-600 focus:bg-white transition"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-semibold text-[#c2d7cd] mb-1">Safari Date</label>
+                    <label className="block text-xs font-semibold text-[#082318] mb-1">Safari Date</label>
                     <input
                       type="date"
                       value={formData.safari_date}
                       onChange={(e) => setFormData({ ...formData, safari_date: e.target.value })}
-                      className="w-full bg-[#06150f] border border-[#16432f] rounded-xl px-3 py-2 text-white text-xs focus:outline-none focus:border-emerald-400 transition"
+                      className="w-full bg-[#f8faf8] border border-[#d2e4d9] rounded-xl px-3 py-2 text-[#082318] text-xs focus:outline-none focus:border-emerald-600 focus:bg-white transition"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-[#c2d7cd] mb-1">Vehicle / Package</label>
+                    <label className="block text-xs font-semibold text-[#082318] mb-1">Vehicle / Package</label>
                     <input
                       type="text"
                       value={formData.safari_mode}
                       onChange={(e) => setFormData({ ...formData, safari_mode: e.target.value })}
-                      className="w-full bg-[#06150f] border border-[#16432f] rounded-xl px-3 py-2 text-white text-xs focus:outline-none focus:border-emerald-400 transition"
+                      className="w-full bg-[#f8faf8] border border-[#d2e4d9] rounded-xl px-3 py-2 text-[#082318] text-xs focus:outline-none focus:border-emerald-600 focus:bg-white transition"
                     />
                   </div>
                 </div>
 
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className="block text-xs font-semibold text-[#c2d7cd] mb-1">Shift</label>
+                    <label className="block text-xs font-semibold text-[#082318] mb-1">Shift</label>
                     <select
                       value={formData.timing_preference}
                       onChange={(e) => setFormData({ ...formData, timing_preference: e.target.value })}
-                      className="w-full bg-[#06150f] border border-[#16432f] rounded-xl px-2.5 py-2 text-white text-xs focus:outline-none focus:border-emerald-400 transition"
+                      className="w-full bg-[#f8faf8] border border-[#d2e4d9] rounded-xl px-2.5 py-2 text-[#082318] text-xs focus:outline-none focus:border-emerald-600 focus:bg-white transition"
                     >
-                      <option className="bg-[#092218]">Morning (06:30 AM)</option>
-                      <option className="bg-[#092218]">Afternoon (02:30 PM)</option>
-                      <option className="bg-[#092218]">Both Shifts</option>
+                      <option value="Morning (06:30 AM)">Morning (06:30 AM)</option>
+                      <option value="Afternoon (02:30 PM)">Afternoon (02:30 PM)</option>
+                      <option value="Both Shifts">Both Shifts</option>
                     </select>
                   </div>
 
                   <div>
-                    <label className="block text-xs font-semibold text-[#c2d7cd] mb-1">Zone Preference</label>
+                    <label className="block text-xs font-semibold text-[#082318] mb-1">Zone Preference</label>
                     <select
                       value={formData.zone_preference}
                       onChange={(e) => setFormData({ ...formData, zone_preference: e.target.value })}
-                      className="w-full bg-[#06150f] border border-[#16432f] rounded-xl px-2.5 py-2 text-white text-xs focus:outline-none focus:border-emerald-400 transition"
+                      className="w-full bg-[#f8faf8] border border-[#d2e4d9] rounded-xl px-2.5 py-2 text-[#082318] text-xs focus:outline-none focus:border-emerald-600 focus:bg-white transition"
                     >
-                      <option className="bg-[#092218]">Zone 1-5 (Core)</option>
-                      <option className="bg-[#092218]">Zone 6-10 (Buffer)</option>
-                      <option className="bg-[#092218]">Any Available</option>
+                      <option value="Zone 1-5 (Core)">Zone 1-5 (Core)</option>
+                      <option value="Zone 6-10 (Buffer)">Zone 6-10 (Buffer)</option>
+                      <option value="Any Available">Any Available</option>
                     </select>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-[#c2d7cd] mb-1">Travellers</label>
-                  <div className="flex items-center gap-4 bg-[#06150f] p-2 rounded-xl border border-[#16432f] text-xs">
-                    <span className="text-[#86a898]">Adults: <strong className="text-white">{formData.adults}</strong></span>
-                    <span className="text-[#86a898]">Children: <strong className="text-white">{formData.children}</strong></span>
+                  <label className="block text-xs font-semibold text-[#082318] mb-1">Travellers</label>
+                  <div className="flex items-center gap-4 bg-[#f8faf8] p-2 rounded-xl border border-[#d2e4d9] text-xs">
+                    <span className="text-[#375847]">Adults: <strong className="text-[#082318]">{formData.adults}</strong></span>
+                    <span className="text-[#375847]">Children: <strong className="text-[#082318]">{formData.children}</strong></span>
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-[#c2d7cd] mb-1">Notes / Preferences</label>
+                  <label className="block text-xs font-semibold text-[#082318] mb-1">Notes / Preferences</label>
                   <textarea
                     rows={2}
                     placeholder="Hotel required, railway pickup, etc."
                     value={formData.notes}
                     onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                    className="w-full bg-[#06150f] border border-[#16432f] rounded-xl px-3 py-1.5 text-white text-xs focus:outline-none focus:border-emerald-400 transition"
+                    className="w-full bg-[#f8faf8] border border-[#d2e4d9] rounded-xl px-3 py-1.5 text-[#082318] text-xs focus:outline-none focus:border-emerald-600 focus:bg-white transition"
                   />
                 </div>
 
@@ -266,7 +266,7 @@ export default function BookingModal({ isOpen, onClose, prefillData }: BookingMo
                   whileTap={{ scale: 0.98 }}
                   type="submit"
                   disabled={loading}
-                  className="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-600 via-emerald-500 to-[#f59e0b] hover:from-emerald-500 hover:to-[#ea580c] text-white font-bold text-sm tracking-wide shadow-lg shadow-emerald-950/50 flex items-center justify-center gap-2 transition duration-200 cursor-pointer disabled:opacity-50"
+                  className="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-700 via-emerald-600 to-[#d97706] hover:from-emerald-800 hover:to-[#b45309] text-white font-bold text-sm tracking-wide shadow-md flex items-center justify-center gap-2 transition duration-200 cursor-pointer disabled:opacity-50"
                 >
                   {loading ? (
                     <span>Checking Availability...</span>
@@ -278,13 +278,13 @@ export default function BookingModal({ isOpen, onClose, prefillData }: BookingMo
                   )}
                 </motion.button>
 
-                <p className="text-[11px] text-[#86a898] text-center pt-2">
+                <p className="text-[11px] text-[#517362] text-center pt-2">
                   By submitting, you agree to our{' '}
-                  <Link href="/terms-conditions" className="text-emerald-400 hover:underline" onClick={() => onClose()}>
+                  <Link href="/terms-conditions" className="text-emerald-700 hover:underline" onClick={() => onClose()}>
                     Terms &amp; Conditions
                   </Link>{' '}
                   and{' '}
-                  <Link href="/cancellation-policy" className="text-emerald-400 hover:underline" onClick={() => onClose()}>
+                  <Link href="/cancellation-policy" className="text-emerald-700 hover:underline" onClick={() => onClose()}>
                     Cancellation Policy
                   </Link>.
                 </p>

@@ -79,46 +79,46 @@ export default function AboutUsPage() {
   ];
 
   return (
-    <div className="relative py-12 lg:py-20 overflow-hidden bg-[#06150f] text-[#f2f7f4]">
+    <div className="relative py-12 lg:py-20 overflow-hidden bg-white text-[#082318]">
       {/* Decorative ambient glows */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-1/3 left-10 w-96 h-96 bg-amber-500/10 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-emerald-500/5 rounded-full blur-[140px] pointer-events-none" />
+      <div className="absolute bottom-1/3 left-10 w-96 h-96 bg-amber-500/5 rounded-full blur-[140px] pointer-events-none" />
 
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-16">
         {/* Breadcrumb Navigation */}
-        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-[#86a898]">
-          <Link href="/" className="hover:text-emerald-400 transition flex items-center gap-1.5 font-medium">
+        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs text-[#517362]">
+          <Link href="/" className="hover:text-emerald-700 transition flex items-center gap-1.5 font-medium">
             <ArrowLeft className="w-3.5 h-3.5" />
             <span>Home</span>
           </Link>
-          <ChevronRight className="w-3.5 h-3.5 text-[#16432f]" />
-          <span className="text-amber-400 font-semibold">About Us</span>
+          <ChevronRight className="w-3.5 h-3.5 text-emerald-600" />
+          <span className="text-[#b45309] font-semibold">About Us</span>
         </nav>
 
         {/* Visual Hero Banner with Photo */}
-        <div className="relative rounded-3xl overflow-hidden border border-[#16432f] bg-[#092218] shadow-2xl">
+        <div className="relative rounded-3xl overflow-hidden border border-[#d2e4d9] bg-white shadow-xl">
           <div className="relative h-72 sm:h-96 w-full">
             <Image
               src="/images/tiger_foliage.jpg"
               alt="Bengal tiger peering through lush jungle leaves"
               fill
               priority
-              className="object-cover object-center"
+              className="object-cover object-center opacity-30"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#06150f] via-[#06150f]/60 to-transparent" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#06150f]/80 via-transparent to-[#06150f]/40" />
+            <div className="absolute inset-0 bg-gradient-to-t from-white via-white/80 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-transparent to-white/40" />
           </div>
 
           <div className="p-6 sm:p-10 -mt-24 sm:-mt-32 relative z-10 flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <div className="space-y-3 max-w-2xl">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/15 text-emerald-400 text-xs font-bold uppercase tracking-wider border border-emerald-500/30 backdrop-blur-md">
-                <ShieldCheck className="w-3.5 h-3.5" />
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-bold uppercase tracking-wider border border-emerald-200 backdrop-blur-md">
+                <ShieldCheck className="w-3.5 h-3.5 text-emerald-700" />
                 Local Wildlife Pioneers Since 2014
               </div>
-              <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight">
-                About Ranthambore <span className="text-amber-400">Wild Life Tour</span>
+              <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#082318] tracking-tight">
+                About Ranthambore <span className="text-[#b45309]">Wild Life Tour</span>
               </h1>
-              <p className="text-sm sm:text-base text-[#c2d7cd] leading-relaxed">
+              <p className="text-sm sm:text-base text-[#375847] leading-relaxed">
                 Based directly in Sawai Madhopur, we are an independent wildlife safari facilitation agency dedicated to ethical tiger tracking, authentic naturalist guidance, and verified park permits.
               </p>
             </div>
@@ -127,16 +127,16 @@ export default function AboutUsPage() {
               <button
                 type="button"
                 onClick={() => openBookingModal()}
-                className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-sm shadow-xl transition cursor-pointer border border-emerald-400/30 flex items-center gap-2"
+                className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-700 to-teal-700 hover:from-emerald-800 hover:to-teal-800 text-white font-bold text-sm shadow-md transition cursor-pointer flex items-center gap-2"
               >
                 <span>Plan Your Safari</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
               <a
                 href="tel:+919971965629"
-                className="px-5 py-3.5 rounded-xl bg-[#092218] hover:bg-[#113123] text-emerald-400 border border-[#16432f] font-bold text-sm flex items-center gap-2 transition"
+                className="px-5 py-3.5 rounded-xl bg-white hover:bg-[#f0f6f2] text-[#082318] border border-[#d2e4d9] font-bold text-sm flex items-center gap-2 transition shadow-sm"
               >
-                <Phone className="w-4 h-4" />
+                <Phone className="w-4 h-4 text-emerald-700" />
                 <span>+91 99719 65629</span>
               </a>
             </div>
@@ -149,13 +149,13 @@ export default function AboutUsPage() {
         {/* SECTION 3: Historical Journey Timeline */}
         <section className="space-y-6">
           <div className="text-center max-w-2xl mx-auto space-y-1">
-            <span className="text-xs font-bold uppercase tracking-widest text-amber-400">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#b45309]">
               Conservation Chronicle
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
+            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-[#082318]">
               Ranthambore National Park: Brief Journey
             </h2>
-            <p className="text-xs sm:text-sm text-[#86a898]">
+            <p className="text-xs sm:text-sm text-[#517362]">
               From royal game preserve in 1955 to a globally celebrated Project Tiger haven.
             </p>
           </div>
@@ -170,11 +170,11 @@ export default function AboutUsPage() {
                   onClick={() => setActiveTimeline(idx)}
                   className={`p-3.5 rounded-xl border text-left transition duration-300 cursor-pointer ${
                     isActive
-                      ? 'bg-emerald-600/20 border-emerald-500 text-white shadow-lg'
-                      : 'bg-[#092218] border-[#16432f] text-[#86a898] hover:bg-[#113123] hover:text-white'
+                      ? 'bg-emerald-50 border-emerald-600 text-[#082318] shadow-sm'
+                      : 'bg-[#f8faf8] border-[#d2e4d9] text-[#517362] hover:bg-[#f0f6f2] hover:text-[#082318]'
                   }`}
                 >
-                  <span className={`block font-serif text-lg font-bold ${isActive ? 'text-amber-400' : 'text-zinc-400'}`}>
+                  <span className={`block font-serif text-lg font-bold ${isActive ? 'text-emerald-800' : 'text-[#517362]'}`}>
                     {milestone.year}
                   </span>
                   <span className="block text-xs font-bold truncate mt-0.5">
@@ -185,48 +185,48 @@ export default function AboutUsPage() {
             })}
           </div>
 
-          <div className="p-7 sm:p-9 rounded-2xl bg-[#092218] border border-emerald-500/30 shadow-xl">
-            <h3 className="font-serif text-xl sm:text-2xl font-bold text-white mb-2">
+          <div className="p-7 sm:p-9 rounded-2xl bg-white border border-[#d2e4d9] shadow-md">
+            <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#082318] mb-2">
               {timelineMilestones[activeTimeline].year} — {timelineMilestones[activeTimeline].title}
             </h3>
-            <p className="text-xs sm:text-sm text-[#c2d7cd] leading-relaxed">
+            <p className="text-xs sm:text-sm text-[#375847] leading-relaxed">
               {timelineMilestones[activeTimeline].desc}
             </p>
           </div>
         </section>
 
         {/* SECTION 4: Our Guiding Principles */}
-        <section className="p-8 rounded-3xl bg-[#092218] border border-[#16432f] space-y-6">
+        <section className="p-8 rounded-3xl bg-[#f4f8f5] border border-[#d2e4d9] space-y-6 shadow-sm">
           <div className="text-center max-w-2xl mx-auto space-y-1">
-            <span className="text-xs font-bold uppercase tracking-widest text-emerald-400">
+            <span className="text-xs font-bold uppercase tracking-widest text-emerald-800">
               Core Ethics
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-white">
+            <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#082318]">
               Ethical Wildlife Tourism Code
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-[#c2d7cd]">
-            <div className="p-5 rounded-2xl bg-[#06150f] border border-[#16432f] space-y-2">
-              <Heart className="w-5 h-5 text-amber-400" />
-              <h3 className="font-bold text-white text-sm">Wildlife First Ethos</h3>
-              <p className="text-[#86a898]">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-[#375847]">
+            <div className="p-5 rounded-2xl bg-white border border-[#d2e4d9] space-y-2 shadow-sm">
+              <Heart className="w-5 h-5 text-[#b45309]" />
+              <h3 className="font-bold text-[#082318] text-sm">Wildlife First Ethos</h3>
+              <p className="text-[#517362]">
                 We maintain respectful distances from tigers and wild animals, adhering to forest speed limits and zero-noise codes.
               </p>
             </div>
 
-            <div className="p-5 rounded-2xl bg-[#06150f] border border-[#16432f] space-y-2">
-              <ShieldCheck className="w-5 h-5 text-emerald-400" />
-              <h3 className="font-bold text-white text-sm">Transparent Quotas</h3>
-              <p className="text-[#86a898]">
+            <div className="p-5 rounded-2xl bg-white border border-[#d2e4d9] space-y-2 shadow-sm">
+              <ShieldCheck className="w-6 h-6 text-emerald-700" />
+              <h3 className="font-bold text-[#082318] text-sm">Transparent Quotas</h3>
+              <p className="text-[#517362]">
                 No false promises. We educate guests on the official 10-zone lottery and provide genuine government receipts.
               </p>
             </div>
 
-            <div className="p-5 rounded-2xl bg-[#06150f] border border-[#16432f] space-y-2">
-              <Users className="w-5 h-5 text-teal-400" />
-              <h3 className="font-bold text-white text-sm">Community Empowerment</h3>
-              <p className="text-[#86a898]">
+            <div className="p-5 rounded-2xl bg-white border border-[#d2e4d9] space-y-2 shadow-sm">
+              <Users className="w-6 h-6 text-teal-700" />
+              <h3 className="font-bold text-[#082318] text-sm">Community Empowerment</h3>
+              <p className="text-[#517362]">
                 100% of our drivers, naturalists, and desk managers are local residents of Sawai Madhopur and surrounding villages.
               </p>
             </div>
@@ -236,13 +236,13 @@ export default function AboutUsPage() {
         {/* SECTION 5: Meet Our Naturalist Trackers */}
         <section className="space-y-6">
           <div className="text-center max-w-2xl mx-auto space-y-1">
-            <span className="text-xs font-bold uppercase tracking-widest text-amber-400">
+            <span className="text-xs font-bold uppercase tracking-widest text-[#b45309]">
               Field Team
             </span>
-            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
+            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-[#082318]">
               Meet Our Jungle Trackers &amp; Naturalists
             </h2>
-            <p className="text-xs sm:text-sm text-[#86a898]">
+            <p className="text-xs sm:text-sm text-[#517362]">
               Decades of wilderness knowledge passed down through generations in Ranthambore.
             </p>
           </div>
@@ -251,17 +251,17 @@ export default function AboutUsPage() {
             {teamMembers.map((member) => (
               <SpotlightCard
                 key={member.name}
-                spotlightColor="rgba(16, 185, 129, 0.16)"
+                spotlightColor="rgba(4, 120, 87, 0.12)"
                 enableTilt={true}
-                className="glass-card p-6 rounded-2xl border border-[#16432f] bg-[#092218] space-y-3"
+                className="bg-white p-6 rounded-2xl border border-[#d2e4d9] space-y-3 shadow-md hover:border-emerald-600 hover:shadow-xl transition duration-300"
               >
-                <div className="w-10 h-10 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center font-bold">
+                <div className="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center font-bold border border-emerald-200">
                   <Compass className="w-5 h-5" />
                 </div>
-                <h3 className="font-serif text-lg font-bold text-white">{member.name}</h3>
-                <span className="text-xs font-semibold text-amber-400 block">{member.role}</span>
-                <span className="text-[11px] text-[#86a898] block">{member.exp}</span>
-                <p className="text-xs text-[#c2d7cd] leading-relaxed pt-2 border-t border-[#16432f]">
+                <h3 className="font-serif text-lg font-bold text-[#082318]">{member.name}</h3>
+                <span className="text-xs font-semibold text-[#b45309] block">{member.role}</span>
+                <span className="text-[11px] text-[#2e5241] font-semibold block">{member.exp}</span>
+                <p className="text-xs text-[#1b3a2a] leading-relaxed font-normal pt-2 border-t border-[#e2ede6]">
                   {member.bio}
                 </p>
               </SpotlightCard>

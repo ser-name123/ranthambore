@@ -7,6 +7,8 @@ import Header from './Header';
 import Footer from './Footer';
 import FloatingMobileBar from './FloatingMobileBar';
 import GlobalPreloader from './GlobalPreloader';
+import FallingLeavesCanvas from './FallingLeavesCanvas';
+import WildlifeSoundscape from './WildlifeSoundscape';
 
 interface ClientLayoutProps {
   children: React.ReactNode;
@@ -26,7 +28,7 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
 
   if (isAdmin) {
     return (
-      <div className="min-h-screen bg-[#0c0b0a] text-[#f4efea] selection:bg-[#ea580c] selection:text-white font-sans antialiased">
+      <div className="min-h-screen bg-white text-[#082318] selection:bg-emerald-700 selection:text-white font-sans antialiased">
         {children}
       </div>
     );
@@ -34,15 +36,21 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
 
   return (
     <BookingModalProvider>
-      <div className="min-h-screen bg-[#06150f] text-[#f2f7f4] flex flex-col relative selection:bg-[#10b981] selection:text-white">
+      <div className="min-h-screen bg-white text-[#082318] flex flex-col relative selection:bg-emerald-700 selection:text-white">
         {/* Global Route Progress Bar */}
         <GlobalPreloader />
+
+        {/* Global Floating Jungle Leaves Animation Canvas */}
+        <FallingLeavesCanvas />
+
+        {/* Global Interactive Jungle Wildlife Ambience Sound Toggle */}
+        <WildlifeSoundscape />
 
         {/* Global Navigation Header across all pages */}
         <Header />
 
         {/* Dynamic Page Content */}
-        <main className="flex-1 w-full overflow-x-hidden flex flex-col">
+        <main className="flex-1 w-full overflow-x-hidden flex flex-col relative z-20">
           {children}
         </main>
 

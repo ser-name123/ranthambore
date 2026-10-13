@@ -44,28 +44,28 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
   return (
     <header className="sticky top-0 z-50 w-full shadow-2xl transition-all">
       {/* Top Info Bar */}
-      <div className="bg-[#071912] border-b border-[#143526] text-xs text-[#cfdfd6] py-2 px-4 sm:px-8">
+      <div className="bg-[#f4f8f5] border-b border-[#d2e4d9] text-xs text-[#375847] py-2 px-4 sm:px-8">
         <div className="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
           <div className="flex items-center gap-3">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-400 font-medium border border-emerald-500/30">
-              <ShieldCheck className="w-3.5 h-3.5" />
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-800 font-semibold border border-emerald-200">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-700" />
               Independent Safari Tour Operator
             </span>
-            <span className="hidden sm:inline-flex items-center gap-1 text-[#93b5a4]">
-              <Clock className="w-3.5 h-3.5 text-[#f59e0b]" />
+            <span className="hidden sm:inline-flex items-center gap-1 text-[#517362]">
+              <Clock className="w-3.5 h-3.5 text-[#d97706]" />
               Support: 6:00 AM - 10:00 PM (Daily)
             </span>
           </div>
 
           <div className="flex items-center gap-4 text-xs font-medium">
             <div className="flex items-center gap-2">
-              <Phone className="w-3.5 h-3.5 text-[#f59e0b]" />
-              <span className="text-[#7fa391]">Helpline:</span>
-              <a href={`tel:${phoneNumbers[0].raw}`} className="hover:text-white transition">
+              <Phone className="w-3.5 h-3.5 text-[#d97706]" />
+              <span className="text-[#517362]">Helpline:</span>
+              <a href={`tel:${phoneNumbers[0].raw}`} className="text-[#082318] hover:text-emerald-800 font-semibold transition">
                 {phoneNumbers[0].display}
               </a>
-              <span className="text-[#204936]">|</span>
-              <a href={`tel:${phoneNumbers[1].raw}`} className="hover:text-white transition hidden sm:inline">
+              <span className="text-[#d2e4d9]">|</span>
+              <a href={`tel:${phoneNumbers[1].raw}`} className="text-[#082318] hover:text-emerald-800 font-semibold transition hidden sm:inline">
                 {phoneNumbers[1].display}
               </a>
             </div>
@@ -74,9 +74,9 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
               href="https://wa.me/919971965629?text=Hi%20Ranthambore%20Wild%20Life%20Tour,%20I%20want%20to%20enquire%20about%20Safari%20Booking."
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-emerald-400 hover:text-emerald-300 font-semibold transition"
+              className="inline-flex items-center gap-1 text-emerald-800 hover:text-emerald-950 font-bold transition"
             >
-              <MessageCircle className="w-3.5 h-3.5 fill-current" />
+              <MessageCircle className="w-3.5 h-3.5 fill-current text-emerald-700" />
               <span>WhatsApp</span>
             </a>
           </div>
@@ -84,11 +84,11 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
       </div>
 
       {/* Main Navbar */}
-      <nav className="bg-[#0a2017]/95 backdrop-blur-md border-b border-[#183d2c] px-4 sm:px-8 py-3">
+      <nav className="bg-white/95 backdrop-blur-md border-b border-[#e2ece6] px-4 sm:px-8 py-3 transition-colors duration-200">
         <div className="max-w-[1440px] mx-auto flex items-center justify-between gap-6">
           {/* Logo & Brand Identity */}
           <Link href="/" className="flex items-center gap-3 group shrink-0">
-            <div className="relative w-12 h-12 rounded-xl overflow-hidden shadow-lg border border-emerald-500/30 group-hover:border-emerald-400 transition duration-300">
+            <div className="relative w-12 h-12 rounded-xl overflow-hidden shadow-md border border-emerald-600/20 group-hover:border-emerald-500 transition duration-300">
               <Image
                 src="/logo.jpg"
                 alt="Ranthambore Wild Life Tour Logo"
@@ -98,10 +98,10 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
               />
             </div>
             <div>
-              <span className="block font-serif text-xl sm:text-2xl font-bold tracking-tight text-white group-hover:text-emerald-300 transition">
+              <span className="block font-serif text-xl sm:text-2xl font-bold tracking-tight text-[#082318] group-hover:text-[#047857] transition">
                 Ranthambore
               </span>
-              <span className="block text-[10px] tracking-[0.2em] uppercase font-bold text-[#f59e0b]">
+              <span className="block text-[10px] tracking-[0.2em] uppercase font-bold text-[#d97706]">
                 Wild Life Tour
               </span>
             </div>
@@ -120,17 +120,17 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
                   <Link
                     key={link.name}
                     href={link.href}
-                    className={`relative px-3 py-1.5 rounded-lg text-sm font-medium transition duration-200 ${
+                    className={`relative px-3 py-1.5 rounded-lg text-sm font-semibold transition duration-200 ${
                       isActive
-                        ? 'text-emerald-300 font-bold'
-                        : 'text-[#bad3c6] hover:text-[#f59e0b]'
+                        ? 'text-[#047857]'
+                        : 'text-[#284838] hover:text-[#d97706]'
                     }`}
                   >
                     <span>{link.name}</span>
                     {isActive && (
                       <motion.span
                         layoutId="activeHeaderNav"
-                        className="absolute bottom-0 left-2 right-2 h-[2.5px] bg-gradient-to-r from-emerald-400 via-[#f59e0b] to-emerald-300 rounded-full shadow-[0_0_8px_rgba(52,211,153,0.9)]"
+                        className="absolute bottom-0 left-2 right-2 h-[2.5px] bg-gradient-to-r from-emerald-600 via-[#d97706] to-emerald-500 rounded-full shadow-[0_0_8px_rgba(4,120,87,0.4)]"
                         transition={{ type: 'spring', stiffness: 500, damping: 35 }}
                       />
                     )}
@@ -143,7 +143,7 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
             <div className="hidden sm:flex items-center gap-3">
               <button
                 onClick={() => handleOpen()}
-                className="px-4 py-2 rounded-lg bg-gradient-to-r from-emerald-600 via-[#ea580c] to-[#d97706] hover:from-emerald-500 hover:to-[#ea580c] text-white text-xs font-bold shadow-lg shadow-emerald-950/40 flex items-center gap-1.5 transition duration-300 cursor-pointer animate-glow"
+                className="px-4 py-2 rounded-lg bg-gradient-to-r from-emerald-700 via-[#ea580c] to-[#d97706] hover:from-emerald-600 hover:to-[#ea580c] text-white text-xs font-bold shadow-md shadow-emerald-950/20 flex items-center gap-1.5 transition duration-300 cursor-pointer"
               >
                 <span>Book Safari</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -153,7 +153,7 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-2 rounded-lg bg-[#0e2a1e] text-[#d4e6dc] hover:text-white border border-[#1e4c37]"
+              className="lg:hidden p-2 rounded-lg bg-[#f0f6f2] text-[#082318] hover:bg-[#e4ede7] border border-[#d2e4d9]"
               aria-label="Toggle navigation menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -163,7 +163,7 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
 
         {/* Mobile Navigation Drawer */}
         {mobileMenuOpen && (
-          <div className="lg:hidden mt-3 pt-3 border-t border-[#183d2c] space-y-1.5 pb-3">
+          <div className="lg:hidden mt-3 pt-3 border-t border-[#e2ece6] space-y-1.5 pb-3">
             {navLinks.map((link) => {
               const isActive = link.href === '/' 
                 ? pathname === '/' 
@@ -176,25 +176,25 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
                   onClick={() => setMobileMenuOpen(false)}
                   className={`flex items-center justify-between px-3.5 py-2.5 rounded-xl text-sm font-semibold transition ${
                     isActive
-                      ? 'bg-gradient-to-r from-emerald-900/40 to-[#ea580c]/20 text-emerald-300 border border-emerald-500/40 shadow-sm'
-                      : 'text-[#bad3c6] hover:bg-[#0e2a1e] hover:text-white'
+                      ? 'bg-emerald-50 text-[#047857] border border-emerald-200 shadow-sm'
+                      : 'text-[#284838] hover:bg-[#f0f6f2] hover:text-[#082318]'
                   }`}
                 >
                   <span>{link.name}</span>
                   {isActive && (
-                    <span className="w-2 h-2 rounded-full bg-[#f59e0b] shadow-[0_0_6px_rgba(245,158,11,1)]" />
+                    <span className="w-2 h-2 rounded-full bg-[#d97706]" />
                   )}
                 </Link>
               );
             })}
 
-            <div className="pt-3 border-t border-[#183d2c] flex flex-col gap-2">
+            <div className="pt-3 border-t border-[#e2ece6] flex flex-col gap-2">
               <button
                 onClick={() => {
                   setMobileMenuOpen(false);
                   handleOpen();
                 }}
-                className="w-full py-2.5 rounded-lg bg-gradient-to-r from-emerald-600 to-[#d97706] text-white text-sm font-bold text-center flex items-center justify-center gap-2 shadow-md"
+                className="w-full py-2.5 rounded-lg bg-gradient-to-r from-emerald-700 to-[#d97706] text-white text-sm font-bold text-center flex items-center justify-center gap-2 shadow-md"
               >
                 <span>Request Safari Booking</span>
                 <ArrowRight className="w-4 h-4" />
@@ -204,7 +204,7 @@ export default function Header({ onOpenBookingModal }: HeaderProps) {
                 href="https://wa.me/919971965629?text=Hello%20Ranthambore%20Wild%20Life%20Tour,%20please%20check%20safari%20availability."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-2.5 rounded-lg bg-emerald-600/20 text-emerald-400 border border-emerald-500/30 text-sm font-semibold flex items-center justify-center gap-2 text-center"
+                className="w-full py-2.5 rounded-lg bg-emerald-50 text-[#047857] border border-emerald-200 text-sm font-semibold flex items-center justify-center gap-2 text-center"
               >
                 <MessageCircle className="w-4 h-4" />
                 <span>WhatsApp Safari Assistance</span>

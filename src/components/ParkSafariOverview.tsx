@@ -17,6 +17,18 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SpotlightCard from './SpotlightCard';
+import { 
+  JungleTopCanopy, 
+  JungleCornerBranch, 
+  TigerTrackWatermark, 
+  BambooStalks, 
+  JungleLeavesWatermark,
+  JungleGodRays,
+  TigerProwlSilhouette,
+  JungleSavannahGrass,
+  GiantBanyanTree,
+  RanthamboreRuinsBackdrop
+} from './JungleFoliageDecorations';
 
 interface ParkSafariOverviewProps {
   onOpenBookingModal?: (opts?: { vehicle?: string; zone?: string; packageName?: string }) => void;
@@ -89,8 +101,25 @@ export default function ParkSafariOverview({ onOpenBookingModal }: ParkSafariOve
   ];
 
   return (
-    <section className="py-20 sm:py-24 bg-[#06150f] relative overflow-hidden border-t border-[#123324]" id="safari-overview">
-      {/* Decorative ambient jungle glows */}
+    <section className="py-20 sm:py-24 bg-white relative overflow-hidden border-t border-[#e2ece6]" id="safari-overview">
+      {/* Historic Ranthambore Lake Ruin & Sunbeams */}
+      <RanthamboreRuinsBackdrop />
+      <JungleGodRays />
+      <JungleTopCanopy className="opacity-85" />
+
+      {/* Giant Ancient Banyan Tree with Hanging Prop Roots */}
+      <GiantBanyanTree position="right" className="opacity-45" />
+
+      {/* Jungle Branches & Wildlife Tracks */}
+      <JungleCornerBranch position="left" className="top-10 left-0" />
+      <JungleCornerBranch position="right" className="top-24 right-0" />
+      <JungleLeavesWatermark position="right" className="top-1/3" />
+      <TigerProwlSilhouette className="bottom-10 right-12 hidden lg:block" />
+      <BambooStalks className="bottom-0 left-4 opacity-40" />
+      <TigerTrackWatermark count={5} className="top-1/3" />
+      <JungleSavannahGrass className="bottom-0" />
+
+      {/* Decorative ambient subtle glows */}
       <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 left-0 w-[500px] h-[500px] bg-[#f59e0b]/5 rounded-full blur-3xl pointer-events-none" />
 
@@ -103,17 +132,17 @@ export default function ParkSafariOverview({ onOpenBookingModal }: ParkSafariOve
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-14 space-y-3.5"
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-500/15 text-emerald-300 text-xs font-bold uppercase tracking-widest border border-emerald-500/30 shadow-sm">
-            <Compass className="w-3.5 h-3.5 text-emerald-400" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 text-[#064e3b] text-xs font-bold uppercase tracking-widest border border-emerald-200 shadow-xs">
+            <Compass className="w-3.5 h-3.5 text-[#047857]" />
             Ranthambore Tiger Reserve
           </div>
-          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight">
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#082318] tracking-tight leading-tight">
             Meet the Royal Bengal Tigers of{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-[#f59e0b] to-[#fb923c]">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 via-[#ea580c] to-[#d97706]">
               Ranthambore
             </span>
           </h2>
-          <p className="text-sm sm:text-base text-[#bad3c6] leading-relaxed">
+          <p className="text-sm sm:text-base text-[#1b3a2a] leading-relaxed">
             One of the world&apos;s finest natural habitats to witness wild Bengal tigers in broad daylight. Spanning 10 regulated zones across ancient fortresses, freshwater lakes, and lush deciduous jungle.
           </p>
         </motion.div>
@@ -126,7 +155,7 @@ export default function ParkSafariOverview({ onOpenBookingModal }: ParkSafariOve
             {/* Big Active Tiger Image Card (lg:col-span-7) */}
             <motion.div
               layout
-              className="lg:col-span-7 relative rounded-3xl overflow-hidden shadow-2xl border border-emerald-500/30 bg-[#092218] group h-[360px] sm:h-[460px]"
+              className="lg:col-span-7 relative rounded-3xl overflow-hidden shadow-2xl border border-[#d2e4d9] bg-[#f4f8f5] group h-[360px] sm:h-[460px]"
             >
               <AnimatePresence mode="wait">
                 <motion.div
@@ -145,37 +174,37 @@ export default function ParkSafariOverview({ onOpenBookingModal }: ParkSafariOve
                     className="object-cover group-hover:scale-105 transition duration-700 ease-out"
                   />
                   {/* Subtle Gradient Shade */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#06150f] via-[#06150f]/30 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent" />
                 </motion.div>
               </AnimatePresence>
 
               {/* Overlay Info Pill on Image */}
               <div className="absolute bottom-5 left-5 right-5 z-10 flex flex-col sm:flex-row sm:items-end justify-between gap-3">
-                <div className="space-y-1 bg-[#06150f]/85 backdrop-blur-md p-4 rounded-2xl border border-emerald-500/30 max-w-md">
+                <div className="space-y-1 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-[#d2e4d9] max-w-md shadow-xl text-[#082318]">
                   <div className="flex items-center gap-2">
-                    <span className="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 text-[10px] font-bold uppercase tracking-wider border border-emerald-500/40">
+                    <span className="px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 text-[10px] font-bold uppercase tracking-wider border border-emerald-200">
                       {tigerShowcase[activeTiger].tag}
                     </span>
-                    <span className="text-[11px] text-[#f59e0b] font-semibold flex items-center gap-1">
+                    <span className="text-[11px] text-[#d97706] font-semibold flex items-center gap-1">
                       <Eye className="w-3 h-3" />
                       {tigerShowcase[activeTiger].sightings}
                     </span>
                   </div>
-                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-white">
+                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#082318]">
                     {tigerShowcase[activeTiger].name} – {tigerShowcase[activeTiger].title}
                   </h3>
-                  <p className="text-xs text-[#bad3c6] leading-relaxed">
+                  <p className="text-xs text-[#1b3a2a] leading-relaxed font-normal">
                     {tigerShowcase[activeTiger].desc}
                   </p>
-                  <div className="flex items-center gap-1.5 text-[11px] text-emerald-400 font-medium pt-1">
-                    <MapPin className="w-3 h-3 shrink-0" />
+                  <div className="flex items-center gap-1.5 text-[11px] text-emerald-800 font-semibold pt-1">
+                    <MapPin className="w-3 h-3 shrink-0 text-emerald-700" />
                     <span>Territory: {tigerShowcase[activeTiger].territory}</span>
                   </div>
                 </div>
 
                 <button
                   onClick={() => onOpenBookingModal && onOpenBookingModal({ zone: tigerShowcase[activeTiger].territory })}
-                  className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-[#d97706] hover:from-emerald-500 text-white font-bold text-xs shadow-lg flex items-center justify-center gap-2 cursor-pointer shrink-0"
+                  className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-700 via-[#ea580c] to-[#d97706] hover:from-emerald-600 text-white font-bold text-xs shadow-lg flex items-center justify-center gap-2 cursor-pointer shrink-0"
                 >
                   <span>Book Safari in this Zone</span>
                   <ArrowRight className="w-3.5 h-3.5" />
@@ -196,18 +225,18 @@ export default function ParkSafariOverview({ onOpenBookingModal }: ParkSafariOve
                     type="button"
                     className={`p-3.5 rounded-2xl border text-left transition-all duration-300 flex items-center gap-3.5 cursor-pointer w-full relative overflow-hidden ${
                       isActive
-                        ? 'bg-[#0e2a1e] border-emerald-400 shadow-xl shadow-emerald-950/40 text-white'
-                        : 'bg-[#092017]/70 border-[#143d2b] text-[#93b5a4] hover:bg-[#0c241a] hover:text-white'
+                        ? 'bg-emerald-50/80 border-2 border-emerald-600 shadow-md text-[#082318]'
+                        : 'bg-[#f8faf8] border-[#d8eae0] text-[#335344] hover:bg-white hover:border-emerald-500/50 hover:shadow-xs'
                     }`}
                   >
                     {isActive && (
                       <motion.div
                         layoutId="activeTigerBorder"
-                        className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-emerald-400 to-[#f59e0b]"
+                        className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-emerald-600 to-[#d97706]"
                       />
                     )}
                     {/* Thumbnail */}
-                    <div className="relative w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-emerald-500/30">
+                    <div className="relative w-16 h-16 rounded-xl overflow-hidden shrink-0 border border-[#c4dcce]">
                       <Image
                         src={tiger.image}
                         alt={tiger.name}
@@ -218,15 +247,15 @@ export default function ParkSafariOverview({ onOpenBookingModal }: ParkSafariOve
                     {/* Info */}
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center justify-between gap-1 mb-0.5">
-                        <span className={`font-serif font-bold text-sm sm:text-base truncate ${isActive ? 'text-white' : 'text-[#cfdfd6]'}`}>
+                        <span className={`font-serif font-bold text-sm sm:text-base truncate ${isActive ? 'text-[#082318]' : 'text-[#183d2a]'}`}>
                           {tiger.name}
                         </span>
-                        <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-300 shrink-0 font-medium">
+                        <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 shrink-0 font-medium border border-emerald-200">
                           {tiger.tag}
                         </span>
                       </div>
-                      <p className="text-xs text-[#7fa391] truncate">{tiger.title}</p>
-                      <div className="flex items-center gap-1 text-[11px] text-[#f59e0b] mt-1">
+                      <p className="text-xs text-[#517362] truncate">{tiger.title}</p>
+                      <div className="flex items-center gap-1 text-[11px] text-[#ea580c] mt-1 font-medium">
                         <MapPin className="w-3 h-3 shrink-0" />
                         <span className="truncate">{tiger.territory}</span>
                       </div>
@@ -243,43 +272,43 @@ export default function ParkSafariOverview({ onOpenBookingModal }: ParkSafariOve
         {/* ============================================================== */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
           <SpotlightCard
-            spotlightColor="rgba(52, 211, 153, 0.18)"
+            spotlightColor="rgba(4, 120, 87, 0.08)"
             enableTilt={true}
-            className="glass-card p-6 rounded-2xl border border-[#164330] bg-[#092218]/90 space-y-3 shadow-lg"
+            className="p-6 rounded-2xl border border-[#dcebe1] bg-white space-y-3 shadow-md"
           >
-            <div className="w-11 h-11 rounded-xl bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 flex items-center justify-center font-bold">
+            <div className="w-11 h-11 rounded-xl bg-emerald-50 text-[#047857] border border-emerald-200 flex items-center justify-center font-bold">
               <ShieldCheck className="w-5 h-5" />
             </div>
-            <h3 className="font-serif text-xl font-bold text-white">Forest Department Permits</h3>
-            <p className="text-xs sm:text-sm text-[#93b5a4] leading-relaxed">
+            <h3 className="font-serif text-xl font-bold text-[#082318]">Forest Department Permits</h3>
+            <p className="text-xs sm:text-sm text-[#1b3a2a] leading-relaxed font-normal">
               All safaris are governed by the Rajasthan Forest Dept. Daily quotas are limited per zone to protect wild habitat and prevent overcrowding.
             </p>
           </SpotlightCard>
 
           <SpotlightCard
-            spotlightColor="rgba(245, 158, 11, 0.18)"
+            spotlightColor="rgba(217, 119, 6, 0.08)"
             enableTilt={true}
-            className="glass-card p-6 rounded-2xl border border-[#164330] bg-[#092218]/90 space-y-3 shadow-lg"
+            className="p-6 rounded-2xl border border-[#dcebe1] bg-white space-y-3 shadow-md"
           >
-            <div className="w-11 h-11 rounded-xl bg-[#f59e0b]/15 text-[#f59e0b] border border-[#f59e0b]/30 flex items-center justify-center font-bold">
+            <div className="w-11 h-11 rounded-xl bg-amber-50 text-[#d97706] border border-amber-200 flex items-center justify-center font-bold">
               <Compass className="w-5 h-5" />
             </div>
-            <h3 className="font-serif text-xl font-bold text-white">10 Managed Safari Zones</h3>
-            <p className="text-xs sm:text-sm text-[#93b5a4] leading-relaxed">
+            <h3 className="font-serif text-xl font-bold text-[#082318]">10 Managed Safari Zones</h3>
+            <p className="text-xs sm:text-sm text-[#1b3a2a] leading-relaxed font-normal">
               Zones 1 to 5 encompass historic core lakes and fort trails. Zones 6 to 10 feature rugged buffer valleys and thriving leopard corridors.
             </p>
           </SpotlightCard>
 
           <SpotlightCard
-            spotlightColor="rgba(52, 211, 153, 0.18)"
+            spotlightColor="rgba(4, 120, 87, 0.08)"
             enableTilt={true}
-            className="glass-card p-6 rounded-2xl border border-[#164330] bg-[#092218]/90 space-y-3 shadow-lg"
+            className="p-6 rounded-2xl border border-[#dcebe1] bg-white space-y-3 shadow-md"
           >
-            <div className="w-11 h-11 rounded-xl bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 flex items-center justify-center font-bold">
+            <div className="w-11 h-11 rounded-xl bg-emerald-50 text-[#047857] border border-emerald-200 flex items-center justify-center font-bold">
               <Sparkles className="w-5 h-5" />
             </div>
-            <h3 className="font-serif text-xl font-bold text-white">Jeep &amp; Canter Safari Options</h3>
-            <p className="text-xs sm:text-sm text-[#93b5a4] leading-relaxed">
+            <h3 className="font-serif text-xl font-bold text-[#082318]">Jeep &amp; Canter Safari Options</h3>
+            <p className="text-xs sm:text-sm text-[#1b3a2a] leading-relaxed font-normal">
               Choose an exclusive 6-seater 4x4 Maruti Gypsy for maneuverability or an economical 20-seater safari Canter for family groups.
             </p>
           </SpotlightCard>
@@ -288,17 +317,17 @@ export default function ParkSafariOverview({ onOpenBookingModal }: ParkSafariOve
         {/* ============================================================== */}
         {/* PART 3: STREAMLINED TIMELINE - 3 PUNCHY MILESTONES */}
         {/* ============================================================== */}
-        <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-[#092218] via-[#0c2b1f] to-[#081f16] border border-emerald-500/25 shadow-2xl">
-          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6 pb-6 border-b border-[#143d2b]">
+        <div className="p-6 sm:p-8 rounded-3xl bg-[#f4f8f5] border border-[#d2e4d9] shadow-md">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6 pb-6 border-b border-[#dcebe1]">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#f59e0b]">Historic Conservation Journey</span>
-              <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white mt-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#d97706]">Historic Conservation Journey</span>
+              <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#082318] mt-1">
                 How Ranthambore Became India&apos;s Tiger Capital
               </h3>
             </div>
             <button
               onClick={() => onOpenBookingModal && onOpenBookingModal()}
-              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-600 to-[#d97706] hover:from-emerald-500 text-white font-bold text-xs shadow-md flex items-center gap-2 cursor-pointer shrink-0"
+              className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-700 to-[#d97706] hover:from-emerald-600 text-white font-bold text-xs shadow-md flex items-center gap-2 cursor-pointer shrink-0"
             >
               <span>Plan Your Safari Visit</span>
               <ArrowRight className="w-4 h-4" />
@@ -309,15 +338,15 @@ export default function ParkSafariOverview({ onOpenBookingModal }: ParkSafariOve
             {milestones.map((m) => {
               const Icon = m.icon;
               return (
-                <div key={m.year} className="p-4 rounded-2xl bg-[#061710]/80 border border-[#16432f] space-y-2">
+                <div key={m.year} className="p-4 rounded-2xl bg-white border border-[#dcebe1] space-y-2 shadow-xs">
                   <div className="flex items-center justify-between">
-                    <span className="font-serif text-2xl font-bold text-[#f59e0b]">{m.year}</span>
-                    <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/15 text-emerald-300 font-semibold border border-emerald-500/30">
+                    <span className="font-serif text-2xl font-bold text-[#d97706]">{m.year}</span>
+                    <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 font-semibold border border-emerald-200">
                       {m.badge}
                     </span>
                   </div>
-                  <h4 className="font-serif text-base font-bold text-white">{m.title}</h4>
-                  <p className="text-xs text-[#bad3c6] leading-relaxed">{m.desc}</p>
+                  <h4 className="font-serif text-base font-bold text-[#082318]">{m.title}</h4>
+                  <p className="text-xs text-[#1b3a2a] leading-relaxed font-normal">{m.desc}</p>
                 </div>
               );
             })}
