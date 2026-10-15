@@ -94,3 +94,35 @@ ALTER TABLE revisions ENABLE ROW LEVEL SECURITY;
 -- 7. Extra enquiry context (added later; safe to re-run)
 ALTER TABLE enquiries ADD COLUMN IF NOT EXISTS page_url TEXT;
 ALTER TABLE enquiries ADD COLUMN IF NOT EXISTS consent BOOLEAN;
+
+-- 8. URL redirects managed from the admin (applied by src/proxy.ts).
+--    Created automatically when a page/package URL changes.
+CREATE TABLE IF NOT EXISTS redirects (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    from_path TEXT UNIQUE NOT NULL,        -- lower-case path, e.g. /old-page
+    to_path TEXT NOT NULL,                 -- path or full https:// URL
+    status_code INTEGER NOT NULL DEFAULT 301 CHECK (status_code IN (301, 302, 307, 308)),
+    hits INTEGER NOT NULL DEFAULT 0,
+    note TEXT,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+ALTER TABLE redirects ENABLE ROW LEVEL SECURITY;
+
+CREATE OR REPLACE FUNCTION increment_redirect_hits(rid UUID) RETURNS VOID
+LANGUAGE sql SECURITY DEFINER SET search_path = public AS $$
+  UPDATE redirects SET hits = hits + 1 WHERE id = rid;
+$$;
+REVOKE ALL ON FUNCTION increment_redirect_hits(UUID) FROM PUBLIC, anon, authenticated;
+
+-- Short URLs that used to live in next.config.ts
+INSERT INTO redirects (from_path, to_path, note) VALUES
+  ('/privacy', '/privacy-policy', 'Short URL'),
+  ('/cancellation', '/cancellation-policy', 'Short URL'),
+  ('/refund-policy', '/cancellation-policy', 'Short URL'),
+  ('/terms', '/terms-conditions', 'Short URL'),
+  ('/terms-and-conditions', '/terms-conditions', 'Short URL'),
+  ('/terms-of-service', '/terms-conditions', 'Short URL'),
+  ('/about', '/about-us', 'Short URL'),
+  ('/contact', '/contact-us', 'Short URL')
+ON CONFLICT (from_path) DO NOTHING;

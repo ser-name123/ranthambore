@@ -3,7 +3,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import RichTextEditor from './RichTextEditor';
 import { ArrowDown, ArrowLeft, ArrowUp, Copy, ExternalLink, Eye, EyeOff, Loader2, MonitorPlay, Pencil, Plus, Save, Search, Trash2, Undo2 } from 'lucide-react';
-import { CmsPage, EMPTY_SEO, PageGroup, PageSeo, PackageCategory, Published, slugify, TourPackage } from '@/lib/cms';
+import { CmsPage, EMPTY_SEO, PageGroup, PageSeo, PackageCategory, Published, slugify, slugifyTyping, TourPackage } from '@/lib/cms';
 import BlocksEditor from './BlocksEditor';
 import RevisionsPanel from './RevisionsPanel';
 import { Button, Card, ImagePicker, inputClass, LinesInput, NumberInput, SelectInput, TextArea, TextInput, Toggle } from './ui';
@@ -63,9 +63,11 @@ interface Props {
   initialId?: string;
   /** Called whenever the list changes so the sidebar can refresh. */
   onItemsChange?: (items: Item[]) => void;
+  /** Called after a URL change, when links elsewhere on the site may have been updated. */
+  onUrlChange?: () => void;
 }
 
-export default function CollectionManager({ collection, api, notify, onError, initialId, onItemsChange }: Props) {
+export default function CollectionManager({ collection, api, notify, onError, initialId, onItemsChange, onUrlChange }: Props) {
   const [items, setItems] = useState<Item[]>([]);
   const [loading, setLoading] = useState(true);
   const [editing, setEditing] = useState<{ id: string | null; doc: Doc; published: boolean; original: string } | null>(null);
@@ -125,12 +127,19 @@ export default function CollectionManager({ collection, api, notify, onError, in
     setSaving(true);
     try {
       const body = JSON.stringify({ data: doc, published: editing.published });
-      const { item } = editing.id
-        ? await api<{ item: Item }>(`/api/admin/${collection}/${editing.id}`, { method: 'PUT', body })
-        : await api<{ item: Item }>(`/api/admin/${collection}`, { method: 'POST', body });
+      type Res = { item: Item; redirectFrom?: string | null; linksUpdated?: number };
+      const { item, redirectFrom, linksUpdated } = editing.id
+        ? await api<Res>(`/api/admin/${collection}/${editing.id}`, { method: 'PUT', body })
+        : await api<Res>(`/api/admin/${collection}`, { method: 'POST', body });
       setItems((list) => (editing.id ? list.map((i) => (i.id === item.id ? item : i)) : [...list, item]));
       open(item.id, item.data, item.published);
-      notify('success', item.published ? 'Saved — live on the website.' : 'Saved as draft (not visible on the website).');
+      if (redirectFrom) {
+        const links = linksUpdated ? ` ${linksUpdated} link${linksUpdated === 1 ? '' : 's'} on the site were updated.` : '';
+        notify('success', `URL changed. ${redirectFrom} now redirects to ${pathOf(collection, item.slug)}.${links}`);
+        onUrlChange?.();
+      } else {
+        notify('success', item.published ? 'Saved — live on the website.' : 'Saved as draft (not visible on the website).');
+      }
     } catch (err) {
       onError(err);
     } finally {
@@ -152,7 +161,7 @@ export default function CollectionManager({ collection, api, notify, onError, in
   };
 
   const remove = async (item: Item) => {
-    if (!confirm(`Delete “${titleOf(item.data)}” permanently? Its URL will stop working.`)) return;
+    if (!confirm(`Delete “${titleOf(item.data)}” permanently? Its URL will stop working.\n\nTip: afterwards add a redirect in SEO & Google → URLs & Redirects so visitors land on another page.`)) return;
     try {
       await api(`/api/admin/${collection}/${item.id}`, { method: 'DELETE' });
       setItems((list) => list.filter((i) => i.id !== item.id));
@@ -354,10 +363,10 @@ function SlugField({ slug, name, prefix, isNew, onChange }: { slug: string; name
   return (
     <TextInput
       label="URL"
-      hint={`${prefix}${slug || slugify(name)}${isNew ? '' : ' · Changing the URL breaks old links to this page'}`}
+      hint={`${prefix}${slug || slugify(name)}${isNew ? '' : ' · If you change it, the old URL redirects here automatically and site links are updated'}`}
       value={slug}
       placeholder={slugify(name)}
-      onChange={(v) => onChange(slugify(v.replace(/\s/g, '-')) + (v.endsWith('-') ? '-' : ''))}
+      onChange={(v) => onChange(slugifyTyping(v))}
     />
   );
 }

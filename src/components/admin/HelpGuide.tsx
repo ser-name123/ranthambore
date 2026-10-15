@@ -1,11 +1,11 @@
 'use client';
 
 import React from 'react';
-import { ArrowRight, BookOpen, Eye, FileText, History, Image as ImageIcon, Inbox, LayoutDashboard, Menu, Package, Search, ShieldCheck } from 'lucide-react';
+import { ArrowRight, BookOpen, Eye, FileText, History, Image as ImageIcon, Inbox, LayoutDashboard, Link2, Menu, Package, Search, ShieldCheck } from 'lucide-react';
 import type { SiteContentKey } from '@/lib/site-content';
 import { Button } from './ui';
 
-type Target = 'pages' | 'packages' | 'enquiries' | 'page:new' | 'package:new' | 'form-widget' | 'form-popup' | 'form-enquiry' | SiteContentKey;
+type Target = 'pages' | 'packages' | 'enquiries' | 'urls' | 'page:new' | 'package:new' | 'form-widget' | 'form-popup' | 'form-enquiry' | SiteContentKey;
 
 interface Topic {
   icon: typeof BookOpen;
@@ -132,6 +132,19 @@ const TOPICS: Topic[] = [
       { label: 'SEO & Google', to: 'seo' },
       { label: 'Robots.txt & Sitemap', to: 'seoFiles' },
     ],
+  },
+  {
+    icon: Link2,
+    title: 'Change a page URL, or redirect an old address',
+    hindi: 'Kisi bhi page ka URL badalna ho to “URLs & Redirects” kholiye — purana link apne aap naye page par chala jaayega.',
+    steps: [
+      'Open SEO & Google → URLs & Redirects (also under Page Management). Every page and package address is listed there.',
+      'Click “Edit URL”, type the new address and press “Save URL”. You can also change it inside the page editor (the “URL” field).',
+      'The old address automatically redirects (301) to the new one, so Google rankings and shared links keep working. Links in the menu, footer and pages are updated for you.',
+      'Moved from an old website, or deleted a page? Use “Add redirect”: Old URL = the old address (e.g. /old-tiger-safari), New URL = the page it should open. Choose 301 for permanent moves.',
+      'Each redirect shows how many visits it has sent. Use the ↗ button to test it.',
+    ],
+    actions: [{ label: 'URLs & Redirects', to: 'urls' }],
   },
   {
     icon: History,

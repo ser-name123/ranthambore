@@ -148,4 +148,11 @@ export function slugify(text: string): string {
     .slice(0, 80);
 }
 
+/** slugify() for a field being typed in: keeps a trailing dash so the next word can follow. */
+export function slugifyTyping(text: string): string {
+  const dashed = text.replace(/\s/g, '-');
+  const slug = slugify(dashed);
+  return slug && /[^a-z0-9]$/i.test(dashed) ? `${slug}-` : slug;
+}
+
 export const RESERVED_SLUGS = ['admin', 'api', 'packages', '_next', 'images', 'sitemap.xml', 'robots.txt'];

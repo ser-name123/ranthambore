@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { requireAdmin } from '@/lib/admin-auth';
 import { cmsTable, CmsTable, dbError, parseCmsBody, revalidateCms } from '@/lib/cms-admin.server';
+import { clearRedirectFrom, itemPath } from '@/lib/redirects.server';
 
 // Collection routes for /api/admin/pages and /api/admin/packages.
 function table(collection: string): CmsTable | null {
@@ -35,6 +36,7 @@ export async function POST(request: Request, ctx: RouteContext<'/api/admin/[coll
     .select('id, slug, data, published, sort_order, updated_at')
     .single();
   if (error) return dbError(error);
+  await clearRedirectFrom(itemPath(t, parsed.slug));
   revalidateCms(t);
   return NextResponse.json({ item: data });
 }

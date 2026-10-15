@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -14,6 +14,7 @@ import {
   Wallet,
   FileCode,
   LifeBuoy,
+  Link2,
   Home,
   ArrowRight,
   BookOpen,
@@ -50,6 +51,7 @@ import { DEFAULT_SITE_CONTENT, SITE_CONTENT_KEYS, SiteContent, SiteContentKey } 
 import EnquiriesPanel, { formatDateTime, StatusBadge } from './EnquiriesPanel';
 import { SECTION_EDITORS } from './SectionEditors';
 import CollectionManager, { type Collection } from './CollectionManager';
+import UrlManager from './UrlManager';
 import RevisionsPanel from './RevisionsPanel';
 import HelpGuide from './HelpGuide';
 import { FORM_SCREENS } from './FormScreens';
@@ -63,7 +65,7 @@ interface Admin {
   name: string;
 }
 
-type View = 'dashboard' | 'help' | 'enquiries' | 'profile' | Collection | SiteContentKey | `page:${string}` | `package:${string}` | `form-${string}`;
+type View = 'dashboard' | 'help' | 'enquiries' | 'profile' | 'urls' | Collection | SiteContentKey | `page:${string}` | `package:${string}` | `form-${string}`;
 
 type SectionGroup = 'Home Page' | 'Site Settings' | 'SEO & Google';
 
@@ -299,19 +301,44 @@ function AdminShell({ admin, setAdmin }: { admin: Admin; setAdmin: (a: Admin | n
     fetchEnquiries();
   };
 
-  useEffect(() => {
-    api<{ content: SiteContent; updatedAt: Record<SiteContentKey, string> }>('/api/admin/content')
-      .then(({ content, updatedAt }) => {
-        setSaved(content);
-        setDraft(content);
-        setUpdatedAt(updatedAt);
-      })
-      .catch(handleError)
-      .finally(() => setContentLoading(false));
-    fetchEnquiries();
+  const contentRef = useRef({ saved, draft });
+  contentRef.current = { saved, draft };
+
+  // Loads site content; sections with unsaved edits keep their draft.
+  const loadContent = useCallback(
+    () =>
+      api<{ content: SiteContent; updatedAt: Record<SiteContentKey, string> }>('/api/admin/content')
+        .then(({ content, updatedAt }) => {
+          const { saved: s, draft: d } = contentRef.current;
+          const next: SiteContent = { ...content };
+          for (const k of SITE_CONTENT_KEYS) {
+            if (JSON.stringify(s[k]) !== JSON.stringify(d[k])) (next as unknown as Record<string, unknown>)[k] = d[k];
+          }
+          setSaved(content);
+          setDraft(next);
+          setUpdatedAt(updatedAt);
+        })
+        .catch(handleError)
+        .finally(() => setContentLoading(false)),
+    [handleError]
+  );
+
+  const loadNav = useCallback(() => {
     api<{ items: Published<CmsPage>[] }>('/api/admin/pages').then(({ items }) => syncPages(items)).catch(handleError);
     api<{ items: Published<TourPackage>[] }>('/api/admin/packages').then(({ items }) => syncPackages(items)).catch(handleError);
-  }, [handleError, fetchEnquiries, syncPages, syncPackages]);
+  }, [handleError, syncPages, syncPackages]);
+
+  // A page URL changed: menu/footer links may have been rewritten on the server.
+  const reloadAfterUrlChange = useCallback(() => {
+    loadContent();
+    loadNav();
+  }, [loadContent, loadNav]);
+
+  useEffect(() => {
+    loadContent();
+    fetchEnquiries();
+    loadNav();
+  }, [loadContent, fetchEnquiries, loadNav]);
 
   // New enquiries show up without reloading the admin.
   useEffect(() => {
@@ -416,6 +443,7 @@ function AdminShell({ admin, setAdmin }: { admin: Admin; setAdmin: (a: Admin | n
     : view === 'profile' ? 'My Account'
     : view === 'pages' ? 'All Pages'
     : view === 'packages' ? 'Tour Packages'
+    : view === 'urls' ? 'URLs & Redirects'
     : pageId ? (pageId === 'new' ? 'New Page' : `Page: ${navPages.find((p) => p.id === pageId)?.name ?? ''}`)
     : packageId ? (packageId === 'new' ? 'New Package' : `Package: ${navPackages.find((p) => p.id === packageId)?.name ?? ''}`)
     : `${section?.group === 'Home Page' ? 'Home Page › ' : ''}${section?.label ?? ''}`;
@@ -516,6 +544,7 @@ function AdminShell({ admin, setAdmin }: { admin: Admin; setAdmin: (a: Admin | n
               })}
               {navItem('pages', 'All Pages', Layers)}
               {navItem('page:new', 'Add New Page', Plus)}
+              {navItem('urls', 'Page URLs & Redirects', Link2)}
             </div>
           </div>
           <div>
@@ -550,6 +579,7 @@ function AdminShell({ admin, setAdmin }: { admin: Admin; setAdmin: (a: Admin | n
               {SECTIONS.filter((s) => s.group === 'SEO & Google').map((s) =>
                 navItem(s.key, s.label, s.icon, dirtyKeys.includes(s.key) && <span className="h-2 w-2 rounded-full bg-[#d97706]" title="Unsaved changes" />)
               )}
+              {navItem('urls', 'URLs & Redirects', Link2)}
             </div>
           </div>
         </nav>
@@ -619,10 +649,19 @@ function AdminShell({ admin, setAdmin }: { admin: Admin; setAdmin: (a: Admin | n
               <EnquiriesPanel enquiries={enquiries} loading={enquiriesLoading} onRefresh={reloadEnquiries} onUpdate={updateEnquiry} onDelete={deleteEnquiry} />
             )}
             {(view === 'pages' || pageId) && (
-              <CollectionManager key={view} collection="pages" initialId={pageId ?? undefined} api={api} notify={notify} onError={handleError} onItemsChange={syncPages} />
+              <CollectionManager key={view} collection="pages" initialId={pageId ?? undefined} api={api} notify={notify} onError={handleError} onItemsChange={syncPages} onUrlChange={reloadAfterUrlChange} />
             )}
             {(view === 'packages' || packageId) && (
-              <CollectionManager key={view} collection="packages" initialId={packageId ?? undefined} api={api} notify={notify} onError={handleError} onItemsChange={syncPackages} />
+              <CollectionManager key={view} collection="packages" initialId={packageId ?? undefined} api={api} notify={notify} onError={handleError} onItemsChange={syncPackages} onUrlChange={reloadAfterUrlChange} />
+            )}
+            {view === 'urls' && (
+              <UrlManager
+                api={api}
+                notify={notify}
+                onError={handleError}
+                onUrlChange={reloadAfterUrlChange}
+                openItem={(c, id) => go(c === 'pages' ? `page:${id}` : `package:${id}`)}
+              />
             )}
             {view === 'profile' && <ProfilePanel admin={admin} onSaved={setAdmin} notify={notify} onError={handleError} />}
             {section &&
