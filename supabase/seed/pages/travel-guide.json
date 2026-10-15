@@ -1,0 +1,113 @@
+{
+  "slug": "travel-guide",
+  "name": "Travel Guide",
+  "group": "info",
+  "showToc": false,
+  "hero": {
+    "badge": "Official Wildlife Safari Expedition Guide",
+    "title": "Ranthambore Travel Guide:",
+    "highlight": "Planning Your Safari",
+    "subtitle": "Everything you need to know before visiting Ranthambore Tiger Reserve: seasonal weather windows, camera gear advice, packing lists, forest etiquette, and travel logistics.",
+    "image": "/images/tiger_lake.jpg",
+    "ctaLabel": "Plan Your Safari",
+    "bookingPrefill": "",
+    "whatsappText": "Hello Ranthambore Wild Life Tour, can you share travel recommendations?"
+  },
+  "blocks": [
+    {
+      "id": "guides",
+      "type": "cards",
+      "badge": "Wildlife Insights",
+      "heading": "Ranthambore Travel Guide",
+      "intro": "Carefully curated practical guides prepared by our naturalists to help you prepare for an unforgettable tiger safari.",
+      "columns": 3,
+      "style": "image",
+      "items": [
+        { "image": "/images/tiger_lake.jpg", "badge": "Seasonal Planning", "title": "Best Time to Visit Ranthambore: Month-by-Month Guide", "text": "From misty winter mornings (Nov-Feb) to hot summer months (Apr-Jun) when tigers frequent waterholes, understand seasonal sighting patterns.", "meta": "4 min read" },
+        { "image": "/images/tiger_foliage.jpg", "badge": "Visitor Preparation", "title": "Essential Safari Packing List: What to Wear in the Jungle", "text": "Why earthy greens, browns, and khakis matter, essential winter layers for open Gypsy drives, dust protection, and camera beanbags.", "meta": "3 min read" },
+        { "image": "/images/gypsy_encounter.jpg", "badge": "Transit & Route", "title": "How to Reach Ranthambore: Train, Road & Flight Options", "text": "Direct express trains to Sawai Madhopur (SWM), flight connections via Jaipur (JAI), and the new Delhi-Mumbai Expressway route.", "meta": "5 min read" }
+      ]
+    },
+    {
+      "id": "best-time-to-visit",
+      "type": "cards",
+      "badge": "Seasonal Dynamics",
+      "heading": "Best Time to Visit Ranthambore",
+      "intro": "Each season offers unique wildlife sightings, photography light, and landscape moods.",
+      "columns": 2,
+      "style": "card",
+      "items": [
+        { "icon": "sun", "badge": "Post-Monsoon Opening", "title": "October to November", "meta": "Lush Green & Pleasant (20°C - 30°C)", "text": "The park reopens with vibrant green foliage, waterfalls in ravines, and high lake water levels. Excellent for landscape photography and birding." },
+        { "icon": "sun", "badge": "Peak Winter Season", "title": "December to February", "meta": "Crisp & Cold Mornings (8°C - 24°C)", "text": "Chilly morning safaris requiring warm fleece jackets. Tigers frequently bask in open grasslands, ruins, and sunny dirt tracks." },
+        { "icon": "sun", "badge": "Spring Transition", "title": "March to April", "meta": "Warm & Blooming (24°C - 36°C)", "text": "Palash trees (Flame of the Forest) burst into orange blossoms. As foliage thins, animal visibility across ravines and lakes increases." },
+        { "icon": "sun", "badge": "Peak Tiger Sighting Window", "title": "May to June", "meta": "Hot & Dry (35°C - 44°C)", "text": "Water sources dry up, concentrating tigers near Padam, Rajbagh, and Malik Talao lakes. Unmatched predator action and photography opportunities." }
+      ]
+    },
+    {
+      "id": "packing-dress-code",
+      "type": "checklist",
+      "heading": "Safari Packing & Dress Code Essentials",
+      "intro": "Blend into the wilderness and stay comfortable on open 4x4 Gypsy drives",
+      "groups": [
+        { "title": "Clothing Colors", "tone": "neutral", "items": ["Earthy tones (Khaki, Olive Green, Muted Brown). Avoid bright red, neon, or stark white."] },
+        { "title": "Weather Gear", "tone": "neutral", "items": ["Heavy fleece jackets for winter mornings; light breathable cottons, sun hat & shades for summer."] },
+        { "title": "Dust Protection", "tone": "neutral", "items": ["Bandana / scarf / buff to cover nose & mouth from dirt tracks; dust cover sleeve for camera lens."] },
+        { "title": "Optics & Tech", "tone": "neutral", "items": ["Binoculars (8x42 or 10x42), telephoto lens (100-400mm or 70-200mm), extra memory cards and batteries."] },
+        { "title": "Personal Care", "tone": "neutral", "items": ["High SPF sunscreen, mosquito repellent, lip balm, rehydration electrolytes (ORS), and personal medicines."] },
+        { "title": "Govt. Documents", "tone": "neutral", "items": ["Original Government Photo ID (exact proof provided during online booking) is 100% mandatory."] }
+      ]
+    },
+    {
+      "id": "photography-tips",
+      "type": "cards",
+      "heading": "Wildlife Photography Masterclass Tips",
+      "intro": "Capturing Royal Bengal Tigers in dense dry deciduous scrub",
+      "columns": 3,
+      "style": "compact",
+      "items": [
+        { "title": "Lens Recommendation", "text": "A versatile 100-400mm or 150-600mm telephoto zoom is ideal. Tigers frequently cross right in front of the vehicle or walk across lake edges 80m away." },
+        { "title": "Bean Bag Stabilization", "text": "Tripods are prohibited inside safari vehicles. Bring an unfilled bean bag to rest your telephoto lens smoothly on the Gypsy safety rail." },
+        { "title": "Shutter Speed & Shaded Light", "text": "Keep shutter speeds above 1/1000s for moving animals. Raise ISO to 1600–3200 under dense Dhok canopy and early morning low-light shifts." }
+      ]
+    },
+    {
+      "id": "dos-and-donts",
+      "type": "checklist",
+      "badge": "Responsible Ecotourism",
+      "heading": "Dos & Don'ts in the Tiger Reserve",
+      "groups": [
+        {
+          "title": "Dos (Must Follow)",
+          "tone": "do",
+          "items": [
+            "Always follow the instructions of your assigned forest naturalist guide.",
+            "Remain seated inside the vehicle at all times; disembarking is strictly forbidden.",
+            "Keep your voice at a low whisper when an animal or tiger is sighted.",
+            "Carry drinking water, hat, and sunglasses for open-top sun exposure."
+          ]
+        },
+        {
+          "title": "Don'ts (Strictly Prohibited)",
+          "tone": "dont",
+          "items": [
+            "Do NOT litter or throw plastic bottles/wrappers inside the national park.",
+            "Do NOT use camera flash or make loud noises to provoke wildlife.",
+            "Do NOT play music, blow horns, or carry pets into the reserve.",
+            "Do NOT smoke or ignite fires anywhere within the protected forest area."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "enquiry",
+      "type": "enquiryForm"
+    }
+  ],
+  "seo": {
+    "title": "Ranthambore Travel Guide: Planning Your Safari",
+    "description": "Plan your Ranthambore safari: best time to visit by season, packing and dress code tips, wildlife photography advice and dos and don'ts of the tiger reserve.",
+    "keywords": "Ranthambore travel guide, best time to visit Ranthambore, Ranthambore packing list, safari dress code, Ranthambore photography tips, tiger reserve rules",
+    "ogImage": "/images/tiger_lake.jpg",
+    "noindex": false
+  }
+}

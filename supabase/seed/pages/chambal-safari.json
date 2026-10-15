@@ -1,0 +1,84 @@
+{
+  "slug": "chambal-safari",
+  "name": "Chambal Safari & Fort Excursion",
+  "group": "service",
+  "showToc": false,
+  "hero": {
+    "badge": "River Boating & Heritage Citadel Day Tour",
+    "title": "Ranthambore Fort &",
+    "highlight": "Chambal River Boating",
+    "subtitle": "Experience Rajasthan's wildest aquatic marvel. Cruise the unpolluted waters of the National Chambal Sanctuary to observe prehistoric Gharials and crocodiles, followed by a dramatic trek up the 10th-century Ranthambore Fort.",
+    "image": "/images/tiger_ruins.jpg",
+    "ctaLabel": "Book Chambal Day Tour",
+    "bookingPrefill": "Chambal Safari & Fort Excursion",
+    "whatsappText": "Hello, I want to inquire about Chambal River boating and Fort tour."
+  },
+  "blocks": [
+    {
+      "id": "highlights",
+      "type": "cards",
+      "columns": 4,
+      "style": "compact",
+      "items": [
+        { "title": "National Chambal Sanctuary", "text": "Pristine river ecosystem situated 45 km from Sawai Madhopur at Palighat." },
+        { "title": "Critically Endangered Gharials", "text": "Home to the world’s largest breeding population of long-snouted Gharials." },
+        { "title": "Marsh Mugger Crocodiles", "text": "Spot massive marsh crocodiles basking silently on sandy river islets." },
+        { "title": "UNESCO 10th-Century Fort Trek", "text": "Explore Trinetra Ganesha Temple, 7 colossal stone gates, and ancient stepwells." }
+      ]
+    },
+    {
+      "id": "river-wildlife",
+      "type": "cards",
+      "heading": "Aquatic Wildlife of the Chambal River",
+      "intro": "One of the cleanest and most biodiversity-rich river sanctuaries in Asia.",
+      "columns": 2,
+      "style": "compact",
+      "items": [
+        { "icon": "droplets", "title": "Gharial (Gavialis gangeticus)", "text": "Prehistoric fish-eating crocodilians with slender snouts swimming gracefully in clear waters." },
+        { "icon": "droplets", "title": "Mugger Crocodile", "text": "Powerful broad-snouted apex predators sunbathing along rocky shores." },
+        { "icon": "droplets", "title": "Gangetic River Dolphin", "text": "Rare freshwater mammals surfacing for breaths in deep river channels." },
+        { "icon": "droplets", "title": "Indian Skimmers & Waterfowl", "text": "Over 300 bird species including Bar-headed geese and Sarus Cranes." }
+      ]
+    },
+    {
+      "id": "ranthambore-fort",
+      "type": "cards",
+      "heading": "UNESCO World Heritage Ranthambore Fort",
+      "intro": "Perched atop a 700-foot sheer cliff within the core tiger reserve, this fortress dates back to 944 AD. Hike through massive stone gates, admire 360-degree views of Padam Talao below, and pay homage at the revered Trinetra Ganesha Temple.",
+      "columns": 3,
+      "style": "compact",
+      "items": [
+        { "title": "Trinetra Ganesha", "text": "Ancient 3-eyed Ganesha temple receiving wedding invitations from across India daily." },
+        { "title": "Panoramic Lake Views", "text": "Look down from high stone ramparts directly into Zone 3 and spot wild deer & tigers." },
+        { "title": "Rajput Architecture", "text": "Intricate stone cenotaphs (chhatris), ancient stepwells, and Badal Mahal ruins." }
+      ]
+    },
+    {
+      "id": "faqs",
+      "type": "faq",
+      "heading": "Chambal & Fort FAQs",
+      "intro": "Helpful tips for planning your river and fort day tour.",
+      "items": [
+        { "q": "How far is the Chambal River safari from Ranthambore?", "a": "The boarding point at Palighat is approximately 45 km (about 1 hour scenic drive) from Sawai Madhopur." },
+        { "q": "How long is the Chambal boat ride?", "a": "The motorboat safari lasts approximately 1 to 1.5 hours along the calm, tranquil river. Life jackets are provided." },
+        { "q": "Can we combine Chambal boating with Ranthambore Fort in a single day?", "a": "Yes! A morning Chambal river cruise followed by an afternoon visit to Ranthambore Fort is our most popular day combo." }
+      ]
+    },
+    {
+      "id": "book-excursion",
+      "type": "cta",
+      "title": "Book Chambal Boating & Fort Excursion",
+      "text": "Complete private package including sanitized AC cab, driver, forest boat tickets, and guide. Speak with our local desk to reserve your excursion.",
+      "buttonLabel": "Inquire Excursion Rates",
+      "bookingPrefill": "Chambal Safari & Fort Tour",
+      "whatsappText": ""
+    }
+  ],
+  "seo": {
+    "title": "Chambal River Safari & Ranthambore Fort Day Tour",
+    "description": "Cruise the National Chambal Sanctuary to spot Gharials, mugger crocodiles and river dolphins, then trek the UNESCO 10th-century Ranthambore Fort in one day.",
+    "keywords": "Chambal river safari, Chambal boat ride, Ranthambore Fort tour, Gharial sanctuary, Palighat boating, Trinetra Ganesha Temple",
+    "ogImage": "/images/tiger_ruins.jpg",
+    "noindex": false
+  }
+}

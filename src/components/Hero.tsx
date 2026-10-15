@@ -8,26 +8,30 @@ import FireflyCanvas from './FireflyCanvas';
 import AnimatedCounter from './AnimatedCounter';
 import SightingsTicker from './SightingsTicker';
 import { JungleTopCanopy, JungleCornerBranch, JungleGodRays, JungleSavannahGrass } from './JungleFoliageDecorations';
+import { useSiteContent } from '@/context/SiteContentContext';
+import { waHref } from '@/lib/site-content';
 
 interface HeroProps {
   onOpenBookingModal: (prefill?: Record<string, string>) => void;
 }
 
 export default function Hero({ onOpenBookingModal }: HeroProps) {
+  const { contact, hero, pricing, home, forms, vehicles } = useSiteContent();
+  const w = hero.widget;
   const [vehicle, setVehicle] = useState<'gypsy' | 'canter'>('gypsy');
   const [safariDate, setSafariDate] = useState('');
-  const [shift, setShift] = useState('Morning (06:30 AM - 10:00 AM)');
-  const [zone, setZone] = useState('Zone 1 to 5 (Core Gates)');
+  const [shift, setShift] = useState(forms.shiftOptions[0] ?? '');
+  const [zone, setZone] = useState(forms.zoneOptions[0] ?? '');
   const [adults, setAdults] = useState(2);
   const [children, setChildren] = useState(0);
 
-  const estimatedPerPerson = vehicle === 'gypsy' ? 2300 : 1800;
-  const estimatedTotal = estimatedPerPerson * adults + (estimatedPerPerson * 0.8 * children);
+  const estimatedPerPerson = vehicle === 'gypsy' ? pricing.gypsyPerPerson : pricing.canterPerPerson;
+  const estimatedTotal = estimatedPerPerson * adults + (estimatedPerPerson * (pricing.childPricePercent / 100) * children);
 
   const handleWidgetSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onOpenBookingModal({
-      vehicle: vehicle === 'gypsy' ? 'Maruti Gypsy (6-Seater 4x4)' : 'Canter (20-Seater Safari Bus)',
+      vehicle: vehicle === 'gypsy' ? vehicles.gypsy.bookingValue : vehicles.canter.bookingValue,
       date: safariDate,
       shift,
       zone,
@@ -66,8 +70,8 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
           className="relative w-full h-full"
         >
           <Image
-            src="/images/tiger_portrait.jpg"
-            alt="Royal Bengal Tiger in Ranthambore National Park"
+            src={hero.backgroundImage}
+            alt={hero.imageAlt}
             fill
             priority
             className="object-cover object-center"
@@ -78,8 +82,9 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
         <FireflyCanvas />
 
         {/* Cinematic Multi-stop Overlay - Jungle with White Theme */}
-        <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-white/30" />
-        <div className="absolute inset-0 bg-gradient-to-t from-white via-transparent to-white/40" />
+        {/* Left side stays light for heading readability; the tiger shows through clearly in the middle/right */}
+        <div className="absolute inset-0 bg-gradient-to-r from-white/90 from-15% via-white/60 via-45% to-transparent to-80%" />
+        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-white/90 to-transparent" />
       </div>
 
       {/* Hanging Jungle Canopy Vines, Sunbeams & Tree Foliage */}
@@ -101,14 +106,14 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
             <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-2.5">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold tracking-wide backdrop-blur-md shadow-sm">
                 <Sparkles className="w-3.5 h-3.5 text-[#d97706] animate-spin" style={{ animationDuration: '6s' }} />
-                <span>Official Safari Bookings 2026-2027</span>
+                <span>{hero.seasonBadge}</span>
               </div>
               <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-100/70 border border-emerald-300 text-[11px] text-emerald-900 font-medium relative">
                 <span className="relative flex h-2 w-2">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-600 opacity-75" />
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-600" />
                 </span>
-                <span>Govt. Reg. Operator</span>
+                <span>{hero.trustBadge}</span>
               </div>
             </motion.div>
 
@@ -117,9 +122,9 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
               variants={itemVariants}
               className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#082318] tracking-tight leading-[1.15]"
             >
-              Ranthambore Safari &amp;{' '}
+              {hero.heading}{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 via-[#ea580c] to-[#d97706]">
-                Wildlife Tours
+                {hero.headingHighlight}
               </span>
             </motion.h1>
 
@@ -128,17 +133,12 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
               variants={itemVariants}
               className="text-sm sm:text-base text-[#1b3a2a] leading-relaxed max-w-2xl font-normal"
             >
-              Step into the realm of the Royal Bengal Tiger. Authorized 4x4 Maruti Gypsy and 20-seater Canter permits, luxury jungle resort stays, and expert naturalist trackers across Zones 1 to 10.
+              {hero.subheading}
             </motion.p>
 
             {/* Key Value Points - Clean & Visual */}
             <motion.div variants={itemVariants} className="grid grid-cols-2 gap-2.5 pt-1">
-              {[
-                'Gypsy & Canter Permits',
-                'Zones 1 to 10 Access',
-                'Certified Forest Trackers',
-                'Transparent Official Rates',
-              ].map((point, idx) => (
+              {hero.points.map((point, idx) => (
                 <motion.div
                   key={idx}
                   whileHover={{ scale: 1.03, x: 2 }}
@@ -160,28 +160,28 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
                 className="px-5 py-3 rounded-xl bg-gradient-to-r from-emerald-700 via-[#ea580c] to-[#d97706] hover:from-emerald-600 hover:to-[#ea580c] text-white font-bold text-sm shadow-xl shadow-emerald-950/20 flex items-center gap-2 cursor-pointer relative overflow-hidden group"
               >
                 <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform pointer-events-none" />
-                <span>Request Safari Booking</span>
+                <span>{hero.primaryCta}</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition" />
               </motion.button>
 
               <motion.a
                 whileHover={{ scale: 1.03, y: -1 }}
                 whileTap={{ scale: 0.98 }}
-                href="#packages"
+                href={hero.secondaryCtaLink}
                 className="px-5 py-3 rounded-xl bg-white hover:bg-emerald-50 text-[#082318] font-semibold text-sm border border-[#cbe0d3] shadow-sm transition duration-200 flex items-center gap-1.5"
               >
-                <span>View Packages</span>
+                <span>{hero.secondaryCta}</span>
               </motion.a>
 
               <motion.a
                 whileHover={{ scale: 1.05 }}
-                href="https://wa.me/919971965629?text=Hi%20Ranthambore%20Wild%20Life%20Tour,%20I%20am%20looking%20for%20a%20Custom%20Quote."
+                href={waHref(contact.whatsapp, hero.whatsappText)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-sm font-semibold text-[#047857] hover:text-[#065f46] transition px-3 py-1 rounded-lg bg-emerald-50 border border-emerald-200"
               >
                 <MessageCircle className="w-4 h-4 fill-current" />
-                <span>WhatsApp Quote</span>
+                <span>{hero.whatsappCta}</span>
               </motion.a>
             </motion.div>
 
@@ -190,28 +190,19 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
               variants={itemVariants}
               className="pt-2 border-t border-[#d8eae0] grid grid-cols-3 gap-3 max-w-lg"
             >
-              <div>
-                <span className="block font-serif text-lg sm:text-xl font-bold text-[#082318]">
-                  <AnimatedCounter value={12} suffix="+ Yrs" duration={1.8} />
-                </span>
-                <span className="block text-[11px] text-[#4d6f5f]">Wildlife Experience</span>
-              </div>
-              <div>
-                <span className="block font-serif text-lg sm:text-xl font-bold text-[#ea580c]">
-                  <AnimatedCounter value={4.9} decimals={1} suffix=" / 5.0" duration={2} />
-                </span>
-                <span className="block text-[11px] text-[#4d6f5f]">1,400+ Reviews</span>
-              </div>
-              <div>
-                <span className="block font-serif text-lg sm:text-xl font-bold text-[#047857]">
-                  <AnimatedCounter value={100} suffix="%" duration={1.5} />
-                </span>
-                <span className="block text-[11px] text-[#4d6f5f]">Verified Permits</span>
-              </div>
+              {hero.stats.slice(0, 3).map((stat, idx) => (
+                <div key={idx}>
+                  <span className={`block font-serif text-lg sm:text-xl font-bold ${['text-[#082318]', 'text-[#ea580c]', 'text-[#047857]'][idx]}`}>
+                    <AnimatedCounter value={stat.value} decimals={stat.decimals} suffix={stat.suffix} duration={1.8} />
+                  </span>
+                  <span className="block text-[11px] text-[#4d6f5f]">{stat.label}</span>
+                </div>
+              ))}
             </motion.div>
           </motion.div>
 
           {/* Right Column: Interactive Live Safari Booking & Availability Card */}
+          {w.visible && (
           <div
             className="lg:col-span-5"
             id="safari-booking"
@@ -221,15 +212,15 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
               <div className="flex items-center justify-between border-b border-[#e2ede6] pb-2.5 mb-3.5">
                 <div>
                   <h3 className="font-serif text-lg sm:text-xl font-bold text-[#082318] flex items-center gap-2">
-                    <span>Check Safari Availability</span>
+                    <span>{w.title}</span>
                     <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                   </h3>
                   <p className="text-[11px] text-[#4d6f5f]">
-                    Select date &amp; preference for real-time quote
+                    {w.subtitle}
                   </p>
                 </div>
                 <span className="px-2 py-0.5 rounded bg-emerald-50 border border-emerald-200 text-emerald-800 text-[10px] font-bold uppercase tracking-wider">
-                  2026-27 Rates
+                  {w.badge}
                 </span>
               </div>
 
@@ -237,7 +228,7 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
                 {/* Vehicle Selection Tabs */}
                 <div>
                   <label className="block text-[11px] font-semibold text-[#183d2a] mb-1.5 uppercase tracking-wider">
-                    1. Choose Safari Vehicle
+                    {w.vehicleLabel}
                   </label>
                   <div className="grid grid-cols-2 gap-2 relative bg-[#f0f6f2] p-1 rounded-xl border border-[#d2e4d9]">
                     <button
@@ -256,10 +247,10 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
                       )}
                       <div className="relative z-10">
                         <div className="flex items-center justify-between">
-                          <span className="font-bold text-xs sm:text-sm">Jeep (Gypsy)</span>
-                          <span className="text-[9px] bg-emerald-600 text-white px-1.5 py-0.2 rounded font-bold">6-Seater</span>
+                          <span className="font-bold text-xs sm:text-sm">{w.gypsyLabel}</span>
+                          <span className="text-[9px] bg-emerald-600 text-white px-1.5 py-0.2 rounded font-bold">{w.gypsySeats}</span>
                         </div>
-                        <p className="text-[10px] text-emerald-700 mt-0.5 font-semibold">₹2,300 / person</p>
+                        <p className="text-[10px] text-emerald-700 mt-0.5 font-semibold">₹{pricing.gypsyPerPerson.toLocaleString('en-IN')} / person</p>
                       </div>
                     </button>
 
@@ -279,10 +270,10 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
                       )}
                       <div className="relative z-10">
                         <div className="flex items-center justify-between">
-                          <span className="font-bold text-xs sm:text-sm">Canter Safari</span>
-                          <span className="text-[9px] bg-[#d97706] text-white px-1.5 py-0.2 rounded font-bold">20-Seater</span>
+                          <span className="font-bold text-xs sm:text-sm">{w.canterLabel}</span>
+                          <span className="text-[9px] bg-[#d97706] text-white px-1.5 py-0.2 rounded font-bold">{w.canterSeats}</span>
                         </div>
-                        <p className="text-[10px] text-[#b45309] mt-0.5 font-semibold">₹1,800 / person</p>
+                        <p className="text-[10px] text-[#b45309] mt-0.5 font-semibold">₹{pricing.canterPerPerson.toLocaleString('en-IN')} / person</p>
                       </div>
                     </button>
                   </div>
@@ -291,8 +282,8 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
                 {/* Safari Date Input */}
                 <div>
                   <label className="block text-[11px] font-semibold text-[#183d2a] mb-1 uppercase tracking-wider flex items-center justify-between">
-                    <span>2. Safari Date</span>
-                    <span className="text-[9px] text-[#ea580c] font-medium">Advance booking advised</span>
+                    <span>{w.dateLabel}</span>
+                    <span className="text-[9px] text-[#ea580c] font-medium">{w.dateHint}</span>
                   </label>
                   <div className="relative">
                     <input
@@ -309,31 +300,27 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                   <div>
                     <label className="block text-[11px] font-semibold text-[#183d2a] mb-1 uppercase tracking-wider">
-                      Shift Timing
+                      {w.shiftLabel}
                     </label>
                     <select
                       value={shift}
                       onChange={(e) => setShift(e.target.value)}
                       className="w-full bg-[#f8faf8] border border-[#c4dcce] rounded-xl px-2.5 py-1.5 text-[#082318] text-xs focus:outline-none focus:border-emerald-600 transition"
                     >
-                      <option>Morning (06:30 AM - 10:00 AM)</option>
-                      <option>Afternoon (02:30 PM - 06:00 PM)</option>
-                      <option>Both Shifts (Full Day)</option>
+                      {forms.shiftOptions.map((o) => <option key={o}>{o}</option>)}
                     </select>
                   </div>
 
                   <div>
                     <label className="block text-[11px] font-semibold text-[#183d2a] mb-1 uppercase tracking-wider">
-                      Preferred Zone
+                      {w.zoneLabel}
                     </label>
                     <select
                       value={zone}
                       onChange={(e) => setZone(e.target.value)}
                       className="w-full bg-[#f8faf8] border border-[#c4dcce] rounded-xl px-2.5 py-1.5 text-[#082318] text-xs focus:outline-none focus:border-emerald-600 transition"
                     >
-                      <option>Zone 1 to 5 (Core Gates)</option>
-                      <option>Zone 6 to 10 (Buffer Gates)</option>
-                      <option>Best Available (Max Sightings)</option>
+                      {forms.zoneOptions.map((o) => <option key={o}>{o}</option>)}
                     </select>
                   </div>
                 </div>
@@ -341,7 +328,7 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
                 {/* Guest Counters */}
                 <div className="grid grid-cols-2 gap-2.5 bg-[#f0f6f2] p-2 rounded-xl border border-[#d2e4d9]">
                   <div>
-                    <span className="text-[10px] text-[#416352] block font-medium">Adults (12+ yrs)</span>
+                    <span className="text-[10px] text-[#416352] block font-medium">{w.adultsLabel}</span>
                     <div className="flex items-center gap-2 mt-0.5">
                       <motion.button
                         whileTap={{ scale: 0.85 }}
@@ -364,7 +351,7 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
                   </div>
 
                   <div>
-                    <span className="text-[10px] text-[#416352] block font-medium">Children (5-11 yrs)</span>
+                    <span className="text-[10px] text-[#416352] block font-medium">{w.childrenLabel}</span>
                     <div className="flex items-center gap-2 mt-0.5">
                       <motion.button
                         whileTap={{ scale: 0.85 }}
@@ -388,17 +375,19 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
                 </div>
 
                 {/* Live Estimated Price with Animated Number */}
+                {w.showEstimate && (
                 <div className="flex items-center justify-between px-1 text-xs">
-                  <span className="text-[#082318] text-[11px] font-semibold">Estimated Safari Cost:</span>
+                  <span className="text-[#082318] text-[11px] font-semibold">{w.costLabel}</span>
                   <div className="text-right">
                     <span className="text-base font-bold text-[#ea580c] inline-block">
                       ₹{estimatedTotal.toLocaleString('en-IN')}
                     </span>
                     <span className="text-[9px] text-[#2e5241] font-medium block">
-                      Incl. permit, vehicle &amp; naturalist guide
+                      {w.costNote}
                     </span>
                   </div>
                 </div>
+                )}
 
                 {/* Submit CTA */}
                 <motion.button
@@ -407,25 +396,28 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
                   type="submit"
                   className="w-full py-2.5 rounded-xl bg-gradient-to-r from-emerald-700 via-[#ea580c] to-[#d97706] hover:from-emerald-600 hover:to-[#ea580c] text-white font-bold text-xs sm:text-sm tracking-wide shadow-md shadow-emerald-950/20 flex items-center justify-center gap-2 transition duration-200 cursor-pointer"
                 >
-                  <span>Check Availability &amp; Get Quote</span>
+                  <span>{w.button}</span>
                   <ArrowRight className="w-4 h-4" />
                 </motion.button>
               </form>
 
               <div className="mt-2 text-center">
                 <span className="text-[10px] text-[#082318] font-medium">
-                  🔒 No advance payment needed • Fast 15-min response
+                  {w.footnote}
                 </span>
               </div>
             </div>
           </div>
+          )}
         </div>
       </div>
 
       {/* Bottom Docked Live Sightings Ticker */}
-      <div className="relative z-20 w-full shrink-0">
-        <SightingsTicker onOpenBookingModal={onOpenBookingModal} />
-      </div>
+      {home.sightings.visible && (
+        <div className="relative z-20 w-full shrink-0">
+          <SightingsTicker onOpenBookingModal={onOpenBookingModal} />
+        </div>
+      )}
     </section>
   );
 }

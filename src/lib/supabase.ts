@@ -1,40 +1,49 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 
+// Server-only Supabase client using the service_role key. All tables have RLS
+// enabled without public policies, so every read/write goes through here.
+// Never import this file from a Client Component.
+
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-export const isSupabaseConfigured = Boolean(supabaseUrl && supabaseAnonKey);
+export const isSupabaseConfigured = Boolean(supabaseUrl && serviceRoleKey);
 
-export const supabase: SupabaseClient | null = isSupabaseConfigured
-  ? createClient(supabaseUrl!, supabaseAnonKey!)
-  : null;
+let client: SupabaseClient | null = null;
 
-export interface SafariEnquiryPayload {
-  reference_id?: string;
-  name: string;
-  phone: string;
-  email?: string;
-  safari_date?: string;
-  safari_mode?: string;
-  timing_preference?: string;
-  zone_preference?: string;
-  adults?: number;
-  children?: number;
-  nationality?: string;
-  hotel_required?: boolean;
-  pickup_required?: boolean;
-  notes?: string;
+export function getSupabaseAdmin(): SupabaseClient {
+  if (!isSupabaseConfigured) {
+    throw new Error('Supabase is not configured: set NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY');
+  }
+  if (!client) {
+    client = createClient(supabaseUrl!, serviceRoleKey!, {
+      auth: { persistSession: false, autoRefreshToken: false },
+    });
+  }
+  return client;
 }
 
-export interface PackageEnquiryPayload {
-  reference_id?: string;
-  package_name: string;
+export const ENQUIRY_STATUSES = ['New Enquiry', 'Contacted', 'Quoted', 'Confirmed', 'Cancelled'] as const;
+export type EnquiryStatus = (typeof ENQUIRY_STATUSES)[number];
+
+export interface Enquiry {
+  id: string;
+  reference_id: string;
+  created_at: string;
   name: string;
   phone: string;
-  email?: string;
-  travel_date?: string;
-  adults?: number;
-  children?: number;
-  hotel_preference?: string;
-  notes?: string;
+  email: string | null;
+  safari_date: string | null;
+  safari_mode: string | null;
+  timing_preference: string | null;
+  zone_preference: string | null;
+  adults: number | null;
+  children: number | null;
+  nationality: string | null;
+  notes: string | null;
+  source: string | null;
+  page_url: string | null;
+  consent: boolean | null;
+  status: EnquiryStatus;
+  admin_notes: string | null;
 }

@@ -14,9 +14,11 @@ import TravelGuide from '@/components/TravelGuide';
 import FaqSection from '@/components/FaqSection';
 import QuickEnquirySection from '@/components/QuickEnquirySection';
 import { useBookingModal } from '@/context/BookingModalContext';
+import { useSiteContent } from '@/context/SiteContentContext';
 
 export default function HomePage() {
   const { openBookingModal } = useBookingModal();
+  const { home } = useSiteContent();
 
   return (
     <>
@@ -24,42 +26,62 @@ export default function HomePage() {
       <Hero onOpenBookingModal={openBookingModal} />
 
       {/* 2. Ranthambore Safari Overview, Brief Journey Timeline & Wildlife Catalog */}
-      <ParkSafariOverview onOpenBookingModal={openBookingModal} />
+      {home.overview.visible && (
+        <ParkSafariOverview onOpenBookingModal={openBookingModal} />
+      )}
 
       {/* 3. Safari Vehicle Comparison: Jeep vs Canter */}
-      <VehicleComparison
-        onSelectVehicle={(vehicleName) => openBookingModal({ vehicle: vehicleName })}
-      />
+      {home.vehicles.visible && (
+        <VehicleComparison
+          onSelectVehicle={(vehicleName) => openBookingModal({ vehicle: vehicleName })}
+        />
+      )}
 
       {/* 3. Featured Tour Packages with Filter Tabs */}
-      <FeaturedPackages
-        onSelectPackage={(packageName) => openBookingModal({ packageName })}
-      />
+      {home.packages.visible && (
+        <FeaturedPackages
+          onSelectPackage={(packageName) => openBookingModal({ packageName })}
+        />
+      )}
 
       {/* 4. Approved Services Grid */}
-      <ServicesGrid
-        onSelectService={(serviceTitle) => openBookingModal({ vehicle: serviceTitle })}
-      />
+      {home.services.visible && (
+        <ServicesGrid
+          onSelectService={(serviceTitle) => openBookingModal({ vehicle: serviceTitle })}
+        />
+      )}
 
       {/* 5. Safari Zones & Shift Timings Explorer */}
-      <ZoneGuide />
+      {home.zones.visible && (
+        <ZoneGuide />
+      )}
 
       {/* 6. About Ranthambore Wild Life Tour & Trust Pillars */}
-      <AboutCompany onOpenBookingModal={() => openBookingModal()} />
+      {home.about.visible && (
+        <AboutCompany onOpenBookingModal={() => openBookingModal()} />
+      )}
 
       {/* 7. Authentic Customer Testimonials */}
-      <Testimonials />
+      {home.testimonials.visible && (
+        <Testimonials />
+      )}
 
       {/* 8. Wildlife Travel Guide & Preparation Insights */}
-      <TravelGuide
-        onOpenArticle={(title) => openBookingModal({ notes: `Interested in: ${title}` })}
-      />
+      {home.guides.visible && (
+        <TravelGuide
+          onOpenArticle={(title) => openBookingModal({ notes: `Interested in: ${title}` })}
+        />
+      )}
 
       {/* 9. Frequently Asked Questions Accordion */}
-      <FaqSection />
+      {home.faq.visible && (
+        <FaqSection />
+      )}
 
       {/* 10. Direct Safari Enquiry Form */}
-      <QuickEnquirySection />
+      {home.enquiry.visible && (
+        <QuickEnquirySection />
+      )}
     </>
   );
 }

@@ -1,0 +1,95 @@
+{
+  "slug": "taxi-transfers",
+  "name": "Jaipur & Delhi Cab Transfers",
+  "group": "service",
+  "showToc": false,
+  "hero": {
+    "badge": "Intercity Private Chauffeur Fleet",
+    "title": "Jaipur & Delhi Cab",
+    "highlight": "Transfers",
+    "subtitle": "Seamless door-to-door private cab service connecting Ranthambore with Jaipur Airport, Delhi NCR, Agra Golden Triangle, and Sawai Madhopur Junction with transparent, fixed pricing.",
+    "image": "/images/gypsy_encounter.jpg",
+    "ctaLabel": "Get Instant Cab Quote",
+    "bookingPrefill": "Private Cab Transfer",
+    "whatsappText": "Hello, I need a private cab transfer to Ranthambore."
+  },
+  "blocks": [
+    {
+      "id": "routes",
+      "type": "table",
+      "heading": "Popular Intercity Highway Routes",
+      "intro": "Fixed one-way private taxi rates with all toll taxes and driver allowances included.",
+      "columns": ["Highway Route", "Distance & Time", "AC Sedan (Dzire)", "AC Ertiga / SUV", "Innova Crysta"],
+      "rows": [
+        ["Jaipur Airport / City to Ranthambore (Via Tonk Road / NH52 / Lalsot Bypass)", "160 km · 3.0 – 3.5 Hours", "₹3,200", "₹4,800", "₹5,800"],
+        ["Delhi / NCR / Gurgaon to Ranthambore (Via Delhi-Mumbai Expressway (NE-4))", "380 km · 5.5 – 6.0 Hours", "₹6,800", "₹9,500", "₹11,500"],
+        ["Agra (Taj Mahal) to Ranthambore (Via Bharatpur / Dausa / Lalsot Highway)", "260 km · 5.0 Hours", "₹5,200", "₹7,500", "₹8,800"],
+        ["Sawai Madhopur Local Station Pick / Drop (Direct resort road transfer)", "10 – 15 km · 20 – 30 Minutes", "₹600", "₹900", "₹1,200"]
+      ]
+    },
+    {
+      "id": "fleet",
+      "type": "cards",
+      "heading": "Our Premium Intercity Taxi Fleet",
+      "intro": "Choose the ideal vehicle size and comfort level for your party.",
+      "columns": 3,
+      "style": "card",
+      "items": [
+        { "icon": "car", "badge": "Economical Couples", "title": "Sedan (Dzire / Etios)", "text": "Air-conditioned sedan with clean upholstery, phone charging points, and experienced highway chauffeur.", "meta": "Up to 3-4 Passengers + 2 Bags" },
+        { "icon": "car", "badge": "Family & VIP Comfort", "title": "Premium SUV (Innova Crysta)", "text": "Captain seat luxury, dual air conditioning, smooth highway suspension, and generous boot space.", "meta": "Up to 6 Passengers + 4 Large Bags" },
+        { "icon": "bus", "badge": "Groups & Corporate", "title": "Luxury Tempo Traveller", "text": "Reclining high-back seats, individual AC vents, and dedicated luggage carrier for extended group travel.", "meta": "9 to 16 Passengers + Heavy Bags" }
+      ]
+    },
+    {
+      "id": "guarantees",
+      "type": "cards",
+      "columns": 4,
+      "style": "compact",
+      "items": [
+        { "title": "All-Inclusive Transparent Pricing", "text": "State border taxes, expressway toll charges, and driver allowance included." },
+        { "title": "Police-Verified Chauffeurs", "text": "Courteous drivers fluent in Hindi and English with deep knowledge of Rajasthan routes." },
+        { "title": "24/7 Live Highway Coordination", "text": "Direct support from our Sawai Madhopur dispatch desk with flight delay tracking." },
+        { "title": "Sanitized & Well-Maintained", "text": "Vehicles thoroughly inspected and cleaned prior to every trip." }
+      ]
+    },
+    {
+      "id": "highway-insights",
+      "type": "cards",
+      "heading": "Highway Driving Insights & Stops",
+      "columns": 3,
+      "style": "compact",
+      "items": [
+        { "icon": "route", "title": "Delhi-Mumbai Expressway (NE-4)", "text": "World-class 8-lane expressway with modern average speeds, roadside rest plazas, food courts, and clean fuel stops." },
+        { "icon": "car", "title": "Jaipur to Ranthambore Highway", "text": "Smooth 4-lane stretch via Lalsot with picturesque rural mustard crops and mountain views." },
+        { "icon": "clock", "title": "Custom Meal & Chai Breaks", "text": "Chauffeurs gladly pause at hygienic roadside stops for fresh kulhad chai and hot parathas." }
+      ]
+    },
+    {
+      "id": "faqs",
+      "type": "faq",
+      "heading": "Cab Transfer FAQs",
+      "items": [
+        { "q": "How long does the Delhi-Mumbai Expressway take to reach Ranthambore?", "a": "Via the Delhi-Mumbai Expressway (NE-4), driving time from Delhi NCR or Gurgaon to Sawai Madhopur is approx 5.5 hours." },
+        { "q": "Will the driver wait if my flight into Jaipur is delayed?", "a": "Yes, our dispatch desk monitors flight arrivals live. Your private chauffeur will meet you with a name signboard at no extra fee for standard delays." },
+        { "q": "Are tolls and driver allowances included in the quote?", "a": "Yes! We provide 100% all-inclusive fixed quotations with zero hidden surcharges for tolls or night driving." }
+      ]
+    },
+    {
+      "id": "book-cab",
+      "type": "cta",
+      "badge": "Safe & Sanitized Fleet",
+      "title": "Reserve Your Private Intercity Cab Transfer",
+      "text": "Arrive relaxed, safely, and on time for your jungle safari drive. Book private taxi transfers with verified drivers.",
+      "buttonLabel": "Book Cab Transfer",
+      "bookingPrefill": "Private Cab Transfer",
+      "whatsappText": ""
+    }
+  ],
+  "seo": {
+    "title": "Jaipur & Delhi to Ranthambore Cab Transfers",
+    "description": "Private cab transfers to Ranthambore from Jaipur Airport, Delhi NCR, Agra and Sawai Madhopur station. Fixed fares with tolls and driver allowance included.",
+    "keywords": "Jaipur to Ranthambore taxi, Delhi to Ranthambore cab, Agra to Ranthambore taxi, Sawai Madhopur station transfer, Innova Crysta hire, Ranthambore cab booking",
+    "ogImage": "/images/gypsy_encounter.jpg",
+    "noindex": false
+  }
+}

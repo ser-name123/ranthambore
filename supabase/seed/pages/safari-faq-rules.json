@@ -1,0 +1,126 @@
+{
+  "slug": "safari-faq-rules",
+  "name": "Safari FAQs & ID Proof Rules",
+  "group": "info",
+  "showToc": false,
+  "hero": {
+    "badge": "Official Forest Department Regulations",
+    "title": "Safari FAQs &",
+    "highlight": "ID Proof Rules",
+    "subtitle": "Official guidelines on identity documents, dress codes, luggage restrictions, camera permits, and common booking questions for hassle-free entry.",
+    "image": "/images/tiger_family.jpg",
+    "ctaLabel": "Book Official Safari",
+    "bookingPrefill": "",
+    "whatsappText": "Hello, I have a question regarding Ranthambore safari ID rules."
+  },
+  "blocks": [
+    {
+      "id": "id-rules",
+      "type": "checklist",
+      "badge": "Critical Requirement Before Traveling",
+      "heading": "Mandatory Government Photo Identity Rules",
+      "intro": "Every tourist entering Ranthambore Tiger Reserve must present a valid physical original government ID at the forest gate.",
+      "groups": [
+        {
+          "title": "Indian Nationals",
+          "tone": "do",
+          "items": [
+            "Original Aadhaar Card (Physical / PVC)",
+            "Original Passport",
+            "Original Voter ID Card",
+            "Original Driving License"
+          ]
+        },
+        {
+          "title": "Foreign & NRI Nationals",
+          "tone": "do",
+          "items": [
+            "Original Passport with Valid Indian Visa / OCI Card",
+            "Digital phone copies or photocopies are strictly invalid at the gate"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "id-warning",
+      "type": "callout",
+      "tone": "warning",
+      "title": "Warning",
+      "text": "Indian Nationals: PAN Cards and Student IDs are NOT valid. You must carry the exact original physical ID stated on your voucher.\n\nForeign & NRI Nationals: Passport details entered during booking must match the physical document presented at gate inspection."
+    },
+    {
+      "id": "faqs",
+      "type": "faq",
+      "heading": "Comprehensive Safari Questions & Answers",
+      "intro": "Click any question below to read the official Rajasthan Forest Department guidelines.",
+      "items": [
+        {
+          "q": "How far in advance can I book Ranthambore safari permits?",
+          "a": "Online permit bookings open up to 90 to 120 days in advance. For core zones (1 to 5) and peak season weekends, booking 60 to 90 days ahead is strongly advised."
+        },
+        {
+          "q": "Can permits be cancelled, refunded, or rescheduled?",
+          "a": "No. As per Rajasthan Forest Department regulations, confirmed safari permits are 100% non-refundable, non-reschedulable, and non-transferable under any circumstances."
+        },
+        {
+          "q": "How are safari zones assigned to tourists?",
+          "a": "You can express a preference for Core or Buffer zones. The Forest Department computerized lottery system makes final allocations on the morning of the drive to balance forest traffic."
+        },
+        {
+          "q": "What is the difference between Gypsy and Canter?",
+          "a": "The Maruti Gypsy is a 6-seater 4x4 open jeep offering nimble handling and eye-level photography angles. The Canter is a 20-seater open safari bus with high elevated vantage points."
+        },
+        {
+          "q": "What clothes should I wear on a safari?",
+          "a": "Wear neutral earthy tones such as khaki, olive green, beige, or brown. In winter mornings (Nov-Feb), carry warm windbreakers and beanies as open jeeps get cold."
+        },
+        {
+          "q": "Is tiger sighting guaranteed on a safari?",
+          "a": "Ranthambore is a vast wild protected sanctuary over 1,300 sq km, not a zoo. Sighting depends on patience, tracking, and nature. With 2 to 4 drives, sighting odds are exceptionally high."
+        }
+      ]
+    },
+    {
+      "id": "prohibited-items",
+      "type": "cards",
+      "heading": "Prohibited Items & Strict Penalties",
+      "intro": "Under the Wildlife Protection Act, carrying or using the following items is strictly illegal.",
+      "columns": 4,
+      "style": "card",
+      "items": [
+        { "icon": "ban", "badge": "Violation 01", "title": "Zero Plastic & Littering", "text": "Single-use plastic bottles and polythene bags are banned. Carry reusable metal flasks." },
+        { "icon": "ban", "badge": "Violation 02", "title": "No Smoking & No Alcohol", "text": "Carrying cigarettes, matches, or liquor into the reserve is a legal offense." },
+        { "icon": "ban", "badge": "Violation 03", "title": "No Drones or Loud Music", "text": "Drones and loud speakers are prohibited under the Wildlife Protection Act." },
+        { "icon": "ban", "badge": "Violation 04", "title": "Never Step Outside Vehicle", "text": "Stepping off the vehicle onto forest ground is illegal and dangerous." }
+      ]
+    },
+    {
+      "id": "what-to-wear",
+      "type": "cards",
+      "heading": "Safari Dressing & Packing Checklist",
+      "columns": 3,
+      "style": "compact",
+      "items": [
+        { "icon": "shirt", "title": "Neutral Colors Only", "text": "Khaki, beige, olive green, grey, and dusty brown blend with the forest backdrop." },
+        { "icon": "camera", "title": "Dust Covers & Sunglasses", "text": "Protect eyes, nose, and camera gear from dry sandy dust with scarves and covers." },
+        { "icon": "clock", "title": "Winter Morning Layers", "text": "From November to February, mornings drop to 5°C. Carry warm fleece jackets and beanies." }
+      ]
+    },
+    {
+      "id": "booking-cta",
+      "type": "cta",
+      "title": "Still Have Questions About Safari Rules?",
+      "text": "Our on-ground Sawai Madhopur wildlife team is available daily from 6:00 AM to 10:00 PM to assist with identity verification and permits.",
+      "buttonLabel": "Book Safari With Expert Guidance",
+      "bookingPrefill": "",
+      "whatsappText": ""
+    }
+  ],
+  "seo": {
+    "title": "Ranthambore Safari FAQs & ID Proof Rules",
+    "description": "Valid ID proofs for Ranthambore safari entry, prohibited items, what to wear, zone allocation and booking FAQs as per Rajasthan Forest Department rules.",
+    "keywords": "ranthambore safari faq, safari id proof rules, ranthambore safari rules, what to wear on safari, prohibited items ranthambore, safari permit booking",
+    "ogImage": "/images/tiger_family.jpg",
+    "noindex": false
+  }
+}

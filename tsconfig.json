@@ -46,6 +46,8 @@
   ],
   "exclude": [
     "node_modules",
+    "src/app/_legacy",
+    ".next_app",
     ".next",
     ".next_dev",
     ".build",

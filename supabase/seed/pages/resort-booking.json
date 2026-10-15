@@ -1,0 +1,114 @@
+{
+  "slug": "resort-booking",
+  "name": "Luxury Forest Resort Stays",
+  "group": "service",
+  "showToc": false,
+  "hero": {
+    "badge": "Handpicked Wilderness Stays & Tented Camps",
+    "title": "Luxury Forest Resort",
+    "highlight": "Stays",
+    "subtitle": "From regal stone palaces and heritage havelis to luxury Swiss tents pitched on the edge of the jungle. Book handpicked stays in Sawai Madhopur with verified tariffs and seamless safari combos.",
+    "image": "/images/tiger_lake.jpg",
+    "ctaLabel": "Inquire Resort Availability",
+    "bookingPrefill": "Luxury Forest Resort Booking",
+    "whatsappText": "Hello, I want to inquire about resort stays in Ranthambore."
+  },
+  "blocks": [
+    {
+      "id": "resort-categories",
+      "type": "pricing",
+      "heading": "Curated Resort Categories in Ranthambore",
+      "intro": "Find the ideal balance of comfort, jungle character, and budget for your holiday.",
+      "bookingPrefill": "Resort Booking",
+      "tiers": [
+        {
+          "title": "5-Star Ultra Luxury & Heritage Palaces",
+          "price": "₹22,000 – ₹65,000",
+          "unit": "/ Night",
+          "badge": "Royal Opulence",
+          "features": ["Private plunge pools & butler service", "Royal Mughal tents & Rajput palaces", "Fine-dining organic farm cuisine", "Private naturalist briefings"],
+          "footnote": "Featured Partner Properties: The Oberoi Vanyavilas, SUJÁN Sher Bagh Tented Camp, Nahargarh Ranthambore Palace, Aman-i-Khás Luxury Lodges"
+        },
+        {
+          "title": "4-Star Premium Wildlife Resorts",
+          "price": "₹7,500 – ₹16,000",
+          "unit": "/ Night",
+          "badge": "Best Family Choice",
+          "features": ["Swimming pools & lush gardens", "Spacious AC cottages & Swiss tents", "Evening Rajasthani folk music", "Close proximity to core safari gates"],
+          "footnote": "Featured Partner Properties: Ranthambore Regency, The Tigress Resort & Spa, Tiger Den Resort, Fateh’s Retreat"
+        },
+        {
+          "title": "Eco-Nature Lodges & Wilderness Tents",
+          "price": "₹3,500 – ₹6,500",
+          "unit": "/ Night",
+          "badge": "Value & Nature Lovers",
+          "features": ["Clean sanitized AC rooms", "Homestyle traditional Indian food", "Quiet countryside surroundings", "Station pickup assistance"],
+          "footnote": "Featured Partner Properties: Tiger Safari Resort, Jungle Cave Resort, Ranthambore Heritage Haveli, Khem Villas Eco Luxury"
+        }
+      ]
+    },
+    {
+      "id": "amenities",
+      "type": "cards",
+      "columns": 4,
+      "style": "compact",
+      "items": [
+        { "title": "Swimming Pools & Lawns", "text": "Cool down between safari drives with clear pools and shaded sun-loungers." },
+        { "title": "Authentic Rajasthani Food", "text": "Savor royal Rajput specialties including Laal Maas and fresh vegetarian buffets." },
+        { "title": "Jungle Bonfire Evenings", "text": "Gather under star-lit skies for live folk music, dance, and traveler tales." },
+        { "title": "Ayurvedic Spas", "text": "Therapeutic herbal oil massages to soothe tired muscles after an off-road trail." }
+      ]
+    },
+    {
+      "id": "location-advantages",
+      "type": "cards",
+      "heading": "Why Stay Near Ranthambore Road?",
+      "intro": "All our partner resorts are situated within 5 to 15 minutes of the main park gates. This eliminates highway fatigue so you can wake up refreshed for your dawn safari.",
+      "columns": 3,
+      "style": "compact",
+      "items": [
+        { "icon": "map-pin", "title": "Singhdwar Core Gate (10 Mins)", "text": "Shortest transfer times to Zones 1, 2, 3, 4, and 5." },
+        { "icon": "compass", "title": "Rajbagh Naka Gate (8 Mins)", "text": "Quick access to the dramatic Kundal cliff trails of Zone 6." },
+        { "icon": "clock", "title": "Station Transfer (15 Mins)", "text": "Effortless railway connectivity to Sawai Madhopur Junction." }
+      ]
+    },
+    {
+      "id": "dining-evenings",
+      "type": "cards",
+      "heading": "Dining & Wildlife Evenings",
+      "columns": 3,
+      "style": "compact",
+      "items": [
+        { "icon": "utensils", "title": "Fresh Organic Produce", "text": "Vegetables and herbs sourced directly from resort organic gardens for flavorful farm-to-table dining." },
+        { "icon": "sun", "title": "Pre-Safari Dawn Breakfast", "text": "Freshly brewed coffee, hot tea, and cookies served before your Gypsy arrives at the lobby." },
+        { "icon": "sparkles", "title": "Jungle Bonfire Nights", "text": "Unwind by crackling outdoor fire pits with wildlife documentaries, live folk instruments, and fellow travelers." }
+      ]
+    },
+    {
+      "id": "faqs",
+      "type": "faq",
+      "heading": "Resort Booking FAQs",
+      "items": [
+        { "q": "Do you offer combined Resort + Safari permit packages?", "a": "Yes! Over 80% of guests book complete combos bundling resort stay, buffet meals, Gypsy permits, and station transfers in a single confirmed booking." },
+        { "q": "How far are the resorts from safari gates?", "a": "Most premier resorts are situated along Ranthambore Road, just 5 to 15 minutes drive from Singhdwar and Rajbagh entry gates." },
+        { "q": "Can special dietary meals be arranged?", "a": "Yes, partner resorts readily cater to Pure Vegetarian, Jain, Vegan, and Gluten-Free requirements with prior notice." }
+      ]
+    },
+    {
+      "id": "book-resort",
+      "type": "cta",
+      "title": "Book Your Wilderness Resort Stay in Ranthambore",
+      "text": "Enjoy verified room confirmation, discounted tariffs, and combined safari packages with our local team.",
+      "buttonLabel": "Check Resort Dates & Rates",
+      "bookingPrefill": "Resort Booking",
+      "whatsappText": ""
+    }
+  ],
+  "seo": {
+    "title": "Ranthambore Resort Booking: Luxury Forest Stays",
+    "description": "Book handpicked Ranthambore resorts, from 5-star heritage palaces and tented camps to eco lodges near the safari gates, with verified tariffs and safari combos.",
+    "keywords": "Ranthambore resort booking, luxury resorts Ranthambore, Sawai Madhopur hotels, jungle tented camps, resort safari package, Oberoi Vanyavilas",
+    "ogImage": "/images/tiger_lake.jpg",
+    "noindex": false
+  }
+}

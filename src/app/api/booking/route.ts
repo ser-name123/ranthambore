@@ -1,67 +1,94 @@
 import { NextResponse } from 'next/server';
-import { supabase, isSupabaseConfigured, SafariEnquiryPayload } from '@/lib/supabase';
+import { randomBytes } from 'crypto';
+import { getSupabaseAdmin, isSupabaseConfigured } from '@/lib/supabase';
+import { getSiteContent } from '@/lib/content.server';
+import { fillTemplate, waHref } from '@/lib/site-content';
+
+function text(value: unknown, max = 200): string | null {
+  if (typeof value !== 'string') return null;
+  const trimmed = value.trim().slice(0, max);
+  return trimmed || null;
+}
+
+function count(value: unknown, fallback: number): number {
+  const n = typeof value === 'number' ? value : parseInt(String(value ?? ''), 10);
+  return Number.isFinite(n) && n >= 0 && n <= 100 ? Math.floor(n) : fallback;
+}
+
+function date(value: unknown): string | null {
+  return typeof value === 'string' && /^\d{4}-\d{2}-\d{2}$/.test(value) ? value : null;
+}
 
 export async function POST(request: Request) {
+  let body: Record<string, unknown>;
   try {
-    const body: SafariEnquiryPayload = await request.json();
-
-    if (!body.name || !body.phone) {
-      return NextResponse.json(
-        { error: 'Name and Phone Number are required.' },
-        { status: 400 }
-      );
-    }
-
-    // Generate unique reference ID
-    const randomSuffix = Math.floor(1000 + Math.random() * 9000);
-    const referenceId = `RWL-${new Date().getFullYear()}-${randomSuffix}`;
-    const payloadWithRef = {
-      ...body,
-      reference_id: referenceId,
-      created_at: new Date().toISOString(),
-      status: 'New Enquiry'
-    };
-
-    let savedToDatabase = false;
-
-    if (isSupabaseConfigured && supabase) {
-      const { error } = await supabase.from('safari_enquiries').insert([payloadWithRef]);
-      if (!error) {
-        savedToDatabase = true;
-      } else {
-        console.error('Supabase insert warning:', error);
-      }
-    }
-
-    // Format WhatsApp message text
-    const waText = encodeURIComponent(
-      `Hello Ranthambore Wild Life Tour! 🐅\n\n` +
-      `I would like to enquire about Safari Booking.\n` +
-      `• Ref: ${referenceId}\n` +
-      `• Name: ${body.name}\n` +
-      `• Phone: ${body.phone}\n` +
-      (body.safari_date ? `• Date: ${body.safari_date}\n` : '') +
-      (body.safari_mode ? `• Vehicle: ${body.safari_mode}\n` : '') +
-      (body.timing_preference ? `• Timing: ${body.timing_preference}\n` : '') +
-      (body.zone_preference ? `• Zone Preference: ${body.zone_preference}\n` : '') +
-      (body.adults ? `• Adults: ${body.adults}, Children: ${body.children || 0}\n` : '') +
-      `\nPlease check real-time permit availability and provide a quote.`
-    );
-
-    const whatsappUrl = `https://wa.me/919971965629?text=${waText}`;
-
-    return NextResponse.json({
-      success: true,
-      referenceId,
-      savedToDatabase,
-      message: 'Enquiry received successfully! Our wildlife tour specialist will contact you shortly.',
-      whatsappUrl
-    });
-  } catch (err: unknown) {
-    console.error('Enquiry API Error:', err);
-    return NextResponse.json(
-      { error: 'Failed to process enquiry. Please contact via WhatsApp or Phone.' },
-      { status: 500 }
-    );
+    body = await request.json();
+  } catch {
+    return NextResponse.json({ error: 'Invalid request.' }, { status: 400 });
   }
+
+  // Honeypot: the hidden "website" field is only filled in by bots. Pretend success, store nothing.
+  if (typeof body.website === 'string' && body.website.trim()) {
+    return NextResponse.json({ success: true, referenceId: 'RWL-0000', savedToDatabase: false, message: 'Enquiry received.', whatsappUrl: '' });
+  }
+
+  const name = text(body.name, 120);
+  const phone = text(body.phone, 30);
+  if (!name || !phone) {
+    const { forms } = await getSiteContent();
+    return NextResponse.json({ error: forms.errors.required }, { status: 400 });
+  }
+
+  const referenceId = `RWL-${new Date().getFullYear()}-${randomBytes(3).toString('hex').toUpperCase()}`;
+  const enquiry = {
+    reference_id: referenceId,
+    name,
+    phone,
+    email: text(body.email, 160),
+    safari_date: date(body.safari_date),
+    safari_mode: text(body.safari_mode),
+    timing_preference: text(body.timing_preference),
+    zone_preference: text(body.zone_preference),
+    adults: count(body.adults, 1),
+    children: count(body.children, 0),
+    nationality: text(body.nationality, 60),
+    notes: text(body.notes, 2000),
+    source: text(body.source, 60),
+    page_url: text(body.page_url, 300),
+    consent: typeof body.consent === 'boolean' ? body.consent : null,
+  };
+
+  let savedToDatabase = false;
+  if (isSupabaseConfigured) {
+    const { error } = await getSupabaseAdmin().from('enquiries').insert(enquiry);
+    if (error) console.error('Enquiry insert failed:', error);
+    else savedToDatabase = true;
+  }
+
+  const { contact, forms } = await getSiteContent();
+  const whatsappUrl = waHref(
+    contact.whatsapp,
+    fillTemplate(forms.whatsappTemplate, {
+      ref: referenceId,
+      name,
+      phone,
+      email: enquiry.email,
+      date: enquiry.safari_date,
+      vehicle: enquiry.safari_mode,
+      shift: enquiry.timing_preference,
+      zone: enquiry.zone_preference,
+      adults: enquiry.adults,
+      children: enquiry.children,
+      nationality: enquiry.nationality,
+      notes: enquiry.notes,
+    })
+  );
+
+  return NextResponse.json({
+    success: true,
+    referenceId,
+    savedToDatabase,
+    message: forms.successMessage,
+    whatsappUrl,
+  });
 }

@@ -1,26 +1,34 @@
 'use client';
 
+import { Highlight } from './cms/Text';
 import React, { useState } from 'react';
-import Link from 'next/link';
 import confetti from 'canvas-confetti';
 import { Send, CheckCircle2, MessageCircle, Phone, Sparkles, AlertCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { JungleCornerBranch, BambooStalks, TigerTrackWatermark, JungleTreelineBackdrop, JungleSavannahGrass } from './JungleFoliageDecorations';
+import { useSiteContent } from '@/context/SiteContentContext';
+import { telHref, waHref } from '@/lib/site-content';
+import { Markdown } from './cms/Text';
+import { Counter, OptionSelect } from './FormBits';
 
 export default function QuickEnquirySection() {
+  const { contact, home, forms } = useSiteContent();
+  const { labels, quick } = forms;
+  const heading = home.enquiry;
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
     email: '',
     safari_date: '',
-    safari_mode: 'Maruti Gypsy (6-Seater 4x4)',
-    timing_preference: 'Morning (06:30 AM)',
-    zone_preference: 'Zone 1-5 (Core)',
+    safari_mode: forms.vehicleOptions[0] ?? '',
+    timing_preference: forms.shiftOptions[0] ?? '',
+    zone_preference: forms.zoneOptions[0] ?? '',
     adults: 2,
     children: 0,
-    nationality: 'Indian',
+    nationality: forms.nationalityOptions[0] ?? '',
     notes: '',
     consent: true,
+    source: 'Enquiry form',
   });
 
   const [loading, setLoading] = useState(false);
@@ -34,11 +42,11 @@ export default function QuickEnquirySection() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.name || !formData.phone) {
-      setErrorMessage('Please fill in your Name and Mobile Number.');
+      setErrorMessage(forms.errors.required);
       return;
     }
     if (!formData.consent) {
-      setErrorMessage('Please check the consent box to proceed.');
+      setErrorMessage(forms.errors.consent);
       return;
     }
 
@@ -49,12 +57,16 @@ export default function QuickEnquirySection() {
       const res = await fetch('/api/booking', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          page_url: window.location.pathname,
+          website: String(new FormData(e.currentTarget as HTMLFormElement).get('website') ?? ''),
+        }),
       });
 
       const data = await res.json();
       if (!res.ok) {
-        throw new Error(data.error || 'Failed to submit enquiry');
+        throw new Error(data.error || forms.errors.network);
       }
 
       setSuccessResult(data);
@@ -67,7 +79,7 @@ export default function QuickEnquirySection() {
       });
     } catch (err: unknown) {
       console.error(err);
-      setErrorMessage(err instanceof Error ? err.message : 'Network error. Please WhatsApp directly.');
+      setErrorMessage(err instanceof Error && err.message !== 'Failed to fetch' ? err.message : forms.errors.network);
     } finally {
       setLoading(false);
     }
@@ -99,18 +111,15 @@ export default function QuickEnquirySection() {
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-bold uppercase tracking-widest border border-emerald-200">
               <Sparkles className="w-3.5 h-3.5 text-[#d97706]" />
-              Direct Wildlife Concierge
+              {heading.badge}
             </div>
 
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#082318] leading-tight">
-              Get an Instant Safari Quote &amp;{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 via-teal-700 to-[#d97706]">
-                Availability Check
-              </span>
+              <Highlight text={heading.title} />
             </h2>
 
             <p className="text-sm sm:text-base text-[#1b3a2a] leading-relaxed font-normal">
-              Tell us your travel dates, group size, and vehicle preference. Our local wildlife specialists will check real-time gate inventory and return with a customized quote within 15 minutes.
+              {heading.subtitle}
             </p>
 
             <div className="space-y-4 pt-2">
@@ -119,11 +128,11 @@ export default function QuickEnquirySection() {
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-[11px] text-[#2e5241] font-semibold block">Phone Helplines:</span>
+                  <span className="text-[11px] text-[#2e5241] font-semibold block">{quick.phoneLabel}</span>
                   <div className="text-sm font-bold text-[#082318] flex items-center gap-2">
-                    <a href="tel:+919971965629" className="hover:text-emerald-800 transition">+91 99719 65629</a>
+                    <a href={telHref(contact.phonePrimary)} className="hover:text-emerald-800 transition">{contact.phonePrimary}</a>
                     <span className="text-[#a3cbb5]">|</span>
-                    <a href="tel:+917834942435" className="hover:text-emerald-800 transition">+91 78349 42435</a>
+                    <a href={telHref(contact.phoneSecondary)} className="hover:text-emerald-800 transition">{contact.phoneSecondary}</a>
                   </div>
                 </div>
               </div>
@@ -133,22 +142,22 @@ export default function QuickEnquirySection() {
                   <MessageCircle className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="text-[11px] text-[#2e5241] font-semibold block">Instant WhatsApp Support:</span>
+                  <span className="text-[11px] text-[#2e5241] font-semibold block">{quick.whatsappLabel}</span>
                   <a
-                    href="https://wa.me/919971965629?text=Hello%20Ranthambore%20Wild%20Life%20Tour,%20please%20send%20me%20safari%20quotation."
+                    href={waHref(contact.whatsapp, quick.whatsappText)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-sm font-bold text-emerald-800 hover:text-emerald-950 transition"
                   >
-                    +91 99719 65629 (Click to Chat)
+                    {contact.whatsapp} {quick.whatsappSuffix}
                   </a>
                 </div>
               </div>
             </div>
 
             <div className="p-4 rounded-xl bg-white border border-[#d2e4d9] text-xs text-[#1b3a2a] leading-relaxed shadow-sm">
-              <span className="font-bold text-emerald-900">Privacy Assurance: </span>
-              Your contact details and travel dates are strictly used for your safari quotation. We never share visitor info with third parties or marketing spammers.
+              <span className="font-bold text-emerald-900">{quick.privacyTitle} </span>
+              {quick.privacyText}
             </div>
           </motion.div>
 
@@ -170,14 +179,9 @@ export default function QuickEnquirySection() {
                     <span className="px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-bold uppercase tracking-wider border border-emerald-200">
                       Reference: {successResult.referenceId}
                     </span>
-                    <h3 className="font-serif text-2xl font-bold text-[#082318] mt-3">
-                      Enquiry Submitted Successfully!
-                    </h3>
-                    <p className="text-xs sm:text-sm text-[#375847] mt-2 max-w-md mx-auto">
-                      {successResult.message}
-                    </p>
+                    <h3 className="font-serif text-2xl font-bold text-[#082318] mt-3">{quick.successTitle}</h3>
+                    <p className="text-xs sm:text-sm text-[#375847] mt-2 max-w-md mx-auto">{successResult.message}</p>
                   </div>
-
                   <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center">
                     <a
                       href={successResult.whatsappUrl}
@@ -186,25 +190,23 @@ export default function QuickEnquirySection() {
                       className="px-6 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md transition"
                     >
                       <MessageCircle className="w-4 h-4" />
-                      <span>Continue on WhatsApp Now</span>
+                      <span>{quick.successWhatsapp}</span>
                     </a>
                     <button
                       onClick={() => setSuccessResult(null)}
                       className="px-5 py-3 rounded-xl bg-[#f0f6f2] text-[#375847] hover:text-[#082318] border border-[#d2e4d9] text-xs font-bold transition cursor-pointer"
                     >
-                      Submit Another Request
+                      {quick.anotherRequest}
                     </button>
                   </div>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
+                  {/* Honeypot for bots: hidden from people and screen readers */}
+                  <input type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 opacity-0" />
                   <div className="border-b border-[#e2ede6] pb-3 mb-2">
-                    <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#082318]">
-                      Request Safari Booking / Tour Quote
-                    </h3>
-                    <p className="text-xs text-[#517362]">
-                      Fill out the form below for fast quotation and availability verification
-                    </p>
+                    <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#082318]">{quick.formTitle}</h3>
+                    <p className="text-xs text-[#517362]">{quick.formSubtitle}</p>
                   </div>
 
                   {errorMessage && (
@@ -215,181 +217,74 @@ export default function QuickEnquirySection() {
                   )}
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-semibold text-[#082318] mb-1">
-                        Full Name *
-                      </label>
-                      <input
-                        type="text"
-                        required
-                        placeholder="e.g. Rahul Sharma"
-                        value={formData.name}
-                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                        className="w-full bg-[#f8faf8] border border-[#d2e4d9] rounded-xl px-3.5 py-2.5 text-[#082318] text-xs sm:text-sm focus:outline-none focus:border-emerald-600 focus:bg-white transition"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-semibold text-[#082318] mb-1">
-                        Mobile / WhatsApp No. *
-                      </label>
-                      <input
-                        type="tel"
-                        required
-                        placeholder="e.g. +91 98765 43210"
-                        value={formData.phone}
-                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        className="w-full bg-[#f8faf8] border border-[#d2e4d9] rounded-xl px-3.5 py-2.5 text-[#082318] text-xs sm:text-sm focus:outline-none focus:border-emerald-600 focus:bg-white transition"
-                      />
-                    </div>
+                    <label className="block">
+                      <span className="block text-xs font-semibold text-[#082318] mb-1">{labels.name}</span>
+                      <input type="text" required placeholder={labels.namePlaceholder} value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className="w-full bg-[#f8faf8] border border-[#d2e4d9] rounded-xl px-3.5 py-2.5 text-[#082318] text-xs sm:text-sm focus:outline-none focus:border-emerald-600 focus:bg-white transition" />
+                    </label>
+                    <label className="block">
+                      <span className="block text-xs font-semibold text-[#082318] mb-1">{labels.phone}</span>
+                      <input type="tel" required placeholder={labels.phonePlaceholder} value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} className="w-full bg-[#f8faf8] border border-[#d2e4d9] rounded-xl px-3.5 py-2.5 text-[#082318] text-xs sm:text-sm focus:outline-none focus:border-emerald-600 focus:bg-white transition" />
+                    </label>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-xs font-semibold text-[#082318] mb-1">
-                        Email Address (Optional)
-                      </label>
-                      <input
-                        type="email"
-                        placeholder="e.g. rahul@example.com"
-                        value={formData.email}
-                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        className="w-full bg-[#f8faf8] border border-[#d2e4d9] rounded-xl px-3.5 py-2.5 text-[#082318] text-xs sm:text-sm focus:outline-none focus:border-emerald-600 focus:bg-white transition"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-semibold text-[#082318] mb-1">
-                        Safari Date *
-                      </label>
-                      <input
-                        type="date"
-                        required
-                        value={formData.safari_date}
-                        onChange={(e) => setFormData({ ...formData, safari_date: e.target.value })}
-                        className="w-full bg-[#f8faf8] border border-[#d2e4d9] rounded-xl px-3.5 py-2.5 text-[#082318] text-xs sm:text-sm focus:outline-none focus:border-emerald-600 focus:bg-white transition"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    <div>
-                      <label className="block text-xs font-semibold text-[#082318] mb-1">
-                        Vehicle Type
-                      </label>
-                      <select
-                        value={formData.safari_mode}
-                        onChange={(e) => setFormData({ ...formData, safari_mode: e.target.value })}
-                        className="w-full bg-[#f8faf8] border border-[#d2e4d9] rounded-xl px-2.5 py-2 text-[#082318] text-xs focus:outline-none focus:border-emerald-600 focus:bg-white transition"
-                      >
-                        <option value="Maruti Gypsy (6-Seater 4x4)">Maruti Gypsy (6-Seater 4x4)</option>
-                        <option value="Canter (20-Seater Bus)">Canter (20-Seater Bus)</option>
-                        <option value="Hotel + Safari Package">Hotel + Safari Package</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-semibold text-[#082318] mb-1">
-                        Shift Preference
-                      </label>
-                      <select
-                        value={formData.timing_preference}
-                        onChange={(e) => setFormData({ ...formData, timing_preference: e.target.value })}
-                        className="w-full bg-[#f8faf8] border border-[#d2e4d9] rounded-xl px-2.5 py-2 text-[#082318] text-xs focus:outline-none focus:border-emerald-600 focus:bg-white transition"
-                      >
-                        <option value="Morning (06:30 AM)">Morning (06:30 AM)</option>
-                        <option value="Afternoon (02:30 PM)">Afternoon (02:30 PM)</option>
-                        <option value="Both Shifts">Both Shifts</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="block text-xs font-semibold text-[#082318] mb-1">
-                        Nationality
-                      </label>
-                      <select
-                        value={formData.nationality}
-                        onChange={(e) => setFormData({ ...formData, nationality: e.target.value })}
-                        className="w-full bg-[#f8faf8] border border-[#d2e4d9] rounded-xl px-2.5 py-2 text-[#082318] text-xs focus:outline-none focus:border-emerald-600 focus:bg-white transition"
-                      >
-                        <option value="Indian">Indian</option>
-                        <option value="Foreign National">Foreign National</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-2 gap-3 bg-[#f0f6f2] p-3 rounded-xl border border-[#d2e4d9]">
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-[#082318] font-bold">Adults:</span>
-                      <div className="flex items-center gap-2">
-                        <motion.button
-                          whileTap={{ scale: 0.85 }}
-                          type="button"
-                          onClick={() => setFormData({ ...formData, adults: Math.max(1, formData.adults - 1) })}
-                          className="w-6 h-6 rounded bg-white border border-[#d2e4d9] text-[#082318] hover:bg-emerald-600 hover:text-white text-xs transition cursor-pointer font-bold"
-                        >-</motion.button>
-                        <span className="text-[#082318] font-bold text-xs">{formData.adults}</span>
-                        <motion.button
-                          whileTap={{ scale: 0.85 }}
-                          type="button"
-                          onClick={() => setFormData({ ...formData, adults: formData.adults + 1 })}
-                          className="w-6 h-6 rounded bg-white border border-[#d2e4d9] text-[#082318] hover:bg-emerald-600 hover:text-white text-xs transition cursor-pointer font-bold"
-                        >+</motion.button>
-                      </div>
-                    </div>
-
-                    <div className="flex items-center justify-between">
-                      <span className="text-xs text-[#082318] font-bold">Children:</span>
-                      <div className="flex items-center gap-2">
-                        <motion.button
-                          whileTap={{ scale: 0.85 }}
-                          type="button"
-                          onClick={() => setFormData({ ...formData, children: Math.max(0, formData.children - 1) })}
-                          className="w-6 h-6 rounded bg-white border border-[#d2e4d9] text-[#082318] hover:bg-emerald-600 hover:text-white text-xs transition cursor-pointer font-bold"
-                        >-</motion.button>
-                        <span className="text-[#082318] font-bold text-xs">{formData.children}</span>
-                        <motion.button
-                          whileTap={{ scale: 0.85 }}
-                          type="button"
-                          onClick={() => setFormData({ ...formData, children: formData.children + 1 })}
-                          className="w-6 h-6 rounded bg-white border border-[#d2e4d9] text-[#082318] hover:bg-emerald-600 hover:text-white text-xs transition cursor-pointer font-bold"
-                        >+</motion.button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-xs font-semibold text-[#082318] mb-1">
-                      Special Requests / Notes (Optional)
+                    <label className="block">
+                      <span className="block text-xs font-semibold text-[#082318] mb-1">{labels.email}</span>
+                      <input type="email" placeholder={labels.emailPlaceholder} value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className="w-full bg-[#f8faf8] border border-[#d2e4d9] rounded-xl px-3.5 py-2.5 text-[#082318] text-xs sm:text-sm focus:outline-none focus:border-emerald-600 focus:bg-white transition" />
                     </label>
-                    <textarea
-                      rows={2}
-                      placeholder="e.g. Need hotel stay, railway pickup, or zone 3 preference..."
-                      value={formData.notes}
-                      onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                      className="w-full bg-[#f8faf8] border border-[#d2e4d9] rounded-xl px-3.5 py-2 text-[#082318] text-xs sm:text-sm focus:outline-none focus:border-emerald-600 focus:bg-white transition"
-                    />
+                    <label className="block">
+                      <span className="block text-xs font-semibold text-[#082318] mb-1">{labels.date}</span>
+                      <input type="date" required value={formData.safari_date} onChange={(e) => setFormData({ ...formData, safari_date: e.target.value })} className="w-full bg-[#f8faf8] border border-[#d2e4d9] rounded-xl px-3.5 py-2.5 text-[#082318] text-xs sm:text-sm focus:outline-none focus:border-emerald-600 focus:bg-white transition" />
+                    </label>
                   </div>
 
-                  {/* Consent checkbox */}
-                  <label className="flex items-start gap-2.5 text-xs text-[#1b3a2a] cursor-pointer pt-1">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <label className="block">
+                      <span className="block text-xs font-semibold text-[#082318] mb-1">{labels.vehicle}</span>
+                      <OptionSelect value={formData.safari_mode} options={forms.vehicleOptions} onChange={(v) => setFormData({ ...formData, safari_mode: v })} className="w-full bg-[#f8faf8] border border-[#d2e4d9] rounded-xl px-2.5 py-2 text-[#082318] text-xs focus:outline-none focus:border-emerald-600 focus:bg-white transition" />
+                    </label>
+                    <label className="block">
+                      <span className="block text-xs font-semibold text-[#082318] mb-1">{labels.shift}</span>
+                      <OptionSelect value={formData.timing_preference} options={forms.shiftOptions} onChange={(v) => setFormData({ ...formData, timing_preference: v })} className="w-full bg-[#f8faf8] border border-[#d2e4d9] rounded-xl px-2.5 py-2 text-[#082318] text-xs focus:outline-none focus:border-emerald-600 focus:bg-white transition" />
+                    </label>
+                    <label className="block">
+                      <span className="block text-xs font-semibold text-[#082318] mb-1">{labels.zone}</span>
+                      <OptionSelect value={formData.zone_preference} options={forms.zoneOptions} onChange={(v) => setFormData({ ...formData, zone_preference: v })} className="w-full bg-[#f8faf8] border border-[#d2e4d9] rounded-xl px-2.5 py-2 text-[#082318] text-xs focus:outline-none focus:border-emerald-600 focus:bg-white transition" />
+                    </label>
+                    <label className="block">
+                      <span className="block text-xs font-semibold text-[#082318] mb-1">{labels.nationality}</span>
+                      <OptionSelect value={formData.nationality} options={forms.nationalityOptions} onChange={(v) => setFormData({ ...formData, nationality: v })} className="w-full bg-[#f8faf8] border border-[#d2e4d9] rounded-xl px-2.5 py-2 text-[#082318] text-xs focus:outline-none focus:border-emerald-600 focus:bg-white transition" />
+                    </label>
+                  </div>
+
+                  <div className="flex flex-wrap items-center gap-x-8 gap-y-2 bg-[#f0f6f2] p-3 rounded-xl border border-[#d2e4d9] text-xs">
+                    <div className="flex items-center gap-2">
+                      <span className="font-bold text-[#082318]">{labels.adults}</span>
+                      <Counter value={formData.adults} min={1} onChange={(adults) => setFormData({ ...formData, adults })} />
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="font-bold text-[#082318]">{labels.children}</span>
+                      <Counter value={formData.children} min={0} onChange={(children) => setFormData({ ...formData, children })} />
+                    </div>
+                  </div>
+
+                  <label className="block">
+                    <span className="block text-xs font-semibold text-[#082318] mb-1">{labels.notes}</span>
+                    <textarea rows={2} placeholder={labels.notesPlaceholder} value={formData.notes} onChange={(e) => setFormData({ ...formData, notes: e.target.value })} className="w-full bg-[#f8faf8] border border-[#d2e4d9] rounded-xl px-3.5 py-2.5 text-[#082318] text-xs sm:text-sm focus:outline-none focus:border-emerald-600 focus:bg-white transition" />
+                  </label>
+
+                  <div className="flex items-start gap-2.5 pt-1">
                     <input
+                      id="enquiry-consent"
                       type="checkbox"
                       checked={formData.consent}
                       onChange={(e) => setFormData({ ...formData, consent: e.target.checked })}
-                      className="mt-0.5 accent-emerald-600"
+                      className="mt-1 accent-emerald-600"
                     />
-                    <span className="leading-relaxed">
-                      I agree to receive booking availability updates on WhatsApp / Phone, and accept the{' '}
-                      <Link href="/terms-conditions" className="text-emerald-800 hover:underline font-bold">
-                        Terms &amp; Conditions
-                      </Link>{' '}
-                      and{' '}
-                      <Link href="/cancellation-policy" className="text-emerald-800 hover:underline font-bold">
-                        Cancellation Policy
-                      </Link>.
-                    </span>
-                  </label>
+                    <label htmlFor="enquiry-consent" className="cursor-pointer [&_p]:text-xs">
+                      <Markdown text={quick.consent} />
+                    </label>
+                  </div>
 
                   <motion.button
                     whileHover={{ scale: 1.02 }}
@@ -399,11 +294,11 @@ export default function QuickEnquirySection() {
                     className="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-700 via-emerald-600 to-[#d97706] hover:from-emerald-800 hover:to-[#b45309] text-white font-bold text-sm tracking-wide shadow-md flex items-center justify-center gap-2 transition duration-200 cursor-pointer disabled:opacity-50"
                   >
                     {loading ? (
-                      <span>Processing Enquiry...</span>
+                      <span>{quick.submitting}</span>
                     ) : (
                       <>
                         <Send className="w-4 h-4" />
-                        <span>Submit Safari Booking Request</span>
+                        <span>{quick.submit}</span>
                       </>
                     )}
                   </motion.button>

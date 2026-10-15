@@ -1,0 +1,98 @@
+{
+  "slug": "wildlife-photography-tour",
+  "name": "Wildlife Photography Expeditions",
+  "group": "service",
+  "showToc": false,
+  "hero": {
+    "badge": "Custom Wildlife Photography Safaris",
+    "title": "Wildlife Photography",
+    "highlight": "Expeditions",
+    "subtitle": "Crafted by photographers for photographers. Private Gypsy vehicles, beanbag mounts, top-ranked naturalists, and strategic positioning to capture world-class portfolio shots of Royal Bengal Tigers.",
+    "image": "/images/tiger_portrait.jpg",
+    "ctaLabel": "Plan Photo Expedition",
+    "bookingPrefill": "Private Photography Gypsy",
+    "whatsappText": "Hello, I am a wildlife photographer planning an expedition to Ranthambore."
+  },
+  "blocks": [
+    {
+      "id": "tour-features",
+      "type": "cards",
+      "columns": 4,
+      "style": "compact",
+      "items": [
+        { "icon": "camera", "title": "Dedicated Beanbags & Mounts", "text": "Gypsies equipped with rice/beanbags mounted on door edges for vibration-free telephoto shooting." },
+        { "icon": "sun", "title": "Veteran Naturalist & Light Tactician", "text": "Senior naturalists who understand golden hour angles, animal body language, and predictive behavior." },
+        { "icon": "car", "title": "Custom Vehicle Positioning", "text": "Drivers angle the Gypsy for optimal lens clearance, backdrop bokeh, and zero dust blow." },
+        { "icon": "clock", "title": "Multi-Drive Flexibility (4 to 8 Drives)", "text": "Intensive itineraries combining morning mist at Padam Talao with late afternoon golden rim light." }
+      ]
+    },
+    {
+      "id": "field-equipment",
+      "type": "checklist",
+      "heading": "Essential Field Equipment Guide",
+      "intro": "Recommended optical focal lengths and accessories tailored for Ranthambore's terrain.",
+      "groups": [
+        { "title": "Prime Telephoto", "tone": "neutral", "items": ["400mm f/2.8, 500mm f/4, or 600mm f/4 for tight big cat portraits."] },
+        { "title": "Telephoto Zoom", "tone": "neutral", "items": ["100-400mm or 70-200mm f/2.8 for environmental frames and mother-cub moments."] },
+        { "title": "Camera Bodies", "tone": "neutral", "items": ["Dual bodies to avoid changing lenses in dusty field conditions."] },
+        { "title": "Dust Protection", "tone": "neutral", "items": ["Rain & dust covers, rocket blowers, and lens wraps for open 4x4 trails."] }
+      ]
+    },
+    {
+      "id": "golden-hour-lighting",
+      "type": "cards",
+      "heading": "Golden Hour Lighting Across Park Zones",
+      "columns": 3,
+      "style": "card",
+      "items": [
+        { "badge": "Morning Mist", "title": "Sunrise at Padam Talao (Zone 3)", "text": "As morning sun hits Jogi Mahal and the water lilies, steam rises creating ethereal silhouettes of deer herds and wading tigers." },
+        { "badge": "Noon Waterhole Action", "title": "Lake Shallows at Rajbagh", "text": "Summer heat drives big cats to submerge in clear waters against the ancient Rajput hunting palace ruins." },
+        { "badge": "Dusk Warmth", "title": "Deep Ravines of Bakola & Lakkad Da", "text": "Warm low-angle light filters through golden foliage, highlighting amber eyes as tigers awaken for dusk patrols." }
+      ]
+    },
+    {
+      "id": "photography-ethics",
+      "type": "checklist",
+      "heading": "Wildlife Photography Ethics",
+      "groups": [
+        {
+          "title": "",
+          "tone": "neutral",
+          "items": [
+            "Never ask the driver to block a tiger's natural path or cut off animal movement.",
+            "Avoid repetitive clicking or flash illumination which can stress animals.",
+            "Respect other photographers and tourists by sharing prime viewing angles.",
+            "All photos must be taken strictly from inside the Gypsy without pole extensions."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faqs",
+      "type": "faq",
+      "heading": "Photography Tour FAQs",
+      "intro": "Everything you need to plan a portfolio-grade shoot in Ranthambore.",
+      "items": [
+        { "q": "Can I bring big telephoto lenses and tripods into the park?", "a": "Handheld telephoto lenses and beanbags are fully permitted. Monopods can rest on vehicle floors. Tripods cannot be placed on the ground outside the vehicle." },
+        { "q": "Do professional photographers need private Gypsies?", "a": "Yes, private Gypsies allow you to wait patiently at scenic waterholes for action without rushing or competing for angles." },
+        { "q": "What is the best time for tiger photography?", "a": "March to June is prime season as waterholes dry up and tigers spend hours cooling down in lake shallows in broad daylight." }
+      ]
+    },
+    {
+      "id": "book-photo-tour",
+      "type": "cta",
+      "title": "Book Your Custom Photography Tour",
+      "text": "Connect with our senior photo tour coordinator in Sawai Madhopur to design a bespoke multi-drive wildlife itinerary.",
+      "buttonLabel": "Request Custom Photo Tour",
+      "bookingPrefill": "Private Photography Gypsy",
+      "whatsappText": ""
+    }
+  ],
+  "seo": {
+    "title": "Ranthambore Wildlife Photography Tours & Expeditions",
+    "description": "Private Gypsy photography safaris in Ranthambore with beanbag mounts, expert naturalists, golden hour positioning, gear advice and 4 to 8 drive itineraries.",
+    "keywords": "Ranthambore photography tour, wildlife photography safari, tiger photography India, private Gypsy photography, Ranthambore photo expedition, golden hour safari",
+    "ogImage": "/images/tiger_portrait.jpg",
+    "noindex": false
+  }
+}

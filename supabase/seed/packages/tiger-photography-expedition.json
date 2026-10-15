@@ -1,0 +1,63 @@
+{
+  "slug": "tiger-photography-expedition",
+  "name": "Tiger Photography Master Expedition",
+  "category": "custom",
+  "duration": "3 Nights / 4 Days",
+  "safariCount": "4 Exclusive Gypsy Safaris",
+  "hotelType": "Luxury Wildlife Jungle Camp",
+  "pricePerPerson": 27999,
+  "badge": "Photographers' Choice",
+  "image": "/images/tiger_lake.jpg",
+  "summary": "Tiger Photography Master Expedition is a 3 Nights / 4 Days package with 4 Exclusive Gypsy Safaris and Luxury Wildlife Jungle Camp, priced from ₹27,999 per person.",
+  "highlights": [
+    "Private 4x4 Gypsy for camera gear",
+    "Senior wildlife tracker & naturalist",
+    "Early morning golden hour slots"
+  ],
+  "inclusions": [
+    "4 Private Safaris",
+    "Luxury Villa",
+    "Expert Naturalist",
+    "All Transfers"
+  ],
+  "featured": true,
+  "blocks": [
+    {
+      "id": "whats-included",
+      "type": "checklist",
+      "heading": "What's Included",
+      "groups": [
+        {
+          "title": "What's Included",
+          "tone": "do",
+          "items": [
+            "4 Private Safaris",
+            "Luxury Villa",
+            "Expert Naturalist",
+            "All Transfers",
+            "Private 4x4 Gypsy for camera gear",
+            "Senior wildlife tracker & naturalist",
+            "Early morning golden hour slots"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "book",
+      "type": "cta",
+      "title": "Book Tiger Photography Master Expedition",
+      "text": "Share your travel dates and group size and our team will confirm availability for the Tiger Photography Master Expedition.",
+      "buttonLabel": "Enquire Now",
+      "bookingPrefill": "Tiger Photography Master Expedition",
+      "whatsappText": "Hello, I want to enquire about the Tiger Photography Master Expedition package."
+    }
+  ],
+  "seo": {
+    "title": "Tiger Photography Master Expedition: 3N/4D",
+    "description": "3 nights / 4 days Ranthambore photography tour with 4 private Gypsy safaris, golden hour slots, senior tracker and naturalist, luxury jungle camp and transfers.",
+    "keywords": "ranthambore photography tour, tiger photography expedition, wildlife photography india, ranthambore private gypsy, ranthambore photography safari, ranthambore jungle camp",
+    "ogImage": "/images/tiger_lake.jpg",
+    "noindex": false
+  },
+  "sort_order": 3
+}

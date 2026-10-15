@@ -1,0 +1,63 @@
+{
+  "slug": "jaipur-to-ranthambore-tour",
+  "name": "Jaipur to Ranthambore Tour Package",
+  "category": "short",
+  "duration": "Same Day or 1N/2D",
+  "safariCount": "1 Scheduled Safari Session",
+  "hotelType": "Optional Resort Stay",
+  "pricePerPerson": 8499,
+  "badge": "Door-to-Door Cab",
+  "image": "/images/tiger_foliage.jpg",
+  "summary": "Jaipur to Ranthambore Tour Package is a Same Day or 1N/2D package with 1 Scheduled Safari Session and Optional Resort Stay, priced from ₹8,499 per person.",
+  "highlights": [
+    "Private AC sedan from Jaipur hotel/airport",
+    "Safari permit pre-coordinated",
+    "Scenic drive via Delhi-Mumbai Expressway"
+  ],
+  "inclusions": [
+    "Jaipur Cab",
+    "Safari Permit",
+    "Driver Allowance",
+    "Entry Assistance"
+  ],
+  "featured": true,
+  "blocks": [
+    {
+      "id": "whats-included",
+      "type": "checklist",
+      "heading": "What's Included",
+      "groups": [
+        {
+          "title": "What's Included",
+          "tone": "do",
+          "items": [
+            "Jaipur Cab",
+            "Safari Permit",
+            "Driver Allowance",
+            "Entry Assistance",
+            "Private AC sedan from Jaipur hotel/airport",
+            "Safari permit pre-coordinated",
+            "Scenic drive via Delhi-Mumbai Expressway"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "book",
+      "type": "cta",
+      "title": "Book Jaipur to Ranthambore Tour Package",
+      "text": "Share your travel dates and group size and our team will confirm availability for the Jaipur to Ranthambore Tour Package.",
+      "buttonLabel": "Enquire Now",
+      "bookingPrefill": "Jaipur to Ranthambore Tour Package",
+      "whatsappText": "Hello, I want to enquire about the Jaipur to Ranthambore Tour Package package."
+    }
+  ],
+  "seo": {
+    "title": "Jaipur to Ranthambore Tour Package",
+    "description": "Jaipur to Ranthambore tour by private AC sedan from your Jaipur hotel or airport, with pre-coordinated safari permit, entry assistance and optional resort stay.",
+    "keywords": "jaipur to ranthambore tour, jaipur to ranthambore cab, jaipur ranthambore day trip, ranthambore safari from jaipur, jaipur to ranthambore package",
+    "ogImage": "/images/tiger_foliage.jpg",
+    "noindex": false
+  },
+  "sort_order": 4
+}

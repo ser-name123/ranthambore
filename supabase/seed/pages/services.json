@@ -1,0 +1,205 @@
+{
+  "slug": "services",
+  "name": "Services",
+  "group": "service",
+  "showToc": false,
+  "hero": {
+    "badge": "Full-Spectrum Wildlife Tourism & Logistics",
+    "title": "Our Wildlife Tourism Services in",
+    "highlight": "Sawai Madhopur",
+    "subtitle": "From official Gypsy and Canter safari permit allocation to luxury heritage resorts, UNESCO Ranthambore Fort historical treks, Chambal river boat safaris, and intercity airport cabs.",
+    "image": "/images/tiger_foliage.jpg",
+    "ctaLabel": "Inquire For Any Service",
+    "bookingPrefill": "All-Services Inquiry",
+    "whatsappText": "Hello Ranthambore Wild Life Tour, I need information about your services."
+  },
+  "blocks": [
+    {
+      "id": "services-grid",
+      "type": "cards",
+      "badge": "Complete Travel Assistance",
+      "heading": "Our Wildlife Services",
+      "intro": "From obtaining official entry permits to coordinating luxury stays and local excursions, we provide seamless end-to-end safari planning.",
+      "columns": 3,
+      "style": "card",
+      "items": [
+        {
+          "icon": "compass",
+          "badge": "Core Experience",
+          "title": "Maruti Gypsy Safari Booking",
+          "text": "Exclusive and sharing 4x4 open Gypsy safaris across Zones 1 to 10 with verified entry permits, licensed drivers, and certified nature guides."
+        },
+        {
+          "icon": "car",
+          "badge": "Best Value",
+          "title": "Canter Safari Booking",
+          "text": "Economical 20-seater open safari bus permits ideal for families, groups, and last-minute travellers with panoramic elevated forest views."
+        },
+        {
+          "icon": "hotel",
+          "badge": "Stay Assistance",
+          "title": "Resort & Jungle Camp Stays",
+          "text": "Curated bookings at handpicked heritage jungle resorts, eco-cottages, and 5-star wilderness retreats near National Park entry gates."
+        },
+        {
+          "icon": "map-pin",
+          "badge": "Safe Transfers",
+          "title": "Railway Station & Airport Transfers",
+          "text": "Comfortable private AC cabs from Sawai Madhopur Junction, Jaipur International Airport, or Delhi NCR straight to your resort."
+        },
+        {
+          "icon": "landmark",
+          "badge": "Sightseeing",
+          "title": "Ranthambore Fort & Chambal Safari",
+          "text": "Guided cultural excursions to the 10th-century UNESCO World Heritage Ranthambore Fort, Trinetra Ganesha Temple, and Chambal boat safari."
+        },
+        {
+          "icon": "camera",
+          "badge": "Photography Special",
+          "title": "Bespoke Wildlife Photography Tours",
+          "text": "Specialized arrangements for photographers featuring exclusive Gypsy positioning, expert trackers, beanbag mounts, and optimal lighting routes."
+        }
+      ]
+    },
+    {
+      "id": "chambal-boat-safari",
+      "type": "richText",
+      "badge": "Special River Excursion (Pali Ghat)",
+      "heading": "National Chambal Gharial Sanctuary Boat Safari",
+      "body": "Located 45 km from Sawai Madhopur at Pali Ghat, the National Chambal Sanctuary is India’s premier clean river sanctuary. Glide along the pristine waters on a silent motorboat to witness critically endangered Gharials, Marsh Crocodiles, and migratory birds.\n\n- Boat Duration: 1 Hour guided ride with certified river lifejackets\n- Departure Shifts: 08:00 AM, 11:00 AM, 02:00 PM & 04:00 PM\n- Roundtrip private taxi transfer arranged directly from your resort"
+    },
+    {
+      "id": "chambal-snapshot",
+      "type": "table",
+      "heading": "Chambal Safari Snapshot",
+      "columns": [
+        "Item",
+        "Details"
+      ],
+      "rows": [
+        [
+          "Boat Safari Ticket (Indian):",
+          "₹1,200 / person"
+        ],
+        [
+          "Boat Safari Ticket (Foreigner):",
+          "₹2,400 / person"
+        ],
+        [
+          "Roundtrip Cab from Resort:",
+          "₹2,200 (Private Sedan)"
+        ],
+        [
+          "Ideal Season:",
+          "Oct to April (Peak Season)"
+        ]
+      ]
+    },
+    {
+      "id": "chambal-cta",
+      "type": "cta",
+      "title": "Book Chambal Boat Safari",
+      "text": "",
+      "buttonLabel": "Book Chambal Boat Safari",
+      "bookingPrefill": "Chambal Safari",
+      "whatsappText": ""
+    },
+    {
+      "id": "fort-trek",
+      "type": "cards",
+      "heading": "UNESCO World Heritage Ranthambore Fort Trek",
+      "intro": "10th-Century Chauhan Dynasty Citadel overlooking the tiger reserve",
+      "columns": 3,
+      "style": "compact",
+      "items": [
+        {
+          "title": "Trinetra Ganesh Temple",
+          "text": "One of India's oldest sacred temples where devotees send wedding invitations to Lord Ganesha, situated at the fort summit."
+        },
+        {
+          "title": "Padam Talao Lake Viewpoint",
+          "text": "Offers breathtaking panoramic views overlooking the core forest, Padam Talao, and Rajbagh ruins where tigers are frequently seen below."
+        },
+        {
+          "title": "Govt. Certified Guide Service",
+          "text": "Local guides who narrate the rich siege history of Raja Hammir Dev, royal stepwells (Baoris), and ancient palaces inside the ramparts."
+        }
+      ]
+    },
+    {
+      "id": "cab-transfers",
+      "type": "cards",
+      "badge": "Comfort Logistics",
+      "heading": "Intercity Cab Transfers & Station Pickups",
+      "intro": "Reliable, sanitized AC tourist vehicles with experienced highway drivers.",
+      "columns": 4,
+      "style": "card",
+      "items": [
+        {
+          "icon": "car",
+          "badge": "160 km (Approx. 3.5 hrs)",
+          "title": "Jaipur International Airport (JAI)",
+          "text": "Sedan (Dzire/Etios) or SUV (Innova Crysta)",
+          "meta": "Starting ₹3,200"
+        },
+        {
+          "icon": "car",
+          "badge": "360 km (Approx. 6 hrs via Expressway)",
+          "title": "Delhi / NCR / Gurgaon",
+          "text": "AC Innova Crysta / Ertiga / Tempo Traveller",
+          "meta": "Starting ₹6,800"
+        },
+        {
+          "icon": "car",
+          "badge": "250 km (Approx. 5 hrs)",
+          "title": "Agra Cantt / Taj Mahal",
+          "text": "Tourist taxi with experienced highway chauffeur",
+          "meta": "Starting ₹4,800"
+        },
+        {
+          "icon": "car",
+          "badge": "Within 5–10 km radius",
+          "title": "Sawai Madhopur Railway Station (SWM)",
+          "text": "Station pickup & hotel drop in private Gypsy/Cab",
+          "meta": "Complimentary in Packages"
+        }
+      ]
+    },
+    {
+      "id": "trust-pillars",
+      "type": "cards",
+      "badge": "Why Travelers Trust Us",
+      "heading": "The Ranthambore Wild Life Tour Advantage",
+      "columns": 3,
+      "style": "compact",
+      "items": [
+        {
+          "icon": "shield",
+          "title": "100% Genuine Permits",
+          "text": "Direct booking through official Rajasthan Forest Department channels with government passenger receipts."
+        },
+        {
+          "icon": "shield",
+          "title": "Local Sawai Madhopur Office",
+          "text": "Headquartered directly on Ranthambore Road. On-ground support staff present at safari gates every shift."
+        },
+        {
+          "icon": "users",
+          "title": "Expert Naturalist Trackers",
+          "text": "We partner with senior trackers who read pugmarks, listen to alarm calls, and understand tiger territory movements."
+        }
+      ]
+    },
+    {
+      "id": "enquiry",
+      "type": "enquiryForm"
+    }
+  ],
+  "seo": {
+    "title": "Ranthambore Safari, Resort, Cab & Chambal Services",
+    "description": "Gypsy & Canter safari permits, jungle resort stays, Ranthambore Fort treks, Chambal boat safaris and intercity cab transfers from our Sawai Madhopur team.",
+    "keywords": "Ranthambore services, Ranthambore safari booking, Chambal boat safari, Ranthambore Fort trek, Jaipur to Ranthambore cab, Ranthambore resort booking, Sawai Madhopur transfers",
+    "ogImage": "/images/tiger_foliage.jpg",
+    "noindex": false
+  }
+}

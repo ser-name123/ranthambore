@@ -1,0 +1,235 @@
+{
+  "slug": "canter-safari",
+  "name": "Canter Safari Bus",
+  "group": "service",
+  "showToc": false,
+  "hero": {
+    "badge": "20-Seater Open Safari Bus",
+    "title": "Canter Safari Bus",
+    "highlight": "(20-Seater Open Safari)",
+    "subtitle": "Enjoy an elevated perspective across Ranthambore's grasslands, ancient fort ruins, and scenic lake shores. The most economical, group-friendly, and enjoyable way to explore the royal tiger kingdom.",
+    "image": "/images/canter_safari.jpg",
+    "ctaLabel": "Reserve Canter Seats",
+    "bookingPrefill": "Canter Safari Bus (20-Seater)",
+    "whatsappText": "Hello, I want to check Canter safari seats availability for Ranthambore."
+  },
+  "blocks": [
+    {
+      "id": "vehicle-specs",
+      "type": "cards",
+      "columns": 4,
+      "style": "compact",
+      "items": [
+        {
+          "icon": "users",
+          "title": "20 Passengers",
+          "text": "Tiered bench rows for open views from every single seat."
+        },
+        {
+          "icon": "compass",
+          "title": "Elevated Vantage",
+          "text": "See over bushes and tall grasses across lakes easily."
+        },
+        {
+          "icon": "award",
+          "title": "Economical Rates",
+          "text": "The most affordable ticket price for core & buffer safaris."
+        },
+        {
+          "icon": "clock",
+          "title": "Same 3.5h Shift",
+          "text": "Exact same shift timing and duration as private Gypsies."
+        }
+      ]
+    },
+    {
+      "id": "pricing",
+      "type": "pricing",
+      "heading": "Canter Safari Ticket Pricing",
+      "intro": "All-inclusive seat reservations including Rajasthan Forest Department entry fees, vehicle tax, and government guide fees.",
+      "bookingPrefill": "Canter",
+      "tiers": [
+        {
+          "title": "Canter Seat (Indian Nationals)",
+          "price": "₹1,450",
+          "unit": "per person / drive",
+          "badge": "Best Value for Money",
+          "features": [
+            "Single or multiple seats in 20-passenger open bus",
+            "Rajasthan Forest Department entry permit included",
+            "Certified local naturalist guide onboard",
+            "Official commercial driver & fuel surcharge",
+            "Zone 1 to 10 allocation based on daily quota"
+          ],
+          "footnote": "Quota Type: High Daily Availability",
+          "highlighted": false
+        },
+        {
+          "title": "Full Exclusive Canter (Large Group)",
+          "price": "₹29,000",
+          "unit": "complete bus (up to 20 pax)",
+          "badge": "Schools, Corporates & Weddings",
+          "features": [
+            "Entire 20-seat Canter reserved exclusively for your party",
+            "Private group briefing & dedicated naturalist",
+            "Flexible boarding coordination from single resort",
+            "Great for student nature study & corporate retreats",
+            "Zero outsiders sharing your wildlife drive"
+          ],
+          "footnote": "Quota Type: Custom Group Booking",
+          "highlighted": false
+        },
+        {
+          "title": "Canter Seat (Foreign Nationals)",
+          "price": "₹3,200",
+          "unit": "per person / drive",
+          "badge": "International Travelers",
+          "features": [
+            "Foreign tourist government permit and taxes",
+            "English commentary by licensed forest naturalist",
+            "Seat reservation across core and buffer routes",
+            "Passport registration verification support",
+            "Ideal for solo backpackers & budget globetrotters"
+          ],
+          "footnote": "Quota Type: Official Foreign Quota",
+          "highlighted": false
+        }
+      ],
+      "buttonLabel": "Inquire Seats"
+    },
+    {
+      "id": "shift-timings",
+      "type": "table",
+      "heading": "Canter Safari Timetable (2026–2027)",
+      "intro": "Canters depart simultaneously with Gypsies during official morning and evening gate shifts.",
+      "columns": [
+        "Season / Month",
+        "Morning Shift",
+        "Afternoon Shift",
+        "Boarding Instructions"
+      ],
+      "rows": [
+        [
+          "1st Oct to 31st Oct",
+          "06:30 AM – 10:00 AM",
+          "02:30 PM – 06:00 PM",
+          "Report at hotel lobby 45m prior"
+        ],
+        [
+          "1st Nov to 31st Jan",
+          "07:00 AM – 10:30 AM",
+          "02:00 PM – 05:30 PM",
+          "Report at hotel lobby 45m prior"
+        ],
+        [
+          "1st Feb to 31st Mar",
+          "06:30 AM – 10:00 AM",
+          "02:30 PM – 06:00 PM",
+          "Report at hotel lobby 45m prior"
+        ],
+        [
+          "1st Apr to 15th May",
+          "06:00 AM – 09:30 AM",
+          "03:00 PM – 06:30 PM",
+          "Report at hotel lobby 45m prior"
+        ],
+        [
+          "16th May to 30th Jun",
+          "05:30 AM – 09:00 AM",
+          "03:30 PM – 07:00 PM",
+          "Report at hotel lobby 45m prior"
+        ]
+      ]
+    },
+    {
+      "id": "why-canter",
+      "type": "cards",
+      "heading": "Why Choose a Canter Safari?",
+      "columns": 3,
+      "style": "compact",
+      "items": [
+        {
+          "title": "Ideal for Big Travel Groups",
+          "text": "Keep your entire family, college friends, or tour party together in a single open vehicle instead of splitting into multiple scattered Gypsies."
+        },
+        {
+          "title": "Superior Lake Vistas",
+          "text": "The Canter's height provides a magnificent clear view over the waters of Padam Talao and Rajbagh Lake, spotting basking mugger crocodiles and wading birds."
+        },
+        {
+          "title": "Better Last-Minute Availability",
+          "text": "With 20 seats per vehicle, Canter permits are frequently available even when Gypsy quotas have completely sold out weeks in advance."
+        }
+      ]
+    },
+    {
+      "id": "dos-and-donts",
+      "type": "cards",
+      "heading": "Canter Safari Dos and Don'ts",
+      "columns": 2,
+      "style": "compact",
+      "items": [
+        {
+          "icon": "phone",
+          "title": "Keep Phones on Silent",
+          "text": "Loud ringtones and notifications can cause animals to retreat back into dense undergrowth."
+        },
+        {
+          "icon": "shield",
+          "title": "Remain Seated While Moving",
+          "text": "Standing while the vehicle is negotiating dirt tracks is dangerous and against park rules."
+        },
+        {
+          "icon": "shirt",
+          "title": "Carry Jacket for Morning Drives",
+          "text": "The open bus catches strong morning wind chill between November and February."
+        },
+        {
+          "icon": "camera",
+          "title": "Camera Dust Protection",
+          "text": "Use a dry bag or wrap your DSLR body and lenses to protect from dry forest dust."
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "type": "faq",
+      "heading": "Canter Safari FAQs",
+      "intro": "Common questions from first-time Canter safari travellers.",
+      "items": [
+        {
+          "q": "What is the difference between Canter and Gypsy?",
+          "a": "The Canter is an elevated 20-seat open safari bus that gives a panoramic high vantage point over tall grasslands and lake beds, making it ideal for groups and budget-conscious travelers. The Gypsy is a smaller 6-seat 4x4 jeep best suited for narrow rocky trails and photography."
+        },
+        {
+          "q": "Do Canters go into the same tiger zones as Gypsies?",
+          "a": "Yes! Canters are permitted in almost all designated core and buffer routes (Zones 1 through 10) on wide motorable trails. Many of Ranthambore’s famous tiger sightings occur right along the main tracks frequented by Canters."
+        },
+        {
+          "q": "Where do we board the Canter in Sawai Madhopur?",
+          "a": "Depending on resort road width, Canters either provide direct pickup from main Ranthambore Road hotels or meet guests at nearby central checkposts like the Ranthambore Circle or Forest Gate chowki."
+        },
+        {
+          "q": "Is Canter safari safe for senior citizens and young kids?",
+          "a": "Canters feature sturdy metal safety guardrails and wide cushioned bench seats, making them very secure for multi-generational families, elderly guests, and young children."
+        }
+      ]
+    },
+    {
+      "id": "booking-cta",
+      "type": "cta",
+      "title": "Book Your Canter Safari Seat in Seconds",
+      "text": "Planning a trip with friends or family? Reserve your seats with instant date confirmation and official forest receipt.",
+      "buttonLabel": "Check Canter Dates",
+      "bookingPrefill": "Canter Safari Bus (20-Seater)",
+      "whatsappText": ""
+    }
+  ],
+  "seo": {
+    "title": "Ranthambore Canter Safari Booking – 20-Seater Open Bus",
+    "description": "Book Ranthambore Canter safari seats from ₹1,450 or a full 20-seater bus for groups. See 2026–27 timetables, boarding tips, dos and don'ts and common FAQs.",
+    "keywords": "ranthambore canter safari, canter safari booking, canter safari price, ranthambore group safari, open bus safari ranthambore, canter safari timings",
+    "ogImage": "/images/canter_safari.jpg",
+    "noindex": false
+  }
+}

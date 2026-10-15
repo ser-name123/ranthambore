@@ -1,0 +1,61 @@
+{
+  "slug": "ranthambore-day-safari",
+  "name": "Ranthambore Day Safari Express",
+  "category": "short",
+  "duration": "1 Day Trip",
+  "safariCount": "1 Gypsy or Canter Safari",
+  "hotelType": "Day Rest / Fresh-up Facility",
+  "pricePerPerson": 2999,
+  "badge": "Best for Quick Trips",
+  "image": "/images/gypsy_encounter.jpg",
+  "summary": "Ranthambore Day Safari Express is a 1 Day Trip package with 1 Gypsy or Canter Safari and Day Rest / Fresh-up Facility, priced from ₹2,999 per person.",
+  "highlights": [
+    "Morning or afternoon safari session",
+    "Sawai Madhopur station transfers",
+    "National Park permit & guide fee"
+  ],
+  "inclusions": [
+    "Safari Permit",
+    "Local Pickup",
+    "Guide Assistance"
+  ],
+  "featured": true,
+  "blocks": [
+    {
+      "id": "whats-included",
+      "type": "checklist",
+      "heading": "What's Included",
+      "groups": [
+        {
+          "title": "What's Included",
+          "tone": "do",
+          "items": [
+            "Safari Permit",
+            "Local Pickup",
+            "Guide Assistance",
+            "Morning or afternoon safari session",
+            "Sawai Madhopur station transfers",
+            "National Park permit & guide fee"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "book",
+      "type": "cta",
+      "title": "Book Ranthambore Day Safari Express",
+      "text": "Share your travel dates and group size and our team will confirm availability for the Ranthambore Day Safari Express.",
+      "buttonLabel": "Enquire Now",
+      "bookingPrefill": "Ranthambore Day Safari Express",
+      "whatsappText": "Hello, I want to enquire about the Ranthambore Day Safari Express package."
+    }
+  ],
+  "seo": {
+    "title": "Ranthambore Day Safari Express: 1 Day Trip",
+    "description": "One-day Ranthambore trip with a morning or afternoon Gypsy or Canter safari, National Park permit and guide fee, Sawai Madhopur station transfers and day rest.",
+    "keywords": "ranthambore day trip, ranthambore one day safari, ranthambore day tour, sawai madhopur safari, ranthambore gypsy safari, ranthambore canter safari",
+    "ogImage": "/images/gypsy_encounter.jpg",
+    "noindex": false
+  },
+  "sort_order": 0
+}

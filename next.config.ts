@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  // On Windows the editor can lock .next/types; set NEXT_DIST_DIR=.next_alt to build/run in another folder.
+  distDir: process.env.NEXT_DIST_DIR || ".next",
   turbopack: {
     rules: {
       "*.css": {
@@ -8,6 +10,16 @@ const nextConfig: NextConfig = {
         as: "*.css",
       },
     },
+  },
+  images: {
+    // Images uploaded from the admin panel live in the Supabase "media" bucket.
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: '*.supabase.co',
+        pathname: '/storage/v1/object/public/media/**',
+      },
+    ],
   },
   async redirects() {
     return [

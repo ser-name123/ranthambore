@@ -3,6 +3,8 @@
 import React, { useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { BookingModalProvider } from '@/context/BookingModalContext';
+import { SiteContentProvider, type PackageSummary } from '@/context/SiteContentContext';
+import type { SiteContent } from '@/lib/site-content';
 import Header from './Header';
 import Footer from './Footer';
 import FloatingMobileBar from './FloatingMobileBar';
@@ -11,10 +13,12 @@ import FallingLeavesCanvas from './FallingLeavesCanvas';
 import WildlifeSoundscape from './WildlifeSoundscape';
 
 interface ClientLayoutProps {
+  content: SiteContent;
+  packages: PackageSummary[];
   children: React.ReactNode;
 }
 
-export default function ClientLayout({ children }: ClientLayoutProps) {
+export default function ClientLayout({ content, packages, children }: ClientLayoutProps) {
   const pathname = usePathname();
 
   // Instantly reset scroll to top on route change without visible rolling/scrolling
@@ -35,7 +39,8 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
   }
 
   return (
-    <BookingModalProvider>
+    <SiteContentProvider content={content} packages={packages}>
+      <BookingModalProvider>
       <div className="min-h-screen bg-white text-[#082318] flex flex-col relative selection:bg-emerald-700 selection:text-white">
         {/* Global Route Progress Bar */}
         <GlobalPreloader />
@@ -60,6 +65,7 @@ export default function ClientLayout({ children }: ClientLayoutProps) {
         {/* Sticky Mobile Conversion Bar */}
         <FloatingMobileBar />
       </div>
-    </BookingModalProvider>
+      </BookingModalProvider>
+    </SiteContentProvider>
   );
 }

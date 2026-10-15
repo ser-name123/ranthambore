@@ -1,0 +1,139 @@
+{
+  "slug": "safari-zones",
+  "name": "Safari Zones",
+  "group": "info",
+  "showToc": false,
+  "hero": {
+    "badge": "Official Zone Directory & Territorial Map (2026-2027)",
+    "title": "Ranthambore Safari Zones:",
+    "highlight": "1 to 10 Gate Explorer",
+    "subtitle": "Discover the landscape, watering holes, prominent resident tigers, and seasonal shift timings for each of Ranthambore Tiger Reserve's 10 designated safari zones.",
+    "image": "/images/tiger_lake.jpg",
+    "ctaLabel": "Check Zone Availability",
+    "bookingPrefill": "",
+    "whatsappText": "Hello Ranthambore Wild Life Tour, which safari zone has the best tiger sightings currently?",
+    "bookingZone": "Zone 1-5 (Core)"
+  },
+  "blocks": [
+    {
+      "id": "zone-explorer",
+      "type": "zoneExplorer"
+    },
+    {
+      "id": "shift-timings",
+      "type": "table",
+      "heading": "Official Safari Shift Timings (By Season)",
+      "intro": "Rajasthan Forest Department Gate Opening & Closing Schedule",
+      "columns": [
+        "Period / Month",
+        "Morning Shift",
+        "Afternoon Shift",
+        "Wild Sighting Dynamics"
+      ],
+      "rows": [
+        [
+          "October (Post-Monsoon Opening)",
+          "06:30 AM – 10:00 AM",
+          "02:30 PM – 06:00 PM",
+          "Fresh lush green forest, active tiger movement near tracks"
+        ],
+        [
+          "November to January (Peak Winter)",
+          "07:00 AM – 10:30 AM",
+          "02:00 PM – 05:30 PM",
+          "Brisk morning fog, tigers basking on open rocks in afternoon sun"
+        ],
+        [
+          "February to March (Pleasant Spring)",
+          "06:30 AM – 10:00 AM",
+          "02:30 PM – 06:00 PM",
+          "Flame of the Forest (Palash) blooming red, migratory birds active"
+        ],
+        [
+          "April to June (Summer Sightings Peak)",
+          "06:00 AM – 09:30 AM",
+          "03:30 PM – 07:00 PM",
+          "Highest tiger sightings as cats linger around Padam & Rajbagh lakes"
+        ]
+      ]
+    },
+    {
+      "id": "tiger-territories",
+      "type": "cards",
+      "badge": "Predator Range Map",
+      "heading": "Tiger Territories Across Zones",
+      "intro": "Where Ranthambore's most iconic Bengal tigers establish their home ranges.",
+      "columns": 4,
+      "style": "card",
+      "items": [
+        {
+          "icon": "paw",
+          "badge": "Zone 1 to 3",
+          "title": "Lakes & Royal Ruins Core",
+          "text": "Padam Talao, Rajbagh Palace, Malik Talao, High tiger density",
+          "meta": "Key Tigers: T-84 (Arrowhead), T-124 (Riddhi), T-125 (Siddhi)"
+        },
+        {
+          "icon": "paw",
+          "badge": "Zone 4 & 5",
+          "title": "Semli & Kachida Territory",
+          "text": "Bakola watering holes, deep gorges, high sloth bear population",
+          "meta": "Key Tigers: T-120 (Ganesh), T-86 (Chirico), T-107 (Sultana)"
+        },
+        {
+          "icon": "paw",
+          "badge": "Zone 6 to 8",
+          "title": "Kala Pani & Balas Buffer",
+          "text": "Balas cliffs, Chidikho, high leopard frequency, tranquil drives",
+          "meta": "Key Tigers: T-101, T-58 (Rocky), T-108"
+        },
+        {
+          "icon": "paw",
+          "badge": "Zone 9 & 10",
+          "title": "Chawal & Kushalipura Corridors",
+          "text": "Chambal river banks, Kailadevi corridor, rugged hilly terrain",
+          "meta": "Key Tigers: T-108, T-99, T-113"
+        }
+      ]
+    },
+    {
+      "id": "core-vs-buffer",
+      "type": "cards",
+      "badge": "Zone Architecture",
+      "heading": "Core Zones (1–5) vs Buffer Gates (6–10)",
+      "intro": "Understanding the ecological diversity between historical lake basins and rugged buffer hills.",
+      "columns": 2,
+      "style": "compact",
+      "items": [
+        {
+          "icon": "landmark",
+          "title": "Core Zones (Gates 1 to 5)",
+          "text": "Covers the historical heart of Ranthambore featuring ancient Chauhan dynasty ruins, Banyan trees, Padam Talao, Rajbagh Lake, and Malik Lake. Highest prey concentration of Sambar and spotted deer with world-famous waterbody tiger sightings."
+        },
+        {
+          "icon": "mountain",
+          "title": "Buffer Zones (Gates 6 to 10)",
+          "text": "Surrounding woodlands including Sawai Mansingh Sanctuary and Chambal corridors. Dramatic escarpments, deep ravines, and high leopard density. Far less vehicular congestion, providing peaceful birdwatching and elusive big cat tracking."
+        }
+      ]
+    },
+    {
+      "id": "zone-allotment-notice",
+      "type": "callout",
+      "tone": "info",
+      "title": "Official Zone Allotment Notice",
+      "text": "While we submit your zone preference (Zones 1-5 or 6-10), the final zone number is assigned through the Rajasthan Forest Department computerised lottery system on the day of the safari. Both core and buffer zones host thriving tiger populations."
+    },
+    {
+      "id": "enquiry",
+      "type": "enquiryForm"
+    }
+  ],
+  "seo": {
+    "title": "Ranthambore Safari Zones 1 to 10: Core & Buffer Guide",
+    "description": "Explore Ranthambore safari zones 1 to 10: core vs buffer gates, resident tiger territories, landscapes and official seasonal shift timings for every zone.",
+    "keywords": "Ranthambore safari zones, Ranthambore zone 1 to 10, core vs buffer zones, Ranthambore tiger territories, best zone Ranthambore, Ranthambore safari timings",
+    "ogImage": "/images/tiger_lake.jpg",
+    "noindex": false
+  }
+}

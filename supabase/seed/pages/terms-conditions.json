@@ -1,0 +1,80 @@
+{
+  "slug": "terms-conditions",
+  "name": "Terms & Conditions",
+  "group": "legal",
+  "showToc": true,
+  "hero": {
+    "badge": "Official Terms of Service & Booking Regulations",
+    "title": "Terms &",
+    "highlight": "Conditions",
+    "subtitle": "Governing rules for jungle safari permit reservations, Tatkal / current window bookings, and wildlife travel services provided by Ranthambore Wild Life Tour.",
+    "image": "",
+    "ctaLabel": "",
+    "bookingPrefill": "",
+    "whatsappText": ""
+  },
+  "blocks": [
+    {
+      "id": "highlights",
+      "type": "cards",
+      "intro": "Domain: ranthamborejunglesafari.in • Season 2026-2027 Guidelines",
+      "columns": 4,
+      "style": "compact",
+      "items": [
+        { "icon": "landmark", "title": "Sawai Madhopur Entity", "text": "Domain owned by Ranthambore Wild Life Tour, operating out of Sawai Madhopur, Rajasthan." },
+        { "icon": "clock", "title": "Tatkal / Current Safari", "text": "Book at least 1 day in advance. Zones 1–10 available based on real-time gate inventory." },
+        { "icon": "ban", "title": "Non-Returnable Confirmed", "text": "No cancellations once confirmed by park system. Unconfirmed bookings returned in full." },
+        { "icon": "user", "title": "Original Photo ID Match", "text": "Carrying the exact physical original ID card presented during booking is mandatory." }
+      ]
+    },
+    {
+      "id": "domain-ownership",
+      "type": "richText",
+      "badge": "Section 01 • Website Ownership",
+      "heading": "1. Domain Ownership & User Agreement",
+      "body": "Thank you for visiting **www.ranthamborejunglesafari.in**. The Sawai Madhopur travel company **\"Ranthambore Wild Life Tour\"** is the owner of the web domain **https://ranthamborejunglesafari.in/**.\n\nThe term **\"You\"** herein refers to the website's direct user or viewer. Use of this website implies full agreement to our booking terms and conditions."
+    },
+    {
+      "id": "non-refundable",
+      "type": "richText",
+      "badge": "Section 02 • Refund & Fee Policy",
+      "heading": "2. Jeep Safari & Canter Safari Payment Terms",
+      "body": "**Canter Safari & Jeep Safari: The amounts paid are non-refundable.** Confirmed permit fees cannot be refunded under Forest Department rules. If a requested safari cannot be confirmed due to quota exhaustion, the full advance fee is returned.\n\nBecause safari permits are purchased directly from the Rajasthan Forest Department portal against passenger identity proofs, funds are non-reversible once issued."
+    },
+    {
+      "id": "cost-escalations",
+      "type": "richText",
+      "badge": "Section 03 • Statutory Levies",
+      "heading": "3. Fuel, Taxes, Park Fees & Guide Charges Revision",
+      "body": "**Any statutory increases in government park entry fees, taxes, fuel levies, or guide fees announced by authorities will be added to the final boarding voucher.**"
+    },
+    {
+      "id": "current-tatkal",
+      "type": "richText",
+      "badge": "Section 04 • Last-Minute Permits",
+      "heading": "4. Currently / Tatkal Booking Protocol",
+      "body": "- **01. Advance Notice Required:** Send your booking request at least one day in advance.\n- **02. Confirmation Availability:** A 100% confirmation of the present booking is subject to forest quota.\n- **03. Zone Selection Range:** You can request from any of Ranthambore's 1 to 10 safari zones.\n- **04. Zone Allotment Discretion:** A specific zone is subject to Forest Department computer lottery."
+    },
+    {
+      "id": "safari-reminders",
+      "type": "richText",
+      "badge": "Section 05 • Safari Guidelines",
+      "heading": "5. Key Reminders for Safari Booking",
+      "body": "- Safari bookings must be made with full payment in advance.\n- Every visitor must present original ID (Aadhaar Card, Voter ID, Driving License, or Passport).\n- On confirmed bookings, there is no cancellation or refund permitted by forest rules.\n- The booking is not exchangeable and cannot be transferred to another person.\n- You must carry the exact identification card presented during online booking.\n- Safari bookings can be made up to 90 to 120 days in advance.\n- Bookings for foreign visitors must include passport and nationality details.\n- First come, first served is the policy for issuing safari permits.\n- Park gates may close without notice due to severe weather or wildlife management orders.\n- Visitors must pay any statutory cost revisions announced after booking prior to entry.\n- Tourists must arrive at boarding point 15 minutes before safari departure.\n- Same-day and next-day reservations follow current/tatkal booking rules."
+    },
+    {
+      "id": "field-director",
+      "type": "richText",
+      "badge": "Section 06 • Statutory Authority",
+      "heading": "6. Field Director Statutory Authority",
+      "body": "All safari bookings are provisional in nature and subject to operational modification by the Field Director, Ranthambore Tiger Reserve, as per state wildlife regulations.\n\n**Confirmed forest permits cannot be rescheduled or refunded once issued by the government portal.**"
+    }
+  ],
+  "seo": {
+    "title": "Terms & Conditions for Ranthambore Safari Booking",
+    "description": "Booking terms for Ranthambore jeep and canter safari permits: payment rules, tatkal bookings, ID requirements, fee revisions and Field Director authority.",
+    "keywords": "ranthambore terms and conditions, safari booking rules, tatkal safari booking, safari permit terms, ranthambore wild life tour, jeep safari payment",
+    "ogImage": "/images/tiger_portrait.jpg",
+    "noindex": false
+  }
+}

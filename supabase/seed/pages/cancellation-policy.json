@@ -1,0 +1,73 @@
+{
+  "slug": "cancellation-policy",
+  "name": "Cancellation Policy",
+  "group": "legal",
+  "showToc": true,
+  "hero": {
+    "badge": "Official Safari Regulations & Refund Policy",
+    "title": "Cancellation Policy &",
+    "highlight": "Refund Terms",
+    "subtitle": "Please carefully read the statutory cancellation, modification, and refund regulations governing Jeep Safari, Canter Safari, and stay bookings at Ranthambore Wild Life Tour.",
+    "image": "",
+    "ctaLabel": "",
+    "bookingPrefill": "",
+    "whatsappText": ""
+  },
+  "blocks": [
+    {
+      "id": "highlights",
+      "type": "cards",
+      "intro": "Rajasthan Forest Department Rules Applicable • Season 2026-2027",
+      "columns": 4,
+      "style": "compact",
+      "items": [
+        { "icon": "ban", "title": "100% Non-Returnable", "text": "Amounts paid for confirmed Jeep and Canter safaris are completely non-returnable once permits are generated." },
+        { "icon": "wallet", "title": "Unconfirmed Fee Return", "text": "If the safari booking is not confirmed due to gate quota exhaustion, advance booking fees are returned." },
+        { "icon": "landmark", "title": "Provisional In Nature", "text": "All bookings are subject to modification or cancellation by the Field Director, Ranthambore Tiger Reserve." },
+        { "icon": "alert", "title": "No Rescheduling", "text": "Under no circumstances shall a safari be rescheduled or refunded once allocated by the forest portal." }
+      ]
+    },
+    {
+      "id": "statutory-notice",
+      "type": "callout",
+      "tone": "warning",
+      "title": "Core Statutory Notice of Ranthambore Tiger Reserve",
+      "text": "Canter Safari & Jeep Safari: The amounts paid are not returnable. Charges for the Jeep Safari and Canter Safari are not refundable. If the safari booking is not confirmed, the current booking fees will be returned.\n\nNote that all bookings are provisional in nature and are subject to modification or cancellation by the Field Director, Ranthambore Tiger Reserve, without providing a reason. Your acceptance of the terms is implied upon booking."
+    },
+    {
+      "id": "non-refundable",
+      "type": "richText",
+      "badge": "Clause 01 • Safari Fees",
+      "heading": "1. Non-Returnable Safari Fees (Jeep & Canter)",
+      "body": "**Canter Safari & Jeep Safari: The amounts paid are not returnable.** Charges for the Jeep Safari and Canter Safari are not refundable under any individual or collective circumstance once processed.\n\nThis policy is governed by the statutory framework of the Rajasthan Forest Department. Once safari permits are requested and issued against official government identity documents, permit charges are immediately transferred to forest treasury accounts and cannot be revoked."
+    },
+    {
+      "id": "unconfirmed-bookings",
+      "type": "richText",
+      "badge": "Clause 02 • Guarantee Protection",
+      "heading": "2. Unconfirmed Booking Return Guarantee",
+      "body": "**If the safari booking is not confirmed, the current booking fees will be returned.**\n\nIn rare situations where vehicle quotas for both preferred and alternate zones are completely exhausted on the official government reservation server for your requested date and shift, our booking desk will notify you immediately and return advance fees.\n\nRefunds are processed within 5 to 7 banking days directly to your original payment method."
+    },
+    {
+      "id": "field-director-authority",
+      "type": "richText",
+      "badge": "Clause 03 • Forest Department Powers",
+      "heading": "3. Field Director Statutory Authority",
+      "body": "Note that all bookings are provisional in nature and are subject to modification or cancellation by the Field Director, Ranthambore Tiger Reserve, without providing a reason.\n\nSuch administrative decisions are rare and typically relate to extreme weather, security VIP protocols, or active big cat movement management."
+    },
+    {
+      "id": "no-reschedule",
+      "type": "richText",
+      "badge": "Clause 04 • Reschedule Regulations",
+      "heading": "4. Non-Reschedulable & Non-Transferable Bookings",
+      "body": "Under no circumstances shall a confirmed safari permit be transferred to another passenger or rescheduled to an alternate date. Permits are locked with passenger ID numbers in the forest server."
+    }
+  ],
+  "seo": {
+    "title": "Cancellation & Refund Policy for Ranthambore Safari",
+    "description": "Ranthambore safari cancellation and refund rules: confirmed jeep and canter permits are non-refundable, unconfirmed bookings are refunded in 5-7 bank days.",
+    "keywords": "ranthambore cancellation policy, safari refund policy, jeep safari refund, canter safari cancellation, non-refundable safari permit, ranthambore safari rules",
+    "ogImage": "/images/tiger_portrait.jpg",
+    "noindex": false
+  }
+}

@@ -1,41 +1,16 @@
 'use client';
 
+import { Highlight } from './cms/Text';
 import React from 'react';
 import { Star, Quote, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import SpotlightCard from './SpotlightCard';
 import { JungleTopCanopy, JungleCornerBranch, TigerTrackWatermark, JungleGodRays, JungleSavannahGrass } from './JungleFoliageDecorations';
+import { useSiteContent } from '@/context/SiteContentContext';
 
 export default function Testimonials() {
-  const reviews = [
-    {
-      name: 'Aditya & Neha Sharma',
-      location: 'New Delhi, India',
-      tour: 'Classic 2N/3D Wildlife Escape',
-      rating: 5,
-      date: 'Visited February 2026',
-      quote:
-        'Booking our Ranthambore safaris through Ranthambore Wild Life Tour was the best decision! We got Zone 3 on the morning safari and saw tigress Riddhi with her cubs near Padam Talao. The driver and naturalist were outstanding.'
-    },
-    {
-      name: 'Marcus & Clara Vance',
-      location: 'London, United Kingdom',
-      tour: 'Tiger Photography Master Tour',
-      rating: 5,
-      date: 'Visited January 2026',
-      quote:
-        'As avid wildlife photographers, we wanted dedicated Gypsy safaris with optimal lighting angles. The team coordinated every permit flawlessly and arranged an exquisite heritage lodge. Exceptional transparency and service.'
-    },
-    {
-      name: 'Rajesh Nair & Family',
-      location: 'Bengaluru, India',
-      tour: 'Family Holiday Package (3 Safaris)',
-      rating: 5,
-      date: 'Visited March 2026',
-      quote:
-        'Travelling with kids can be tricky, but from our railway station pickup to hotel check-in and Canter safari boarding, everything was executed like clockwork. 10/10 recommendation for anyone visiting Ranthambore.'
-    }
-  ];
+  const { testimonials: reviews, home, ui } = useSiteContent();
+  const heading = home.testimonials;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -75,13 +50,13 @@ export default function Testimonials() {
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-bold uppercase tracking-widest border border-emerald-200">
             <Star className="w-3.5 h-3.5 fill-[#d97706] text-[#d97706]" />
-            Guest Experiences
+            {heading.badge}
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#082318]">
-            Stories From The Wilderness
+            <Highlight text={heading.title} />
           </h2>
           <p className="text-sm sm:text-base text-[#375847]">
-            Read genuine feedback from wildlife photographers, families, and solo explorers who experienced Ranthambore with our team.
+            {heading.subtitle}
           </p>
         </motion.div>
 
@@ -102,7 +77,7 @@ export default function Testimonials() {
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
                     <div className="flex text-[#d97706] gap-1">
-                      {[...Array(rev.rating)].map((_, i) => (
+                      {[...Array(Math.max(0, Math.min(5, Math.round(rev.rating))))].map((_, i) => (
                         <Star key={i} className="w-4 h-4 fill-current transform group-hover:scale-110 transition duration-200" style={{ transitionDelay: `${i * 50}ms` }} />
                       ))}
                     </div>
@@ -122,7 +97,7 @@ export default function Testimonials() {
                     </div>
                     <span className="inline-flex items-center gap-1 text-[11px] text-emerald-900 font-bold bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-300">
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-700" />
-                      Verified Guest
+                      {ui.verifiedGuest}
                     </span>
                   </div>
                   <div className="mt-2 text-xs text-[#92400e] font-semibold">

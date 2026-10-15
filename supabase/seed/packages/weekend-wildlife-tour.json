@@ -1,0 +1,63 @@
+{
+  "slug": "weekend-wildlife-tour",
+  "name": "Ranthambore Weekend Wildlife Tour",
+  "category": "standard",
+  "duration": "1 Night / 2 Days",
+  "safariCount": "1 Tiger Safari Included",
+  "hotelType": "3-Star / Heritage Resort",
+  "pricePerPerson": 6499,
+  "badge": "Most Popular",
+  "image": "/images/tiger_stalking.jpg",
+  "summary": "Ranthambore Weekend Wildlife Tour is a 1 Night / 2 Days package with 1 Tiger Safari Included and 3-Star / Heritage Resort, priced from ₹6,499 per person.",
+  "highlights": [
+    "1 Night stay with Breakfast & Dinner",
+    "Choice of Gypsy or Canter safari",
+    "Evening campfire & Rajasthani folk music"
+  ],
+  "inclusions": [
+    "Resort Stay",
+    "1 Safari Session",
+    "Meals Included",
+    "Station Transfer"
+  ],
+  "featured": true,
+  "blocks": [
+    {
+      "id": "whats-included",
+      "type": "checklist",
+      "heading": "What's Included",
+      "groups": [
+        {
+          "title": "What's Included",
+          "tone": "do",
+          "items": [
+            "Resort Stay",
+            "1 Safari Session",
+            "Meals Included",
+            "Station Transfer",
+            "1 Night stay with Breakfast & Dinner",
+            "Choice of Gypsy or Canter safari",
+            "Evening campfire & Rajasthani folk music"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "book",
+      "type": "cta",
+      "title": "Book Ranthambore Weekend Wildlife Tour",
+      "text": "Share your travel dates and group size and our team will confirm availability for the Ranthambore Weekend Wildlife Tour.",
+      "buttonLabel": "Enquire Now",
+      "bookingPrefill": "Ranthambore Weekend Wildlife Tour",
+      "whatsappText": "Hello, I want to enquire about the Ranthambore Weekend Wildlife Tour package."
+    }
+  ],
+  "seo": {
+    "title": "Ranthambore Weekend Wildlife Tour: 1N/2D",
+    "description": "1 night / 2 days Ranthambore weekend tour with a 3-star or heritage resort stay, breakfast and dinner, one tiger safari, station transfer and evening campfire.",
+    "keywords": "ranthambore weekend tour, ranthambore 1 night 2 days package, ranthambore weekend getaway, ranthambore tiger safari, ranthambore resort stay",
+    "ogImage": "/images/tiger_stalking.jpg",
+    "noindex": false
+  },
+  "sort_order": 1
+}

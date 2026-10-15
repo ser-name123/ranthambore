@@ -1,0 +1,177 @@
+{
+  "slug": "2n-3d-classic-wildlife",
+  "name": "Classic Ranthambore Wildlife Escape",
+  "category": "standard",
+  "duration": "2 Nights / 3 Days",
+  "safariCount": "2 Distinct Safari Sessions",
+  "hotelType": "4-Star Deluxe Resort with Pool",
+  "pricePerPerson": 12999,
+  "badge": "Highest Sightings Rate",
+  "image": "/images/tiger_portrait.jpg",
+  "summary": "The ideal weekend wilderness escape. Includes 2 game drives into prime tiger territory, 4-star resort stay, buffet meals, and station transfers.",
+  "highlights": [
+    "2 Safaris (Morning & Afternoon zones)",
+    "All Meals (Breakfast, Lunch, Dinner)",
+    "Visit to UNESCO Ranthambore Fort"
+  ],
+  "inclusions": [
+    "2 Safaris",
+    "Resort Stay",
+    "All Meals",
+    "Fort Sightseeing"
+  ],
+  "featured": true,
+  "blocks": [
+    {
+      "id": "highlights",
+      "type": "cards",
+      "columns": 4,
+      "style": "compact",
+      "items": [
+        {
+          "title": "2 Jungle Safaris",
+          "text": "Thrilling open Gypsy or Canter drives across Ranthambore tiger zones."
+        },
+        {
+          "title": "4-Star Resort Stay",
+          "text": "AC deluxe cottage or Swiss tent with swimming pool."
+        },
+        {
+          "title": "All Meals Included",
+          "text": "Delicious buffet breakfasts, lunches, and dinners with local specialties."
+        },
+        {
+          "title": "Station Pickup & Drop",
+          "text": "Private transfer from Sawai Madhopur Junction railway station."
+        }
+      ]
+    },
+    {
+      "id": "itinerary",
+      "type": "timeline",
+      "heading": "Day-by-Day Safari Itinerary",
+      "intro": "Action-packed wildlife schedule crafted for optimal tiger viewing.",
+      "items": [
+        {
+          "label": "Day 1",
+          "title": "Arrival, Check-In & Evening Safari",
+          "text": "",
+          "bullets": [
+            "12:00 PM: Arrive at Sawai Madhopur station. Private escort to luxury jungle resort & check-in.",
+            "01:30 PM: Buffet lunch at the resort dining hall.",
+            "02:30 PM: Board your first afternoon tiger safari into the jungle. Return at sunset.",
+            "07:30 PM: Evening folk music by the bonfire followed by dinner."
+          ]
+        },
+        {
+          "label": "Day 2",
+          "title": "Morning Safari & Ranthambore Fort",
+          "text": "",
+          "bullets": [
+            "06:00 AM: Early morning core zone tiger safari. Track predators at dawn.",
+            "10:30 AM: Hearty breakfast & leisure time by the swimming pool.",
+            "03:00 PM: Guided visit to the 10th-century UNESCO Ranthambore Fort & Trinetra Ganesha Temple.",
+            "08:00 PM: Dinner & overnight stay."
+          ]
+        },
+        {
+          "label": "Day 3",
+          "title": "Breakfast & Departure",
+          "text": "",
+          "bullets": [
+            "08:30 AM: Breakfast amidst bird songs and lush green surroundings.",
+            "11:00 AM: Check out and transfer to Sawai Madhopur station."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "inclusions-exclusions",
+      "type": "checklist",
+      "groups": [
+        {
+          "title": "What is Included",
+          "tone": "do",
+          "items": [
+            "2 Nights accommodation in Deluxe Resort on twin sharing basis",
+            "2 Jungle Safaris (Gypsy or Canter based on booking)",
+            "All forest entry permits, vehicle taxes & government cess",
+            "Licensed Forest Department naturalist guide for both safaris",
+            "Full board meals (Breakfast, Lunch & Dinner)",
+            "Sawai Madhopur station pickup & drop",
+            "Ranthambore Fort excursion assistance"
+          ]
+        },
+        {
+          "title": "What is Excluded",
+          "tone": "dont",
+          "items": [
+            "Train or flight tickets to Sawai Madhopur",
+            "Personal expenses & room service",
+            "Packaged alcohol & soft drinks",
+            "Tips for naturalist and safari driver"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "resort-stays",
+      "type": "cards",
+      "heading": "Comfortable Jungle Resort Stays",
+      "columns": 3,
+      "style": "card",
+      "items": [
+        {
+          "icon": "hotel",
+          "title": "Deluxe AC Cottages",
+          "text": "Spacious cottages with ensuite bathrooms, wooden furniture & private garden verandas."
+        },
+        {
+          "icon": "utensils",
+          "title": "Delicious Buffet Dining",
+          "text": "Hygienic multi-cuisine spreads with Indian curries, continental breakfast & Rajasthani Dal Baati."
+        },
+        {
+          "icon": "sparkles",
+          "title": "Swimming Pool & Lawns",
+          "text": "Relax amidst green manicured lawns, take a refreshing dip, or enjoy stargazing by the open bonfire."
+        }
+      ]
+    },
+    {
+      "id": "faqs",
+      "type": "faq",
+      "heading": "Package FAQs",
+      "items": [
+        {
+          "q": "Can we upgrade from Canter to Gypsy in this package?",
+          "a": "Yes! Both Canter sharing and private 6-seater Gypsy options are available with customizable pricing."
+        },
+        {
+          "q": "Are resort stays kid-friendly?",
+          "a": "Yes, partner resorts feature swimming pools, sprawling lawns, and child-friendly meal options."
+        },
+        {
+          "q": "Which resort will we be staying at?",
+          "a": "We partner with vetted 4-star properties such as Ranthambore Regency, Tiger Den, and The Tigress."
+        }
+      ]
+    },
+    {
+      "id": "book",
+      "type": "cta",
+      "title": "Reserve Your 2N/3D Weekend Wildlife Tour",
+      "text": "Customizable for couples, families, and wildlife enthusiasts. Lock in early permits and best resort cottages with our local team.",
+      "buttonLabel": "Book 2N/3D Package",
+      "bookingPrefill": "2N/3D Classic Wildlife Package"
+    }
+  ],
+  "seo": {
+    "title": "2N/3D Classic Ranthambore Wildlife Escape Package",
+    "description": "2 nights / 3 days in Ranthambore with 2 tiger safaris, a 4-star deluxe resort with pool, all meals, station transfers and a visit to UNESCO Ranthambore Fort.",
+    "keywords": "ranthambore 2 night 3 day package, ranthambore wildlife package, ranthambore tiger safari package, ranthambore resort package, ranthambore fort tour, sawai madhopur tour package",
+    "ogImage": "/images/tiger_portrait.jpg",
+    "noindex": false
+  },
+  "sort_order": 2
+}

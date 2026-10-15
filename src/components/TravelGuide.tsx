@@ -1,40 +1,23 @@
 'use client';
 
+import { Highlight } from './cms/Text';
 import React from 'react';
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { BookOpen, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import SpotlightCard from './SpotlightCard';
 import { JungleCornerBranch, TigerTrackWatermark, BambooStalks, JungleTreelineBackdrop, JungleSavannahGrass } from './JungleFoliageDecorations';
+import { useSiteContent } from '@/context/SiteContentContext';
 
 interface TravelGuideProps {
   onOpenArticle: (title: string) => void;
 }
 
 export default function TravelGuide({ onOpenArticle }: TravelGuideProps) {
-  const articles = [
-    {
-      title: 'Best Time to Visit Ranthambore: Month-by-Month Guide',
-      category: 'Seasonal Planning',
-      readTime: '4 min read',
-      summary: 'From misty winter mornings (Nov-Feb) to hot summer months (Apr-Jun) when tigers frequent waterholes, understand seasonal sighting patterns.',
-      image: '/images/tiger_lake.jpg'
-    },
-    {
-      title: 'Essential Safari Packing List: What to Wear in the Jungle',
-      category: 'Visitor Preparation',
-      readTime: '3 min read',
-      summary: 'Why earthy greens, browns, and khakis matter, essential winter layers for open Gypsy drives, dust protection, and camera beanbags.',
-      image: '/images/tiger_foliage.jpg'
-    },
-    {
-      title: 'How to Reach Ranthambore: Train, Road & Flight Options',
-      category: 'Transit & Route',
-      readTime: '5 min read',
-      summary: 'Direct express trains to Sawai Madhopur (SWM), flight connections via Jaipur (JAI), and the new Delhi-Mumbai Expressway route.',
-      image: '/images/gypsy_encounter.jpg'
-    }
-  ];
+  const { guides: articles, home, ui } = useSiteContent();
+  const heading = home.guides;
+  const router = useRouter();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -76,13 +59,13 @@ export default function TravelGuide({ onOpenArticle }: TravelGuideProps) {
           <div className="space-y-3">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-bold uppercase tracking-widest border border-emerald-200">
               <BookOpen className="w-3.5 h-3.5 text-emerald-700" />
-              Wildlife Insights
+              {heading.badge}
             </div>
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#082318]">
-              Ranthambore Travel Guide
+              <Highlight text={heading.title} />
             </h2>
             <p className="text-sm sm:text-base text-[#375847] max-w-2xl">
-              Carefully curated practical guides prepared by our naturalists to help you prepare for an unforgettable tiger safari.
+              {heading.subtitle}
             </p>
           </div>
         </motion.div>
@@ -129,10 +112,10 @@ export default function TravelGuide({ onOpenArticle }: TravelGuideProps) {
 
                   <div className="pt-4 border-t border-[#e2ede6]">
                     <button
-                      onClick={() => onOpenArticle(art.title)}
+                      onClick={() => (art.link ? router.push(art.link) : onOpenArticle(art.title))}
                       className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-800 hover:text-emerald-950 transition cursor-pointer"
                     >
-                      <span>Read Full Guide</span>
+                      <span>{ui.readGuide}</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition duration-200 text-emerald-700" />
                     </button>
                   </div>

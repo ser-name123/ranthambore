@@ -19,6 +19,7 @@
 /.dist/
 /.next_app/
 /.next_dev/
+/.next*/
 
 # production
 /build

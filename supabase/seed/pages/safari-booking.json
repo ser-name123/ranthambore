@@ -1,0 +1,225 @@
+{
+  "slug": "safari-booking",
+  "name": "Safari Booking",
+  "group": "service",
+  "showToc": false,
+  "hero": {
+    "badge": "Official Safari Booking Portal (2026-2027)",
+    "title": "Book Ranthambore Safari:",
+    "highlight": "Gypsy & Canter Permits",
+    "subtitle": "Reserve advance and Tatkal jungle safaris across all 10 zones. Regulated vehicle allocations, certified forest naturalists, and transparent booking fees.",
+    "image": "/images/tiger_stalking.jpg",
+    "ctaLabel": "Instant Safari Permit Request",
+    "bookingPrefill": "",
+    "whatsappText": "Hello Ranthambore Wild Life Tour, I want to check safari booking dates."
+  },
+  "blocks": [
+    {
+      "id": "vehicle-comparison",
+      "type": "cards",
+      "badge": "Safari Vehicle Guide",
+      "heading": "Maruti Gypsy vs Canter Safari",
+      "intro": "Choose between an exclusive 6-seater 4x4 Maruti Gypsy or an economical 20-seater Canter bus. Both explore the exact same designated forest trails across Zones 1 to 10.",
+      "columns": 2,
+      "style": "image",
+      "items": [
+        {
+          "image": "/images/gypsy_encounter.jpg",
+          "badge": "Best for Wildlife Photography & Families",
+          "title": "Maruti Gypsy 4x4",
+          "text": "Open-Top 6-Seater 4WD Jeep. The agile 4x4 Maruti Gypsy offers quiet maneuvering on narrow trails, low engine noise for unobtrusive stalking, and eye-level photography angles for majestic tiger encounters.",
+          "bullets": [
+            "Capacity & Quota: 6 Seats • 48 Jeeps / Shift",
+            "Daily Schedule: Morning & Afternoon Shifts",
+            "Foreign National: ₹5,500 / Person",
+            "Best For: Privacy & Camera Gear",
+            "Exclusive 6-seater open design with unobstructed 360° sightlines",
+            "Low engine sound for silent tracking near lakes and waterholes",
+            "Option to book all 6 seats exclusively for private groups",
+            "Shares the exact same prime core and buffer zone tracks"
+          ],
+          "meta": "Starting from ₹2,300 / Person (Indian)"
+        },
+        {
+          "image": "/images/canter_safari.jpg",
+          "badge": "Best Value for Large Families & Groups",
+          "title": "Canter Safari",
+          "text": "Open-Top 20-Seater Safari Bus (2x2). The open 20-seater Canter features elevated stepped seating with high perspective viewpoints across tall grassland and bamboo groves. Exceptional value for tour groups.",
+          "bullets": [
+            "Capacity & Quota: 20 Seats • 50 Canters / Shift",
+            "Daily Schedule: Morning & Afternoon Shifts",
+            "Foreign National: ₹5,000 / Person",
+            "Best For: Groups >6 & Budget Travel",
+            "Elevated high vantage point over forest brush and tall grass",
+            "2x2 side-by-side seating layout with direct clear sightlines",
+            "50 canters permitted per shift across 10 official safari gates",
+            "Comfortable shared ride accompanied by authorized forest naturalist"
+          ],
+          "meta": "Starting from ₹1,800 / Person (Indian)"
+        }
+      ]
+    },
+    {
+      "id": "reserve-advisory",
+      "type": "callout",
+      "tone": "info",
+      "title": "Ranthambore Tiger Reserve Advisory",
+      "text": "Advance permits are mandatory for both Gypsy and Canter safaris. Both follow the same official routes. Visitors are advised to carry photo ID (Aadhar/Passport) matching their permit."
+    },
+    {
+      "id": "booking-steps",
+      "type": "timeline",
+      "badge": "Seamless Workflow",
+      "heading": "How Your Safari Booking Works",
+      "intro": "Four simple steps from date selection to boarding your safari vehicle at Sawai Madhopur.",
+      "items": [
+        {
+          "label": "01",
+          "title": "Select Date & Vehicle",
+          "text": "Choose between the nimble 6-seater Gypsy or budget-friendly 20-seater Canter bus for Morning or Afternoon shift."
+        },
+        {
+          "label": "02",
+          "title": "Submit Government ID Proofs",
+          "text": "Provide Aadhaar Card, Passport, or Voter ID for every traveler as required by the Rajasthan Forest Department."
+        },
+        {
+          "label": "03",
+          "title": "Permit Allocation & Confirmation",
+          "text": "Our local desk submits your permit request to the computerised gate lottery system across Zones 1 to 10."
+        },
+        {
+          "label": "04",
+          "title": "Hotel Pickup & Safari Boarding",
+          "text": "Your designated safari vehicle and naturalist guide arrive at your hotel 15 minutes before the shift departure."
+        }
+      ]
+    },
+    {
+      "id": "safari-tariff",
+      "type": "pricing",
+      "badge": "Transparent Pricing",
+      "heading": "Safari Tariff & Quota Matrix",
+      "intro": "Government forest entrance fees, vehicle fees, and naturalist guide charges included.",
+      "tiers": [
+        {
+          "title": "Maruti Gypsy (6-Seater 4x4)",
+          "price": "₹2,300",
+          "unit": "Per Person Sharing (Indian)",
+          "badge": "Recommended",
+          "features": [
+            "Up to 6 guests + Guide + Driver",
+            "Deep forest & rocky trail agility",
+            "Best for photographers & families",
+            "Zone 1 to 10 allocation"
+          ],
+          "footnote": "48 Jeeps / Shift",
+          "highlighted": true
+        },
+        {
+          "title": "Maruti Gypsy (Full Exclusive)",
+          "price": "₹13,800",
+          "unit": "Private Jeep (Indian Nationals)",
+          "features": [
+            "All 6 seats reserved for your group",
+            "Personalized naturalist guidance",
+            "Maximum photographic mobility",
+            "Hotel pickup & drop included"
+          ],
+          "footnote": "Private 6 Seats",
+          "highlighted": false
+        },
+        {
+          "title": "Canter Safari Bus (20-Seater)",
+          "price": "₹1,800",
+          "unit": "Per Person Sharing (Indian)",
+          "features": [
+            "Open-top minibus (2x2 seating)",
+            "Elevated vantage point over tall grass",
+            "Identical forest path to Gypsy",
+            "Recommended for groups >6"
+          ],
+          "footnote": "50 Canters / Shift",
+          "highlighted": false
+        },
+        {
+          "title": "Foreign National Gypsy / Canter",
+          "price": "₹5,500",
+          "unit": "Per Person (Foreign Passport)",
+          "features": [
+            "Includes foreign permit surcharge",
+            "Original passport verification",
+            "English-fluent certified guide",
+            "Gate entry & forest eco fee included"
+          ],
+          "footnote": "Govt. Foreign Quota",
+          "highlighted": false
+        }
+      ]
+    },
+    {
+      "id": "boarding-reminders",
+      "type": "checklist",
+      "heading": "Mandatory Identification & Boarding Reminders",
+      "intro": "Rajasthan Forest Department Statutory Entry Regulations",
+      "groups": [
+        {
+          "title": "Original Photo ID Proof",
+          "tone": "do",
+          "items": [
+            "Every visitor must carry the exact original ID presented during booking (Aadhaar, Passport, or Voter ID). Forest officials verify names at entry gates before releasing boarding tokens."
+          ]
+        },
+        {
+          "title": "15-Minute Prior Boarding",
+          "tone": "do",
+          "items": [
+            "Tourists must arrive at the boarding location 15 minutes before the safari is due to leave. Late arrivals lead to permit forfeiture under strict gate closing rules."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faqs",
+      "type": "faq",
+      "heading": "Frequently Asked Questions",
+      "items": [
+        {
+          "q": "How far in advance should I book my Ranthambore safari?",
+          "a": "Safari permits in Ranthambore open up to 90 to 120 days in advance through the Forest Department portal. Due to strict vehicle caps per zone, peak dates (October to March, long weekends, Diwali, and New Year) sell out quickly. We strongly advise booking at least 30 to 60 days ahead for Maruti Gypsy permits."
+        },
+        {
+          "q": "What government ID proof is needed for booking and entry?",
+          "a": "For Indian Nationals: Government photo ID such as Aadhaar Card, Passport, Voter ID, or Driving License. For Foreign Nationals: Original Passport and Visa details. The exact original ID used during booking must be carried and presented to forest officers at the entry gate during boarding."
+        },
+        {
+          "q": "Can I choose my specific safari zone?",
+          "a": "When you submit your enquiry, we submit your zone preference (Zones 1-5 Core or Zones 6-10 Buffer). However, the Rajasthan Forest Department computerised lottery system assigns final zones based on quota availability. No operator can legitimately guarantee a specific zone number in advance."
+        },
+        {
+          "q": "Are tiger sightings guaranteed on a safari?",
+          "a": "No. Ranthambore National Park is a protected wild habitat spanning over 1,300 sq km. Wildlife sightings depend entirely on animal movements, weather, and chance. Our expert naturalists use alarm calls, pugmarks, and territory knowledge to give you the highest possible probability of spotting tigers and other wildlife."
+        },
+        {
+          "q": "What is included in the safari booking price?",
+          "a": "Our safari quotations include the official Forest Department permit fee, vehicle hire (Maruti Gypsy or Canter), registered driver fee, certified forest guide fee, and boarding facilitation assistance. There are no surprise extra gate entry charges."
+        },
+        {
+          "q": "What is the safari permit cancellation policy?",
+          "a": "As per Rajasthan Forest Department regulations, confirmed safari permits are non-refundable, non-transferable, and non-amendable. If you cancel after permit issuance, permit fees cannot be refunded. For full tour packages and hotel stays, refund timelines vary according to individual resort policies."
+        }
+      ]
+    },
+    {
+      "id": "enquiry",
+      "type": "enquiryForm"
+    }
+  ],
+  "seo": {
+    "title": "Ranthambore Safari Booking: Gypsy & Canter Permits",
+    "description": "Book Ranthambore Gypsy and Canter safari permits across Zones 1-10. Transparent tariffs, certified naturalists, hotel pickup and Tatkal booking support.",
+    "keywords": "Ranthambore safari booking, Gypsy safari permit, Canter safari booking, Ranthambore safari price, Tatkal safari Ranthambore, Ranthambore jeep safari, safari zones 1 to 10",
+    "ogImage": "/images/tiger_stalking.jpg",
+    "noindex": false
+  }
+}

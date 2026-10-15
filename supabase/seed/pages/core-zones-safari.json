@@ -1,0 +1,222 @@
+{
+  "slug": "core-zones-safari",
+  "name": "Core Zones 1 to 5",
+  "group": "service",
+  "showToc": false,
+  "hero": {
+    "badge": "Sanctum Sanctorum Heritage Habitats",
+    "title": "Core Zones 1 to 5",
+    "highlight": "Safari Booking",
+    "subtitle": "Step into the historic heartland of Royal Bengal Tigers. Home to legendary lakes, ancient banyan trees, and dramatic fort cliffs where Queen Machli and her royal descendants ruled the wilderness.",
+    "image": "/images/tiger_ruins.jpg",
+    "ctaLabel": "Inquire Core Zone Dates",
+    "bookingPrefill": "",
+    "whatsappText": "Hello, I want to check Core Zones 1 to 5 safari permits.",
+    "bookingZone": "Zone 1-5 (Core)"
+  },
+  "blocks": [
+    {
+      "id": "core-perks",
+      "type": "cards",
+      "columns": 4,
+      "style": "compact",
+      "items": [
+        {
+          "badge": "01",
+          "title": "Historic Lakes & Fort Vistas",
+          "text": "Padam Talao, Rajbagh, and Malik Talao offer timeless scenery."
+        },
+        {
+          "badge": "02",
+          "title": "Highest Core Tiger Density",
+          "text": "The natural heritage core has sustained famous tiger dynasties for decades."
+        },
+        {
+          "badge": "03",
+          "title": "Strict Forest Quota",
+          "text": "Regulated vehicular entry ensures minimal crowd disturbance for cats."
+        },
+        {
+          "badge": "04",
+          "title": "Superb Bird & Prey Activity",
+          "text": "Sambar stags wading in water lilies, marsh crocodiles, and raptors."
+        }
+      ]
+    },
+    {
+      "id": "zone-guide",
+      "type": "cards",
+      "heading": "Detailed Guide to Zones 1, 2, 3, 4 & 5",
+      "intro": "Explore the unique geography, resident cat territories, and signature landmarks of each core zone.",
+      "columns": 3,
+      "style": "card",
+      "items": [
+        {
+          "icon": "map-pin",
+          "badge": "Core Tiger Sector",
+          "title": "Zone 1 (Singhdwar)",
+          "text": "Dense ravines, lush stream crossings, historical entry portal to tiger country.",
+          "bullets": [
+            "Key Landmarks & Waterholes: Kalyanpura, Tutikande, Dhoop Chowk, Amreshwar Dang",
+            "Known Resident Wildlife: T-107 (Sultana lineage), T-120 cubs"
+          ],
+          "meta": "Entry: Singhdwar Gate"
+        },
+        {
+          "icon": "map-pin",
+          "badge": "Core Tiger Sector",
+          "title": "Zone 2 (Jogi Mahal)",
+          "text": "Famous for Leopard encounters, freshwater springs, and dense undergrowth trails.",
+          "bullets": [
+            "Key Landmarks & Waterholes: Jhalra, Parniya, Nal Ghati, Phuta Bandha",
+            "Known Resident Wildlife: T-124 (Riddhi territory), T-84 (Arrowhead)"
+          ],
+          "meta": "Entry: Jogi Mahal Main Gate"
+        },
+        {
+          "icon": "map-pin",
+          "badge": "Core Tiger Sector",
+          "title": "Zone 3 (Lake Palace)",
+          "text": "The crown jewel of world wildlife photography with the 10th-century fort backdrop.",
+          "bullets": [
+            "Key Landmarks & Waterholes: Padam Talao, Rajbagh Lake, Malik Talao, High Fort Cliffs",
+            "Known Resident Wildlife: T-84, T-124 & Cubs, Crocodiles & Sambar deer"
+          ],
+          "meta": "Entry: Ranthambore Fort Chowki"
+        },
+        {
+          "icon": "map-pin",
+          "badge": "Core Tiger Sector",
+          "title": "Zone 4 (Tamakhan & Bakola)",
+          "text": "Rich waterbodies, dense Dhok tree forests, and frequent tiger family sightings.",
+          "bullets": [
+            "Key Landmarks & Waterholes: Singh Dwar, Tamakhan, Malik Talao, Lakkad Da",
+            "Known Resident Wildlife: T-111, T-120, Sloth Bear populations"
+          ],
+          "meta": "Entry: Singhdwar / Lakarda Chowki"
+        },
+        {
+          "icon": "map-pin",
+          "badge": "Core Tiger Sector",
+          "title": "Zone 5 (Kachida & Bakola)",
+          "text": "High prey density, scenic valley overlooks, and excellent birding.",
+          "bullets": [
+            "Key Landmarks & Waterholes: Baghda, Jokha, Kachida Valley, Anatpura",
+            "Known Resident Wildlife: T-102 progeny, Leopard corridors, Chital herds"
+          ],
+          "meta": "Entry: Singhdwar Common Gate"
+        }
+      ]
+    },
+    {
+      "id": "permit-allocation",
+      "type": "cards",
+      "heading": "Understanding Core Zone Permit Allocation",
+      "intro": "Rajasthan Forest Department manages all entry permits through a computerized lottery quota system to prevent environmental stress. When booking through Ranthambore Wild Life Tour, your zone preference (Core 1-5) is prioritized upon submission.",
+      "columns": 3,
+      "style": "compact",
+      "items": [
+        {
+          "icon": "calendar",
+          "title": "Advance Quota",
+          "text": "Opens 90 to 120 days prior. Best chance to lock in core zones for your chosen dates."
+        },
+        {
+          "icon": "clock",
+          "title": "Tatkal Current Quota",
+          "text": "A small pool released 24-48 hours before the safari shift on a first-come basis."
+        },
+        {
+          "icon": "car",
+          "title": "Exclusive Jeep Priority",
+          "text": "Private Gypsies offer enhanced flexibility for wildlife photographers inside core tracks."
+        }
+      ]
+    },
+    {
+      "id": "famous-tigers",
+      "type": "cards",
+      "heading": "Famous Big Cats of Zones 1 to 5",
+      "columns": 3,
+      "style": "card",
+      "items": [
+        {
+          "icon": "paw",
+          "badge": "T-124 (Riddhi)",
+          "title": "The Current Queen of the Lakes",
+          "text": "Dominating the water palace of Zone 3 and parts of Zone 2, Riddhi is the granddaughter of world-famous Machli and frequently patrols Rajbagh lake."
+        },
+        {
+          "icon": "paw",
+          "badge": "T-84 (Arrowhead)",
+          "title": "The Veteran Lake Monarch",
+          "text": "Known for the distinct arrow mark above her left eye, Arrowhead has raised multiple litters around Padam Talao and Jogi Mahal."
+        },
+        {
+          "icon": "paw",
+          "badge": "T-120 (Ganesh)",
+          "title": "The Dominant Male of Tamakhan",
+          "text": "A massive male holding territory between Zone 1, 4, and 5. Famous for his deep, booming territorial roars heard at dawn."
+        }
+      ]
+    },
+    {
+      "id": "entry-regulations",
+      "type": "checklist",
+      "heading": "Core Reserve Entry Regulations",
+      "groups": [
+        {
+          "title": "Entry Regulations",
+          "tone": "neutral",
+          "items": [
+            "Only authorized Ranthambore registered Gypsies and Canters with certified drivers and guides may enter.",
+            "Leaving vehicle tracks or driving off designated roads is strictly prohibited and leads to immediate vehicle de-registration.",
+            "Smoking, consuming alcohol, and playing recorded animal calls are criminal offenses under the Wildlife Act.",
+            "Visitors must maintain silence at waterholes and maintain at least 20 meters distance from all wildlife."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "type": "faq",
+      "heading": "Core Zones Safari FAQs",
+      "intro": "Essential queries regarding Zones 1 to 5 bookings.",
+      "items": [
+        {
+          "q": "Why are Core Zones 1 to 5 considered the most prestigious?",
+          "a": "Core Zones 1 to 5 are the original national park sanctum containing the iconic lakes (Padam, Rajbagh, Malik) and the towering 1,000-year-old Ranthambore Fort. These waterbodies attract deer and tigers year-round, creating world-famous photo opportunities."
+        },
+        {
+          "q": "How far in advance should I book for Zones 1 to 5?",
+          "a": "Core zone permits are strictly limited by the Rajasthan Forest Department and open up to 90 to 120 days in advance. For peak months (November to April), booking at least 60 days ahead is highly recommended."
+        },
+        {
+          "q": "Can we book both Gypsy and Canter for Core Zones?",
+          "a": "Yes, both Maruti Gypsies and 20-seater Canters are permitted inside Core Zones 1 through 5 on authorized forest tracks."
+        },
+        {
+          "q": "What happens if Core Zone permits are filled on my date?",
+          "a": "You can book Buffer Zones 6 to 10 or apply for the Forest Department daily Tatkal quota. Buffer zones also boast thriving tiger and leopard populations."
+        }
+      ]
+    },
+    {
+      "id": "booking-cta",
+      "type": "cta",
+      "title": "Book Core Zone 1–5 Safari Permits Today",
+      "text": "Connect directly with our Sawai Madhopur wildlife team to verify government quota availability for your chosen travel dates.",
+      "buttonLabel": "Request Core Zone Permit",
+      "bookingPrefill": "",
+      "whatsappText": "",
+      "bookingZone": "Zone 1-5 (Core)"
+    }
+  ],
+  "seo": {
+    "title": "Ranthambore Core Zones 1 to 5 Safari Booking",
+    "description": "Book Ranthambore Core Zone 1–5 safaris: zone-by-zone guide to gates, lakes and resident tigers like Riddhi and Arrowhead, permit quotas, entry rules and FAQs.",
+    "keywords": "ranthambore core zones, zone 1 to 5 safari, ranthambore zone 3, core zone safari booking, ranthambore tiger zones, padam talao safari, ranthambore permit quota",
+    "ogImage": "/images/tiger_ruins.jpg",
+    "noindex": false
+  }
+}

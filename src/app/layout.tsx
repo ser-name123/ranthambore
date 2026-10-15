@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "@/components/ClientLayout";
+import { getPublishedPackages, getSiteContent } from "@/lib/content.server";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-serif",
@@ -21,56 +23,65 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://ranthamborewildlifetour.com"),
-  title: {
-    default: "Ranthambore Safari & Wildlife Tours | Gypsy & Canter Booking",
-    template: "%s | Ranthambore Wild Life Tour"
-  },
-  description: "Plan your unforgettable Ranthambore safari experience. Book authorized Maruti Gypsy & Canter permits, luxury wildlife resort stays, and custom tiger photography tours.",
-  keywords: [
-    "Ranthambore safari booking",
-    "Ranthambore wildlife tours",
-    "Ranthambore tour packages",
-    "Jeep safari Ranthambore",
-    "Canter safari booking Ranthambore",
-    "Ranthambore tiger reserve",
-    "Sawai Madhopur wildlife packages"
-  ],
-  authors: [{ name: "Ranthambore Wild Life Tour" }],
-  openGraph: {
-    title: "Ranthambore Safari & Wildlife Tours | Gypsy & Canter Booking",
-    description: "Plan your unforgettable Ranthambore safari experience. Book authorized Maruti Gypsy & Canter permits, luxury wildlife resort stays, and custom tiger photography tours.",
-    url: "https://ranthamborewildlifetour.com",
-    siteName: "Ranthambore Wild Life Tour",
-    images: [
-      {
-        url: "/images/tiger_portrait.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Ranthambore Wild Life Tour - Royal Bengal Tiger"
-      }
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Ranthambore Safari & Wildlife Tours | Gypsy & Canter Booking",
-    description: "Explore Ranthambore National Park with expert naturalists. Gypsy, Canter, and stay packages.",
-    images: ["/images/tiger_portrait.jpg"],
-  },
-  icons: {
-    icon: "/logo.jpg",
-    apple: "/logo.jpg",
-  }
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const { seo } = await getSiteContent();
+  const keywords = seo.keywords.split(",").map((k) => k.trim()).filter(Boolean);
 
-export default function RootLayout({
+  return {
+    metadataBase: new URL(seo.siteUrl || "https://ranthamborewildlifetour.com"),
+    title: {
+      default: seo.title,
+      template: `%s | ${seo.siteName}`,
+    },
+    description: seo.description,
+    keywords,
+    authors: [{ name: seo.siteName }],
+    alternates: { canonical: seo.homeCanonical.trim() || "/" },
+    openGraph: {
+      title: seo.title,
+      description: seo.description,
+      url: seo.homeCanonical.trim() || "/",
+      siteName: seo.siteName,
+      images: [{ url: seo.ogImage, width: 1200, height: 630, alt: seo.siteName }],
+      locale: "en_US",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: seo.title,
+      description: seo.description,
+      images: [seo.ogImage],
+    },
+    verification: seo.googleVerification ? { google: seo.googleVerification } : undefined,
+    icons: {
+      icon: "/logo.jpg",
+      apple: "/logo.jpg",
+    },
+  };
+}
+
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const [content, packageRows] = await Promise.all([getSiteContent(), getPublishedPackages()]);
+  // Card fields only; detail blocks and SEO stay on the package pages.
+  const packages = packageRows.map(({ data: { blocks: _blocks, seo: _seo, ...card } }) => card);
+  const { contact, seo } = content;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "TravelAgency",
+    name: seo.siteName,
+    url: seo.siteUrl,
+    image: seo.ogImage.startsWith('http') ? seo.ogImage : `${seo.siteUrl.replace(/\/+$/, '')}${seo.ogImage}`,
+    description: seo.description,
+    telephone: contact.phonePrimary,
+    email: contact.email,
+    address: { "@type": "PostalAddress", streetAddress: contact.address, addressLocality: "Sawai Madhopur", addressRegion: "Rajasthan", addressCountry: "IN" },
+  };
+  const gaId = content.seo.googleAnalyticsId.trim();
+
   return (
     <html
       lang="en"
@@ -81,9 +92,18 @@ export default function RootLayout({
         className="min-h-screen bg-[#ffffff] text-[#082318] font-sans antialiased selection:bg-[#047857] selection:text-white"
         suppressHydrationWarning
       >
-        <ClientLayout>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "<") }} />
+        <ClientLayout content={content} packages={packages}>
           {children}
         </ClientLayout>
+        {/^G-[A-Z0-9]+$/.test(gaId) && (
+          <>
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} strategy="afterInteractive" />
+            <Script id="ga4" strategy="afterInteractive">
+              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${gaId}');`}
+            </Script>
+          </>
+        )}
       </body>
     </html>
   );

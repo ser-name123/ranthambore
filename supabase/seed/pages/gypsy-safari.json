@@ -1,0 +1,254 @@
+{
+  "slug": "gypsy-safari",
+  "name": "Maruti Gypsy Safari",
+  "group": "service",
+  "showToc": false,
+  "hero": {
+    "badge": "Official 4x4 Wildlife Vehicle",
+    "title": "Maruti Gypsy Safari",
+    "highlight": "(6-Seater 4x4)",
+    "subtitle": "The quintessential Ranthambore wildlife experience. High-clearance four-wheel-drive agility, 360-degree open wilderness visibility, and unrestricted access to the deepest rocky ravines of Zones 1 to 10.",
+    "image": "/images/gypsy_encounter.jpg",
+    "ctaLabel": "Book Gypsy Permit",
+    "bookingPrefill": "Maruti Gypsy (6-Seater 4x4)",
+    "whatsappText": "Hello, I want to inquire about Maruti Gypsy Safari booking at Ranthambore."
+  },
+  "blocks": [
+    {
+      "id": "vehicle-specs",
+      "type": "cards",
+      "columns": 4,
+      "style": "compact",
+      "items": [
+        {
+          "icon": "users",
+          "title": "6 Guests Max",
+          "text": "Open seating with dedicated guide and driver upfront."
+        },
+        {
+          "icon": "compass",
+          "title": "4x4 Mountain Agility",
+          "text": "Climbs steep rocky trails in Zone 1, 2, and 3 easily."
+        },
+        {
+          "icon": "camera",
+          "title": "360° Photography",
+          "text": "No window pillars or roof obstruction for lenses."
+        },
+        {
+          "icon": "clock",
+          "title": "3.5 Hours Duration",
+          "text": "Deep trail exploration in morning or afternoon shifts."
+        }
+      ]
+    },
+    {
+      "id": "pricing",
+      "type": "pricing",
+      "heading": "Authorized Gypsy Safari Pricing & Options",
+      "intro": "Transparent per-person sharing seats and private group bookings. Includes all park taxes, driver allowances, and naturalist fees.",
+      "bookingPrefill": "Gypsy",
+      "tiers": [
+        {
+          "title": "Sharing Gypsy Seat (Indian)",
+          "price": "₹2,300",
+          "unit": "per person / drive",
+          "badge": "Most Popular",
+          "features": [
+            "Sharing with up to 5 other wildlife enthusiasts",
+            "Official Rajasthan Forest Dept Permit included",
+            "Certified English & Hindi Naturalist Guide",
+            "Authorized 4x4 Gypsy & Forest Driver fees",
+            "Hotel pickup & drop within Sawai Madhopur"
+          ],
+          "footnote": "Govt Status: Subject to Govt. Shift Quota",
+          "highlighted": false
+        },
+        {
+          "title": "Full Exclusive Gypsy (Indian)",
+          "price": "₹13,800",
+          "unit": "complete vehicle (up to 6 pax)",
+          "badge": "Recommended for Families",
+          "features": [
+            "All 6 passenger seats exclusively for your group",
+            "Unrestricted 360° photography movement",
+            "Dedicated forest driver & seasoned tracker",
+            "Full hotel door-to-door private pickup",
+            "Customized pace for birders & photographers"
+          ],
+          "footnote": "Govt Status: Instant Group Allocation",
+          "highlighted": false
+        },
+        {
+          "title": "Sharing Gypsy (Foreign Nationals)",
+          "price": "₹4,600",
+          "unit": "per person / drive",
+          "badge": "International Guests",
+          "features": [
+            "Foreign national government entrance permit",
+            "Fluent English-speaking naturalist guide",
+            "Park entry fee, vehicle fee & guide tax included",
+            "Sawai Madhopur resort transfer included",
+            "Passport registration & verification assistance"
+          ],
+          "footnote": "Govt Status: Advance Passport Verification",
+          "highlighted": false
+        },
+        {
+          "title": "Full Exclusive Gypsy (Foreign)",
+          "price": "₹27,600",
+          "unit": "private vehicle (up to 6 pax)",
+          "badge": "VIP International",
+          "features": [
+            "Private Gypsy for up to 6 international guests",
+            "Top-rated senior tiger tracker & guide",
+            "Permit documentation & gate coordination",
+            "Priority hotel pickup in luxury resort sector",
+            "Ample space for telephoto lenses & tripods"
+          ],
+          "footnote": "Govt Status: VIP Advance Quota",
+          "highlighted": false
+        }
+      ],
+      "buttonLabel": "Select & Inquire"
+    },
+    {
+      "id": "shift-timings",
+      "type": "table",
+      "badge": "Official Rajasthan Forest Department Timings",
+      "heading": "Gypsy Safari Shift Schedules (2026–2027)",
+      "intro": "Entry times change with sunrise and sunset to ensure safe navigation and optimum wildlife activity.",
+      "columns": [
+        "Period / Month",
+        "Morning Shift",
+        "Afternoon Shift",
+        "Reporting Time"
+      ],
+      "rows": [
+        [
+          "1st Oct to 31st Oct",
+          "06:30 AM – 10:00 AM",
+          "02:30 PM – 06:00 PM",
+          "30 mins before gate entry"
+        ],
+        [
+          "1st Nov to 31st Jan",
+          "07:00 AM – 10:30 AM",
+          "02:00 PM – 05:30 PM",
+          "30 mins before gate entry"
+        ],
+        [
+          "1st Feb to 31st Mar",
+          "06:30 AM – 10:00 AM",
+          "02:30 PM – 06:00 PM",
+          "30 mins before gate entry"
+        ],
+        [
+          "1st Apr to 15th May",
+          "06:00 AM – 09:30 AM",
+          "03:00 PM – 06:30 PM",
+          "30 mins before gate entry"
+        ],
+        [
+          "16th May to 30th Jun",
+          "05:30 AM – 09:00 AM",
+          "03:30 PM – 07:00 PM",
+          "30 mins before gate entry"
+        ]
+      ]
+    },
+    {
+      "id": "why-gypsy",
+      "type": "cards",
+      "heading": "Why Maruti Gypsy Outperforms for Tiger Tracking",
+      "intro": "Ranthambore's terrain is renowned for rocky plateaus, dry deciduous forests, and river beds. The compact 4x4 Maruti Gypsy can navigate tight corners where tigers often stalk chital deer, giving you front-row vantage points impossible in larger vehicles.",
+      "columns": 3,
+      "style": "compact",
+      "items": [
+        {
+          "title": "Agile Forest Maneuvering",
+          "text": "When fresh tiger pugmarks or deer alarm calls echo through the valley, drivers can quickly reverse and redirect into narrow ravines without disturbing the wildlife."
+        },
+        {
+          "title": "Eye-Level Photography Angles",
+          "text": "Unlike buses with elevated views, the Gypsy sits low enough to capture dramatic eye-level portraits of big cats, sloths, and leopards against the ancient Banyan trees."
+        },
+        {
+          "title": "Silent Engine Stalking",
+          "text": "Lightweight petrol engines create minimal vibrations, allowing birds, crocodiles, and deer herds to continue their natural behaviors undisturbed."
+        }
+      ]
+    },
+    {
+      "id": "boarding-checklist",
+      "type": "cards",
+      "heading": "Government ID & Boarding Checklist",
+      "intro": "Follow these Rajasthan Forest Department guidelines strictly.",
+      "columns": 2,
+      "style": "compact",
+      "items": [
+        {
+          "icon": "file",
+          "title": "1. Carry Exact Original ID",
+          "text": "The Forest Ranger at the gate matches original Aadhaar / Passport with the printed permit voucher. No photocopies or phone images permitted."
+        },
+        {
+          "icon": "car",
+          "title": "2. Stay Inside Vehicle at All Times",
+          "text": "Alighting from the Gypsy inside the core reserve is strictly prohibited and carries severe government fines."
+        },
+        {
+          "icon": "shirt",
+          "title": "3. Neutral Color Clothing",
+          "text": "Wear khaki, olive green, beige, or brown. Bright neon colors disturb territorial animals."
+        },
+        {
+          "icon": "ban",
+          "title": "4. No Plastic & No Drones",
+          "text": "Ranthambore is a zero-plastic zone. Drones and flash photography are illegal under the Wildlife Protection Act."
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "type": "faq",
+      "heading": "Frequently Asked Questions (Maruti Gypsy)",
+      "intro": "Got queries before reserving your Gypsy? Here are quick answers.",
+      "items": [
+        {
+          "q": "How many people can sit in a Maruti Gypsy?",
+          "a": "The Maruti Gypsy accommodates a maximum of 6 tourists per vehicle, plus 1 registered Rajasthan Forest Department naturalist guide and 1 authorized park driver."
+        },
+        {
+          "q": "Can we choose our preferred safari zone in a Gypsy?",
+          "a": "You can submit your preference for Core Zones (1 to 5) or Buffer Zones (6 to 10) at the time of enquiry. The Rajasthan Forest Department allocation software assigns final zones based on daily quota availability."
+        },
+        {
+          "q": "Are children charged full price for a Gypsy seat?",
+          "a": "Children aged 5 years and above require a full seat and permit. Children under 5 years of age can travel on parent lap free of government park entry fees, but original ID must still be presented."
+        },
+        {
+          "q": "What should we carry during the Gypsy safari?",
+          "a": "You must carry the exact original Government Photo ID (Aadhaar/Passport) used during booking, warm layers for winter mornings, UV sunglasses, dust mask/scarf, and camera gear with dust covers."
+        }
+      ]
+    },
+    {
+      "id": "booking-cta",
+      "type": "cta",
+      "badge": "Limited Quota Notice",
+      "title": "Only 48 Gypsy Permits Available Per Shift",
+      "text": "Govt quotas for core zones (Zones 1-5) often book out 60 to 90 days in advance. Speak with our Sawai Madhopur booking desk today to lock in your dates.",
+      "buttonLabel": "Inquire Gypsy Availability",
+      "bookingPrefill": "Maruti Gypsy (6-Seater 4x4)",
+      "whatsappText": ""
+    }
+  ],
+  "seo": {
+    "title": "Ranthambore Gypsy Safari Booking – 6-Seater 4x4 Jeep",
+    "description": "Book a Maruti Gypsy safari in Ranthambore: sharing seats from ₹2,300, private 6-seater jeeps, 2026–27 shift timings, ID rules and FAQs for Zones 1 to 10.",
+    "keywords": "ranthambore gypsy safari, gypsy safari booking, ranthambore jeep safari, gypsy safari price, ranthambore safari timings, private gypsy ranthambore, tiger safari jeep",
+    "ogImage": "/images/gypsy_encounter.jpg",
+    "noindex": false
+  }
+}

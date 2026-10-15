@@ -1,60 +1,31 @@
 'use client';
 
+import { Highlight } from './cms/Text';
 import React from 'react';
+import Link from 'next/link';
 import { Compass, Car, Hotel, MapPin, Camera, Landmark, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import SpotlightCard from './SpotlightCard';
 import { JungleCornerBranch, TigerTrackWatermark, BambooStalks } from './JungleFoliageDecorations';
+import { useSiteContent } from '@/context/SiteContentContext';
+import type { ServiceIcon } from '@/lib/site-content';
+
+const SERVICE_ICONS: Record<ServiceIcon, typeof Compass> = {
+  compass: Compass,
+  car: Car,
+  hotel: Hotel,
+  map: MapPin,
+  landmark: Landmark,
+  camera: Camera,
+};
 
 interface ServicesGridProps {
   onSelectService: (serviceName: string) => void;
 }
 
 export default function ServicesGrid({ onSelectService }: ServicesGridProps) {
-  const services = [
-    {
-      icon: Compass,
-      title: 'Maruti Gypsy Safari Booking',
-      desc: 'Exclusive and sharing 4x4 open Gypsy safaris across Zones 1 to 10 with verified entry permits, licensed drivers, and certified nature guides.',
-      tag: 'Core Experience',
-      action: 'Book Gypsy Safari'
-    },
-    {
-      icon: Car,
-      title: 'Canter Safari Booking',
-      desc: 'Economical 20-seater open safari bus permits ideal for families, groups, and last-minute travellers with panoramic elevated forest views.',
-      tag: 'Best Value',
-      action: 'Book Canter Safari'
-    },
-    {
-      icon: Hotel,
-      title: 'Resort & Jungle Camp Stays',
-      desc: 'Curated bookings at handpicked heritage jungle resorts, eco-cottages, and 5-star wilderness retreats near National Park entry gates.',
-      tag: 'Stay Assistance',
-      action: 'Find Resort Deals'
-    },
-    {
-      icon: MapPin,
-      title: 'Railway Station & Airport Transfers',
-      desc: 'Comfortable private AC cabs from Sawai Madhopur Junction, Jaipur International Airport, or Delhi NCR straight to your resort.',
-      tag: 'Safe Transfers',
-      action: 'Book Transfer'
-    },
-    {
-      icon: Landmark,
-      title: 'Ranthambore Fort & Chambal Safari',
-      desc: 'Guided cultural excursions to the 10th-century UNESCO World Heritage Ranthambore Fort, Trinetra Ganesha Temple, and Chambal boat safari.',
-      tag: 'Sightseeing',
-      action: 'Explore Excursions'
-    },
-    {
-      icon: Camera,
-      title: 'Bespoke Wildlife Photography Tours',
-      desc: 'Specialized arrangements for photographers featuring exclusive Gypsy positioning, expert trackers, beanbag mounts, and optimal lighting routes.',
-      tag: 'Photography Special',
-      action: 'Plan Photo Tour'
-    }
-  ];
+  const { services, home } = useSiteContent();
+  const heading = home.services;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -94,13 +65,13 @@ export default function ServicesGrid({ onSelectService }: ServicesGridProps) {
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-[#064e3b] text-xs font-bold uppercase tracking-widest border border-emerald-200 shadow-xs">
             <Compass className="w-3.5 h-3.5 text-[#047857]" />
-            Complete Travel Assistance
+            {heading.badge}
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#082318]">
-            Our Wildlife Services
+            <Highlight text={heading.title} />
           </h2>
           <p className="text-sm sm:text-base text-[#1b3a2a]">
-            From obtaining official entry permits to coordinating luxury stays and local excursions, we provide seamless end-to-end safari planning.
+            {heading.subtitle}
           </p>
         </motion.div>
 
@@ -113,7 +84,7 @@ export default function ServicesGrid({ onSelectService }: ServicesGridProps) {
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
         >
           {services.map((svc, idx) => {
-            const Icon = svc.icon;
+            const Icon = SERVICE_ICONS[svc.icon] ?? Compass;
             return (
               <motion.div key={idx} variants={cardVariants} className="h-full flex flex-col">
                 <SpotlightCard
@@ -141,13 +112,23 @@ export default function ServicesGrid({ onSelectService }: ServicesGridProps) {
                   </div>
 
                   <div className="pt-6 mt-6 border-t border-[#e2ede6]">
-                    <button
-                      onClick={() => onSelectService(svc.title)}
-                      className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-800 hover:text-emerald-950 transition cursor-pointer"
-                    >
-                      <span>{svc.action}</span>
-                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition duration-200" />
-                    </button>
+                    {svc.link ? (
+                      <Link
+                        href={svc.link}
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-800 hover:text-emerald-950 transition"
+                      >
+                        <span>{svc.action}</span>
+                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition duration-200" />
+                      </Link>
+                    ) : (
+                      <button
+                        onClick={() => onSelectService(svc.title)}
+                        className="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-800 hover:text-emerald-950 transition cursor-pointer"
+                      >
+                        <span>{svc.action}</span>
+                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition duration-200" />
+                      </button>
+                    )}
                   </div>
                 </SpotlightCard>
               </motion.div>

@@ -1,0 +1,180 @@
+{
+  "slug": "3n-4d-royal-tiger",
+  "name": "Royal Heritage & Wilderness Tour",
+  "category": "luxury",
+  "duration": "3 Nights / 4 Days",
+  "safariCount": "3 Safaris + Chambal Sanctuary",
+  "hotelType": "5-Star Heritage Palace / Oberoi/Taj Class",
+  "pricePerPerson": 38999,
+  "badge": "Ultimate Luxury",
+  "image": "/images/tiger_ruins.jpg",
+  "summary": "The pinnacle of Ranthambore wildlife luxury. 4 private tiger safaris, 5-star heritage resort accommodation, Chambal river crocodile cruise, and dedicated naturalist escort.",
+  "highlights": [
+    "Palatial suite with private courtyard",
+    "Chambal River Gharial & Crocodile boat safari",
+    "Gourmet dining & wellness spa"
+  ],
+  "inclusions": [
+    "5-Star Luxury",
+    "3 Safaris",
+    "Chambal Boat",
+    "Private Butler"
+  ],
+  "featured": true,
+  "blocks": [
+    {
+      "id": "highlights",
+      "type": "cards",
+      "columns": 4,
+      "style": "compact",
+      "items": [
+        {
+          "title": "4 Exclusive Tiger Safaris",
+          "text": "Cover multiple varied zones across morning and afternoon shifts for maximal sighting chances."
+        },
+        {
+          "title": "3 Nights Heritage Resort Stay",
+          "text": "Luxury heritage property with royal Rajput architecture, private pool, and spa."
+        },
+        {
+          "title": "Chambal River Boating Included",
+          "text": "Excursion to the National Chambal Sanctuary to spot Gharials and rare river dolphins."
+        },
+        {
+          "title": "VIP Transport & All Meals",
+          "text": "Full board dining, private cab transfers from Jaipur/Delhi, and personalized concierge."
+        }
+      ]
+    },
+    {
+      "id": "itinerary",
+      "type": "timeline",
+      "heading": "Expedition Day-by-Day Schedule",
+      "intro": "An immersive journey across prime jungle habitats, river wildlife, and royal heritage.",
+      "items": [
+        {
+          "label": "Day 1",
+          "title": "Royal Welcome & Sunset Safari",
+          "text": "",
+          "bullets": [
+            "11:00 AM: Private luxury transfer arrival. Traditional Aarti & welcome drink at your heritage resort.",
+            "01:00 PM: Gourmet Rajasthani lunch in the royal courtyard.",
+            "02:30 PM: Safari Drive 1: Afternoon core zone tracking. Sunset birding around Padam Talao.",
+            "07:30 PM: Evening wildlife documentary screening with bonfire and heritage folk music."
+          ]
+        },
+        {
+          "label": "Day 2",
+          "title": "Core Zone Tracking & Fort Heritage Walk",
+          "text": "",
+          "bullets": [
+            "06:00 AM: Safari Drive 2: Misty dawn safari exploring deep rocky ravines for big cats.",
+            "11:00 AM: Brunch at the resort followed by spa therapy relaxation or swimming pool leisure.",
+            "02:30 PM: Safari Drive 3: Afternoon drive covering alternative zones with active tiger cubs.",
+            "07:30 PM: Private candlelight dinner by the pool."
+          ]
+        },
+        {
+          "label": "Day 3",
+          "title": "Dawn Safari & Chambal River Excursion",
+          "text": "",
+          "bullets": [
+            "06:30 AM: Safari Drive 4: Final morning tiger tracking drive with senior naturalist tracker.",
+            "01:30 PM: Motorboat river safari at National Chambal Sanctuary. Spot Gharials & marsh crocodiles.",
+            "05:30 PM: Visit the 10th-century Ranthambore Fort and Trinetra Ganesha Temple.",
+            "08:00 PM: Farewell Gala dinner with chef special delights."
+          ]
+        },
+        {
+          "label": "Day 4",
+          "title": "Sunrise Walk & Departure",
+          "text": "",
+          "bullets": [
+            "08:00 AM: Organic farm breakfast & peaceful nature stroll.",
+            "11:00 AM: Check out and private transfer to Jaipur Airport or Sawai Madhopur station."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "inclusions",
+      "type": "checklist",
+      "heading": "VIP Inclusions Breakdown",
+      "groups": [
+        {
+          "title": "What is Included",
+          "tone": "do",
+          "items": [
+            "3 Nights accommodation in 5-Star Heritage / Wilderness Resort",
+            "4 Comprehensive Jungle Safaris in private Maruti Gypsy vehicles",
+            "All forest entry permits, vehicle entry charges & guide fees",
+            "Personal senior naturalist tracker dedicated to your group",
+            "All meals on Full Board (Breakfast, Lunch & Dinner)",
+            "Motorboat safari at National Chambal River Crocodile Sanctuary",
+            "Guided Ranthambore Fort excursion with historian guide",
+            "Complimentary Railway Station / Hotel private transfers"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "resort-stays",
+      "type": "cards",
+      "heading": "5-Star Wilderness & Palace Stays",
+      "columns": 3,
+      "style": "card",
+      "items": [
+        {
+          "icon": "hotel",
+          "title": "Royal Suites & Tents",
+          "text": "Private sit-outs, marble bathrooms, antique four-poster beds, and butler assistance."
+        },
+        {
+          "icon": "sparkles",
+          "title": "Ayurvedic Spa & Wellness",
+          "text": "Rejuvenate tired muscles after a bumpy safari with signature herbal massages."
+        },
+        {
+          "icon": "award",
+          "title": "Royal Dining Experience",
+          "text": "Authentic Shikari curries, clay-oven kebabs, and candlelit courtyard dining under stars."
+        }
+      ]
+    },
+    {
+      "id": "faqs",
+      "type": "faq",
+      "heading": "Royal Expedition FAQs",
+      "items": [
+        {
+          "q": "Why take 4 safaris instead of 1 or 2?",
+          "a": "Tigers are wild predators that roam vast territories. Taking 4 safaris across 3 full days gives you morning and evening coverage across different zones, maximizing your cumulative tiger sighting probability to over 95%."
+        },
+        {
+          "q": "Can this package be customized with Jaipur pickup and drop?",
+          "a": "Yes, private round-trip transfers from Jaipur Airport or Delhi NCR in an air-conditioned Innova Crysta can easily be added to your booking."
+        },
+        {
+          "q": "Are all forest permits guaranteed for private Gypsies?",
+          "a": "Yes, when booked in advance, our team secures exclusive Maruti Gypsy permits registered directly under your passenger names."
+        }
+      ]
+    },
+    {
+      "id": "book",
+      "type": "cta",
+      "title": "Reserve Your 3N/4D Royal Tiger Expedition",
+      "text": "Experience the untamed royalty of Rajasthan in grand style. Speak with our luxury safari concierge for bespoke customization.",
+      "buttonLabel": "Book Royal Expedition",
+      "bookingPrefill": "3N/4D Royal Tiger Expedition"
+    }
+  ],
+  "seo": {
+    "title": "Royal Heritage & Wilderness Tour: 3N/4D Ranthambore",
+    "description": "Luxury 3 nights / 4 days Ranthambore tour: 5-star heritage palace stay, tiger safaris, Chambal River gharial boat safari, gourmet dining and private butler.",
+    "keywords": "ranthambore luxury tour, ranthambore 3 night 4 day package, royal tiger expedition, chambal boat safari, ranthambore heritage resort, luxury tiger safari india",
+    "ogImage": "/images/tiger_ruins.jpg",
+    "noindex": false
+  },
+  "sort_order": 5
+}

@@ -1,0 +1,167 @@
+{
+  "slug": "about-us",
+  "name": "About Us",
+  "group": "info",
+  "showToc": false,
+  "hero": {
+    "badge": "Local Wildlife Pioneers Since 2014",
+    "title": "About Ranthambore",
+    "highlight": "Wild Life Tour",
+    "subtitle": "Based directly in Sawai Madhopur, we are an independent wildlife safari facilitation agency dedicated to ethical tiger tracking, authentic naturalist guidance, and verified park permits.",
+    "image": "/images/tiger_foliage.jpg",
+    "ctaLabel": "Plan Your Safari",
+    "bookingPrefill": "",
+    "whatsappText": ""
+  },
+  "blocks": [
+    {
+      "id": "company-story",
+      "type": "imageText",
+      "badge": "About Ranthambore Wild Life Tour",
+      "heading": "Passionate Trackers. Unmatched Safaris.",
+      "body": "Founded by wildlife enthusiasts and local naturalists in Sawai Madhopur, Ranthambore Wild Life Tour is an independent travel facilitation company dedicated to delivering authentic, transparent, and exhilarating wildlife expeditions.\n\nFrom securing coveted morning Gypsy permits to booking heritage jungle resorts, our on-ground team takes care of every detail so you can immerse yourself in the majestic wilderness of Ranthambore.\n\n**12+ Decade of Excellence** — Dedicated to ethical Ranthambore wildlife tourism",
+      "image": "/images/tiger_ruins.jpg",
+      "imageSide": "left",
+      "bullets": [
+        "Forest Department Compliance",
+        "Senior Certified Naturalists",
+        "Zero Hidden Charges Policy",
+        "24/7 On-Ground Concierge"
+      ]
+    },
+    {
+      "id": "company-stats",
+      "type": "cards",
+      "columns": 4,
+      "style": "compact",
+      "items": [
+        {
+          "title": "12+",
+          "text": "Years in Ranthambore",
+          "meta": "Local Sawai Madhopur roots"
+        },
+        {
+          "title": "15,000+",
+          "text": "Successful Safaris",
+          "meta": "Gypsy & Canter permits"
+        },
+        {
+          "title": "98%",
+          "text": "Sightings Satisfaction",
+          "meta": "Tigers, leopards, sloth bears"
+        },
+        {
+          "title": "4.9 / 5.0",
+          "text": "Customer Trust Rating",
+          "meta": "Verified traveller reviews"
+        }
+      ]
+    },
+    {
+      "id": "park-history",
+      "type": "timeline",
+      "badge": "Conservation Chronicle",
+      "heading": "Ranthambore National Park: Brief Journey",
+      "intro": "From royal game preserve in 1955 to a globally celebrated Project Tiger haven.",
+      "items": [
+        {
+          "label": "1955",
+          "title": "Sawai Madhopur Gaming Sanctuary",
+          "text": "Originally designated as the Sawai Madhopur Gaming Sanctuary to safeguard royal hunting grounds."
+        },
+        {
+          "label": "1973",
+          "title": "Project Tiger Reserve Induction",
+          "text": "Ranthambore was brought under the national Project Tiger initiative to establish dedicated tiger conservation reserves."
+        },
+        {
+          "label": "1980",
+          "title": "Declared a National Park",
+          "text": "The central core forest spanning 282 sq km was officially declared a National Park, instituting strict protection."
+        },
+        {
+          "label": "1984",
+          "title": "Mansingh & Keladevi Sanctuaries",
+          "text": "Deciduous woodlands of Sawai Mansingh and Keladevi Sanctuaries were notified to create vital tiger corridors."
+        },
+        {
+          "label": "1991",
+          "title": "Greater Ranthambore Tiger Reserve",
+          "text": "Amalgamated into the Greater Ranthambore Tiger Reserve, encompassing over 1,300 sq km of protected wild habitat."
+        }
+      ]
+    },
+    {
+      "id": "ethics-code",
+      "type": "cards",
+      "badge": "Core Ethics",
+      "heading": "Ethical Wildlife Tourism Code",
+      "columns": 3,
+      "style": "compact",
+      "items": [
+        {
+          "icon": "heart",
+          "title": "Wildlife First Ethos",
+          "text": "We maintain respectful distances from tigers and wild animals, adhering to forest speed limits and zero-noise codes."
+        },
+        {
+          "icon": "shield",
+          "title": "Transparent Quotas",
+          "text": "No false promises. We educate guests on the official 10-zone lottery and provide genuine government receipts."
+        },
+        {
+          "icon": "users",
+          "title": "Community Empowerment",
+          "text": "100% of our drivers, naturalists, and desk managers are local residents of Sawai Madhopur and surrounding villages."
+        }
+      ]
+    },
+    {
+      "id": "field-team",
+      "type": "cards",
+      "badge": "Field Team",
+      "heading": "Meet Our Jungle Trackers & Naturalists",
+      "intro": "Decades of wilderness knowledge passed down through generations in Ranthambore.",
+      "columns": 3,
+      "style": "card",
+      "items": [
+        {
+          "icon": "compass",
+          "badge": "Chief Naturalist Tracker",
+          "title": "Rameshwar Meena",
+          "text": "Lifelong resident of Sawai Madhopur with an extraordinary gift for identifying tiger alarm calls and tracking pugmarks.",
+          "meta": "18+ Years Forest Experience"
+        },
+        {
+          "icon": "compass",
+          "badge": "Senior Safari Logistics Lead",
+          "title": "Vikram Singh Rathore",
+          "text": "Coordinates gate tokens, computerized vehicle allotments, and guest hotel pickups ensuring seamless departures.",
+          "meta": "12+ Years Operations"
+        },
+        {
+          "icon": "compass",
+          "badge": "Wildlife Photographer & Guide",
+          "title": "Kavita Sharma",
+          "text": "Specialist in vehicle positioning for telephoto bird and big cat photography, golden hour angles, and forest ecology.",
+          "meta": "9+ Years Photography"
+        }
+      ]
+    },
+    {
+      "id": "testimonials",
+      "type": "testimonials"
+    },
+    {
+      "id": "enquiry",
+      "type": "enquiryForm"
+    }
+  ],
+  "seo": {
+    "title": "About Us | Local Ranthambore Safari Experts Since 2014",
+    "description": "Meet Ranthambore Wild Life Tour, a Sawai Madhopur safari agency offering ethical tiger tracking, certified naturalists and verified Gypsy & Canter permits.",
+    "keywords": "about Ranthambore Wild Life Tour, Ranthambore safari agency, Sawai Madhopur naturalists, Ranthambore history, ethical wildlife tourism, Ranthambore tiger trackers",
+    "ogImage": "/images/tiger_foliage.jpg",
+    "noindex": false
+  }
+}

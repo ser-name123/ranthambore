@@ -1,0 +1,94 @@
+{
+  "slug": "privacy-policy",
+  "name": "Privacy Policy",
+  "group": "legal",
+  "showToc": true,
+  "hero": {
+    "badge": "Official Privacy & Data Protection Statement",
+    "title": "Privacy Policy &",
+    "highlight": "Data Respect",
+    "subtitle": "Your right to privacy is respected by Jungle Safari India and Ranthambore Wild Life Tour. Read our terms concerning data confidentiality, security practices, and cookie usage.",
+    "image": "",
+    "ctaLabel": "",
+    "bookingPrefill": "",
+    "whatsappText": ""
+  },
+  "blocks": [
+    {
+      "id": "highlights",
+      "type": "cards",
+      "intro": "Current Season 2026-2027 Policy • Last Updated: March 2026",
+      "columns": 4,
+      "style": "compact",
+      "items": [
+        { "icon": "shield", "title": "Strict Confidentiality", "text": "Personal details kept secure & private" },
+        { "icon": "eye", "title": "Intended Business Only", "text": "Used solely for safari & booking services" },
+        { "title": "Privacy-Safe Cookies", "text": "No personal data mined from your hard drive" },
+        { "icon": "shield", "title": "Statutory Transparency", "text": "Full regulatory compliance & clear terms" }
+      ]
+    },
+    {
+      "id": "commitment",
+      "type": "richText",
+      "badge": "Clause 1",
+      "heading": "Your Right to Privacy",
+      "body": "Your right to privacy is respected by **Jungle Safari India**. Your name, date of birth, address, phone number, and personal identification information shared with us is kept strictly confidential.\n\nAll identity documentation provided for government park gate verification is protected under strict access controls."
+    },
+    {
+      "id": "collection-use",
+      "type": "richText",
+      "badge": "Clause 2",
+      "heading": "Use of Personal Information",
+      "body": "**Jungle Safari India** guarantees that personal information is only used or disclosed to the extent necessary to process safari permits and fulfill your booked services."
+    },
+    {
+      "id": "sharing",
+      "type": "richText",
+      "badge": "Clause 3",
+      "heading": "Sharing with Subsidiaries & Business Partners",
+      "body": "If personal information is shared with local resorts, taxi drivers, or naturalist trackers, it is done solely to facilitate your scheduled reservation in Sawai Madhopur."
+    },
+    {
+      "id": "surveys-analytics",
+      "type": "richText",
+      "badge": "Clause 4",
+      "heading": "Site Analytics & Experience Improvement",
+      "body": "To enhance visitor experience, aggregate web traffic trends may be analyzed anonymously to optimize page performance, fast form loading, and booking workflows."
+    },
+    {
+      "id": "security-disclaimer",
+      "type": "richText",
+      "badge": "Clause 5",
+      "heading": "Security Protections & Web Disclaimer",
+      "body": "We utilize standard SSL encryption and secure communication channels to protect the confidentiality of personal booking records."
+    },
+    {
+      "id": "cookies",
+      "type": "richText",
+      "badge": "Clause 6",
+      "heading": "Cookies & Tracking Technologies",
+      "body": "Cookies improve website performance by remembering form preferences and session variables. Cookies never access data from your hard drive or external websites."
+    },
+    {
+      "id": "modifications",
+      "type": "richText",
+      "badge": "Clause 7",
+      "heading": "Policy Modifications & User Consent",
+      "body": "Ranthambore Wild Life Tour reserves the right to periodically update this privacy statement to reflect new statutory data guidelines. Use of this site implies agreement to these conditions."
+    },
+    {
+      "id": "contact",
+      "type": "richText",
+      "badge": "Clause 8",
+      "heading": "Contact & Privacy Queries",
+      "body": "Contact **Jungle Safari India** at our booking email if you have questions regarding data privacy.\n\nContact Jungle Safari India if you have inquiries or concerns about privacy matters."
+    }
+  ],
+  "seo": {
+    "title": "Privacy Policy & Data Protection",
+    "description": "Read how Jungle Safari India and Ranthambore Wild Life Tour protect your personal data, ID documents, cookies and booking records for safari permits.",
+    "keywords": "ranthambore privacy policy, data protection, safari booking privacy, cookie policy, personal information, jungle safari india",
+    "ogImage": "/images/tiger_portrait.jpg",
+    "noindex": false
+  }
+}

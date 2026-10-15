@@ -1,5 +1,6 @@
 'use client';
 
+import { Highlight } from './cms/Text';
 import React from 'react';
 import Image from 'next/image';
 import { Check, Compass, Sparkles, ArrowRight, Info, Shield } from 'lucide-react';
@@ -16,12 +17,19 @@ import {
   GiantBanyanTree,
   AravalliLandscapeBackdrop
 } from './JungleFoliageDecorations';
+import { useSiteContent } from '@/context/SiteContentContext';
 
 interface VehicleComparisonProps {
   onSelectVehicle: (vehicleName: string) => void;
 }
 
 export default function VehicleComparison({ onSelectVehicle }: VehicleComparisonProps) {
+  const { pricing, home, vehicles, ui } = useSiteContent();
+  const { gypsy, canter } = vehicles;
+  const inr = (n: number) => `₹${n.toLocaleString('en-IN')}`;
+  const spec = (value: string, foreign: number) => value.replace('{foreignPrice}', inr(foreign));
+  const heading = home.vehicles;
+
   return (
     <section className="py-20 bg-[#f4f8f5] relative overflow-hidden border-t border-b border-[#e2ede6]">
       {/* Panoramic Aravalli Cliffs & Safari Grassland Backdrop */}
@@ -63,13 +71,13 @@ export default function VehicleComparison({ onSelectVehicle }: VehicleComparison
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-[#064e3b] text-xs font-bold uppercase tracking-widest border border-emerald-200 shadow-xs">
             <Compass className="w-3.5 h-3.5 text-[#047857]" />
-            Safari Vehicle Guide
+            {heading.badge}
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#082318]">
-            Maruti Gypsy vs Canter Safari
+            <Highlight text={heading.title} />
           </h2>
           <p className="text-sm sm:text-base text-[#375847] leading-relaxed">
-            Choose between an exclusive 6-seater 4x4 Maruti Gypsy or an economical 20-seater Canter bus. Both explore the exact same designated forest trails across Zones 1 to 10.
+            {heading.subtitle}
           </p>
         </motion.div>
 
@@ -91,8 +99,8 @@ export default function VehicleComparison({ onSelectVehicle }: VehicleComparison
               {/* Image Header */}
               <div className="relative h-64 sm:h-72 w-full overflow-hidden">
                 <Image
-                  src="/images/gypsy_encounter.jpg"
-                  alt="Maruti Gypsy 4x4 Tiger Encounter in Ranthambore"
+                  src={gypsy.image}
+                  alt={`${gypsy.title} – ${gypsy.subtitle}`}
                   fill
                   className="object-cover group-hover:scale-108 transition duration-700 ease-out"
                 />
@@ -101,22 +109,22 @@ export default function VehicleComparison({ onSelectVehicle }: VehicleComparison
                 <div className="absolute top-4 left-4">
                   <span className="px-3 py-1 rounded-full bg-emerald-600 text-white text-xs font-bold tracking-wide shadow-md flex items-center gap-1.5 animate-pulse">
                     <Sparkles className="w-3.5 h-3.5" />
-                    Best for Wildlife Photography &amp; Families
+                    {gypsy.badge}
                   </span>
                 </div>
 
                 <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
                   <div>
                     <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white group-hover:text-emerald-300 transition duration-300">
-                      Maruti Gypsy 4x4
+                      {gypsy.title}
                     </h3>
                     <p className="text-xs text-[#f59e0b] font-medium">
-                      Open-Top 6-Seater 4WD Jeep
+                      {gypsy.subtitle}
                     </p>
                   </div>
                   <div className="text-right">
-                    <span className="text-xs text-[#d1e5db] block">Starting from</span>
-                    <span className="text-2xl font-bold text-white">₹2,300</span>
+                    <span className="text-xs text-[#d1e5db] block">{ui.startingFrom}</span>
+                    <span className="text-2xl font-bold text-white">{inr(pricing.gypsyPerPerson)}</span>
                     <span className="text-[10px] text-[#bad3c6] block">/ Person (Indian)</span>
                   </div>
                 </div>
@@ -125,37 +133,22 @@ export default function VehicleComparison({ onSelectVehicle }: VehicleComparison
               {/* Content Details */}
               <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-5">
                 <p className="text-xs sm:text-sm text-[#1b3a2a] leading-relaxed font-normal">
-                  The agile 4x4 Maruti Gypsy offers quiet maneuvering on narrow trails, low engine noise for unobtrusive stalking, and eye-level photography angles for majestic tiger encounters.
+                  {gypsy.description}
                 </p>
 
                 {/* Specs Table */}
                 <div className="grid grid-cols-2 gap-3 text-xs bg-[#f0f6f2] p-3.5 rounded-xl border border-[#d2e4d9]">
-                  <div>
-                    <span className="text-[#2e5241] font-medium block">Capacity &amp; Quota:</span>
-                    <span className="text-[#082318] font-bold">6 Seats • 48 Jeeps / Shift</span>
-                  </div>
-                  <div>
-                    <span className="text-[#2e5241] font-medium block">Daily Schedule:</span>
-                    <span className="text-[#082318] font-bold">Morning &amp; Afternoon Shifts</span>
-                  </div>
-                  <div>
-                    <span className="text-[#2e5241] font-medium block">Foreign National:</span>
-                    <span className="text-[#082318] font-bold">₹5,500 / Person</span>
-                  </div>
-                  <div>
-                    <span className="text-[#2e5241] font-medium block">Best For:</span>
-                    <span className="text-[#082318] font-bold">Privacy &amp; Camera Gear</span>
-                  </div>
+                  {gypsy.specs.map((sp, i) => (
+                    <div key={i}>
+                      <span className="text-[#2e5241] font-medium block">{sp.label}</span>
+                      <span className="text-[#082318] font-bold">{spec(sp.value, pricing.gypsyForeignerPerPerson)}</span>
+                    </div>
+                  ))}
                 </div>
 
                 {/* Feature Checklist - Clean & Punchy */}
                 <ul className="space-y-2 text-xs sm:text-sm text-[#082318] font-medium">
-                  {[
-                    'Exclusive 6-seater open design with unobstructed 360° sightlines',
-                    'Low engine sound for silent tracking near lakes and waterholes',
-                    'Option to book all 6 seats exclusively for private groups',
-                    'Shares the exact same prime core and buffer zone tracks',
-                  ].map((feat, i) => (
+                  {gypsy.features.map((feat, i) => (
                     <li key={i} className="flex items-center gap-2 group-hover:translate-x-0.5 transition duration-200">
                       <Check className="w-4 h-4 text-emerald-600 shrink-0" />
                       <span>{feat}</span>
@@ -167,10 +160,10 @@ export default function VehicleComparison({ onSelectVehicle }: VehicleComparison
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  onClick={() => onSelectVehicle('Maruti Gypsy (6-Seater 4x4)')}
+                  onClick={() => onSelectVehicle(gypsy.bookingValue)}
                   className="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-700 via-[#ea580c] to-[#d97706] hover:from-emerald-600 hover:to-[#ea580c] text-white font-bold text-sm shadow-md shadow-emerald-950/20 flex items-center justify-center gap-2 transition duration-200 cursor-pointer"
                 >
-                  <span>Request Jeep Safari Booking (48 Jeeps/Shift)</span>
+                  <span>{gypsy.buttonLabel}</span>
                   <ArrowRight className="w-4 h-4" />
                 </motion.button>
               </div>
@@ -193,8 +186,8 @@ export default function VehicleComparison({ onSelectVehicle }: VehicleComparison
               {/* Image Header */}
               <div className="relative h-64 sm:h-72 w-full overflow-hidden">
                 <Image
-                  src="/images/canter_safari.jpg"
-                  alt="Canter Safari in Ranthambore National Park"
+                  src={canter.image}
+                  alt={`${canter.title} – ${canter.subtitle}`}
                   fill
                   className="object-cover group-hover:scale-108 transition duration-700 ease-out"
                 />
@@ -209,15 +202,15 @@ export default function VehicleComparison({ onSelectVehicle }: VehicleComparison
                 <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
                   <div>
                     <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white group-hover:text-[#f59e0b] transition duration-300">
-                      Canter Safari
+                      {canter.title}
                     </h3>
                     <p className="text-xs text-[#f59e0b] font-medium">
-                      Open-Top 20-Seater Safari Bus (2x2)
+                      {canter.subtitle}
                     </p>
                   </div>
                   <div className="text-right">
-                    <span className="text-xs text-[#d1e5db] block">Starting from</span>
-                    <span className="text-2xl font-bold text-white">₹1,800</span>
+                    <span className="text-xs text-[#d1e5db] block">{ui.startingFrom}</span>
+                    <span className="text-2xl font-bold text-white">{inr(pricing.canterPerPerson)}</span>
                     <span className="text-[10px] text-[#bad3c6] block">/ Person (Indian)</span>
                   </div>
                 </div>
@@ -226,37 +219,22 @@ export default function VehicleComparison({ onSelectVehicle }: VehicleComparison
               {/* Content Details */}
               <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-5">
                 <p className="text-xs sm:text-sm text-[#1b3a2a] leading-relaxed font-normal">
-                  The open 20-seater Canter features elevated stepped seating with high perspective viewpoints across tall grassland and bamboo groves. Exceptional value for tour groups.
+                  {canter.description}
                 </p>
 
                 {/* Specs Table */}
                 <div className="grid grid-cols-2 gap-3 text-xs bg-[#f0f6f2] p-3.5 rounded-xl border border-[#d2e4d9]">
-                  <div>
-                    <span className="text-[#2e5241] font-medium block">Capacity &amp; Quota:</span>
-                    <span className="text-[#082318] font-bold">20 Seats • 50 Canters / Shift</span>
-                  </div>
-                  <div>
-                    <span className="text-[#2e5241] font-medium block">Daily Schedule:</span>
-                    <span className="text-[#082318] font-bold">Morning &amp; Afternoon Shifts</span>
-                  </div>
-                  <div>
-                    <span className="text-[#2e5241] font-medium block">Foreign National:</span>
-                    <span className="text-[#082318] font-bold">₹5,000 / Person</span>
-                  </div>
-                  <div>
-                    <span className="text-[#2e5241] font-medium block">Best For:</span>
-                    <span className="text-[#082318] font-bold">Groups &gt;6 &amp; Budget Travel</span>
-                  </div>
+                  {canter.specs.map((sp, i) => (
+                    <div key={i}>
+                      <span className="text-[#2e5241] font-medium block">{sp.label}</span>
+                      <span className="text-[#082318] font-bold">{spec(sp.value, pricing.canterForeignerPerPerson)}</span>
+                    </div>
+                  ))}
                 </div>
 
                 {/* Feature Checklist - Clean & Punchy */}
                 <ul className="space-y-2 text-xs sm:text-sm text-[#082318] font-medium">
-                  {[
-                    'Elevated high vantage point over forest brush and tall grass',
-                    '2x2 side-by-side seating layout with direct clear sightlines',
-                    '50 canters permitted per shift across 10 official safari gates',
-                    'Comfortable shared ride accompanied by authorized forest naturalist',
-                  ].map((feat, i) => (
+                  {canter.features.map((feat, i) => (
                     <li key={i} className="flex items-center gap-2 group-hover:translate-x-0.5 transition duration-200">
                       <Check className="w-4 h-4 text-[#d97706] shrink-0" />
                       <span>{feat}</span>
@@ -268,10 +246,10 @@ export default function VehicleComparison({ onSelectVehicle }: VehicleComparison
                 <motion.button
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  onClick={() => onSelectVehicle('Canter (20-Seater Safari Bus)')}
+                  onClick={() => onSelectVehicle(canter.bookingValue)}
                   className="w-full py-3.5 rounded-xl bg-white hover:bg-emerald-50 text-[#082318] font-bold text-sm border-2 border-emerald-600 flex items-center justify-center gap-2 transition duration-200 cursor-pointer shadow-sm hover:shadow-md"
                 >
-                  <span>Request Canter Safari Booking (50 Canters/Shift)</span>
+                  <span>{canter.buttonLabel}</span>
                   <ArrowRight className="w-4 h-4 text-emerald-600" />
                 </motion.button>
               </div>
@@ -289,9 +267,9 @@ export default function VehicleComparison({ onSelectVehicle }: VehicleComparison
         >
           <Info className="w-5 h-5 text-[#d97706] shrink-0 mt-0.5" />
           <div className="space-y-1">
-            <span className="font-bold text-[#082318]">Ranthambore Tiger Reserve Advisory: </span>
+            <span className="font-bold text-[#082318]">{vehicles.advisoryTitle} </span>
             <p className="leading-relaxed">
-              Advance permits are mandatory for both Gypsy and Canter safaris. Both follow the same official routes. Visitors are advised to carry photo ID (Aadhar/Passport) matching their permit.
+              {vehicles.advisoryText}
             </p>
           </div>
         </motion.div>

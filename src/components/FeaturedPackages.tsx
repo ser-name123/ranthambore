@@ -1,125 +1,23 @@
 'use client';
 
-import React, { useState } from 'react';
-import Image from 'next/image';
-import { Clock, MapPin, Check, ArrowRight, Star, Sparkles, Shield, Compass } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import SpotlightCard from './SpotlightCard';
+import React from 'react';
+import { Compass } from 'lucide-react';
+import { motion } from 'framer-motion';
+import PackagesGrid from './PackagesGrid';
+import { Highlight } from './cms/Text';
 import { JungleTopCanopy, JungleCornerBranch, BambooStalks, TigerTrackWatermark, JungleGodRays, JungleSavannahGrass } from './JungleFoliageDecorations';
+import { usePackages, useSiteContent } from '@/context/SiteContentContext';
+import { waHref } from '@/lib/site-content';
 
 interface FeaturedPackagesProps {
   onSelectPackage: (packageName: string) => void;
 }
 
-interface PackageItem {
-  id: string;
-  name: string;
-  category: 'all' | 'short' | 'standard' | 'luxury' | 'custom';
-  duration: string;
-  safariCount: string;
-  hotelType: string;
-  pricePerPerson: number;
-  badge?: string;
-  image: string;
-  highlights: string[];
-  inclusions: string[];
-}
-
 export default function FeaturedPackages({ onSelectPackage }: FeaturedPackagesProps) {
-  const [activeTab, setActiveTab] = useState<'all' | 'short' | 'standard' | 'luxury' | 'custom'>('all');
-
-  const packages: PackageItem[] = [
-    {
-      id: 'day-tour',
-      name: 'Ranthambore Day Safari Express',
-      category: 'short',
-      duration: '1 Day Trip',
-      safariCount: '1 Gypsy or Canter Safari',
-      hotelType: 'Day Rest / Fresh-up Facility',
-      pricePerPerson: 2999,
-      badge: 'Best for Quick Trips',
-      image: '/images/gypsy_encounter.jpg',
-      highlights: ['Morning or afternoon safari session', 'Sawai Madhopur station transfers', 'National Park permit & guide fee'],
-      inclusions: ['Safari Permit', 'Local Pickup', 'Guide Assistance']
-    },
-    {
-      id: 'weekend-escape',
-      name: 'Ranthambore Weekend Wildlife Tour',
-      category: 'standard',
-      duration: '1 Night / 2 Days',
-      safariCount: '1 Tiger Safari Included',
-      hotelType: '3-Star / Heritage Resort',
-      pricePerPerson: 6499,
-      badge: 'Most Popular',
-      image: '/images/tiger_stalking.jpg',
-      highlights: ['1 Night stay with Breakfast & Dinner', 'Choice of Gypsy or Canter safari', 'Evening campfire & Rajasthani folk music'],
-      inclusions: ['Resort Stay', '1 Safari Session', 'Meals Included', 'Station Transfer']
-    },
-    {
-      id: 'wildlife-escape',
-      name: 'Classic Ranthambore Wildlife Escape',
-      category: 'standard',
-      duration: '2 Nights / 3 Days',
-      safariCount: '2 Distinct Safari Sessions',
-      hotelType: '4-Star Deluxe Resort with Pool',
-      pricePerPerson: 12999,
-      badge: 'Highest Sightings Rate',
-      image: '/images/tiger_portrait.jpg',
-      highlights: ['2 Safaris (Morning & Afternoon zones)', 'All Meals (Breakfast, Lunch, Dinner)', 'Visit to UNESCO Ranthambore Fort'],
-      inclusions: ['2 Safaris', 'Resort Stay', 'All Meals', 'Fort Sightseeing']
-    },
-    {
-      id: 'photography-expedition',
-      name: 'Tiger Photography Master Expedition',
-      category: 'custom',
-      duration: '3 Nights / 4 Days',
-      safariCount: '4 Exclusive Gypsy Safaris',
-      hotelType: 'Luxury Wildlife Jungle Camp',
-      pricePerPerson: 27999,
-      badge: "Photographers' Choice",
-      image: '/images/tiger_lake.jpg',
-      highlights: ['Private 4x4 Gypsy for camera gear', 'Senior wildlife tracker & naturalist', 'Early morning golden hour slots'],
-      inclusions: ['4 Private Safaris', 'Luxury Villa', 'Expert Naturalist', 'All Transfers']
-    },
-    {
-      id: 'jaipur-excursion',
-      name: 'Jaipur to Ranthambore Tour Package',
-      category: 'short',
-      duration: 'Same Day or 1N/2D',
-      safariCount: '1 Scheduled Safari Session',
-      hotelType: 'Optional Resort Stay',
-      pricePerPerson: 8499,
-      badge: 'Door-to-Door Cab',
-      image: '/images/tiger_foliage.jpg',
-      highlights: ['Private AC sedan from Jaipur hotel/airport', 'Safari permit pre-coordinated', 'Scenic drive via Delhi-Mumbai Expressway'],
-      inclusions: ['Jaipur Cab', 'Safari Permit', 'Driver Allowance', 'Entry Assistance']
-    },
-    {
-      id: 'royal-heritage-tour',
-      name: 'Royal Heritage & Wilderness Tour',
-      category: 'luxury',
-      duration: '3 Nights / 4 Days',
-      safariCount: '3 Safaris + Chambal Sanctuary',
-      hotelType: '5-Star Heritage Palace / Oberoi/Taj Class',
-      pricePerPerson: 38999,
-      badge: 'Ultimate Luxury',
-      image: '/images/tiger_ruins.jpg',
-      highlights: ['Palatial suite with private courtyard', 'Chambal River Gharial & Crocodile boat safari', 'Gourmet dining & wellness spa'],
-      inclusions: ['5-Star Luxury', '3 Safaris', 'Chambal Boat', 'Private Butler']
-    }
-  ];
-
-  const filteredPackages = activeTab === 'all'
-    ? packages
-    : packages.filter(pkg => pkg.category === activeTab);
-
-  const tabs = [
-    { id: 'all', label: 'All Packages' },
-    { id: 'short', label: 'Day / 1-Day' },
-    { id: 'standard', label: 'Weekend & 3-Day' },
-    { id: 'luxury', label: 'Luxury Heritage' },
-    { id: 'custom', label: 'Photography' },
-  ] as const;
+  const { contact, home, ui } = useSiteContent();
+  const banner = ui.packagesBanner;
+  const packages = usePackages();
+  const heading = home.packages;
 
   return (
     <section className="py-24 bg-white relative overflow-hidden" id="packages">
@@ -132,166 +30,26 @@ export default function FeaturedPackages({ onSelectPackage }: FeaturedPackagesPr
       <JungleSavannahGrass className="bottom-0" />
 
       <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Heading with Motion */}
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-50px' }}
           transition={{ duration: 0.6 }}
-          className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6"
+          className="text-center max-w-3xl mx-auto mb-10 space-y-3"
         >
-          <div className="space-y-3">
+          {heading.badge && (
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-[#064e3b] text-xs font-bold uppercase tracking-widest border border-emerald-200 shadow-xs">
               <Compass className="w-3.5 h-3.5 text-[#047857]" />
-              Curated Itineraries
+              {heading.badge}
             </div>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#082318]">
-              Featured Tour Packages
-            </h2>
-            <p className="text-sm sm:text-base text-[#375847] max-w-2xl">
-              Handcrafted packages combining verified safari permits, luxury resort stays, meals, and private transfers across Ranthambore.
-            </p>
-          </div>
-
-          {/* Filter Tabs with Animated Sliding Pill */}
-          <div className="flex flex-wrap gap-1.5 bg-[#f0f6f2] p-1.5 rounded-xl border border-[#d2e4d9]">
-            {tabs.map(tab => (
-              <button
-                key={tab.id}
-                type="button"
-                onClick={() => setActiveTab(tab.id)}
-                className={`relative px-4 py-2 rounded-lg text-xs font-bold transition-all duration-200 cursor-pointer ${
-                  activeTab === tab.id
-                    ? 'text-white shadow-sm'
-                    : 'text-[#082318] hover:text-emerald-900 hover:bg-white/70'
-                }`}
-              >
-                {activeTab === tab.id && (
-                  <motion.div
-                    layoutId="packageTabPill"
-                    className="absolute inset-0 bg-gradient-to-r from-emerald-800 via-emerald-700 to-emerald-900 rounded-lg shadow-sm"
-                    transition={{ type: 'spring', stiffness: 450, damping: 30 }}
-                  />
-                )}
-                <span className="relative z-10">{tab.label}</span>
-              </button>
-            ))}
-          </div>
+          )}
+          <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#082318]">
+            <Highlight text={heading.title} />
+          </h2>
+          {heading.subtitle && <p className="text-sm sm:text-base text-[#375847]">{heading.subtitle}</p>}
         </motion.div>
 
-        {/* Packages Grid with AnimatePresence & Layout */}
-        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <AnimatePresence mode="popLayout">
-            {filteredPackages.map(pkg => (
-              <motion.div
-                key={pkg.id}
-                layout
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.35 }}
-                className="flex flex-col h-full"
-              >
-                <SpotlightCard
-                  spotlightColor="rgba(4, 120, 87, 0.08)"
-                  enableTilt={true}
-                  className="rounded-2xl overflow-hidden border border-[#d2e4d9] hover:border-emerald-500 transition duration-300 flex-1 flex flex-col group shadow-md hover:shadow-xl bg-white"
-                >
-                  {/* Package Image */}
-                  <div className="relative h-56 w-full overflow-hidden">
-                    <Image
-                      src={pkg.image}
-                      alt={pkg.name}
-                      fill
-                      className="object-cover group-hover:scale-108 transition duration-700 ease-out"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-
-                    {pkg.badge && (
-                      <div className="absolute top-3 left-3">
-                        <span className="px-2.5 py-1 rounded-md bg-emerald-600 text-white text-[11px] font-bold shadow-md">
-                          {pkg.badge}
-                        </span>
-                      </div>
-                    )}
-
-                    <div className="absolute top-3 right-3">
-                      <span className="px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-md text-[#ea580c] text-[11px] font-bold border border-white/60 shadow-xs flex items-center gap-1">
-                        <Clock className="w-3 h-3 text-[#ea580c]" />
-                        {pkg.duration}
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Package Content */}
-                  <div className="p-6 flex-1 flex flex-col justify-between space-y-5">
-                    <div>
-                      <h3 className="font-serif text-xl font-bold text-[#082318] group-hover:text-[#047857] transition">
-                        {pkg.name}
-                      </h3>
-
-                      <div className="mt-2.5 space-y-1.5 text-xs">
-                        <div className="flex items-center gap-1.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
-                          <span className="text-[#082318] font-semibold">{pkg.safariCount}</span>
-                        </div>
-                        <div className="flex items-center gap-1.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#d97706]" />
-                          <span className="text-[#1b3a2a] font-medium">{pkg.hotelType}</span>
-                        </div>
-                      </div>
-
-                      {/* Inclusion Pills */}
-                      <div className="mt-4 flex flex-wrap gap-1.5">
-                        {pkg.inclusions.map((inc, i) => (
-                          <span
-                            key={i}
-                            className="px-2 py-0.5 rounded bg-emerald-50 border border-emerald-200 text-[10px] text-[#082318] font-semibold"
-                          >
-                            ✓ {inc}
-                          </span>
-                        ))}
-                      </div>
-
-                      {/* Highlights */}
-                      <ul className="mt-4 space-y-1.5 text-xs text-[#1b3a2a] font-normal">
-                        {pkg.highlights.map((h, i) => (
-                          <li key={i} className="flex items-start gap-2">
-                            <Check className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
-                            <span>{h}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Price and CTA */}
-                    <div className="pt-4 border-t border-[#e2ede6] flex items-center justify-between">
-                      <div>
-                        <span className="text-[11px] text-[#2e5241] block font-semibold">Starting from</span>
-                        <div className="flex items-baseline gap-1">
-                          <span className="text-xl font-bold text-[#082318]">
-                            ₹{pkg.pricePerPerson.toLocaleString('en-IN')}
-                          </span>
-                          <span className="text-[10px] text-[#2e5241] font-medium">/ person</span>
-                        </div>
-                      </div>
-
-                      <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={() => onSelectPackage(pkg.name)}
-                        className="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-700 via-[#ea580c] to-[#d97706] hover:from-emerald-600 text-white text-xs font-bold shadow-md flex items-center gap-1.5 transition cursor-pointer"
-                      >
-                        <span>Enquire</span>
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </motion.button>
-                    </div>
-                  </div>
-                </SpotlightCard>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </motion.div>
+        <PackagesGrid packages={packages.filter((p) => p.featured)} onSelectPackage={onSelectPackage} />
 
         {/* Customization Banner with Smooth Motion */}
         <motion.div
@@ -303,10 +61,10 @@ export default function FeaturedPackages({ onSelectPackage }: FeaturedPackagesPr
         >
           <div className="space-y-2 text-center md:text-left relative z-10">
             <h4 className="font-serif text-2xl font-bold text-[#082318]">
-              Need a Custom Wildlife Package for Family or Corporate Groups?
+              {banner.title}
             </h4>
             <p className="text-xs sm:text-sm text-[#375847]">
-              We customize nights, safari counts, vehicle exclusivity, meal plans, and private transport from Jaipur or Delhi.
+              {banner.text}
             </p>
           </div>
 
@@ -317,17 +75,17 @@ export default function FeaturedPackages({ onSelectPackage }: FeaturedPackagesPr
               onClick={() => onSelectPackage('Customized Group / Family Tour')}
               className="px-5 py-3 rounded-xl bg-gradient-to-r from-emerald-700 to-[#d97706] hover:from-emerald-600 text-white text-xs font-bold shadow-md transition cursor-pointer"
             >
-              Get Custom Quotation
+              {banner.button}
             </motion.button>
             <motion.a
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.96 }}
-              href="https://wa.me/919971965629?text=Hello%20Ranthambore%20Wild%20Life%20Tour,%20I%20need%20a%20Custom%20Wildlife%20Package."
+              href={waHref(contact.whatsapp, banner.whatsappText)}
               target="_blank"
               rel="noopener noreferrer"
               className="px-5 py-3 rounded-xl bg-white hover:bg-emerald-50 text-[#047857] border border-[#c4dcce] text-xs font-bold transition flex items-center gap-1.5 shadow-xs"
             >
-              WhatsApp Travel Expert
+              {banner.whatsappButton}
             </motion.a>
           </div>
         </motion.div>

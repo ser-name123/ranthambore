@@ -1,5 +1,6 @@
 'use client';
 
+import { Highlight } from './cms/Text';
 import React, { useState } from 'react';
 import { Compass, Clock, MapPin, AlertCircle, Sparkles, CheckCircle2, Flame } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -12,97 +13,16 @@ import {
   TigerProwlSilhouette,
   JungleSavannahGrass 
 } from './JungleFoliageDecorations';
+import { useSiteContent } from '@/context/SiteContentContext';
 
 export default function ZoneGuide() {
   const [activeZoneTab, setActiveZoneTab] = useState<'core' | 'buffer'>('core');
   const [selectedZone, setSelectedZone] = useState<string | null>(null);
 
-  const coreZones = [
-    {
-      num: 'Zone 1',
-      name: 'Singhdwar, Sultanpur & Tutti Deh',
-      sightingRate: 85,
-      tigers: 'T-39 (Noor), T-57, T-101',
-      features: 'Dense dry forest terrain, rocky ridges, scenic streams. Frequent sightings of T-39 (Noor) lineage and leopards.'
-    },
-    {
-      num: 'Zone 2',
-      name: 'Jogi Mahal, Phuta Kot & Nal Ghati',
-      sightingRate: 90,
-      tigers: 'T-120 (Ganesh), T-84 (Arrowhead)',
-      features: 'Historic water holes, Phuta Bandha, scenic watering points. High tiger and sloth bear activity.'
-    },
-    {
-      num: 'Zone 3',
-      name: 'Padam Talao, Rajbagh & Malik Talao',
-      sightingRate: 94,
-      tigers: 'T-124 (Riddhi) & cubs, T-120',
-      features: 'The crown jewel of Ranthambore with vast lakes, ancient hunting palace ruins, and legendary Machhli lineage territory.'
-    },
-    {
-      num: 'Zone 4',
-      name: 'Tamkhan, Lakkad Dah & Berda',
-      sightingRate: 88,
-      tigers: 'T-125 (Siddhi), cubs',
-      features: 'Scenic rocky water bodies, high tiger density territory, popular for mother and cubs sightings.'
-    },
-    {
-      num: 'Zone 5',
-      name: 'Kachida, Jokha & Bakola',
-      sightingRate: 84,
-      tigers: 'T-102 & sub-adults',
-      features: 'Deep forest foliage, banyan trees, perennial water springs. High density of deer, birds, and tigers.'
-    },
-  ];
-
-  const bufferZones = [
-    {
-      num: 'Zone 6',
-      name: 'Kundal & Kala Pani',
-      sightingRate: 78,
-      tigers: 'T-58, T-57 territory',
-      features: 'Adjoining Zone 1 landscape, expansive open valleys and steep craggy hills. Excellent for bird watching and tigers.'
-    },
-    {
-      num: 'Zone 7',
-      name: 'Chidikho & Kushalipura',
-      sightingRate: 72,
-      tigers: 'T-34, T-61',
-      features: 'Mountainous ravines, high plateaus, quiet tranquil trails away from heavy safari traffic.'
-    },
-    {
-      num: 'Zone 8',
-      name: 'Balas & Neemli Dang',
-      sightingRate: 70,
-      tigers: 'Resident leopards & sloth bears',
-      features: 'Scenic rocky cliffs, leopard habitats, ancient trees, and thriving birdlife.'
-    },
-    {
-      num: 'Zone 9',
-      name: 'Qual Ji (Chambal River Border)',
-      sightingRate: 75,
-      tigers: 'T-59 & transient males',
-      features: 'Bordering the mighty Chambal River, scenic riverine banks, caracals, sloth bears, and transient tigers.'
-    },
-    {
-      num: 'Zone 10',
-      name: 'Aantri & Kushalipura Ravines',
-      sightingRate: 74,
-      tigers: 'T-99, T-108',
-      features: 'Lush greenery, scenic waterholes, tranquil birding, and increasing big cat territory.'
-    },
-  ];
-
-  const timings = [
-    { period: '1st Oct to 31st Oct', morning: '06:30 AM – 10:00 AM', afternoon: '02:30 PM – 06:00 PM' },
-    { period: '1st Nov to 31st Jan (Winter)', morning: '07:00 AM – 10:30 AM', afternoon: '02:00 PM – 05:30 PM' },
-    { period: '1st Feb to 31st Mar', morning: '06:30 AM – 10:00 AM', afternoon: '02:30 PM – 06:00 PM' },
-    { period: '1st Apr to 15th May (Summer)', morning: '06:00 AM – 09:30 AM', afternoon: '03:00 PM – 06:30 PM' },
-    { period: '16th May to 30th Jun', morning: '06:00 AM – 09:30 AM', afternoon: '03:30 PM – 07:00 PM' },
-    { period: '1st Jul to 30th Sep (Monsoon)', morning: 'Core Zones Closed', afternoon: 'Select Buffer Gates Active' }
-  ];
-
-  const displayedZones = activeZoneTab === 'core' ? coreZones : bufferZones;
+  const { zones: zoneContent, home, ui } = useSiteContent();
+  const heading = home.zones;
+  const timings = zoneContent.timings;
+  const displayedZones = zoneContent.zones.filter((z) => z.type === activeZoneTab);
 
   return (
     <section className="py-24 bg-white relative overflow-hidden" id="zones">
@@ -126,13 +46,13 @@ export default function ZoneGuide() {
         >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-[#064e3b] text-xs font-bold uppercase tracking-widest border border-emerald-200 shadow-xs">
             <Compass className="w-3.5 h-3.5 text-[#047857]" />
-            Park Knowledge Base
+            {heading.badge}
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#082318]">
-            Safari Zones &amp; Shift Timings
+            <Highlight text={heading.title} />
           </h2>
           <p className="text-sm sm:text-base text-[#1b3a2a]">
-            Ranthambore National Park is organized into 10 safari zones. Explore Core &amp; Buffer gates and plan around official forest department schedules.
+            {heading.subtitle}
           </p>
         </motion.div>
 
@@ -161,7 +81,7 @@ export default function ZoneGuide() {
                 )}
                 <span className="relative z-10 flex items-center gap-2">
                   <Compass className={`w-4 h-4 ${activeZoneTab === 'core' ? 'text-amber-300' : 'text-emerald-700'}`} />
-                  <span>Core Safari Gates (Zones 1 – 5)</span>
+                  <span>{zoneContent.coreTabLabel}</span>
                 </span>
               </button>
 
@@ -186,7 +106,7 @@ export default function ZoneGuide() {
                 )}
                 <span className="relative z-10 flex items-center gap-2">
                   <MapPin className={`w-4 h-4 ${activeZoneTab === 'buffer' ? 'text-amber-300' : 'text-[#d97706]'}`} />
-                  <span>Buffer Safari Gates (Zones 6 – 10)</span>
+                  <span>{zoneContent.bufferTabLabel}</span>
                 </span>
               </button>
             </div>
@@ -216,7 +136,7 @@ export default function ZoneGuide() {
                           {z.num}
                         </span>
                         <span className="text-[11px] text-[#1b3a2a] font-semibold">
-                          {activeZoneTab === 'core' ? 'Core Park Gate' : 'Scenic Buffer Gate'}
+                          {activeZoneTab === 'core' ? zoneContent.coreCardLabel : zoneContent.bufferCardLabel}
                         </span>
                       </div>
 
@@ -234,7 +154,7 @@ export default function ZoneGuide() {
                       <div className="flex items-center justify-between text-[11px]">
                         <span className="text-[#082318] flex items-center gap-1 font-bold">
                           <Flame className="w-3.5 h-3.5 text-[#ea580c]" />
-                          Historical Sighting Rate:
+                          {ui.sightingRate}
                         </span>
                         <span className="font-extrabold text-[#ea580c]">{z.sightingRate}%</span>
                       </div>
@@ -251,7 +171,7 @@ export default function ZoneGuide() {
                       </div>
 
                       <div className="text-[11px] text-[#183d2a] font-medium truncate pt-0.5">
-                        <span className="text-[#082318] font-bold">Tigers:</span> {z.tigers}
+                        <span className="text-[#082318] font-bold">{ui.tigersLabel}</span> {z.tigers}
                       </div>
                     </div>
                   </SpotlightCard>
@@ -275,10 +195,10 @@ export default function ZoneGuide() {
             </div>
             <div>
               <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#082318]">
-                Official Safari Shift Timings (2026-2027)
+                {zoneContent.timingsTitle}
               </h3>
               <p className="text-xs text-[#375847]">
-                Safari gates open twice daily. Entry closes strictly according to Forest Department regulations.
+                {zoneContent.timingsSubtitle}
               </p>
             </div>
           </div>
@@ -287,10 +207,9 @@ export default function ZoneGuide() {
             <table className="w-full text-left text-xs sm:text-sm">
               <thead className="bg-white text-[#082318] border-b border-[#d2e4d9]">
                 <tr>
-                  <th className="p-3.5 font-bold">Season / Month</th>
-                  <th className="p-3.5 font-bold">Morning Shift</th>
-                  <th className="p-3.5 font-bold">Afternoon Shift</th>
-                  <th className="p-3.5 font-bold">Status</th>
+                  {zoneContent.timingsColumns.map((c, i) => (
+                    <th key={i} className="p-3.5 font-bold">{c}</th>
+                  ))}
                 </tr>
               </thead>
               <tbody className="divide-y divide-[#e2ede6] text-[#284938]">
@@ -301,11 +220,11 @@ export default function ZoneGuide() {
                     <td className="p-3.5 text-[#183d2a]">{t.afternoon}</td>
                     <td className="p-3.5">
                       <span className={`px-2.5 py-0.5 rounded text-[11px] font-bold ${
-                        t.period.includes('Monsoon')
+                        t.bufferOnly
                           ? 'bg-amber-100 text-amber-900 border border-amber-300'
                           : 'bg-emerald-100 text-emerald-800 border border-emerald-300'
                       }`}>
-                        {t.period.includes('Monsoon') ? 'Buffer Only' : 'All Gates Open'}
+                        {t.bufferOnly ? zoneContent.bufferOnlyLabel : zoneContent.openLabel}
                       </span>
                     </td>
                   </tr>
@@ -318,7 +237,7 @@ export default function ZoneGuide() {
           <div className="mt-6 flex items-start gap-2.5 text-xs text-[#375847] bg-white p-4 rounded-xl border border-[#d2e4d9] shadow-xs">
             <AlertCircle className="w-4 h-4 text-[#ea580c] shrink-0 mt-0.5" />
             <span>
-              <strong className="text-[#082318]">Zone Allotment Transparency:</strong> Safari zones are assigned randomly by the Forest Department booking software at the time of permit issuance. We submit your preferred zone request with your application.
+              <strong className="text-[#082318]">{zoneContent.disclaimerTitle}</strong> {zoneContent.disclaimerText}
             </span>
           </div>
         </motion.div>

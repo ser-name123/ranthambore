@@ -1,0 +1,87 @@
+{
+  "slug": "contact-us",
+  "name": "Contact Us",
+  "group": "info",
+  "showToc": false,
+  "hero": {
+    "badge": "On-Ground Sawai Madhopur Safari Helpdesk",
+    "title": "Contact Ranthambore",
+    "highlight": "Wild Life Tour",
+    "subtitle": "Have questions regarding vehicle quotas, zone allocations, or custom itineraries? Speak directly with our local reservation desk in Sawai Madhopur.",
+    "image": "/images/tiger_portrait.jpg",
+    "ctaLabel": "",
+    "bookingPrefill": "",
+    "whatsappText": "Hello Ranthambore Wild Life Tour, I want to enquire about Safari Booking."
+  },
+  "blocks": [
+    {
+      "id": "contact-channels",
+      "type": "contactInfo"
+    },
+    {
+      "id": "reservation-office",
+      "type": "richText",
+      "badge": "Physical Head Office",
+      "heading": "Visit Our Sawai Madhopur Reservation Office",
+      "body": "We welcome visitors at our on-ground office. Drop by to verify original IDs, pick up printed safari vouchers, meet your assigned naturalist, or arrange luggage storage between morning and afternoon shifts.\n\n**Landmark:** 2.5 km from Sawai Madhopur Railway Station (SWM)"
+    },
+    {
+      "id": "desk-assistance",
+      "type": "checklist",
+      "groups": [
+        {
+          "title": "Direct Desk Assistance",
+          "tone": "do",
+          "items": [
+            "Tatkal & current booking token submission",
+            "Station pickup and hotel check-in coordination",
+            "Official computerized government receipt handover",
+            "Foreign tourist passport verification support"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "inquiry-form",
+      "type": "enquiryForm"
+    },
+    {
+      "id": "faqs",
+      "type": "faq",
+      "heading": "Frequently Asked Questions",
+      "items": [
+        {
+          "q": "How far in advance should I book my Ranthambore safari?",
+          "a": "Safari permits in Ranthambore open up to 90 to 120 days in advance through the Forest Department portal. Due to strict vehicle caps per zone, peak dates (October to March, long weekends, Diwali, and New Year) sell out quickly. We strongly advise booking at least 30 to 60 days ahead for Maruti Gypsy permits."
+        },
+        {
+          "q": "What government ID proof is needed for booking and entry?",
+          "a": "For Indian Nationals: Government photo ID such as Aadhaar Card, Passport, Voter ID, or Driving License. For Foreign Nationals: Original Passport and Visa details. The exact original ID used during booking must be carried and presented to forest officers at the entry gate during boarding."
+        },
+        {
+          "q": "Can I choose my specific safari zone?",
+          "a": "When you submit your enquiry, we submit your zone preference (Zones 1-5 Core or Zones 6-10 Buffer). However, the Rajasthan Forest Department computerised lottery system assigns final zones based on quota availability. No operator can legitimately guarantee a specific zone number in advance."
+        },
+        {
+          "q": "Are tiger sightings guaranteed on a safari?",
+          "a": "No. Ranthambore National Park is a protected wild habitat spanning over 1,300 sq km. Wildlife sightings depend entirely on animal movements, weather, and chance. Our expert naturalists use alarm calls, pugmarks, and territory knowledge to give you the highest possible probability of spotting tigers and other wildlife."
+        },
+        {
+          "q": "What is included in the safari booking price?",
+          "a": "Our safari quotations include the official Forest Department permit fee, vehicle hire (Maruti Gypsy or Canter), registered driver fee, certified forest guide fee, and boarding facilitation assistance. There are no surprise extra gate entry charges."
+        },
+        {
+          "q": "What is the safari permit cancellation policy?",
+          "a": "As per Rajasthan Forest Department regulations, confirmed safari permits are non-refundable, non-transferable, and non-amendable. If you cancel after permit issuance, permit fees cannot be refunded. For full tour packages and hotel stays, refund timelines vary according to individual resort policies."
+        }
+      ]
+    }
+  ],
+  "seo": {
+    "title": "Contact Us | Ranthambore Safari Booking Helpdesk",
+    "description": "Contact our Sawai Madhopur safari helpdesk for Gypsy & Canter permits, zone allocations and custom Ranthambore itineraries. Call, WhatsApp or email us daily.",
+    "keywords": "contact Ranthambore Wild Life Tour, Ranthambore safari helpline, Sawai Madhopur safari office, Ranthambore booking enquiry, Ranthambore WhatsApp booking, safari permit help",
+    "ogImage": "/images/tiger_portrait.jpg",
+    "noindex": false
+  }
+}

@@ -3,8 +3,10 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Volume2, VolumeX, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useSiteContent } from '@/context/SiteContentContext';
 
 export default function WildlifeSoundscape() {
+  const { ui } = useSiteContent();
   const [isPlaying, setIsPlaying] = useState(false);
   const audioCtxRef = useRef<AudioContext | null>(null);
   const intervalRef = useRef<number | null>(null);
@@ -126,8 +128,9 @@ export default function WildlifeSoundscape() {
             ? 'bg-emerald-800 text-white border-emerald-500 ring-2 ring-emerald-400/40'
             : 'bg-white/95 text-[#082318] border-[#c4dcce] hover:border-emerald-600 hover:bg-emerald-50'
         }`}
-        title={isPlaying ? 'Mute Jungle Ambience' : 'Play Jungle Forest Ambience'}
-        aria-label="Toggle Forest Ambience"
+        title={isPlaying ? ui.soundPlaying : ui.soundLabel}
+        aria-label={ui.soundLabel}
+        aria-pressed={isPlaying}
       >
         {isPlaying ? (
           <>
@@ -137,13 +140,13 @@ export default function WildlifeSoundscape() {
               <span className="w-1 h-2.5 bg-emerald-400 rounded-full animate-pulse" style={{ animationDelay: '300ms' }} />
             </div>
             <Volume2 className="w-4 h-4 text-emerald-300 shrink-0" />
-            <span className="text-[11px] font-bold tracking-wide">Forest Sound: Live</span>
+            <span className="text-[11px] font-bold tracking-wide">{ui.soundPlaying}</span>
           </>
         ) : (
           <>
             <VolumeX className="w-4 h-4 text-[#047857] shrink-0" />
             <span className="text-[11px] font-bold text-[#082318] tracking-wide flex items-center gap-1">
-              <span>Jungle Ambience</span>
+              <span>{ui.soundLabel}</span>
               <Sparkles className="w-3 h-3 text-[#d97706]" />
             </span>
           </>

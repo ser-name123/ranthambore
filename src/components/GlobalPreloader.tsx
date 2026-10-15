@@ -5,16 +5,14 @@ import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 
 export default function GlobalPreloader() {
-  const [routeLoading, setRouteLoading] = useState(false);
   const pathname = usePathname();
+  // The bar shows until the current path has been marked done.
+  const [donePath, setDonePath] = useState<string | null>(null);
+  const routeLoading = donePath !== pathname;
 
   // Sleek top glowing progress line on route transitions
   useEffect(() => {
-    setRouteLoading(true);
-    const timer = setTimeout(() => {
-      setRouteLoading(false);
-    }, 400);
-
+    const timer = setTimeout(() => setDonePath(pathname), 400);
     return () => clearTimeout(timer);
   }, [pathname]);
 

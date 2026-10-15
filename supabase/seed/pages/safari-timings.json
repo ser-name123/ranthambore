@@ -1,0 +1,97 @@
+{
+  "slug": "safari-timings",
+  "name": "Safari Timings & Shifts",
+  "group": "info",
+  "showToc": false,
+  "hero": {
+    "badge": "Forest Department Official Schedule",
+    "title": "Safari Timings & Shifts",
+    "highlight": "(2026–2027)",
+    "subtitle": "Official Rajasthan Forest Department gate opening, closing, and reporting schedules across all seasons. Plan your arrival and hotel pickups seamlessly.",
+    "image": "/images/tiger_stalking.jpg",
+    "ctaLabel": "Book Safari Shift",
+    "bookingPrefill": "",
+    "whatsappText": "Hello, please tell me today's safari shift timings for Ranthambore."
+  },
+  "blocks": [
+    {
+      "id": "timetable",
+      "type": "table",
+      "heading": "Official Shift Hours Month-by-Month",
+      "intro": "Each safari drive lasts approximately 3.5 hours inside the tiger reserve.",
+      "columns": ["Period", "Morning Shift", "Afternoon Shift", "Wildlife Notes"],
+      "rows": [
+        ["1st Oct to 31st Oct", "06:30 AM – 10:00 AM", "02:30 PM – 06:00 PM", "Park opens fresh after monsoon rejuvenation."],
+        ["1st Nov to 31st Jan", "07:00 AM – 10:30 AM", "02:00 PM – 05:30 PM", "Crisp winter drives. Active big cat movement."],
+        ["1st Feb to 31st Mar", "06:30 AM – 10:00 AM", "02:30 PM – 06:00 PM", "Pleasant spring weather, ideal lighting for wildlife photography."],
+        ["1st Apr to 15th May", "06:00 AM – 09:30 AM", "03:00 PM – 06:30 PM", "Heat concentrates tigers near lakes and waterholes."],
+        ["16th May to 30th Jun", "05:30 AM – 09:00 AM", "03:30 PM – 07:00 PM", "Peak tiger sighting probability across all zones."],
+        ["1st Jul to 30th Sep", "06:00 AM – 09:30 AM", "03:00 PM – 06:30 PM", "Core Zones (1 to 5) CLOSED. Buffer Zones (6-10) remain OPEN."]
+      ]
+    },
+    {
+      "id": "shift-comparison",
+      "type": "cards",
+      "columns": 2,
+      "style": "card",
+      "items": [
+        {
+          "icon": "sun",
+          "title": "Morning Shift Experience",
+          "text": "",
+          "bullets": [
+            "Golden sunrise over Ranthambore Fort and lake water lilies",
+            "Follow fresh night pugmarks stamped along dirt tracks",
+            "Crisp morning forest air with active birds and deer alarm calls",
+            "Hotel pickup starts 45 minutes prior to gate opening"
+          ]
+        },
+        {
+          "icon": "moon",
+          "title": "Afternoon Shift Experience",
+          "text": "",
+          "bullets": [
+            "Tigers wake up from midday siestas to drink at cooling waterholes",
+            "Glorious warm late afternoon rim lighting on big cat fur",
+            "Dust tracks settle down, offering peaceful golden hour atmosphere",
+            "Concludes with majestic sunset over Aravali hill ridgelines"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "monsoon-policy",
+      "type": "callout",
+      "tone": "warning",
+      "title": "Monsoon Operational Policy",
+      "text": "Every year, from 1st July to 30th September, Core Zones 1 to 5 remain closed for tiger breeding season. Selected Buffer Zones (6 to 10) remain fully operational subject to weather conditions."
+    },
+    {
+      "id": "faqs",
+      "type": "faq",
+      "heading": "Safari Timings FAQs",
+      "intro": "Frequently asked questions about Ranthambore entry and exit hours.",
+      "items": [
+        { "q": "Which shift is better for tiger sightings: Morning or Afternoon?", "a": "Both shifts offer equal chances because tigers are crepuscular (most active around dawn and dusk). In summer, afternoons are very rewarding around waterholes; in winter, mornings are great as tigers bask in the sun." },
+        { "q": "What time will the Gypsy pick me up from my hotel?", "a": "Hotel pickup begins 30 to 45 minutes before official gate entry time directly from your resort lobby." },
+        { "q": "What happens if we arrive late at the forest checkpost?", "a": "Gates close strictly at the designated minute by computerized timer, after which entry is barred without refund." }
+      ]
+    },
+    {
+      "id": "reserve-shift",
+      "type": "cta",
+      "title": "Reserve Your Preferred Shift Today",
+      "text": "Whether you prefer misty sunrise dawn drives or dramatic sunset golden hours, check shift permit availability with our local desk.",
+      "buttonLabel": "Check Shift Availability",
+      "bookingPrefill": "",
+      "whatsappText": ""
+    }
+  ],
+  "seo": {
+    "title": "Ranthambore Safari Timings & Shifts 2026–2027",
+    "description": "Official Ranthambore safari timings for 2026–2027: month-by-month morning and afternoon gate hours, hotel pickup times and the monsoon core zone closure policy.",
+    "keywords": "Ranthambore safari timings, Ranthambore safari shift time, morning safari Ranthambore, afternoon safari timings, Ranthambore gate opening time, monsoon closure",
+    "ogImage": "/images/tiger_stalking.jpg",
+    "noindex": false
+  }
+}

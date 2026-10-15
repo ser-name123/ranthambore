@@ -1,0 +1,158 @@
+{
+  "slug": "tour-packages",
+  "name": "Tour Packages",
+  "group": "service",
+  "showToc": false,
+  "hero": {
+    "badge": "Curated Wildlife Expeditions (2026-2027)",
+    "title": "Ranthambore Tour Packages:",
+    "highlight": "Resort Stays & Tiger Safaris",
+    "subtitle": "All-inclusive wildlife holiday packages combining confirmed Maruti Gypsy / Canter permits, luxury jungle resort accommodations, and expert naturalist trackers.",
+    "image": "/images/tiger_family.jpg",
+    "ctaLabel": "Build Custom Package",
+    "bookingPrefill": "Custom Tour Package",
+    "whatsappText": "Hello Ranthambore Wild Life Tour, please send available tour packages and pricing."
+  },
+  "blocks": [
+    {
+      "id": "featured-packages",
+      "type": "packages",
+      "badge": "Curated Itineraries",
+      "heading": "Featured Tour Packages",
+      "intro": "Handcrafted packages combining verified safari permits, luxury resort stays, meals, and private transfers across Ranthambore."
+    },
+    {
+      "id": "itinerary",
+      "type": "timeline",
+      "badge": "Sample 3-Day Plan",
+      "heading": "Day-by-Day Wildlife Itinerary",
+      "intro": "How a typical 3-day / 2-night tiger tracking package is experienced.",
+      "items": [
+        {
+          "label": "Day 1",
+          "title": "Arrival in Sawai Madhopur & Evening Safari",
+          "text": "12:00 PM – 07:00 PM",
+          "bullets": [
+            "Check-in at pre-selected jungle resort with welcome refreshments.",
+            "Pre-safari naturalist briefing on tiger tracking and zone terrain.",
+            "Afternoon Jeep / Canter Safari across designated core or buffer zone.",
+            "Evening return, Rajasthani cultural folk dance & bonfire dinner."
+          ]
+        },
+        {
+          "label": "Day 2",
+          "title": "Dawn Tiger Safari & UNESCO Ranthambore Fort",
+          "text": "06:00 AM – 06:30 PM",
+          "bullets": [
+            "Early morning dawn safari when tigers stalk around waterholes.",
+            "Sumptuous breakfast buffet at resort followed by leisure time.",
+            "Guided historical trek to the 10th-century Ranthambore Fort & Trinetra Ganesh temple.",
+            "Late afternoon tea and optional secondary twilight safari drive."
+          ]
+        },
+        {
+          "label": "Day 3",
+          "title": "Chambal Crocodile Boating & Departure",
+          "text": "08:00 AM – 02:00 PM",
+          "bullets": [
+            "Scenic morning excursion to National Chambal Sanctuary (Pali Ghat).",
+            "Motorboat river safari spotting Marsh Crocodiles, Gharials & Skimmers.",
+            "Return to resort for checkout and luggage transfer.",
+            "Private cab drop at Sawai Madhopur Railway Station or Jaipur Airport."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "inclusions-exclusions",
+      "type": "checklist",
+      "badge": "Clear Transparency",
+      "heading": "Package Inclusions vs Exclusions",
+      "intro": "No hidden surprises. Everything is clearly outlined before you confirm your tour.",
+      "groups": [
+        {
+          "title": "What is Included",
+          "tone": "do",
+          "items": [
+            "Confirmed Jeep / Canter Safari permits with all government gate fees",
+            "Registered Forest Department naturalist guide for every safari drive",
+            "Luxury jungle resort stay on twin/double sharing basis",
+            "All buffet meals (Breakfast, Lunch & Dinner as per plan)",
+            "Pick-up and drop from resort to safari gate in registered Gypsy",
+            "Complimentary high-speed Wi-Fi and swimming pool access at resort"
+          ]
+        },
+        {
+          "title": "What is Excluded",
+          "tone": "dont",
+          "items": [
+            "Airfare, train tickets, or intercity transportation to Sawai Madhopur",
+            "Any camera lens fee charged directly at the forest entry gate",
+            "Personal expenses like laundry, alcoholic beverages, and tips",
+            "Early check-in or late check-out charges not specified in the voucher",
+            "Travel insurance and medical emergency expenses"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "resort-categories",
+      "type": "cards",
+      "badge": "Accommodations",
+      "heading": "Handpicked Jungle Resorts & Tented Camps",
+      "intro": "Choose the accommodation style that matches your comfort and safari budget.",
+      "columns": 3,
+      "style": "card",
+      "items": [
+        {
+          "badge": "3-Star Standard",
+          "title": "Deluxe Jungle Resort",
+          "text": "From ₹4,500/night",
+          "bullets": [
+            "Air-conditioned cottage rooms",
+            "Swimming pool & garden lawn",
+            "Multi-cuisine buffet dining",
+            "Within 4 km of park gates"
+          ]
+        },
+        {
+          "badge": "4-Star Premium",
+          "title": "Heritage Palace Haveli",
+          "text": "From ₹8,500/night",
+          "bullets": [
+            "Royal Rajputana architecture",
+            "Ayurvedic spa treatments",
+            "Private balconies overlooking Aravali",
+            "Evening naturalist lectures"
+          ]
+        },
+        {
+          "badge": "5-Star Luxury",
+          "title": "Ultra-Luxury Tented Camp",
+          "text": "From ₹18,000/night",
+          "bullets": [
+            "Handcrafted royal tents with bathtub",
+            "Dedicated personal safari butler",
+            "Organic farm-to-table dining",
+            "Private bonfire stargazing deck"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "testimonials",
+      "type": "testimonials"
+    },
+    {
+      "id": "enquiry",
+      "type": "enquiryForm"
+    }
+  ],
+  "seo": {
+    "title": "Ranthambore Tour Packages: Resort Stays & Tiger Safaris",
+    "description": "All-inclusive Ranthambore tour packages with confirmed Gypsy or Canter safari permits, jungle resort stays, meals, naturalist guides and sample 3-day itinerary.",
+    "keywords": "ranthambore tour packages, ranthambore safari packages, ranthambore resort packages, ranthambore holiday packages, ranthambore tiger safari tour, ranthambore 3 day itinerary",
+    "ogImage": "/images/tiger_family.jpg",
+    "noindex": false
+  }
+}

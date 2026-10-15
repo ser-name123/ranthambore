@@ -603,7 +603,7 @@ export function GiantBanyanTree({
       >
         <Image
           src="/images/ancient_banyan_tree.jpg"
-          alt="Centuries-old Giant Ancient Banyan Tree with Hanging Roots"
+          alt="" aria-hidden
           fill
           className="object-contain object-bottom mix-blend-multiply"
           sizes="(max-width: 768px) 250px, 380px"
@@ -630,7 +630,7 @@ export function RanthamboreRuinsBackdrop({
       <div className="relative w-full h-full">
         <Image
           src="/images/ranthambore_ancient_ruin.jpg"
-          alt="Ranthambore Historic Lake Ruin Pavilion"
+          alt="" aria-hidden
           fill
           className="object-cover object-center mix-blend-multiply"
         />
@@ -659,7 +659,7 @@ export function AravalliLandscapeBackdrop({
       <div className="relative w-full h-full">
         <Image
           src="/images/aravalli_safari_plateau.jpg"
-          alt="Ranthambore Aravalli Valley Plateau"
+          alt="" aria-hidden
           fill
           className="object-cover object-center mix-blend-multiply"
         />

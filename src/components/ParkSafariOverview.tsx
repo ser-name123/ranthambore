@@ -29,6 +29,8 @@ import {
   GiantBanyanTree,
   RanthamboreRuinsBackdrop
 } from './JungleFoliageDecorations';
+import { useSiteContent } from '@/context/SiteContentContext';
+import { Highlight } from './cms/Text';
 
 interface ParkSafariOverviewProps {
   onOpenBookingModal?: (opts?: { vehicle?: string; zone?: string; packageName?: string }) => void;
@@ -37,68 +39,12 @@ interface ParkSafariOverviewProps {
 export default function ParkSafariOverview({ onOpenBookingModal }: ParkSafariOverviewProps) {
   const [activeTiger, setActiveTiger] = useState(0);
 
-  const tigerShowcase = [
-    {
-      name: 'T-120 (Ganesh)',
-      title: 'Monarch of Jogi Mahal',
-      territory: 'Zone 2 & Zone 3 Borders',
-      image: '/images/tiger_stalking.jpg',
-      tag: 'Apex Male Tiger',
-      desc: 'Known for confident day strolls through dense sal groves and watering corridors near ancient ruins.',
-      sightings: 'Very High (Morning Shift)',
-    },
-    {
-      name: 'T-124 (Riddhi)',
-      title: 'Queen of Padam Talao',
-      territory: 'Zone 3 Lake System',
-      image: '/images/tiger_lake.jpg',
-      tag: 'Machhli Dynasty',
-      desc: 'Dominates the iconic lake palaces and lotus beds. Globally famous for majestic shoreline hunting displays.',
-      sightings: 'Highest Sightings Rate',
-    },
-    {
-      name: 'Tigress with Cubs',
-      title: 'New Generation of the Forest',
-      territory: 'Zone 4 & 5 Corridors',
-      image: '/images/tiger_family.jpg',
-      tag: 'Breeding Dynasty',
-      desc: 'Playful cubs spotted resting under centuries-old banyan canopies and cooling off in hidden limestone pools.',
-      sightings: 'Regular Family Encounters',
-    },
-    {
-      name: 'T-84 (Arrowhead Lineage)',
-      title: 'Ruler of the Fort Clifftops',
-      territory: 'Zone 1 & Fort Slopes',
-      image: '/images/tiger_ruins.jpg',
-      tag: 'Heritage Predator',
-      desc: 'Often perched on ancient 10th-century stone battlements overlooking emerald canopies and river valleys.',
-      sightings: 'Scenic Photography Gold',
-    },
-  ];
+  const { overview, home, ui } = useSiteContent();
+  const heading = home.overview;
+  const tigerShowcase = overview.tigers;
+  const activeT = tigerShowcase[Math.min(activeTiger, tigerShowcase.length - 1)];
 
-  const milestones = [
-    {
-      year: '1955',
-      title: 'Wildlife Sanctuary Declared',
-      badge: 'Protected Genesis',
-      desc: 'Originally royal hunting grounds of Jaipur Maharajas, preserved to safeguard wild flora and Bengal tigers.',
-      icon: ShieldCheck,
-    },
-    {
-      year: '1973',
-      title: 'Project Tiger Reserve',
-      badge: 'Historic Landmark',
-      desc: 'Chosen as one of India’s first Project Tiger reserves to protect the apex predator in native habitats.',
-      icon: Flame,
-    },
-    {
-      year: '1991',
-      title: 'Greater Tiger Reserve (1,300+ sq km)',
-      badge: 'Expanded Corridors',
-      desc: 'Unification of Sawai Mansingh & Keladevi sanctuaries into an expansive deciduous tiger migration ecosystem.',
-      icon: TreePine,
-    },
-  ];
+  const milestones = overview.milestones;
 
   return (
     <section className="py-20 sm:py-24 bg-white relative overflow-hidden border-t border-[#e2ece6]" id="safari-overview">
@@ -134,23 +80,20 @@ export default function ParkSafariOverview({ onOpenBookingModal }: ParkSafariOve
         >
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 text-[#064e3b] text-xs font-bold uppercase tracking-widest border border-emerald-200 shadow-xs">
             <Compass className="w-3.5 h-3.5 text-[#047857]" />
-            Ranthambore Tiger Reserve
+            {heading.badge}
           </div>
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#082318] tracking-tight leading-tight">
-            Meet the Royal Bengal Tigers of{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 via-[#ea580c] to-[#d97706]">
-              Ranthambore
-            </span>
+<Highlight text={heading.title} />
           </h2>
           <p className="text-sm sm:text-base text-[#1b3a2a] leading-relaxed">
-            One of the world&apos;s finest natural habitats to witness wild Bengal tigers in broad daylight. Spanning 10 regulated zones across ancient fortresses, freshwater lakes, and lush deciduous jungle.
+            {heading.subtitle}
           </p>
         </motion.div>
 
         {/* ============================================================== */}
         {/* PART 1: VISUAL TIGER PHOTOGRAPHY SHOWCASE */}
         {/* ============================================================== */}
-        <div className="mb-20">
+        {activeT && <div className="mb-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
             {/* Big Active Tiger Image Card (lg:col-span-7) */}
             <motion.div
@@ -167,8 +110,8 @@ export default function ParkSafariOverview({ onOpenBookingModal }: ParkSafariOve
                   className="relative w-full h-full"
                 >
                   <Image
-                    src={tigerShowcase[activeTiger].image}
-                    alt={tigerShowcase[activeTiger].name}
+                    src={activeT.image}
+                    alt={activeT.name}
                     fill
                     priority
                     className="object-cover group-hover:scale-105 transition duration-700 ease-out"
@@ -183,30 +126,30 @@ export default function ParkSafariOverview({ onOpenBookingModal }: ParkSafariOve
                 <div className="space-y-1 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-[#d2e4d9] max-w-md shadow-xl text-[#082318]">
                   <div className="flex items-center gap-2">
                     <span className="px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 text-[10px] font-bold uppercase tracking-wider border border-emerald-200">
-                      {tigerShowcase[activeTiger].tag}
+                      {activeT.tag}
                     </span>
                     <span className="text-[11px] text-[#d97706] font-semibold flex items-center gap-1">
                       <Eye className="w-3 h-3" />
-                      {tigerShowcase[activeTiger].sightings}
+                      {activeT.sightings}
                     </span>
                   </div>
                   <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#082318]">
-                    {tigerShowcase[activeTiger].name} – {tigerShowcase[activeTiger].title}
+                    {activeT.name} – {activeT.title}
                   </h3>
                   <p className="text-xs text-[#1b3a2a] leading-relaxed font-normal">
-                    {tigerShowcase[activeTiger].desc}
+                    {activeT.desc}
                   </p>
                   <div className="flex items-center gap-1.5 text-[11px] text-emerald-800 font-semibold pt-1">
                     <MapPin className="w-3 h-3 shrink-0 text-emerald-700" />
-                    <span>Territory: {tigerShowcase[activeTiger].territory}</span>
+                    <span>{ui.territoryLabel} {activeT.territory}</span>
                   </div>
                 </div>
 
                 <button
-                  onClick={() => onOpenBookingModal && onOpenBookingModal({ zone: tigerShowcase[activeTiger].territory })}
+                  onClick={() => onOpenBookingModal && onOpenBookingModal({ zone: activeT.territory })}
                   className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-700 via-[#ea580c] to-[#d97706] hover:from-emerald-600 text-white font-bold text-xs shadow-lg flex items-center justify-center gap-2 cursor-pointer shrink-0"
                 >
-                  <span>Book Safari in this Zone</span>
+                  <span>{overview.showcaseCta}</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
               </div>
@@ -265,7 +208,7 @@ export default function ParkSafariOverview({ onOpenBookingModal }: ParkSafariOve
               })}
             </div>
           </div>
-        </div>
+        </div>}
 
         {/* ============================================================== */}
         {/* PART 2: 3 PILLARS - CONCISE & HIGH CONVERTING */}
@@ -279,9 +222,9 @@ export default function ParkSafariOverview({ onOpenBookingModal }: ParkSafariOve
             <div className="w-11 h-11 rounded-xl bg-emerald-50 text-[#047857] border border-emerald-200 flex items-center justify-center font-bold">
               <ShieldCheck className="w-5 h-5" />
             </div>
-            <h3 className="font-serif text-xl font-bold text-[#082318]">Forest Department Permits</h3>
+            <h3 className="font-serif text-xl font-bold text-[#082318]">{overview.pillars[0]?.title}</h3>
             <p className="text-xs sm:text-sm text-[#1b3a2a] leading-relaxed font-normal">
-              All safaris are governed by the Rajasthan Forest Dept. Daily quotas are limited per zone to protect wild habitat and prevent overcrowding.
+              {overview.pillars[0]?.text}
             </p>
           </SpotlightCard>
 
@@ -293,9 +236,9 @@ export default function ParkSafariOverview({ onOpenBookingModal }: ParkSafariOve
             <div className="w-11 h-11 rounded-xl bg-amber-50 text-[#d97706] border border-amber-200 flex items-center justify-center font-bold">
               <Compass className="w-5 h-5" />
             </div>
-            <h3 className="font-serif text-xl font-bold text-[#082318]">10 Managed Safari Zones</h3>
+            <h3 className="font-serif text-xl font-bold text-[#082318]">{overview.pillars[1]?.title}</h3>
             <p className="text-xs sm:text-sm text-[#1b3a2a] leading-relaxed font-normal">
-              Zones 1 to 5 encompass historic core lakes and fort trails. Zones 6 to 10 feature rugged buffer valleys and thriving leopard corridors.
+              {overview.pillars[1]?.text}
             </p>
           </SpotlightCard>
 
@@ -307,9 +250,9 @@ export default function ParkSafariOverview({ onOpenBookingModal }: ParkSafariOve
             <div className="w-11 h-11 rounded-xl bg-emerald-50 text-[#047857] border border-emerald-200 flex items-center justify-center font-bold">
               <Sparkles className="w-5 h-5" />
             </div>
-            <h3 className="font-serif text-xl font-bold text-[#082318]">Jeep &amp; Canter Safari Options</h3>
+            <h3 className="font-serif text-xl font-bold text-[#082318]">{overview.pillars[2]?.title}</h3>
             <p className="text-xs sm:text-sm text-[#1b3a2a] leading-relaxed font-normal">
-              Choose an exclusive 6-seater 4x4 Maruti Gypsy for maneuverability or an economical 20-seater safari Canter for family groups.
+              {overview.pillars[2]?.text}
             </p>
           </SpotlightCard>
         </div>
@@ -320,23 +263,22 @@ export default function ParkSafariOverview({ onOpenBookingModal }: ParkSafariOve
         <div className="p-6 sm:p-8 rounded-3xl bg-[#f4f8f5] border border-[#d2e4d9] shadow-md">
           <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-6 pb-6 border-b border-[#dcebe1]">
             <div>
-              <span className="text-xs font-bold uppercase tracking-wider text-[#d97706]">Historic Conservation Journey</span>
+              <span className="text-xs font-bold uppercase tracking-wider text-[#d97706]">{overview.timelineBadge}</span>
               <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#082318] mt-1">
-                How Ranthambore Became India&apos;s Tiger Capital
+                {overview.timelineTitle}
               </h3>
             </div>
             <button
               onClick={() => onOpenBookingModal && onOpenBookingModal()}
               className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-700 to-[#d97706] hover:from-emerald-600 text-white font-bold text-xs shadow-md flex items-center gap-2 cursor-pointer shrink-0"
             >
-              <span>Plan Your Safari Visit</span>
+              <span>{overview.timelineCta}</span>
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {milestones.map((m) => {
-              const Icon = m.icon;
               return (
                 <div key={m.year} className="p-4 rounded-2xl bg-white border border-[#dcebe1] space-y-2 shadow-xs">
                   <div className="flex items-center justify-between">

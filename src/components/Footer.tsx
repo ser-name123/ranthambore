@@ -19,7 +19,9 @@ import {
   Camera,
   Heart
 } from 'lucide-react';
-import { JungleTopCanopy, JungleCornerBranch, TigerTrackWatermark } from './JungleFoliageDecorations';
+import { JungleCornerBranch, TigerTrackWatermark } from './JungleFoliageDecorations';
+import { useSiteContent } from '@/context/SiteContentContext';
+import { telHref, waHref } from '@/lib/site-content';
 
 interface FooterProps {
   onOpenBookingModal?: (prefill?: Record<string, string>) => void;
@@ -30,36 +32,12 @@ export default function Footer({ onOpenBookingModal }: FooterProps) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const phoneNumbers = [
-    { display: '+91 99719 65629', raw: '+919971965629' },
-    { display: '+91 78349 42435', raw: '+917834942435' },
-  ];
+  const { contact, footer, navigation, branding, ui } = useSiteContent();
 
-  const safariLinks = [
-    { name: 'Maruti Gypsy Safari (6-Seater)', href: '/gypsy-safari' },
-    { name: 'Canter Safari Bus (20-Seater)', href: '/canter-safari' },
-    { name: 'Core Zones 1 to 5 Booking', href: '/core-zones-safari' },
-    { name: 'Buffer Gates 6 to 10 Safaris', href: '/buffer-zones-safari' },
-    { name: 'Wildlife Photography Expeditions', href: '/wildlife-photography-tour' },
-    { name: 'Safari Timings & Shifts (2026-27)', href: '/safari-timings' },
-  ];
 
-  const tourLinks = [
-    { name: '2N/3D Classic Wildlife Package', href: '/packages/2n-3d-classic-wildlife' },
-    { name: '3N/4D Royal Tiger Expedition', href: '/packages/3n-4d-royal-tiger' },
-    { name: 'Luxury Forest Resort Stays', href: '/resort-booking' },
-    { name: 'Ranthambore Fort & Chambal Boating', href: '/chambal-safari' },
-    { name: 'Jaipur & Delhi Cab Transfers', href: '/taxi-transfers' },
-    { name: 'Cancellation & Refund Policy', href: '/cancellation-policy' },
-    { name: 'Safari FAQs & ID Proof Rules', href: '/safari-faq-rules' },
-  ];
 
-  const trustBadges = [
-    { label: 'Authorized Safari Operators', icon: ShieldCheck },
-    { label: 'Govt. Identity Verification', icon: CheckCircle2 },
-    { label: 'Certified Naturalist Trackers', icon: Compass },
-    { label: '100% Transparent Quotation', icon: Sparkles },
-  ];
+  const badgeIcons = [ShieldCheck, CheckCircle2, Compass, Sparkles];
+  const trustBadges = footer.trustBadges.map((label, i) => ({ label, icon: badgeIcons[i % badgeIcons.length] }));
 
   return (
     <footer className="relative bg-[#f4f8f5] text-[#375847] border-t border-[#d2e4d9] pt-14 pb-24 lg:pb-12 overflow-hidden">
@@ -83,33 +61,33 @@ export default function Footer({ onOpenBookingModal }: FooterProps) {
             <div className="space-y-3 text-center lg:text-left">
               <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-100 text-[#064e3b] text-xs font-bold uppercase tracking-wider border border-emerald-300 shadow-xs">
                 <Sparkles className="w-3.5 h-3.5 text-[#d97706]" />
-                Planning Your Ranthambore Trip?
+                {footer.ctaBadge}
               </div>
               <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-[#082318] tracking-tight">
-                Secure Your Jungle Safari Permits Before Quotas Fill Up
+                {footer.ctaTitle}
               </h3>
               <p className="text-sm sm:text-base text-[#1b3a2a] max-w-2xl leading-relaxed font-normal">
-                Forest Department permits for core zones are strictly limited per shift. Speak directly with our Sawai Madhopur wildlife desk for instant date checking.
+                {footer.ctaText}
               </p>
             </div>
 
             <div className="flex flex-wrap items-center justify-center gap-4 shrink-0">
               <a
-                href={`tel:${phoneNumbers[0].raw}`}
+                href={telHref(contact.phonePrimary)}
                 className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-700 via-emerald-800 to-emerald-900 hover:from-emerald-800 hover:to-emerald-950 text-white font-bold text-sm shadow-lg shadow-emerald-900/20 flex items-center gap-2.5 transition duration-300 transform hover:-translate-y-0.5 cursor-pointer"
               >
                 <Phone className="w-4 h-4 text-emerald-200" />
-                <span>Call Safari Desk: +91 99719 65629</span>
+                <span>{footer.callLabel} {contact.phonePrimary}</span>
               </a>
 
               <a
-                href="https://wa.me/919971965629?text=Hello%20Ranthambore%20Wild%20Life%20Tour,%20I%20want%20to%20check%20safari%20availability."
+                href={waHref(contact.whatsapp, ui.whatsappMessages.footer)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="px-5 py-3.5 rounded-xl bg-white hover:bg-emerald-50 text-[#082318] border-2 border-emerald-300 font-bold text-sm flex items-center gap-2 transition duration-300 shadow-sm cursor-pointer"
               >
                 <MessageCircle className="w-4 h-4 text-emerald-700" />
-                <span>WhatsApp Quote</span>
+                <span>{ui.whatsappQuote}</span>
               </a>
             </div>
           </div>
@@ -122,24 +100,24 @@ export default function Footer({ onOpenBookingModal }: FooterProps) {
             <Link href="/" className="flex items-center gap-3.5 group inline-flex">
               <div className="relative w-14 h-14 rounded-2xl overflow-hidden shadow-md border border-[#d2e4d9] group-hover:border-emerald-500 transition duration-300">
                 <Image
-                  src="/logo.jpg"
-                  alt="Ranthambore Wild Life Tour"
+                  src={branding.logo}
+                  alt={`${branding.name} ${branding.tagline}`}
                   fill
                   className="object-cover group-hover:scale-105 transition duration-500"
                 />
               </div>
               <div>
                 <span className="block font-serif text-2xl font-bold tracking-tight text-[#082318] group-hover:text-emerald-700 transition">
-                  Ranthambore
+                  {branding.name}
                 </span>
                 <span className="block text-[11px] tracking-[0.24em] uppercase font-bold text-[#d97706]">
-                  Wild Life Tour
+                  {branding.tagline}
                 </span>
               </div>
             </Link>
 
             <p className="text-xs sm:text-sm text-[#375847] leading-relaxed">
-              Your premier on-ground wildlife safari facilitator based at Sawai Madhopur. Providing official Gypsy and Canter permits, luxury wilderness resorts, and naturalist-led tiger expeditions since 2014.
+              {footer.about}
             </p>
 
             {/* Guest Satisfaction Rating Badge */}
@@ -149,11 +127,11 @@ export default function Footer({ onOpenBookingModal }: FooterProps) {
               </div>
               <div>
                 <div className="flex items-center gap-1.5">
-                  <span className="text-[#082318] font-bold text-sm">4.9 / 5.0 Rating</span>
+                  <span className="text-[#082318] font-bold text-sm">{footer.ratingTitle}</span>
                   <span className="text-[#d97706] text-xs">★★★★★</span>
                 </div>
                 <p className="text-[11px] text-[#517362]">
-                  Over 1,400+ satisfied wildlife travellers &amp; photographers
+                  {footer.ratingText}
                 </p>
               </div>
             </div>
@@ -161,57 +139,40 @@ export default function Footer({ onOpenBookingModal }: FooterProps) {
             {/* Active Status Badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-50 border border-emerald-200 text-xs text-emerald-800 font-semibold">
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-              <span>2026-2027 Season Bookings Active</span>
+              <span>{footer.seasonText}</span>
             </div>
           </div>
 
-          {/* Column 2: Safari Vehicles & Booking (lg:col-span-3) */}
-          <div className="lg:col-span-3 space-y-4">
-            <h4 className="font-serif text-lg font-bold text-[#082318] flex items-center gap-2 border-b border-[#d2e4d9] pb-3">
-              <Compass className="w-4 h-4 text-emerald-600" />
-              Safari Booking
-            </h4>
-            <ul className="space-y-2.5 text-xs sm:text-sm">
-              {safariLinks.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="group flex items-center gap-2 text-[#1b3a2a] hover:text-emerald-800 font-medium transition duration-200"
-                  >
-                    <ChevronRight className="w-3.5 h-3.5 text-emerald-700 group-hover:text-emerald-800 group-hover:translate-x-1 transition duration-200" />
-                    <span>{link.name}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Column 3: Tour Packages & Guides (lg:col-span-2) */}
-          <div className="lg:col-span-2 space-y-4">
-            <h4 className="font-serif text-lg font-bold text-[#082318] flex items-center gap-2 border-b border-[#d2e4d9] pb-3">
-              <Camera className="w-4 h-4 text-[#d97706]" />
-              Tours &amp; Info
-            </h4>
-            <ul className="space-y-2.5 text-xs sm:text-sm">
-              {tourLinks.map((link) => (
-                <li key={link.name}>
-                  <Link
-                    href={link.href}
-                    className="group flex items-center gap-2 text-[#1b3a2a] hover:text-emerald-800 font-medium transition duration-200"
-                  >
-                    <ChevronRight className="w-3.5 h-3.5 text-emerald-700 group-hover:text-emerald-800 group-hover:translate-x-1 transition duration-200" />
-                    <span>{link.name}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          {/* Columns 2-3: admin-managed link lists */}
+          <div className="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 gap-10">
+            {navigation.footerColumns.map((col, idx) => (
+              <div key={idx} className="space-y-4">
+                <h4 className="font-serif text-lg font-bold text-[#082318] flex items-center gap-2 border-b border-[#d2e4d9] pb-3">
+                  {idx % 2 === 0 ? <Compass className="w-4 h-4 text-emerald-600" /> : <Camera className="w-4 h-4 text-[#d97706]" />}
+                  {col.title}
+                </h4>
+                <ul className="space-y-2.5 text-xs sm:text-sm">
+                  {col.links.map((link) => (
+                    <li key={link.href + link.label}>
+                      <Link
+                        href={link.href}
+                        className="group flex items-center gap-2 text-[#1b3a2a] hover:text-emerald-800 font-medium transition duration-200"
+                      >
+                        <ChevronRight className="w-3.5 h-3.5 text-emerald-700 group-hover:text-emerald-800 group-hover:translate-x-1 transition duration-200" />
+                        <span>{link.label}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
 
           {/* Column 4: Contact Coordinates & Office (lg:col-span-3) */}
           <div className="lg:col-span-3 space-y-4">
             <h4 className="font-serif text-lg font-bold text-[#082318] flex items-center gap-2 border-b border-[#d2e4d9] pb-3">
               <MapPin className="w-4 h-4 text-[#d97706]" />
-              Safari Helpdesk
+              {footer.helpdeskTitle}
             </h4>
 
             <div className="space-y-3.5 text-xs text-[#1b3a2a]">
@@ -219,7 +180,7 @@ export default function Footer({ onOpenBookingModal }: FooterProps) {
               <div className="p-3 rounded-xl bg-white border border-[#d2e4d9] shadow-sm flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
                 <span className="text-[#1b3a2a] leading-relaxed font-normal">
-                  Near Ranthambore Circle, Ranthambore Road, Sawai Madhopur, Rajasthan – 322001, India
+                  {contact.address}
                 </span>
               </div>
 
@@ -227,16 +188,16 @@ export default function Footer({ onOpenBookingModal }: FooterProps) {
               <div className="p-3 rounded-xl bg-white border border-[#d2e4d9] shadow-sm space-y-1.5">
                 <div className="flex items-center gap-2 text-[#517362]">
                   <Phone className="w-3.5 h-3.5 text-emerald-600" />
-                  <span className="font-semibold text-[11px] uppercase tracking-wider text-emerald-700">Direct Call</span>
+                  <span className="font-semibold text-[11px] uppercase tracking-wider text-emerald-700">{footer.directCallLabel}</span>
                 </div>
                 <div className="flex flex-col gap-1 text-[#082318] font-semibold">
-                  <a href="tel:+919971965629" className="hover:text-emerald-700 transition flex items-center justify-between">
-                    <span>+91 99719 65629</span>
-                    <span className="text-[10px] text-[#d97706] font-normal">Primary</span>
+                  <a href={telHref(contact.phonePrimary)} className="hover:text-emerald-700 transition flex items-center justify-between">
+                    <span>{contact.phonePrimary}</span>
+                    <span className="text-[10px] text-[#d97706] font-normal">{footer.primaryLabel}</span>
                   </a>
-                  <a href="tel:+917834942435" className="hover:text-emerald-700 transition flex items-center justify-between">
-                    <span>+91 78349 42435</span>
-                    <span className="text-[10px] text-emerald-700 font-normal">Alternate</span>
+                  <a href={telHref(contact.phoneSecondary)} className="hover:text-emerald-700 transition flex items-center justify-between">
+                    <span>{contact.phoneSecondary}</span>
+                    <span className="text-[10px] text-emerald-700 font-normal">{footer.alternateLabel}</span>
                   </a>
                 </div>
               </div>
@@ -245,13 +206,13 @@ export default function Footer({ onOpenBookingModal }: FooterProps) {
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
                   <Mail className="w-3.5 h-3.5 text-[#d97706]" />
-                  <a href="mailto:info@ranthamborewildlifetour.com" className="text-[#082318] hover:text-emerald-700 transition truncate font-medium">
-                    info@ranthamborewildlifetour.com
+                  <a href={`mailto:${contact.email}`} className="text-[#082318] hover:text-emerald-700 transition truncate font-medium">
+                    {contact.email}
                   </a>
                 </div>
                 <div className="flex items-center gap-2 text-[#517362]">
                   <Clock className="w-3.5 h-3.5 text-emerald-600" />
-                  <span>Working Hours: 6:00 AM – 10:00 PM (Daily)</span>
+                  <span>{footer.hoursLabel} {contact.supportHours}</span>
                 </div>
               </div>
             </div>
@@ -281,10 +242,10 @@ export default function Footer({ onOpenBookingModal }: FooterProps) {
           <div className="p-4 sm:p-5 rounded-2xl bg-white border border-[#d2e4d9] shadow-sm text-[11px] sm:text-xs text-[#517362] leading-relaxed">
             <div className="flex items-center gap-2 mb-2 font-semibold text-[#082318]">
               <ShieldCheck className="w-4 h-4 text-[#d97706]" />
-              <span>Statutory Compliance &amp; Transparency Notice</span>
+              <span>{footer.disclaimerTitle}</span>
             </div>
             <p>
-              <strong>Ranthambore Wild Life Tour (ranthamborewildlifetour.com)</strong> is an independent travel facilitation agency providing safari permit assistance, wildlife resort bookings, and naturalist guides in Sawai Madhopur. We are <strong>NOT</strong> the official website of Ranthambore National Park or the Rajasthan Forest Department. All safari permits are issued under the regulations of the Forest Department, Government of Rajasthan. Tiger sightings are completely dependent on natural wildlife movements and cannot be legally guaranteed.
+              {footer.disclaimer}
             </p>
           </div>
         </div>
@@ -292,26 +253,28 @@ export default function Footer({ onOpenBookingModal }: FooterProps) {
         {/* Bottom Credits & Back to Top */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#517362] gap-4">
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
-            <span>© 2026 Ranthambore Wild Life Tour. All Rights Reserved.</span>
+            <span>{footer.copyright}</span>
             <span className="hidden sm:inline text-[#d2e4d9]">|</span>
-            <div className="flex items-center gap-3 text-[#375847] font-medium">
-              <Link href="/privacy-policy" className="hover:text-emerald-700 transition">Privacy Policy</Link>
-              <span>•</span>
-              <Link href="/terms-conditions" className="hover:text-emerald-700 transition">Terms &amp; Conditions</Link>
-              <span>•</span>
-              <Link href="/cancellation-policy" className="hover:text-emerald-700 transition">Cancellation Policy</Link>
-              <span>•</span>
-              <Link href="/admin" className="hover:text-amber-600 transition flex items-center gap-1">
-                <ShieldCheck className="w-3 h-3 text-[#d97706]" />
-                <span>Admin Portal</span>
-              </Link>
+            <div className="flex flex-wrap items-center justify-center gap-3 text-[#375847] font-medium">
+              {navigation.legal.map((link) => (
+                <React.Fragment key={link.href + link.label}>
+                  <Link href={link.href} className="hover:text-emerald-700 transition">{link.label}</Link>
+                  <span>•</span>
+                </React.Fragment>
+              ))}
+              {footer.showAdminLink && (
+                <Link href="/admin" className="hover:text-amber-600 transition flex items-center gap-1">
+                  <ShieldCheck className="w-3 h-3 text-[#d97706]" />
+                  <span>{footer.adminLinkLabel}</span>
+                </Link>
+              )}
             </div>
           </div>
 
           <div className="flex items-center gap-4">
             <span className="inline-flex items-center gap-1.5 text-[11px] text-[#517362]">
               <Heart className="w-3.5 h-3.5 text-[#d97706] fill-[#d97706]" />
-              <span>Preserving Ranthambore Wildlife Heritage</span>
+              <span>{footer.tagline}</span>
             </span>
 
             <button

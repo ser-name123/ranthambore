@@ -14,18 +14,15 @@ import {
   GiantBanyanTree,
   RanthamboreRuinsBackdrop 
 } from './JungleFoliageDecorations';
+import { useSiteContent } from '@/context/SiteContentContext';
 
 interface AboutCompanyProps {
   onOpenBookingModal: () => void;
 }
 
 export default function AboutCompany({ onOpenBookingModal }: AboutCompanyProps) {
-  const stats = [
-    { target: 12, suffix: '+', label: 'Years in Ranthambore', sub: 'Local Sawai Madhopur roots' },
-    { target: 15000, suffix: '+', label: 'Successful Safaris', sub: 'Gypsy & Canter permits' },
-    { target: 98, suffix: '%', label: 'Sightings Satisfaction', sub: 'Tigers, leopards, sloth bears' },
-    { target: 4.9, decimals: 1, suffix: ' / 5.0', label: 'Customer Trust Rating', sub: 'Verified traveller reviews' },
-  ];
+  const { about, home } = useSiteContent();
+  const stats = about.stats;
 
   return (
     <section className="py-24 bg-[#f4f8f5] relative overflow-hidden border-t border-[#e2ede6]" id="about-us">
@@ -58,8 +55,8 @@ export default function AboutCompany({ onOpenBookingModal }: AboutCompanyProps) 
           >
             <div className="relative h-[420px] sm:h-[480px] w-full rounded-2xl overflow-hidden shadow-2xl border border-[#d2e4d9] group">
               <Image
-                src="/images/tiger_ruins.jpg"
-                alt="Royal Bengal Tiger in Ranthambore Wild Life Tour"
+                src={about.image}
+                alt={about.imageAlt}
                 fill
                 className="object-cover group-hover:scale-105 transition duration-700 ease-out"
               />
@@ -74,12 +71,12 @@ export default function AboutCompany({ onOpenBookingModal }: AboutCompanyProps) 
             >
               <div className="flex items-center gap-3.5">
                 <div className="relative w-12 h-12 rounded-xl bg-gradient-to-br from-emerald-600 to-[#d97706] flex items-center justify-center text-white font-bold text-xl shadow-lg shrink-0">
-                  <span className="relative z-10">12+</span>
+                  <span className="relative z-10">{about.floatBadgeNumber}</span>
                   <span className="absolute inset-0 rounded-xl bg-emerald-500 animate-ping opacity-25" />
                 </div>
                 <div>
-                  <h4 className="text-[#082318] font-bold text-sm">Decade of Excellence</h4>
-                  <p className="text-[11px] text-[#517362]">Dedicated to ethical Ranthambore wildlife tourism</p>
+                  <h4 className="text-[#082318] font-bold text-sm">{about.floatBadgeTitle}</h4>
+                  <p className="text-[11px] text-[#517362]">{about.floatBadgeText}</p>
                 </div>
               </div>
             </motion.div>
@@ -95,32 +92,27 @@ export default function AboutCompany({ onOpenBookingModal }: AboutCompanyProps) 
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-[#064e3b] text-xs font-bold uppercase tracking-widest border border-emerald-200 shadow-xs">
               <ShieldCheck className="w-3.5 h-3.5 text-[#047857]" />
-              About Ranthambore Wild Life Tour
+              {home.about.badge}
             </div>
 
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#082318] leading-tight">
-              Passionate Trackers.{' '}
+              {about.heading}{' '}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 via-[#ea580c] to-[#d97706]">
-                Unmatched Safaris.
+                {about.headingHighlight}
               </span>
             </h2>
 
             <p className="text-sm sm:text-base text-[#1b3a2a] leading-relaxed font-normal">
-              Founded by wildlife enthusiasts and local naturalists in Sawai Madhopur, <strong className="text-[#082318] font-bold">Ranthambore Wild Life Tour</strong> is an independent travel facilitation company dedicated to delivering authentic, transparent, and exhilarating wildlife expeditions.
+              {about.intro}
             </p>
 
             <p className="text-xs sm:text-sm text-[#1b3a2a] leading-relaxed font-normal">
-              From securing coveted morning Gypsy permits to booking heritage jungle resorts, our on-ground team takes care of every detail so you can immerse yourself in the majestic wilderness of Ranthambore.
+              {about.body}
             </p>
 
             {/* Trust Checklist */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">
-              {[
-                'Forest Department Compliance',
-                'Senior Certified Naturalists',
-                'Zero Hidden Charges Policy',
-                '24/7 On-Ground Concierge',
-              ].map((item, idx) => (
+              {about.points.map((item, idx) => (
                 <div key={idx} className="flex items-start gap-2.5">
                   <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
                   <span className="text-xs text-[#183d2a] font-medium">{item}</span>
@@ -136,16 +128,16 @@ export default function AboutCompany({ onOpenBookingModal }: AboutCompanyProps) 
                 onClick={onOpenBookingModal}
                 className="px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-700 via-[#ea580c] to-[#d97706] hover:from-emerald-600 hover:to-[#ea580c] text-white text-xs sm:text-sm font-bold shadow-md shadow-emerald-950/20 flex items-center gap-2 transition cursor-pointer"
               >
-                <span>Plan Your Safari With Us</span>
+                <span>{about.primaryCta}</span>
                 <ArrowRight className="w-4 h-4" />
               </motion.button>
 
               <motion.a
                 whileHover={{ scale: 1.03 }}
-                href="#contact-us"
+                href={about.secondaryCtaLink}
                 className="px-5 py-3.5 rounded-xl bg-white text-[#082318] hover:bg-emerald-50 border border-[#d2e4d9] text-xs sm:text-sm font-semibold transition shadow-xs"
               >
-                Speak to a Specialist
+                {about.secondaryCta}
               </motion.a>
             </div>
           </motion.div>
@@ -168,8 +160,8 @@ export default function AboutCompany({ onOpenBookingModal }: AboutCompanyProps) 
             >
               <div className="font-serif text-3xl sm:text-4xl font-bold text-[#ea580c]">
                 <AnimatedCounter
-                  value={s.target}
-                  decimals={s.decimals || 0}
+                  value={s.value}
+                  decimals={s.decimals}
                   suffix={s.suffix}
                   duration={2}
                 />
