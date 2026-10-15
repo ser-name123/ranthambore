@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { RichText } from './cms/Text';
 import Image from 'next/image';
 import { Calendar, Users, Compass, Clock, ShieldCheck, Sparkles, CheckCircle, ArrowRight, MessageCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -129,12 +130,12 @@ export default function Hero({ onOpenBookingModal }: HeroProps) {
             </motion.h1>
 
             {/* Subheading - Concise & Punchy */}
-            <motion.p
+            <motion.div
               variants={itemVariants}
               className="text-sm sm:text-base text-[#1b3a2a] leading-relaxed max-w-2xl font-normal"
             >
-              {hero.subheading}
-            </motion.p>
+              <RichText text={hero.subheading} inline />
+            </motion.div>
 
             {/* Key Value Points - Clean & Visual */}
             <motion.div variants={itemVariants} className="grid grid-cols-2 gap-2.5 pt-1">

@@ -2,13 +2,13 @@
 
 import { Highlight } from './cms/Text';
 import React, { useState } from 'react';
+import { RichText } from './cms/Text';
 import confetti from 'canvas-confetti';
 import { Send, CheckCircle2, MessageCircle, Phone, Sparkles, AlertCircle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { JungleCornerBranch, BambooStalks, TigerTrackWatermark, JungleTreelineBackdrop, JungleSavannahGrass } from './JungleFoliageDecorations';
 import { useSiteContent } from '@/context/SiteContentContext';
 import { telHref, waHref } from '@/lib/site-content';
-import { Markdown } from './cms/Text';
 import { Counter, OptionSelect } from './FormBits';
 
 export default function QuickEnquirySection() {
@@ -118,9 +118,9 @@ export default function QuickEnquirySection() {
               <Highlight text={heading.title} />
             </h2>
 
-            <p className="text-sm sm:text-base text-[#1b3a2a] leading-relaxed font-normal">
-              {heading.subtitle}
-            </p>
+            <div className="text-sm sm:text-base text-[#1b3a2a] leading-relaxed font-normal">
+              <RichText text={heading.subtitle} inline />
+            </div>
 
             <div className="space-y-4 pt-2">
               <div className="p-4 rounded-xl bg-white border border-[#d2e4d9] flex items-center gap-4 hover:border-emerald-600 transition duration-300 shadow-sm">
@@ -157,7 +157,7 @@ export default function QuickEnquirySection() {
 
             <div className="p-4 rounded-xl bg-white border border-[#d2e4d9] text-xs text-[#1b3a2a] leading-relaxed shadow-sm">
               <span className="font-bold text-emerald-900">{quick.privacyTitle} </span>
-              {quick.privacyText}
+              <RichText text={quick.privacyText} inline />
             </div>
           </motion.div>
 
@@ -180,7 +180,7 @@ export default function QuickEnquirySection() {
                       Reference: {successResult.referenceId}
                     </span>
                     <h3 className="font-serif text-2xl font-bold text-[#082318] mt-3">{quick.successTitle}</h3>
-                    <p className="text-xs sm:text-sm text-[#375847] mt-2 max-w-md mx-auto">{successResult.message}</p>
+                    <div className="text-xs sm:text-sm text-[#375847] mt-2 max-w-md mx-auto"><RichText text={successResult.message} inline /></div>
                   </div>
                   <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center">
                     <a
@@ -282,7 +282,7 @@ export default function QuickEnquirySection() {
                       className="mt-1 accent-emerald-600"
                     />
                     <label htmlFor="enquiry-consent" className="cursor-pointer [&_p]:text-xs">
-                      <Markdown text={quick.consent} />
+                      <RichText text={quick.consent} />
                     </label>
                   </div>
 

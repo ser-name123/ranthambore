@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { RichText } from './cms/Text';
 import Image from 'next/image';
 import { 
   Compass, 
@@ -85,9 +86,9 @@ export default function ParkSafariOverview({ onOpenBookingModal }: ParkSafariOve
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#082318] tracking-tight leading-tight">
 <Highlight text={heading.title} />
           </h2>
-          <p className="text-sm sm:text-base text-[#1b3a2a] leading-relaxed">
-            {heading.subtitle}
-          </p>
+          <div className="text-sm sm:text-base text-[#1b3a2a] leading-relaxed">
+            <RichText text={heading.subtitle} inline />
+          </div>
         </motion.div>
 
         {/* ============================================================== */}
@@ -136,9 +137,9 @@ export default function ParkSafariOverview({ onOpenBookingModal }: ParkSafariOve
                   <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#082318]">
                     {activeT.name} – {activeT.title}
                   </h3>
-                  <p className="text-xs text-[#1b3a2a] leading-relaxed font-normal">
-                    {activeT.desc}
-                  </p>
+                  <div className="text-xs text-[#1b3a2a] leading-relaxed font-normal">
+                    <RichText text={activeT.desc} inline />
+                  </div>
                   <div className="flex items-center gap-1.5 text-[11px] text-emerald-800 font-semibold pt-1">
                     <MapPin className="w-3 h-3 shrink-0 text-emerald-700" />
                     <span>{ui.territoryLabel} {activeT.territory}</span>
@@ -223,9 +224,9 @@ export default function ParkSafariOverview({ onOpenBookingModal }: ParkSafariOve
               <ShieldCheck className="w-5 h-5" />
             </div>
             <h3 className="font-serif text-xl font-bold text-[#082318]">{overview.pillars[0]?.title}</h3>
-            <p className="text-xs sm:text-sm text-[#1b3a2a] leading-relaxed font-normal">
-              {overview.pillars[0]?.text}
-            </p>
+            <div className="text-xs sm:text-sm text-[#1b3a2a] leading-relaxed font-normal">
+              <RichText text={overview.pillars[0]?.text} inline />
+            </div>
           </SpotlightCard>
 
           <SpotlightCard
@@ -237,9 +238,9 @@ export default function ParkSafariOverview({ onOpenBookingModal }: ParkSafariOve
               <Compass className="w-5 h-5" />
             </div>
             <h3 className="font-serif text-xl font-bold text-[#082318]">{overview.pillars[1]?.title}</h3>
-            <p className="text-xs sm:text-sm text-[#1b3a2a] leading-relaxed font-normal">
-              {overview.pillars[1]?.text}
-            </p>
+            <div className="text-xs sm:text-sm text-[#1b3a2a] leading-relaxed font-normal">
+              <RichText text={overview.pillars[1]?.text} inline />
+            </div>
           </SpotlightCard>
 
           <SpotlightCard
@@ -251,9 +252,9 @@ export default function ParkSafariOverview({ onOpenBookingModal }: ParkSafariOve
               <Sparkles className="w-5 h-5" />
             </div>
             <h3 className="font-serif text-xl font-bold text-[#082318]">{overview.pillars[2]?.title}</h3>
-            <p className="text-xs sm:text-sm text-[#1b3a2a] leading-relaxed font-normal">
-              {overview.pillars[2]?.text}
-            </p>
+            <div className="text-xs sm:text-sm text-[#1b3a2a] leading-relaxed font-normal">
+              <RichText text={overview.pillars[2]?.text} inline />
+            </div>
           </SpotlightCard>
         </div>
 
@@ -288,7 +289,7 @@ export default function ParkSafariOverview({ onOpenBookingModal }: ParkSafariOve
                     </span>
                   </div>
                   <h4 className="font-serif text-base font-bold text-[#082318]">{m.title}</h4>
-                  <p className="text-xs text-[#1b3a2a] leading-relaxed font-normal">{m.desc}</p>
+                  <div className="text-xs text-[#1b3a2a] leading-relaxed font-normal"><RichText text={m.desc} inline /></div>
                 </div>
               );
             })}

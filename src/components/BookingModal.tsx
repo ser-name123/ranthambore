@@ -5,7 +5,7 @@ import confetti from 'canvas-confetti';
 import { X, Send, CheckCircle2, MessageCircle, AlertCircle, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSiteContent } from '@/context/SiteContentContext';
-import { Markdown } from './cms/Text';
+import { RichText } from './cms/Text';
 import { Counter, OptionSelect } from './FormBits';
 
 interface BookingModalProps {
@@ -140,7 +140,7 @@ export default function BookingModal({ isOpen, onClose, prefillData }: BookingMo
                   Ref: {successResult.referenceId}
                 </span>
                 <h3 className="font-serif text-2xl font-bold text-[#082318]">{modal.successTitle}</h3>
-                <p className="text-xs sm:text-sm text-[#1b3a2a] leading-relaxed font-normal">{successResult.message}</p>
+                <div className="text-xs sm:text-sm text-[#1b3a2a] leading-relaxed font-normal"><RichText text={successResult.message} inline /></div>
                 <div className="pt-4 flex flex-col gap-2.5">
                   <a
                     href={successResult.whatsappUrl}
@@ -251,7 +251,7 @@ export default function BookingModal({ isOpen, onClose, prefillData }: BookingMo
                 </motion.button>
 
                 <div onClick={(e) => (e.target as HTMLElement).closest('a') && onClose()} className="pt-1 text-center [&_p]:text-[11px] [&_p]:text-[#517362]">
-                  <Markdown text={labels.consent} />
+                  <RichText text={labels.consent} />
                 </div>
               </form>
             )}

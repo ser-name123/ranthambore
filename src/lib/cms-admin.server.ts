@@ -3,6 +3,7 @@ import { revalidateTag } from 'next/cache';
 import { getSupabaseAdmin } from './supabase';
 import { PACKAGES_TAG, PAGES_TAG } from './content.server';
 import { RESERVED_SLUGS } from './cms';
+import { sanitizeRichContent } from './sanitize.server';
 
 export type CmsTable = 'pages' | 'packages';
 
@@ -37,7 +38,7 @@ export function parseCmsBody(table: CmsTable, body: unknown): { slug: string; da
   }
   return {
     slug,
-    data: { ...data, slug },
+    data: sanitizeRichContent({ ...data, slug }),
     published: typeof b.published === 'boolean' ? b.published : undefined,
     sort_order: Number.isInteger(b.sort_order) ? (b.sort_order as number) : undefined,
   };

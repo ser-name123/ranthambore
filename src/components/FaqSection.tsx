@@ -2,6 +2,7 @@
 
 import { Highlight } from './cms/Text';
 import React, { useState } from 'react';
+import { RichText } from './cms/Text';
 import { ChevronDown, HelpCircle, ShieldAlert } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { JungleCornerBranch, TigerTrackWatermark, BambooStalks } from './JungleFoliageDecorations';
@@ -37,9 +38,9 @@ export default function FaqSection() {
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#082318]">
             <Highlight text={heading.title} />
           </h2>
-          <p className="text-sm sm:text-base text-[#1b3a2a]">
-            {heading.subtitle}
-          </p>
+          <div className="text-sm sm:text-base text-[#1b3a2a]">
+            <RichText text={heading.subtitle} inline />
+          </div>
         </motion.div>
 
         <div className="space-y-4">
@@ -89,7 +90,7 @@ export default function FaqSection() {
                       transition={{ duration: 0.35, ease: [0.04, 0.62, 0.23, 0.98] }}
                     >
                       <div className="px-5 sm:px-6 pb-6 pt-1 text-xs sm:text-sm text-[#1b3a2a] font-normal leading-relaxed border-t border-[#e2ede6]">
-                        {faq.a}
+                        <RichText text={faq.a} inline />
                       </div>
                     </motion.div>
                   )}

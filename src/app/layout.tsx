@@ -4,6 +4,7 @@ import { Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "@/components/ClientLayout";
 import { getPublishedPackages, getSiteContent } from "@/lib/content.server";
+import { toPlainText } from "@/lib/rich-text";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-serif",
@@ -78,7 +79,7 @@ export default async function RootLayout({
     description: seo.description,
     telephone: contact.phonePrimary,
     email: contact.email,
-    address: { "@type": "PostalAddress", streetAddress: contact.address, addressLocality: "Sawai Madhopur", addressRegion: "Rajasthan", addressCountry: "IN" },
+    address: { "@type": "PostalAddress", streetAddress: toPlainText(contact.address), addressLocality: "Sawai Madhopur", addressRegion: "Rajasthan", addressCountry: "IN" },
   };
   const gaId = content.seo.googleAnalyticsId.trim();
 

@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { RichText } from './cms/Text';
 import Image from 'next/image';
 import { ShieldCheck, CheckCircle2, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -102,13 +103,13 @@ export default function AboutCompany({ onOpenBookingModal }: AboutCompanyProps) 
               </span>
             </h2>
 
-            <p className="text-sm sm:text-base text-[#1b3a2a] leading-relaxed font-normal">
-              {about.intro}
-            </p>
+            <div className="text-sm sm:text-base text-[#1b3a2a] leading-relaxed font-normal">
+              <RichText text={about.intro} inline />
+            </div>
 
-            <p className="text-xs sm:text-sm text-[#1b3a2a] leading-relaxed font-normal">
-              {about.body}
-            </p>
+            <div className="text-xs sm:text-sm text-[#1b3a2a] leading-relaxed font-normal">
+              <RichText text={about.body} inline />
+            </div>
 
             {/* Trust Checklist */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-2">

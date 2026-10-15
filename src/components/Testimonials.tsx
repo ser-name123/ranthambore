@@ -2,6 +2,7 @@
 
 import { Highlight } from './cms/Text';
 import React from 'react';
+import { RichText } from './cms/Text';
 import { Star, Quote, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import SpotlightCard from './SpotlightCard';
@@ -55,9 +56,9 @@ export default function Testimonials() {
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#082318]">
             <Highlight text={heading.title} />
           </h2>
-          <p className="text-sm sm:text-base text-[#375847]">
-            {heading.subtitle}
-          </p>
+          <div className="text-sm sm:text-base text-[#375847]">
+            <RichText text={heading.subtitle} inline />
+          </div>
         </motion.div>
 
         <motion.div
@@ -85,7 +86,7 @@ export default function Testimonials() {
                   </div>
 
                   <p className="text-sm sm:text-base text-[#0c2419] leading-relaxed italic font-normal">
-                    &ldquo;{rev.quote}&rdquo;
+                    &ldquo;<RichText text={rev.quote} inline />&rdquo;
                   </p>
                 </div>
 

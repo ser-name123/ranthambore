@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { RichText } from './Text';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, ArrowRight, ChevronRight, Clock, MessageCircle } from 'lucide-react';
@@ -62,7 +63,7 @@ function Hero({ hero, extra }: { hero: PageHero; extra?: React.ReactNode }) {
               </>
             )}
           </h1>
-          {hero.subtitle && <p className="text-sm leading-relaxed text-[#375847] sm:text-base">{hero.subtitle}</p>}
+          {hero.subtitle && <div className="text-sm leading-relaxed text-[#375847] sm:text-base"><RichText text={hero.subtitle} inline /></div>}
           {extra}
         </div>
         {(hero.ctaLabel || hero.whatsappText) && (

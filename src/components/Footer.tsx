@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { RichText } from './cms/Text';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -66,9 +67,9 @@ export default function Footer({ onOpenBookingModal }: FooterProps) {
               <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-[#082318] tracking-tight">
                 {footer.ctaTitle}
               </h3>
-              <p className="text-sm sm:text-base text-[#1b3a2a] max-w-2xl leading-relaxed font-normal">
-                {footer.ctaText}
-              </p>
+              <div className="text-sm sm:text-base text-[#1b3a2a] max-w-2xl leading-relaxed font-normal">
+                <RichText text={footer.ctaText} inline />
+              </div>
             </div>
 
             <div className="flex flex-wrap items-center justify-center gap-4 shrink-0">
@@ -116,9 +117,9 @@ export default function Footer({ onOpenBookingModal }: FooterProps) {
               </div>
             </Link>
 
-            <p className="text-xs sm:text-sm text-[#375847] leading-relaxed">
-              {footer.about}
-            </p>
+            <div className="text-xs sm:text-sm text-[#375847] leading-relaxed">
+              <RichText text={footer.about} inline />
+            </div>
 
             {/* Guest Satisfaction Rating Badge */}
             <div className="p-3.5 rounded-2xl bg-white border border-[#d2e4d9] shadow-sm flex items-center gap-3.5">
@@ -179,9 +180,9 @@ export default function Footer({ onOpenBookingModal }: FooterProps) {
               {/* Address card */}
               <div className="p-3 rounded-xl bg-white border border-[#d2e4d9] shadow-sm flex items-start gap-2.5">
                 <MapPin className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
-                <span className="text-[#1b3a2a] leading-relaxed font-normal">
-                  {contact.address}
-                </span>
+                <div className="text-[#1b3a2a] leading-relaxed font-normal">
+                  <RichText text={contact.address} inline />
+                </div>
               </div>
 
               {/* Phone */}
@@ -244,9 +245,9 @@ export default function Footer({ onOpenBookingModal }: FooterProps) {
               <ShieldCheck className="w-4 h-4 text-[#d97706]" />
               <span>{footer.disclaimerTitle}</span>
             </div>
-            <p>
-              {footer.disclaimer}
-            </p>
+            <div>
+              <RichText text={footer.disclaimer} inline />
+            </div>
           </div>
         </div>
 

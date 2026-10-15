@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import type { PageSeo } from './cms';
 import type { SeoContent } from './site-content';
+import { toPlainText } from './rich-text';
 
 /** "/about-us" or a full URL → full URL on the site domain. Full URLs are returned unchanged. */
 export function absoluteUrl(pathOrUrl: string, siteUrl: string): string {
@@ -19,7 +20,7 @@ export function canonicalFor(override: string | undefined, path: string): string
 /** Metadata for a CMS page or package, falling back to the page name and site-wide defaults. */
 export function buildMetadata(seo: PageSeo, fallback: { title: string; description: string; image: string }, path: string, site: SeoContent): Metadata {
   const title = seo.title || fallback.title;
-  const description = seo.description || fallback.description || site.description;
+  const description = seo.description || toPlainText(fallback.description) || site.description;
   const image = seo.ogImage || fallback.image || site.ogImage;
   const keywords = seo.keywords.split(',').map((k) => k.trim()).filter(Boolean);
   const canonical = canonicalFor(seo.canonical, path);

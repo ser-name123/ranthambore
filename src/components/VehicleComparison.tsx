@@ -2,6 +2,7 @@
 
 import { Highlight } from './cms/Text';
 import React from 'react';
+import { RichText } from './cms/Text';
 import Image from 'next/image';
 import { Check, Compass, Sparkles, ArrowRight, Info, Shield } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -76,9 +77,9 @@ export default function VehicleComparison({ onSelectVehicle }: VehicleComparison
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#082318]">
             <Highlight text={heading.title} />
           </h2>
-          <p className="text-sm sm:text-base text-[#375847] leading-relaxed">
-            {heading.subtitle}
-          </p>
+          <div className="text-sm sm:text-base text-[#375847] leading-relaxed">
+            <RichText text={heading.subtitle} inline />
+          </div>
         </motion.div>
 
         {/* 2-Column Comparison Grid with Motion & Spotlight Tilt */}
@@ -132,9 +133,9 @@ export default function VehicleComparison({ onSelectVehicle }: VehicleComparison
 
               {/* Content Details */}
               <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-5">
-                <p className="text-xs sm:text-sm text-[#1b3a2a] leading-relaxed font-normal">
-                  {gypsy.description}
-                </p>
+                <div className="text-xs sm:text-sm text-[#1b3a2a] leading-relaxed font-normal">
+                  <RichText text={gypsy.description} inline />
+                </div>
 
                 {/* Specs Table */}
                 <div className="grid grid-cols-2 gap-3 text-xs bg-[#f0f6f2] p-3.5 rounded-xl border border-[#d2e4d9]">
@@ -218,9 +219,9 @@ export default function VehicleComparison({ onSelectVehicle }: VehicleComparison
 
               {/* Content Details */}
               <div className="p-6 sm:p-7 flex-1 flex flex-col justify-between space-y-5">
-                <p className="text-xs sm:text-sm text-[#1b3a2a] leading-relaxed font-normal">
-                  {canter.description}
-                </p>
+                <div className="text-xs sm:text-sm text-[#1b3a2a] leading-relaxed font-normal">
+                  <RichText text={canter.description} inline />
+                </div>
 
                 {/* Specs Table */}
                 <div className="grid grid-cols-2 gap-3 text-xs bg-[#f0f6f2] p-3.5 rounded-xl border border-[#d2e4d9]">
@@ -268,9 +269,9 @@ export default function VehicleComparison({ onSelectVehicle }: VehicleComparison
           <Info className="w-5 h-5 text-[#d97706] shrink-0 mt-0.5" />
           <div className="space-y-1">
             <span className="font-bold text-[#082318]">{vehicles.advisoryTitle} </span>
-            <p className="leading-relaxed">
-              {vehicles.advisoryText}
-            </p>
+            <div className="leading-relaxed">
+              <RichText text={vehicles.advisoryText} inline />
+            </div>
           </div>
         </motion.div>
       </div>

@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { RichText } from './Text';
 import { Clock, Mail, MapPin, MessageCircle, Phone } from 'lucide-react';
 import { useSiteContent } from '@/context/SiteContentContext';
 import { telHref, waHref } from '@/lib/site-content';
@@ -46,7 +47,7 @@ export default function ContactInfo({ compact = false }: { compact?: boolean }) 
           <h3 className="font-serif text-lg font-bold text-[#082318]">{c.title}</h3>
           <div className="space-y-0.5 text-sm text-[#1b3a2a]">
             {c.lines.map((l) => (
-              <p key={l} className="break-words">{l}</p>
+              <div key={l} className="break-words"><RichText text={l} inline /></div>
             ))}
           </div>
           {c.href && (

@@ -15,7 +15,7 @@ import ZoneGuide from '@/components/ZoneGuide';
 import PackagesGrid from '@/components/PackagesGrid';
 import SpotlightCard from '@/components/SpotlightCard';
 import { CmsIcon } from './icons';
-import { Highlight, Markdown } from './Text';
+import { Highlight, RichText } from './Text';
 import ContactInfo from './ContactInfo';
 
 const reveal = {
@@ -45,7 +45,7 @@ function BlockHeading({ block, center = false }: { block: Block; center?: boolea
           <Highlight text={block.heading} />
         </h2>
       )}
-      {block.intro && <p className="text-sm leading-relaxed text-[#375847] sm:text-base">{block.intro}</p>}
+      {block.intro && <div className="text-sm leading-relaxed text-[#375847] sm:text-base"><RichText text={block.intro} inline /></div>}
     </motion.div>
   );
 }
@@ -81,7 +81,7 @@ function Card({ item, style }: { item: CardItem; style: 'card' | 'compact' | 'im
           )}
         </div>
         <h3 className={`font-serif font-bold text-[#082318] transition group-hover:text-emerald-800 ${style === 'compact' ? 'text-base' : 'text-xl'}`}>{item.title}</h3>
-        {item.text && <p className={`leading-relaxed text-[#1b3a2a] ${style === 'compact' ? 'text-xs' : 'text-sm'}`}>{item.text}</p>}
+        {item.text && <div className={`leading-relaxed text-[#1b3a2a] ${style === 'compact' ? 'text-xs' : 'text-sm'}`}><RichText text={item.text} inline /></div>}
         {item.bullets && item.bullets.length > 0 && (
           <ul className="space-y-1.5 pt-1 text-xs text-[#1b3a2a]">
             {item.bullets.map((b, i) => (
@@ -130,7 +130,7 @@ function FaqList({ items }: { items: { q: string; a: string }[] }) {
               {isOpen && (
                 <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }}>
                   <div className="border-t border-[#e2ede6] px-5 pb-5 pt-3">
-                    <Markdown text={faq.a} />
+                    <RichText text={faq.a} />
                   </div>
                 </motion.div>
               )}
@@ -253,7 +253,7 @@ export function BlockView({ block }: { block: Block }) {
                 </span>
                 <div className="flex-1 rounded-2xl border border-[#d2e4d9] bg-white p-5 shadow-sm">
                   <h3 className="font-serif text-lg font-bold text-[#082318]">{item.title}</h3>
-                  {item.text && <p className="mt-1.5 text-sm leading-relaxed text-[#1b3a2a]">{item.text}</p>}
+                  {item.text && <div className="mt-1.5 text-sm leading-relaxed text-[#1b3a2a]"><RichText text={item.text} inline /></div>}
                   {item.bullets && item.bullets.length > 0 && (
                     <ul className="mt-3 space-y-1.5 text-xs text-[#1b3a2a] sm:text-sm">
                       {item.bullets.map((b, j) => (
@@ -319,7 +319,7 @@ export function BlockView({ block }: { block: Block }) {
           </motion.div>
           <motion.div {...reveal} className="space-y-4">
             <BlockHeading block={block} />
-            <Markdown text={block.body} />
+            <RichText text={block.body} />
             {block.bullets && block.bullets.length > 0 && (
               <ul className="grid grid-cols-1 gap-2.5 pt-1 sm:grid-cols-2">
                 {block.bullets.map((b, i) => (
@@ -339,8 +339,8 @@ export function BlockView({ block }: { block: Block }) {
         <motion.div {...reveal} className="rounded-2xl border border-[#d2e4d9] bg-white p-6 shadow-sm sm:p-8">
           {block.badge && <span className="text-[11px] font-bold uppercase tracking-wider text-[#d97706]">{block.badge}</span>}
           {block.heading && <h2 className="mb-4 mt-1 font-serif text-xl font-bold text-[#082318] sm:text-2xl">{block.heading}</h2>}
-          {block.intro && <p className="mb-3 text-sm font-semibold text-[#375847]">{block.intro}</p>}
-          <Markdown text={block.body} />
+          {block.intro && <div className="mb-3 text-sm font-semibold text-[#375847]"><RichText text={block.intro} inline /></div>}
+          <RichText text={block.body} />
         </motion.div>
       );
 
@@ -352,7 +352,7 @@ export function BlockView({ block }: { block: Block }) {
           <Icon className={`mt-0.5 h-5 w-5 shrink-0 ${tone.iconCls}`} />
           <div className="space-y-1">
             {block.title && <p className="font-bold text-[#082318]">{block.title}</p>}
-            <Markdown text={block.text} />
+            <RichText text={block.text} />
           </div>
         </motion.div>
       );
@@ -365,7 +365,7 @@ export function BlockView({ block }: { block: Block }) {
             <div className="max-w-2xl space-y-2">
               {block.badge && <span className="text-xs font-bold uppercase tracking-wider text-[#d97706]">{block.badge}</span>}
               <h2 className="font-serif text-2xl font-bold text-[#082318] sm:text-3xl"><Highlight text={block.title} /></h2>
-              {block.text && <p className="text-sm leading-relaxed text-[#1b3a2a] sm:text-base">{block.text}</p>}
+              {block.text && <div className="text-sm leading-relaxed text-[#1b3a2a] sm:text-base"><RichText text={block.text} inline /></div>}
             </div>
             <div className="flex shrink-0 flex-wrap justify-center gap-3">
               {block.buttonLabel && (

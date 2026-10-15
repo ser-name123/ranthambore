@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import RichTextEditor from './RichTextEditor';
 import type {
   AboutContent,
   BrandingContent,
@@ -71,7 +72,7 @@ function ContactEditor({ value, onChange }: EditorProps<ContactContent>) {
           <TextInput label="Email" type="email" value={value.email} onChange={(v) => set({ email: v })} />
         </>
       )}
-      <TextArea label="Office address" rows={2} value={value.address} onChange={(v) => set({ address: v })} />
+      <RichTextEditor label="Office address" rows={2} value={value.address} onChange={(v) => set({ address: v })} />
       <TextInput label="Support hours" value={value.supportHours} onChange={(v) => set({ supportHours: v })} />
     </Card>
   );
@@ -89,7 +90,7 @@ function HeroEditor({ value, onChange, onError }: EditorProps<HeroContent>) {
             <TextInput label="Highlighted heading (gradient)" value={value.headingHighlight} onChange={(v) => set({ headingHighlight: v })} />
           </>
         )}
-        <TextArea label="Sub-heading" value={value.subheading} onChange={(v) => set({ subheading: v })} />
+        <RichTextEditor label="Sub-heading" value={value.subheading} onChange={(v) => set({ subheading: v })} />
         <LinesInput label="Key points (checkmarks)" value={value.points} onChange={(v) => set({ points: v })} />
         <ImagePicker label="Background image" value={value.backgroundImage} onChange={(v) => set({ backgroundImage: v })} onError={onError} />
         <TextInput label="Background image description (alt text, for Google & screen readers)" value={value.imageAlt} onChange={(v) => set({ imageAlt: v })} />
@@ -199,7 +200,7 @@ function ServicesEditor({ value, onChange }: EditorProps<ServiceItem[]>) {
                 <SelectInput label="Icon" value={s.icon} options={SERVICE_ICONS} onChange={(v) => update({ icon: v })} />
               </>
             )}
-            <TextArea label="Description" value={s.desc} onChange={(v) => update({ desc: v })} />
+            <RichTextEditor label="Description" value={s.desc} onChange={(v) => update({ desc: v })} />
             {grid2(
               <>
                 <TextInput label="Tag" value={s.tag} onChange={(v) => update({ tag: v })} />
@@ -233,7 +234,7 @@ function ZonesEditor({ value, onChange }: EditorProps<ZonesContent>) {
               </div>
               <TextInput label="Areas / name" value={z.name} onChange={(v) => update({ name: v })} />
               <TextInput label="Resident tigers" value={z.tigers} onChange={(v) => update({ tigers: v })} />
-              <TextArea label="Description" rows={2} value={z.features} onChange={(v) => update({ features: v })} />
+              <RichTextEditor label="Description" rows={2} value={z.features} onChange={(v) => update({ features: v })} />
             </>
           )}
         />
@@ -286,8 +287,8 @@ function AboutEditor({ value, onChange, onError }: EditorProps<AboutContent>) {
             <TextInput label="Highlighted heading (gradient)" value={value.headingHighlight} onChange={(v) => set({ headingHighlight: v })} />
           </>
         )}
-        <TextArea label="Intro paragraph" value={value.intro} onChange={(v) => set({ intro: v })} />
-        <TextArea label="Second paragraph" value={value.body} onChange={(v) => set({ body: v })} />
+        <RichTextEditor mode="full" label="Intro paragraph" value={value.intro} onChange={(v) => set({ intro: v })} />
+        <RichTextEditor mode="full" label="Second paragraph" value={value.body} onChange={(v) => set({ body: v })} />
         <LinesInput label="Trust checklist" value={value.points} onChange={(v) => set({ points: v })} />
         <ImagePicker label="Image" value={value.image} onChange={(v) => set({ image: v })} onError={onError} />
         <StringFields
@@ -339,7 +340,7 @@ function TestimonialsEditor({ value, onChange }: EditorProps<TestimonialItem[]>)
               <TextInput label="Visit date" value={t.date} onChange={(v) => update({ date: v })} placeholder="Visited March 2026" />
               <NumberInput label="Stars (1–5)" min={1} max={5} value={t.rating} onChange={(v) => update({ rating: Math.max(1, Math.min(5, Math.round(v))) })} />
             </div>
-            <TextArea label="Review" rows={4} value={t.quote} onChange={(v) => update({ quote: v })} />
+            <RichTextEditor label="Review" rows={4} value={t.quote} onChange={(v) => update({ quote: v })} />
           </>
         )}
       />
@@ -365,7 +366,7 @@ function GuidesEditor({ value, onChange, onError }: EditorProps<GuideItem[]>) {
                 <TextInput label="Read time" value={g.readTime} onChange={(v) => update({ readTime: v })} />
               </>
             )}
-            <TextArea label="Summary" value={g.summary} onChange={(v) => update({ summary: v })} />
+            <RichTextEditor label="Summary" value={g.summary} onChange={(v) => update({ summary: v })} />
             <LinkPicker label="“Read Full Guide” link (custom & empty = opens enquiry form)" value={g.link} onChange={(link) => update({ link })} />
             <ImagePicker label="Image" value={g.image} onChange={(v) => update({ image: v })} onError={onError} />
           </>
@@ -387,7 +388,7 @@ function FaqsEditor({ value, onChange }: EditorProps<FaqItem[]>) {
         renderItem={(f, update) => (
           <>
             <TextInput label="Question" value={f.q} onChange={(v) => update({ q: v })} />
-            <TextArea label="Answer" rows={4} value={f.a} onChange={(v) => update({ a: v })} />
+            <RichTextEditor mode="full" label="Answer" rows={4} value={f.a} onChange={(v) => update({ a: v })} />
           </>
         )}
       />
@@ -402,10 +403,10 @@ function FooterEditor({ value, onChange }: EditorProps<FooterContent>) {
       <Card title="Booking banner (top of footer)">
         <TextInput label="Badge" value={value.ctaBadge} onChange={(v) => set({ ctaBadge: v })} />
         <TextInput label="Title" value={value.ctaTitle} onChange={(v) => set({ ctaTitle: v })} />
-        <TextArea label="Text" rows={2} value={value.ctaText} onChange={(v) => set({ ctaText: v })} />
+        <RichTextEditor label="Text" rows={2} value={value.ctaText} onChange={(v) => set({ ctaText: v })} />
       </Card>
       <Card title="Footer text">
-        <TextArea label="About text (under the logo)" value={value.about} onChange={(v) => set({ about: v })} />
+        <RichTextEditor label="About text (under the logo)" value={value.about} onChange={(v) => set({ about: v })} />
         {grid2(
           <>
             <TextInput label="Rating title" value={value.ratingTitle} onChange={(v) => set({ ratingTitle: v })} />
@@ -416,7 +417,7 @@ function FooterEditor({ value, onChange }: EditorProps<FooterContent>) {
         )}
         <LinesInput label="Trust badges" value={value.trustBadges} onChange={(v) => set({ trustBadges: v })} />
         <TextInput label="Disclaimer title" value={value.disclaimerTitle} onChange={(v) => set({ disclaimerTitle: v })} />
-        <TextArea label="Statutory disclaimer" rows={5} hint="Keep this: it states you are not the official Forest Department website." value={value.disclaimer} onChange={(v) => set({ disclaimer: v })} />
+        <RichTextEditor mode="full" label="Statutory disclaimer" rows={5} hint="Keep this: it states you are not the official Forest Department website." value={value.disclaimer} onChange={(v) => set({ disclaimer: v })} />
         <StringFields
           value={value}
           onChange={onChange}
@@ -570,7 +571,7 @@ function HomeEditor({ value, onChange }: EditorProps<HomeContent>) {
                 {meta.headingFields && (
                   <>
                     <TextInput label="Heading" value={h.title} onChange={(v) => update({ title: v })} />
-                    <TextArea label="Subtitle" rows={2} value={h.subtitle} onChange={(v) => update({ subtitle: v })} />
+                    <RichTextEditor label="Subtitle" rows={2} value={h.subtitle} onChange={(v) => update({ subtitle: v })} />
                   </>
                 )}
               </div>
@@ -604,7 +605,7 @@ function OverviewEditor({ value, onChange, onError }: EditorProps<OverviewConten
                 </>
               )}
               <TextInput label="Sightings" value={t.sightings} onChange={(v) => update({ sightings: v })} />
-              <TextArea label="Description" rows={2} value={t.desc} onChange={(v) => update({ desc: v })} />
+              <RichTextEditor label="Description" rows={2} value={t.desc} onChange={(v) => update({ desc: v })} />
               <ImagePicker label="Photo" value={t.image} onChange={(v) => update({ image: v })} onError={onError} />
             </>
           )}
@@ -614,7 +615,7 @@ function OverviewEditor({ value, onChange, onError }: EditorProps<OverviewConten
         {value.pillars.map((p, i) => (
           <div key={i} className="space-y-3 rounded-xl bg-[#f4f8f5] p-3">
             <TextInput label={`Card ${i + 1} title`} value={p.title} onChange={(v) => set({ pillars: value.pillars.map((x, idx) => (idx === i ? { ...x, title: v } : x)) })} />
-            <TextArea label="Text" rows={2} value={p.text} onChange={(v) => set({ pillars: value.pillars.map((x, idx) => (idx === i ? { ...x, text: v } : x)) })} />
+            <RichTextEditor label="Text" rows={2} value={p.text} onChange={(v) => set({ pillars: value.pillars.map((x, idx) => (idx === i ? { ...x, text: v } : x)) })} />
           </div>
         ))}
       </Card>
@@ -641,7 +642,7 @@ function OverviewEditor({ value, onChange, onError }: EditorProps<OverviewConten
                 <TextInput label="Title" value={m.title} onChange={(v) => update({ title: v })} />
                 <TextInput label="Badge" value={m.badge} onChange={(v) => update({ badge: v })} />
               </div>
-              <TextArea label="Description" rows={2} value={m.desc} onChange={(v) => update({ desc: v })} />
+              <RichTextEditor label="Description" rows={2} value={m.desc} onChange={(v) => update({ desc: v })} />
             </>
           )}
         />
@@ -696,7 +697,7 @@ function UiEditor({ value, onChange }: EditorProps<UiLabels>) {
       </Card>
       <Card title="Page not found (404)">
         <StringFields value={value.notFound} onChange={(notFound) => onChange({ ...value, notFound })} fields={[['title', 'Title'], ['button', 'Button']]} />
-        <TextArea label="Text" rows={2} value={value.notFound.text} onChange={(text) => onChange({ ...value, notFound: { ...value.notFound, text } })} />
+        <RichTextEditor label="Text" rows={2} value={value.notFound.text} onChange={(text) => onChange({ ...value, notFound: { ...value.notFound, text } })} />
       </Card>
       <Card title="Custom package banner" description="Below the homepage packages.">
         <StringFields value={value.packagesBanner} onChange={(packagesBanner) => onChange({ ...value, packagesBanner })} fields={[['title', 'Title'], ['text', 'Text'], ['button', 'Button'], ['whatsappButton', 'WhatsApp button'], ['whatsappText', 'WhatsApp message']]} />
@@ -733,10 +734,10 @@ function FormsEditor({ value, onChange }: EditorProps<FormsContent>) {
             ['namePlaceholder', 'Name placeholder'], ['phonePlaceholder', 'Phone placeholder'], ['emailPlaceholder', 'Email placeholder'], ['notesPlaceholder', 'Notes placeholder'],
           ]}
         />
-        <TextArea label="Popup consent line" hint="[Link text](/page) makes a link" rows={2} value={value.labels.consent} onChange={(consent) => set({ labels: { ...value.labels, consent } })} />
+        <RichTextEditor label="Popup consent line" hint="Select words and use the link button to add a link" rows={2} value={value.labels.consent} onChange={(consent) => set({ labels: { ...value.labels, consent } })} />
       </Card>
       <Card title="After submitting" description="Shown to the visitor after any booking or enquiry form is sent.">
-        <TextArea label="Success message" rows={2} value={value.successMessage} onChange={(successMessage) => set({ successMessage })} />
+        <RichTextEditor label="Success message" rows={2} value={value.successMessage} onChange={(successMessage) => set({ successMessage })} />
         <TextArea
           label="WhatsApp message template"
           hint="Placeholders: {ref} {name} {phone} {email} {date} {vehicle} {shift} {zone} {adults} {children} {nationality} {notes}. Lines whose placeholders are empty are skipped."
@@ -762,8 +763,8 @@ function FormsEditor({ value, onChange }: EditorProps<FormsContent>) {
             ['privacyTitle', 'Privacy title'],
           ]}
         />
-        <TextArea label="Privacy text" rows={2} value={value.quick.privacyText} onChange={(privacyText) => set({ quick: { ...value.quick, privacyText } })} />
-        <TextArea label="Consent checkbox text" hint="[Link text](/page) makes a link" rows={2} value={value.quick.consent} onChange={(consent) => set({ quick: { ...value.quick, consent } })} />
+        <RichTextEditor label="Privacy text" rows={2} value={value.quick.privacyText} onChange={(privacyText) => set({ quick: { ...value.quick, privacyText } })} />
+        <RichTextEditor label="Consent checkbox text" hint="Select words and use the link button to add a link" rows={2} value={value.quick.consent} onChange={(consent) => set({ quick: { ...value.quick, consent } })} />
       </Card>
     </>
   );
@@ -773,7 +774,7 @@ function VehicleCardEditor({ title, value, onChange, onError }: { title: string;
   return (
     <Card title={title}>
       <StringFields value={value} onChange={onChange} fields={[['title', 'Title'], ['subtitle', 'Subtitle'], ['badge', 'Badge (optional)'], ['buttonLabel', 'Button text'], ['bookingValue', 'Booking form value']]} />
-      <TextArea label="Description" value={value.description} onChange={(description) => onChange({ ...value, description })} />
+      <RichTextEditor mode="full" label="Description" value={value.description} onChange={(description) => onChange({ ...value, description })} />
       <ImagePicker label="Image" value={value.image} onChange={(image) => onChange({ ...value, image })} onError={onError} />
       <ListEditor
         items={value.specs}
@@ -802,7 +803,7 @@ function VehiclesEditor({ value, onChange, onError }: EditorProps<VehiclesConten
       <VehicleCardEditor title="Canter card" value={value.canter} onChange={(canter) => onChange({ ...value, canter })} onError={onError} />
       <Card title="Advisory notice">
         <TextInput label="Title" value={value.advisoryTitle} onChange={(advisoryTitle) => onChange({ ...value, advisoryTitle })} />
-        <TextArea label="Text" value={value.advisoryText} onChange={(advisoryText) => onChange({ ...value, advisoryText })} />
+        <RichTextEditor label="Text" value={value.advisoryText} onChange={(advisoryText) => onChange({ ...value, advisoryText })} />
       </Card>
     </>
   );

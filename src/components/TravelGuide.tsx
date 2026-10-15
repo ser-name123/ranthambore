@@ -2,6 +2,7 @@
 
 import { Highlight } from './cms/Text';
 import React from 'react';
+import { RichText } from './cms/Text';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import { BookOpen, ArrowRight } from 'lucide-react';
@@ -64,9 +65,9 @@ export default function TravelGuide({ onOpenArticle }: TravelGuideProps) {
             <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#082318]">
               <Highlight text={heading.title} />
             </h2>
-            <p className="text-sm sm:text-base text-[#375847] max-w-2xl">
-              {heading.subtitle}
-            </p>
+            <div className="text-sm sm:text-base text-[#375847] max-w-2xl">
+              <RichText text={heading.subtitle} inline />
+            </div>
           </div>
         </motion.div>
 
@@ -105,9 +106,9 @@ export default function TravelGuide({ onOpenArticle }: TravelGuideProps) {
                     <h3 className="font-serif text-xl font-bold text-[#082318] group-hover:text-emerald-800 transition leading-snug">
                       {art.title}
                     </h3>
-                    <p className="text-xs sm:text-sm text-[#1b3a2a] leading-relaxed font-normal">
-                      {art.summary}
-                    </p>
+                    <div className="text-xs sm:text-sm text-[#1b3a2a] leading-relaxed font-normal">
+                      <RichText text={art.summary} inline />
+                    </div>
                   </div>
 
                   <div className="pt-4 border-t border-[#e2ede6]">

@@ -2,6 +2,7 @@
 
 import { Highlight } from './cms/Text';
 import React, { useState } from 'react';
+import { RichText } from './cms/Text';
 import { Compass, Clock, MapPin, AlertCircle, Sparkles, CheckCircle2, Flame } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import SpotlightCard from './SpotlightCard';
@@ -51,9 +52,9 @@ export default function ZoneGuide() {
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#082318]">
             <Highlight text={heading.title} />
           </h2>
-          <p className="text-sm sm:text-base text-[#1b3a2a]">
-            {heading.subtitle}
-          </p>
+          <div className="text-sm sm:text-base text-[#1b3a2a]">
+            <RichText text={heading.subtitle} inline />
+          </div>
         </motion.div>
 
         {/* Zone Explorer Tabs with Animated Pill */}
@@ -144,9 +145,9 @@ export default function ZoneGuide() {
                         {z.name}
                       </h4>
 
-                      <p className="text-xs text-[#183d2a] leading-relaxed font-normal">
-                        {z.features}
-                      </p>
+                      <div className="text-xs text-[#183d2a] leading-relaxed font-normal">
+                        <RichText text={z.features} inline />
+                      </div>
                     </div>
 
                     {/* Sighting Probability Animated Progress Bar */}

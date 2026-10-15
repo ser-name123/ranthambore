@@ -3,6 +3,7 @@ import { revalidateTag } from 'next/cache';
 import { getSupabaseAdmin } from '@/lib/supabase';
 import { requireAdmin } from '@/lib/admin-auth';
 import { saveRevision } from '@/lib/cms-admin.server';
+import { sanitizeRichContent } from '@/lib/sanitize.server';
 import { getSiteContentFresh, SITE_CONTENT_TAG } from '@/lib/content.server';
 import { DEFAULT_SITE_CONTENT, SITE_CONTENT_KEYS, SiteContentKey } from '@/lib/site-content';
 
@@ -24,7 +25,10 @@ export async function PUT(request: Request) {
   const admin = await requireAdmin();
   if (admin instanceof NextResponse) return admin;
 
-  const { key, value } = await request.json().catch(() => ({}));
+  const body = await request.json().catch(() => ({}));
+  const key = body.key;
+  // Rich text from the editor is cleaned before it is stored.
+  const value = sanitizeRichContent(body.value);
   if (!SITE_CONTENT_KEYS.includes(key)) {
     return NextResponse.json({ error: 'Unknown content section.' }, { status: 400 });
   }

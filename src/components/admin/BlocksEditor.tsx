@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import RichTextEditor from './RichTextEditor';
 import { Plus } from 'lucide-react';
 import {
   Block, BlockType, CardItem, ChecklistGroup, ICON_NAMES, IconName, newBlockId, PricingTier, TimelineItem, Tone,
@@ -96,7 +97,7 @@ function CommonFields({ block, update, withHeading = true }: { block: Block; upd
           <TextInput label="Small badge above heading" value={block.badge ?? ''} onChange={(v) => update({ badge: v })} />
         </>
       )}
-      <TextArea label="Intro text" rows={2} value={block.intro ?? ''} onChange={(v) => update({ intro: v })} />
+      <RichTextEditor label="Intro text" rows={2} value={block.intro ?? ''} onChange={(v) => update({ intro: v })} />
     </>
   );
 }
@@ -130,7 +131,7 @@ function BlockFields({ block, update, onError }: { block: Block; update: (p: Par
                     <TextInput label="Badge" value={c.badge ?? ''} onChange={(v) => u({ badge: v })} />
                   </>
                 )}
-                <TextArea label="Text" value={c.text} onChange={(v) => u({ text: v })} />
+                <RichTextEditor label="Text" value={c.text} onChange={(v) => u({ text: v })} />
                 <LinesInput label="Bullet points (optional)" value={c.bullets ?? []} onChange={(v) => u({ bullets: v })} rows={3} />
                 {grid(
                   <>
@@ -225,7 +226,7 @@ function BlockFields({ block, update, onError }: { block: Block; update: (p: Par
                     <TextInput label="Title" value={t.title} onChange={(v) => u({ title: v })} />
                   </>
                 )}
-                <TextArea label="Text" value={t.text} onChange={(v) => u({ text: v })} />
+                <RichTextEditor mode="full" onError={onError} label="Text" value={t.text} onChange={(v) => u({ text: v })} />
                 <LinesInput label="Bullet points (optional)" value={t.bullets ?? []} onChange={(v) => u({ bullets: v })} />
               </>
             )}
@@ -246,7 +247,7 @@ function BlockFields({ block, update, onError }: { block: Block; update: (p: Par
             renderItem={(f, u) => (
               <>
                 <TextInput label="Question" value={f.q} onChange={(v) => u({ q: v })} />
-                <TextArea label="Answer" rows={4} value={f.a} onChange={(v) => u({ a: v })} />
+                <RichTextEditor mode="full" onError={onError} label="Answer" rows={4} value={f.a} onChange={(v) => u({ a: v })} />
               </>
             )}
           />
@@ -282,7 +283,7 @@ function BlockFields({ block, update, onError }: { block: Block; update: (p: Par
       return (
         <>
           <CommonFields block={block} update={update} />
-          <TextArea label="Text" hint="Blank line = new paragraph · “- ” = bullet · **bold** · [link](/page)" rows={6} value={block.body} onChange={(v) => set({ body: v })} />
+          <RichTextEditor mode="full" onError={onError} label="Text" rows={6} value={block.body} onChange={(v) => set({ body: v })} />
           <LinesInput label="Check points (optional)" value={block.bullets ?? []} onChange={(v) => set({ bullets: v })} />
           <ImagePicker label="Image" value={block.image} onChange={(v) => set({ image: v })} onError={onError} />
           <SelectInput label="Image position" value={block.imageSide} options={[{ value: 'left', label: 'Left' }, { value: 'right', label: 'Right' }]} onChange={(v) => set({ imageSide: v })} />
@@ -293,7 +294,7 @@ function BlockFields({ block, update, onError }: { block: Block; update: (p: Par
       return (
         <>
           <CommonFields block={block} update={update} />
-          <TextArea label="Text" hint="Blank line = new paragraph · “- ” = bullet · “### ” = sub-heading · **bold** · [link](/page)" rows={10} value={block.body} onChange={(v) => set({ body: v })} />
+          <RichTextEditor mode="full" onError={onError} label="Text" rows={10} value={block.body} onChange={(v) => set({ body: v })} />
         </>
       );
 
@@ -306,7 +307,7 @@ function BlockFields({ block, update, onError }: { block: Block; update: (p: Par
               <SelectInput<Tone> label="Style" value={block.tone} options={[{ value: 'info', label: 'Info (green)' }, { value: 'success', label: 'Success' }, { value: 'warning', label: 'Warning (amber)' }, { value: 'danger', label: 'Important (red)' }]} onChange={(v) => set({ tone: v })} />
             </>
           )}
-          <TextArea label="Text" rows={4} value={block.text} onChange={(v) => set({ text: v })} />
+          <RichTextEditor mode="full" onError={onError} label="Text" rows={4} value={block.text} onChange={(v) => set({ text: v })} />
         </>
       );
 
@@ -315,7 +316,7 @@ function BlockFields({ block, update, onError }: { block: Block; update: (p: Par
         <>
           <TextInput label="Badge" value={block.badge ?? ''} onChange={(v) => set({ badge: v })} />
           <TextInput label="Title" value={block.title} onChange={(v) => set({ title: v })} />
-          <TextArea label="Text" rows={2} value={block.text} onChange={(v) => set({ text: v })} />
+          <RichTextEditor label="Text" rows={2} value={block.text} onChange={(v) => set({ text: v })} />
           {grid(
             <>
               <TextInput label="Button text" hint="Empty hides the booking button" value={block.buttonLabel} onChange={(v) => set({ buttonLabel: v })} />

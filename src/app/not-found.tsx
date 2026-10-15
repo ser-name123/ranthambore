@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { RichText } from '@/components/cms/Text';
 import Link from 'next/link';
 import { getSiteContent } from '@/lib/content.server';
 
@@ -18,7 +19,7 @@ export default async function NotFound() {
       <div className="relative mx-auto max-w-2xl space-y-5 px-4">
         <p className="font-serif text-7xl font-bold text-[#d97706]">404</p>
         <h1 className="font-serif text-3xl font-bold text-[#082318] sm:text-4xl">{notFound.title}</h1>
-        <p className="text-sm leading-relaxed text-[#375847] sm:text-base">{notFound.text}</p>
+        <div className="text-sm leading-relaxed text-[#375847] sm:text-base"><RichText text={notFound.text} inline /></div>
         <Link
           href="/"
           className="inline-flex items-center rounded-xl bg-gradient-to-r from-emerald-700 to-[#d97706] px-6 py-3 text-sm font-bold text-white shadow-md transition hover:from-emerald-600"

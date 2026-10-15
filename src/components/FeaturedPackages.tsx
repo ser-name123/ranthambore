@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import { RichText } from './cms/Text';
 import { Compass } from 'lucide-react';
 import { motion } from 'framer-motion';
 import PackagesGrid from './PackagesGrid';
@@ -46,7 +47,7 @@ export default function FeaturedPackages({ onSelectPackage }: FeaturedPackagesPr
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#082318]">
             <Highlight text={heading.title} />
           </h2>
-          {heading.subtitle && <p className="text-sm sm:text-base text-[#375847]">{heading.subtitle}</p>}
+          {heading.subtitle && <div className="text-sm sm:text-base text-[#375847]"><RichText text={heading.subtitle} inline /></div>}
         </motion.div>
 
         <PackagesGrid packages={packages.filter((p) => p.featured)} onSelectPackage={onSelectPackage} />

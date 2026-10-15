@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import { isHtml } from '@/lib/rich-text';
 
 const GRADIENT = 'text-transparent bg-clip-text bg-gradient-to-r from-emerald-700 via-[#ea580c] to-[#d97706]';
 
@@ -76,4 +77,23 @@ export function Markdown({ text, className = '' }: { text: string; className?: s
       })}
     </div>
   );
+}
+
+/**
+ * Renders an admin text field: rich HTML from the text editor (sanitised when saved),
+ * or older plain text / simple markdown.
+ * `inline` is for text that sits inside a heading block or sentence: a single paragraph
+ * is rendered without its own block wrapper.
+ */
+export function RichText({ text, inline = false, className = '' }: { text: string | null | undefined; inline?: boolean; className?: string }) {
+  if (!text) return null;
+  if (isHtml(text)) {
+    const single = text.trim().match(/^<p(?:\s[^>]*)?>([\s\S]*?)<\/p>$/i);
+    if (inline && single && !/<\/?p[\s>]/i.test(single[1])) {
+      return <span className={`rich-content ${className}`} dangerouslySetInnerHTML={{ __html: single[1] }} />;
+    }
+    return <div className={`rich-content ${className}`} dangerouslySetInnerHTML={{ __html: text }} />;
+  }
+  if (inline) return <>{text}</>;
+  return <Markdown text={text} className={className} />;
 }

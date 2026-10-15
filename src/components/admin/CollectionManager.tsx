@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { ArrowDown, ArrowLeft, ArrowUp, Copy, ExternalLink, Eye, EyeOff, Loader2, MonitorPlay, Pencil, Plus, Save, Search, Trash2 } from 'lucide-react';
+import RichTextEditor from './RichTextEditor';
+import { ArrowDown, ArrowLeft, ArrowUp, Copy, ExternalLink, Eye, EyeOff, Loader2, MonitorPlay, Pencil, Plus, Save, Search, Trash2, Undo2 } from 'lucide-react';
 import { CmsPage, EMPTY_SEO, PageGroup, PageSeo, PackageCategory, Published, slugify, TourPackage } from '@/lib/cms';
 import BlocksEditor from './BlocksEditor';
 import RevisionsPanel from './RevisionsPanel';
@@ -241,6 +242,18 @@ export default function CollectionManager({ collection, api, notify, onError, in
             />
             <div className="flex items-center gap-3">
               {dirty && <span className="text-xs font-semibold text-[#b45309]">Unsaved changes</span>}
+              {!isNew && (
+                <Button
+                  variant="secondary"
+                  disabled={!dirty || saving}
+                  onClick={() => {
+                    const { d, p } = JSON.parse(editing.original) as { d: Doc; p: boolean };
+                    setEditing((e) => (e ? { ...e, doc: d, published: p } : e));
+                  }}
+                >
+                  <Undo2 className="h-3.5 w-3.5" /> Discard
+                </Button>
+              )}
               <Button onClick={save} disabled={saving || (!dirty && !isNew)}>
                 {saving ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Save className="h-3.5 w-3.5" />}
                 {isNew ? `Create ${noun}` : 'Save'}
@@ -370,7 +383,7 @@ function PageSettings({ page, isNew, onChange, onError }: { page: CmsPage; isNew
           <TextInput label="Title" value={hero.title} onChange={(v) => setHero({ title: v })} />
           <TextInput label="Highlighted title part (gradient)" value={hero.highlight} onChange={(v) => setHero({ highlight: v })} />
         </div>
-        <TextArea label="Subtitle" value={hero.subtitle} onChange={(v) => setHero({ subtitle: v })} />
+        <RichTextEditor label="Subtitle" value={hero.subtitle} onChange={(v) => setHero({ subtitle: v })} />
         <ImagePicker label="Background image" value={hero.image} onChange={(v) => setHero({ image: v })} onError={onError} />
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
           <TextInput label="Booking button text" hint="Empty hides the button" value={hero.ctaLabel} onChange={(v) => setHero({ ctaLabel: v })} />
@@ -398,7 +411,7 @@ function PackageSettings({ pkg, isNew, onChange, onError }: { pkg: TourPackage; 
         <TextInput label="Hotel / stay" value={pkg.hotelType} onChange={(v) => onChange({ hotelType: v })} />
         <TextInput label="Badge (optional)" value={pkg.badge} onChange={(v) => onChange({ badge: v })} />
       </div>
-      <TextArea label="Summary" hint="Shown under the title on the detail page" value={pkg.summary} onChange={(v) => onChange({ summary: v })} />
+      <RichTextEditor label="Summary" hint="Shown under the title on the detail page" value={pkg.summary} onChange={(v) => onChange({ summary: v })} />
       <ImagePicker label="Image" value={pkg.image} onChange={(v) => onChange({ image: v })} onError={onError} />
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         <LinesInput label="Inclusion pills (card)" value={pkg.inclusions} onChange={(v) => onChange({ inclusions: v })} />

@@ -336,3 +336,40 @@
 .spotlight-card:hover::before {
   opacity: 1;
 }
+
+/* Text written with the admin rich text editor */
+.rich-content > * + * { margin-top: 0.75em; }
+.rich-content p { margin: 0; }
+.rich-content p + p { margin-top: 0.75em; }
+.rich-content strong, .rich-content b { font-weight: 700; color: #082318; }
+.rich-content em, .rich-content i { font-style: italic; }
+.rich-content u { text-decoration: underline; }
+.rich-content s, .rich-content del { text-decoration: line-through; }
+.rich-content a { color: #047857; font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+.rich-content a:hover { color: #065f46; }
+.rich-content mark { background: #fef3c7; color: inherit; padding: 0 0.15em; border-radius: 0.2em; }
+.rich-content h2, .rich-content h3, .rich-content h4 { font-family: var(--font-serif); font-weight: 700; color: #082318; line-height: 1.25; }
+.rich-content h2 { font-size: 1.5em; }
+.rich-content h3 { font-size: 1.25em; }
+.rich-content h4 { font-size: 1.1em; }
+.rich-content ul, .rich-content ol { padding-left: 1.4em; }
+.rich-content ul { list-style: disc; }
+.rich-content ol { list-style: decimal; }
+.rich-content li + li { margin-top: 0.3em; }
+.rich-content li::marker { color: #059669; }
+.rich-content li > p { margin: 0; }
+.rich-content blockquote { border-left: 3px solid #10b981; padding: 0.25em 0 0.25em 1em; color: #375847; font-style: italic; }
+.rich-content hr { border: 0; border-top: 1px solid #d2e4d9; margin: 1.25em 0; }
+.rich-content code { background: #f0f6f2; padding: 0.1em 0.35em; border-radius: 0.3em; font-size: 0.9em; }
+.rich-content pre { background: #f0f6f2; padding: 0.75em 1em; border-radius: 0.6em; overflow-x: auto; }
+.rich-content img { max-width: 100%; height: auto; border-radius: 0.75rem; }
+.rich-content table { width: 100%; border-collapse: collapse; font-size: 0.95em; display: block; overflow-x: auto; }
+.rich-content th, .rich-content td { border: 1px solid #d2e4d9; padding: 0.5em 0.75em; text-align: left; vertical-align: top; }
+.rich-content th { background: #f0f6f2; font-weight: 700; color: #082318; }
+.rich-content th > p, .rich-content td > p { margin: 0; }
+
+/* Admin rich text editor (Tiptap) */
+.ProseMirror p.is-editor-empty:first-child::before { content: attr(data-placeholder); float: left; height: 0; color: #9fbfae; pointer-events: none; }
+.ProseMirror .selectedCell { background: #d1fae5; }
+.ProseMirror img.ProseMirror-selectednode { outline: 3px solid #10b981; }
+.ProseMirror table { display: table; }

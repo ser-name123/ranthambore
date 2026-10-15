@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import RichTextEditor from './RichTextEditor';
 import type { FormsContent, SiteContent, SiteContentKey } from '@/lib/site-content';
 import { Card, LinesInput, NumberInput, TextArea, TextInput, Toggle } from './ui';
 
@@ -53,7 +54,7 @@ function AfterSubmitCard({ draft, set }: ScreenProps) {
     <>
       <Card title="After the visitor submits">
         <SharedNote>Shared by the booking popup and the enquiry form.</SharedNote>
-        <TextArea label="Thank-you message" rows={2} value={forms.successMessage} onChange={(successMessage) => update({ successMessage })} />
+        <RichTextEditor label="Thank-you message" rows={2} value={forms.successMessage} onChange={(successMessage) => update({ successMessage })} />
         <TextArea
           label="WhatsApp message (sent when they tap the WhatsApp button after submitting)"
           hint="You can use: {ref} {name} {phone} {email} {date} {vehicle} {shift} {zone} {adults} {children} {nationality} {notes}. A line is skipped if its fields are empty."
@@ -204,9 +205,9 @@ function PopupEditor(props: ScreenProps) {
           <TextInput label="Submit button" value={m.submit} onChange={(submit) => setM({ submit })} />
           <TextInput label="Button text while sending" value={m.submitting} onChange={(submitting) => setM({ submitting })} />
         </Grid>
-        <TextArea
+        <RichTextEditor
           label="Line under the button"
-          hint="[Link text](/page) makes a link"
+          hint="Select words and use the link button to add a link"
           rows={2}
           value={forms.labels.consent}
           onChange={(consent) => set('forms', { ...forms, labels: { ...forms.labels, consent } })}
@@ -241,7 +242,7 @@ function EnquiryEditor(props: ScreenProps) {
           <TextInput label="Badge" value={heading.badge} onChange={(badge) => set('home', { ...draft.home, enquiry: { ...heading, badge } })} />
           <TextInput label="Heading" value={heading.title} onChange={(title) => set('home', { ...draft.home, enquiry: { ...heading, title } })} />
         </Grid>
-        <TextArea label="Text" rows={2} value={heading.subtitle} onChange={(subtitle) => set('home', { ...draft.home, enquiry: { ...heading, subtitle } })} />
+        <RichTextEditor label="Text" rows={2} value={heading.subtitle} onChange={(subtitle) => set('home', { ...draft.home, enquiry: { ...heading, subtitle } })} />
       </Card>
       <Card title="Contact boxes (left side)" description="The phone numbers and WhatsApp number come from Site Settings → Contact Details.">
         <Grid>
@@ -251,7 +252,7 @@ function EnquiryEditor(props: ScreenProps) {
           <TextInput label="WhatsApp message" value={q.whatsappText} onChange={(whatsappText) => setQ({ whatsappText })} />
           <TextInput label="Privacy box title" value={q.privacyTitle} onChange={(privacyTitle) => setQ({ privacyTitle })} />
         </Grid>
-        <TextArea label="Privacy box text" rows={2} value={q.privacyText} onChange={(privacyText) => setQ({ privacyText })} />
+        <RichTextEditor label="Privacy box text" rows={2} value={q.privacyText} onChange={(privacyText) => setQ({ privacyText })} />
       </Card>
       <Card title="Form (right side)">
         <Grid>
@@ -260,7 +261,7 @@ function EnquiryEditor(props: ScreenProps) {
           <TextInput label="Submit button" value={q.submit} onChange={(submit) => setQ({ submit })} />
           <TextInput label="Button text while sending" value={q.submitting} onChange={(submitting) => setQ({ submitting })} />
         </Grid>
-        <TextArea label="Consent checkbox text" hint="[Link text](/page) makes a link" rows={2} value={q.consent} onChange={(consent) => setQ({ consent })} />
+        <RichTextEditor label="Consent checkbox text" hint="Select words and use the link button to add a link" rows={2} value={q.consent} onChange={(consent) => setQ({ consent })} />
       </Card>
       <FieldLabelsCard {...props} />
       <OptionsCard {...props} which={['vehicle', 'shift', 'zone', 'nationality']} />

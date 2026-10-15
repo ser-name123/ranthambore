@@ -2,6 +2,7 @@
 
 import { Highlight } from './cms/Text';
 import React from 'react';
+import { RichText } from './cms/Text';
 import Link from 'next/link';
 import { Compass, Car, Hotel, MapPin, Camera, Landmark, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -70,9 +71,9 @@ export default function ServicesGrid({ onSelectService }: ServicesGridProps) {
           <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#082318]">
             <Highlight text={heading.title} />
           </h2>
-          <p className="text-sm sm:text-base text-[#1b3a2a]">
-            {heading.subtitle}
-          </p>
+          <div className="text-sm sm:text-base text-[#1b3a2a]">
+            <RichText text={heading.subtitle} inline />
+          </div>
         </motion.div>
 
         {/* Services Grid with Staggered Motion & Spotlight Tilt */}
@@ -106,9 +107,9 @@ export default function ServicesGrid({ onSelectService }: ServicesGridProps) {
                       {svc.title}
                     </h3>
 
-                    <p className="text-xs sm:text-sm text-[#1b3a2a] leading-relaxed font-normal">
-                      {svc.desc}
-                    </p>
+                    <div className="text-xs sm:text-sm text-[#1b3a2a] leading-relaxed font-normal">
+                      <RichText text={svc.desc} inline />
+                    </div>
                   </div>
 
                   <div className="pt-6 mt-6 border-t border-[#e2ede6]">
