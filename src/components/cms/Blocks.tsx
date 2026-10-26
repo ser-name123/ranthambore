@@ -1,10 +1,10 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { AlertTriangle, ArrowRight, CheckCircle2, ChevronDown, Info, MessageCircle, ShieldAlert, XCircle } from 'lucide-react';
+import { AlertTriangle, ArrowRight, CheckCircle2, ChevronDown, ChevronLeft, ChevronRight, Info, MessageCircle, ShieldAlert, XCircle } from 'lucide-react';
 import type { Block, CardItem } from '@/lib/cms';
 import { waHref } from '@/lib/site-content';
 import { useBookingModal } from '@/context/BookingModalContext';
@@ -30,6 +30,111 @@ const GRID_COLS: Record<2 | 3 | 4, string> = {
   3: 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3',
   4: 'grid-cols-2 lg:grid-cols-4',
 };
+
+/** Up to 4 price cards sit in a grid; more become a slider so none wrap onto a lonely second row. */
+function PricingLayout({ count, children }: { count: number; children: React.ReactNode }) {
+  if (count <= 4) {
+    return <div className={`grid gap-5 ${GRID_COLS[count === 4 ? 4 : count === 2 ? 2 : 3]}`}>{children}</div>;
+  }
+  return <Slider>{children}</Slider>;
+}
+
+function Slider({ children }: { children: React.ReactNode }) {
+  const track = useRef<HTMLDivElement>(null);
+  const [state, setState] = useState({ page: 0, pages: 1, atStart: true, atEnd: false });
+  const [paused, setPaused] = useState(false);
+  const slides = React.Children.toArray(children);
+
+  const update = useCallback(() => {
+    const el = track.current;
+    if (!el) return;
+    const max = el.scrollWidth - el.clientWidth;
+    const card = (el.firstElementChild as HTMLElement | null)?.offsetWidth ?? el.clientWidth;
+    const stride = card + (parseFloat(getComputedStyle(el).columnGap) || 0);
+    const visible = Math.max(1, Math.round((el.clientWidth + 1) / stride));
+    const pages = Math.max(1, el.children.length - visible + 1);
+    setState({
+      page: el.scrollLeft >= max - 4 ? pages - 1 : Math.round(el.scrollLeft / stride),
+      pages,
+      atStart: el.scrollLeft <= 4,
+      atEnd: el.scrollLeft >= max - 4,
+    });
+  }, []);
+
+  const step = useCallback((dir: 1 | -1) => {
+    const el = track.current;
+    if (!el) return;
+    const card = el.firstElementChild as HTMLElement | null;
+    const gap = parseFloat(getComputedStyle(el).columnGap) || 0;
+    const by = (card?.offsetWidth ?? el.clientWidth) + gap;
+    if (dir === 1 && el.scrollLeft >= el.scrollWidth - el.clientWidth - 4) el.scrollTo({ left: 0, behavior: 'smooth' });
+    else el.scrollBy({ left: dir * by, behavior: 'smooth' });
+  }, []);
+
+  useEffect(() => {
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, [update]);
+
+  // Auto-advance; pauses while hovered/touched or when the user prefers less motion.
+  useEffect(() => {
+    if (paused || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const t = setInterval(() => step(1), 4500);
+    return () => clearInterval(t);
+  }, [paused, step]);
+
+  const goTo = (p: number) => {
+    const el = track.current;
+    const card = el?.children[p] as HTMLElement | undefined;
+    if (el && card) el.scrollTo({ left: card.offsetLeft - (el.firstElementChild as HTMLElement).offsetLeft, behavior: 'smooth' });
+  };
+
+  const arrow = 'absolute top-1/2 z-10 hidden h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full border border-[#d2e4d9] bg-white text-[#082318] shadow-md transition hover:bg-emerald-50 disabled:opacity-30 sm:flex';
+  return (
+    <div
+      className="relative"
+      role="region"
+      aria-roledescription="carousel"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onTouchStart={() => setPaused(true)}
+      onFocusCapture={() => setPaused(true)}
+      onBlurCapture={() => setPaused(false)}
+    >
+      <button type="button" aria-label="Previous" onClick={() => step(-1)} disabled={state.atStart} className={`${arrow} -left-4`}>
+        <ChevronLeft className="h-5 w-5" />
+      </button>
+      <div
+        ref={track}
+        onScroll={update}
+        className="flex snap-x snap-mandatory gap-5 overflow-x-auto scroll-smooth px-0.5 pb-2 pt-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      >
+        {slides.map((s, i) => (
+          <div key={i} className="shrink-0 basis-[85%] snap-start sm:basis-[calc((100%-1.25rem)/2)] lg:basis-[calc((100%-2.5rem)/3)] xl:basis-[calc((100%-3.75rem)/4)]">
+            {s}
+          </div>
+        ))}
+      </div>
+      <button type="button" aria-label="Next" onClick={() => step(1)} className={`${arrow} -right-4`}>
+        <ChevronRight className="h-5 w-5" />
+      </button>
+      {state.pages > 1 && (
+        <div className="mt-4 flex justify-center gap-2">
+          {Array.from({ length: state.pages }, (_, p) => (
+            <button
+              key={p}
+              type="button"
+              aria-label={`Go to slide ${p + 1}`}
+              onClick={() => goTo(p)}
+              className={`h-2 cursor-pointer rounded-full transition-all ${p === state.page ? 'w-6 bg-emerald-700' : 'w-2 bg-[#c4dcce] hover:bg-emerald-400'}`}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
 
 function BlockHeading({ block, center = false }: { block: Block; center?: boolean }) {
   if (!block.heading && !block.intro && !block.badge) return null;
@@ -173,14 +278,14 @@ export function BlockView({ block }: { block: Block }) {
       return (
         <>
           <BlockHeading block={block} />
-          <div className={`grid gap-5 ${GRID_COLS[block.tiers.length >= 4 ? 4 : block.tiers.length === 2 ? 2 : 3]}`}>
+          <PricingLayout count={block.tiers.length}>
             {block.tiers.map((tier, i) => (
               <motion.div
                 key={i}
                 {...reveal}
                 className={`flex h-full flex-col rounded-2xl border bg-white p-6 shadow-sm transition hover:shadow-lg ${
                   tier.highlighted ? 'border-2 border-emerald-600 shadow-md' : 'border-[#d2e4d9] hover:border-emerald-500'
-                } ${block.tiers.length >= 4 ? 'col-span-2 lg:col-span-1' : ''}`}
+                } ${block.tiers.length === 4 ? 'col-span-2 lg:col-span-1' : ''}`}
               >
                 {tier.badge && (
                   <span className="mb-3 self-start rounded-full border border-amber-300 bg-amber-50 px-2.5 py-0.5 text-[11px] font-bold text-amber-900">{tier.badge}</span>
@@ -208,7 +313,7 @@ export function BlockView({ block }: { block: Block }) {
                 </button>
               </motion.div>
             ))}
-          </div>
+          </PricingLayout>
           {block.note && <p className="mt-4 text-xs text-[#517362]">{block.note}</p>}
         </>
       );
