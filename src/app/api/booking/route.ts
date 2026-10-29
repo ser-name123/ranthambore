@@ -58,14 +58,17 @@ export async function POST(request: Request) {
     consent: typeof body.consent === 'boolean' ? body.consent : null,
   };
 
-  let savedToDatabase = false;
-  if (isSupabaseConfigured) {
-    const { error } = await getSupabaseAdmin().from('enquiries').insert(enquiry);
-    if (error) console.error('Enquiry insert failed:', error);
-    else savedToDatabase = true;
-  }
-
+  // Never report success (or send the visitor to the thank-you page) unless the enquiry is in the admin.
   const { contact, forms } = await getSiteContent();
+  if (!isSupabaseConfigured) {
+    return NextResponse.json({ error: forms.errors.network }, { status: 503 });
+  }
+  const { error } = await getSupabaseAdmin().from('enquiries').insert(enquiry);
+  if (error) {
+    console.error('Enquiry insert failed:', error.message);
+    return NextResponse.json({ error: forms.errors.network }, { status: 500 });
+  }
+  const savedToDatabase = true;
   const whatsappUrl = waHref(
     contact.whatsapp,
     fillTemplate(forms.whatsappTemplate, {
