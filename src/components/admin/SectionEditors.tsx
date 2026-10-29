@@ -32,6 +32,7 @@ import type {
 } from '@/lib/site-content';
 import { LinkPicker } from './LinkOptions';
 import SeoFilesEditor from './SeoFilesEditor';
+import { ServiceFormFields, ThankYouFields } from './FormScreens';
 import { Card, ImagePicker, LinesInput, ListEditor, NumberInput, SelectInput, TextArea, TextInput, Toggle } from './ui';
 
 export interface EditorProps<T> {
@@ -460,7 +461,21 @@ function SeoEditor({ value, onChange, onError }: EditorProps<SeoContent>) {
         <TextInput label="Title" hint={`${value.title.length} / 60 characters`} value={value.title} onChange={(v) => set({ title: v })} />
         <TextArea label="Meta description" hint={`${value.description.length} / 160 characters`} value={value.description} onChange={(v) => set({ description: v })} />
         <TextArea label="Keywords" hint="Comma separated" rows={2} value={value.keywords} onChange={(v) => set({ keywords: v })} />
-        <ImagePicker label="Social share image" value={value.ogImage} onChange={(v) => set({ ogImage: v })} onError={onError} />
+      </Card>
+      <Card
+        title="WhatsApp / Facebook share image"
+        description="The picture shown when someone shares a link to your website on WhatsApp, Facebook or LinkedIn. Best size 1200 × 630, under 300 KB (WhatsApp skips large images)."
+      >
+        <ImagePicker label="Share image" value={value.ogImage} onChange={(v) => set({ ogImage: v })} onError={onError} />
+        <Toggle
+          label="Use this image for every page (recommended)"
+          checked={value.shareImageForAll}
+          onChange={(shareImageForAll) => set({ shareImageForAll })}
+        />
+        <p className="text-xs text-[#517362]">
+          Switch off to let each page use the share image from its own SEO box. The ready-made logo image is <span className="font-mono">/og-share.jpg</span>.
+          After changing it, WhatsApp may keep showing the old picture for a while because it remembers previews.
+        </p>
       </Card>
       <Card title="Google tools">
         {grid2(
@@ -656,6 +671,16 @@ function BrandingEditor({ value, onChange, onError }: EditorProps<BrandingConten
     <Card title="Logo & name" description="Shown in the header, footer and admin login.">
       <StringFields value={value} onChange={onChange} fields={[['name', 'Brand name'], ['tagline', 'Tagline (under the name)']]} />
       <ImagePicker label="Logo (square image)" value={value.logo} onChange={(logo) => onChange({ ...value, logo })} onError={onError} />
+      <ImagePicker
+        label="Favicon (browser tab & phone home-screen icon)"
+        value={value.favicon}
+        onChange={(favicon) => onChange({ ...value, favicon })}
+        onError={onError}
+      />
+      <p className="text-xs text-[#517362]">
+        Use a square image with a simple shape (e.g. just the tiger&apos;s face): the full logo with text is unreadable at tab size. The ready-made icon is{' '}
+        <span className="font-mono">/icon-512.png</span>.
+      </p>
     </Card>
   );
 }
@@ -817,6 +842,8 @@ export const SECTION_EDITORS: Record<SiteContentKey, AnyEditor> = {
   branding: BrandingEditor as AnyEditor,
   ui: UiEditor as AnyEditor,
   forms: FormsEditor as AnyEditor,
+  serviceForm: ServiceFormFields as AnyEditor,
+  thankYou: ThankYouFields as AnyEditor,
   vehicles: VehiclesEditor as AnyEditor,
   navigation: NavigationEditor as AnyEditor,
   home: HomeEditor as AnyEditor,

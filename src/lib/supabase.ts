@@ -26,6 +26,23 @@ export function getSupabaseAdmin(): SupabaseClient {
 export const ENQUIRY_STATUSES = ['New Enquiry', 'Contacted', 'Quoted', 'Confirmed', 'Cancelled'] as const;
 export type EnquiryStatus = (typeof ENQUIRY_STATUSES)[number];
 
+export interface ServiceRequest {
+  id: string;
+  reference_id: string;
+  created_at: string;
+  name: string;
+  phone: string;
+  email: string | null;
+  service: string;
+  people: number;
+  preferred_date: string | null;
+  message: string | null;
+  page_url: string | null;
+  consent: boolean | null;
+  status: EnquiryStatus;
+  admin_notes: string | null;
+}
+
 export interface Enquiry {
   id: string;
   reference_id: string;

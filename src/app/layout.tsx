@@ -3,8 +3,9 @@ import Script from "next/script";
 import { Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import ClientLayout from "@/components/ClientLayout";
-import { getPublishedPackages, getSiteContent } from "@/lib/content.server";
+import { getPublishedPackages, getSiteContent, getSiteContentResolved } from "@/lib/content.server";
 import { toPlainText } from "@/lib/rich-text";
+import { DEFAULT_SITE_CONTENT } from "@/lib/site-content";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-serif",
@@ -25,7 +26,7 @@ export const viewport: Viewport = {
 };
 
 export async function generateMetadata(): Promise<Metadata> {
-  const { seo } = await getSiteContent();
+  const { seo, branding } = await getSiteContent();
   const keywords = seo.keywords.split(",").map((k) => k.trim()).filter(Boolean);
 
   return {
@@ -54,9 +55,10 @@ export async function generateMetadata(): Promise<Metadata> {
       images: [seo.ogImage],
     },
     verification: seo.googleVerification ? { google: seo.googleVerification } : undefined,
+    // favicon.ico (src/app) is added by Next automatically; the admin-chosen icon comes first.
     icons: {
-      icon: "/logo.jpg",
-      apple: "/logo.jpg",
+      icon: branding.favicon ? [{ url: branding.favicon }] : undefined,
+      apple: branding.favicon && branding.favicon !== DEFAULT_SITE_CONTENT.branding.favicon ? branding.favicon : "/apple-touch-icon.png",
     },
   };
 }
@@ -66,7 +68,8 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const [content, packageRows] = await Promise.all([getSiteContent(), getPublishedPackages()]);
+  // Resolved: the Service Request Form's choices come from the linked price sections.
+  const [content, packageRows] = await Promise.all([getSiteContentResolved(), getPublishedPackages()]);
   // Card fields only; detail blocks and SEO stay on the package pages.
   const packages = packageRows.map(({ data: { blocks: _blocks, seo: _seo, ...card } }) => card);
   const { contact, seo } = content;

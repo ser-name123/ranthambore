@@ -17,6 +17,7 @@
     {
       "id": "resort-categories",
       "type": "pricing",
+      "enquiryForm": "service",
       "heading": "Curated Resort Categories in Ranthambore",
       "intro": "Find the ideal balance of comfort, jungle character, and budget for your holiday.",
       "bookingPrefill": "Resort Booking",

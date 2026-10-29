@@ -2,8 +2,9 @@
 
 import React from 'react';
 import RichTextEditor from './RichTextEditor';
-import type { FormsContent, SiteContent, SiteContentKey } from '@/lib/site-content';
-import { Card, LinesInput, NumberInput, TextArea, TextInput, Toggle } from './ui';
+import type { FormsContent, ServiceFormContent, SiteContent, SiteContentKey, ThankYouContent } from '@/lib/site-content';
+import { LinkPicker } from './LinkOptions';
+import { Card, ImagePicker, LinesInput, NumberInput, SelectInput, TextArea, TextInput, Toggle } from './ui';
 
 export interface ScreenProps {
   draft: SiteContent;
@@ -277,6 +278,173 @@ function EnquiryEditor(props: ScreenProps) {
   );
 }
 
+/** Everything in the Service Request Form. Also used as the section editor for the `serviceForm` key. */
+export function ServiceFormFields({ value: f, onChange, onError }: { value: ServiceFormContent; onChange: (v: ServiceFormContent) => void; onError?: (m: string) => void }) {
+  const update = (patch: Partial<ServiceFormContent>) => onChange({ ...f, ...patch });
+  const setL = (patch: Partial<ServiceFormContent['labels']>) => update({ labels: { ...f.labels, ...patch } });
+  const setE = (patch: Partial<ServiceFormContent['errors']>) => update({ errors: { ...f.errors, ...patch } });
+  const setA = (patch: Partial<ServiceFormContent['aside']>) => update({ aside: { ...f.aside, ...patch } });
+  return (
+    <>
+      <Card title="Choices in the “Service” dropdown" description="Visitors must pick one of these.">
+        <SelectInput
+          label="Where the choices come from"
+          value={f.optionsMode}
+          options={[
+            { value: 'linked', label: 'Automatic: the cards of price sections whose button opens this form' },
+            { value: 'manual', label: 'My own list (typed below)' },
+          ]}
+          onChange={(optionsMode) => update({ optionsMode })}
+        />
+        {f.optionsMode === 'linked' ? (
+          <p className="rounded-lg bg-emerald-50 px-3 py-2 text-xs text-emerald-900">
+            The dropdown lists the card titles of every price section set to “Open the Service Request form” (e.g. “Curated Resort Categories” on Resort
+            Booking). Add, rename or remove a card there and this list follows by itself. If no section is linked, your own list below is used instead.
+          </p>
+        ) : null}
+        <LinesInput
+          label={f.optionsMode === 'linked' ? 'Own list (used only if no price section is linked)' : 'Service choices'}
+          hint="One per line, in the order shown"
+          rows={f.optionsMode === 'linked' ? 4 : 9}
+          value={f.serviceOptions}
+          onChange={(serviceOptions) => update({ serviceOptions })}
+        />
+        <TextInput label="Text shown before a service is picked" value={f.labels.servicePlaceholder} onChange={(servicePlaceholder) => setL({ servicePlaceholder })} />
+      </Card>
+      <Card title="Form heading" description="Shown at the top of the form box. Leave empty to hide.">
+        <TextInput label="Title" value={f.title} onChange={(title) => update({ title })} />
+        <RichTextEditor label="Subtitle" rows={2} value={f.subtitle} onChange={(subtitle) => update({ subtitle })} />
+      </Card>
+      <Card
+        title="Side panel (beside the form)"
+        description="The photo box on the left of the form on pages like Contact Us. Its call and WhatsApp buttons use the numbers from Site Settings → Contact Details."
+      >
+        <Toggle label="Show the side panel" checked={f.aside.visible} onChange={(visible) => setA({ visible })} />
+        {f.aside.visible && (
+          <>
+            <ImagePicker label="Background photo" value={f.aside.image} onChange={(image) => setA({ image })} onError={onError ?? (() => {})} />
+            <Grid>
+              <TextInput label="Small label" value={f.aside.badge} onChange={(badge) => setA({ badge })} />
+              <TextInput label="Heading" value={f.aside.title} onChange={(title) => setA({ title })} />
+            </Grid>
+            <RichTextEditor label="Text" rows={2} value={f.aside.text} onChange={(text) => setA({ text })} />
+            <LinesInput label="Points with tick marks" rows={5} value={f.aside.points} onChange={(points) => setA({ points })} />
+            <TextInput label="WhatsApp button message" value={f.aside.whatsappText} onChange={(whatsappText) => setA({ whatsappText })} />
+          </>
+        )}
+      </Card>
+      <Card title="Field names and hints" description="Text above each box, and the grey example text inside it. Add * to show a field is required.">
+        <Grid cols={3}>
+          <TextInput label="Name field" value={f.labels.name} onChange={(name) => setL({ name })} />
+          <TextInput label="Name example" value={f.labels.namePlaceholder} onChange={(namePlaceholder) => setL({ namePlaceholder })} />
+          <TextInput label="Mobile field" value={f.labels.phone} onChange={(phone) => setL({ phone })} />
+          <TextInput label="Mobile example" value={f.labels.phonePlaceholder} onChange={(phonePlaceholder) => setL({ phonePlaceholder })} />
+          <TextInput label="Email field" value={f.labels.email} onChange={(email) => setL({ email })} />
+          <TextInput label="Email example" value={f.labels.emailPlaceholder} onChange={(emailPlaceholder) => setL({ emailPlaceholder })} />
+          <TextInput label="Number of people field" value={f.labels.people} onChange={(people) => setL({ people })} />
+          <TextInput label="Service field" value={f.labels.service} onChange={(service) => setL({ service })} />
+          <TextInput label="Date field" value={f.labels.date} onChange={(date) => setL({ date })} />
+          <TextInput label="Message field" value={f.labels.message} onChange={(message) => setL({ message })} />
+          <TextInput label="Message example" className="sm:col-span-2" value={f.labels.messagePlaceholder} onChange={(messagePlaceholder) => setL({ messagePlaceholder })} />
+        </Grid>
+        <Grid cols={3}>
+          <NumberInput label="Most people allowed" min={1} max={500} value={f.peopleMax} onChange={(peopleMax) => update({ peopleMax })} />
+          <Toggle label="Email is required" checked={f.emailRequired} onChange={(emailRequired) => update({ emailRequired })} />
+          <Toggle label="Date is required" checked={f.dateRequired} onChange={(dateRequired) => update({ dateRequired })} />
+        </Grid>
+        <p className="text-xs text-[#517362]">Name, mobile, number of people and service are always required.</p>
+      </Card>
+      <Card title="Consent and button">
+        <RichTextEditor label="Consent checkbox text" hint="Leave empty to hide the checkbox. Select words and use the link button to add a link." rows={2} value={f.consent} onChange={(consent) => update({ consent })} />
+        <Grid>
+          <TextInput label="Submit button" value={f.submit} onChange={(submit) => update({ submit })} />
+          <TextInput label="Button text while sending" value={f.submitting} onChange={(submitting) => update({ submitting })} />
+        </Grid>
+      </Card>
+      <Card title="After the visitor submits">
+        <Grid cols={3}>
+          <TextInput label="Success title" value={f.successTitle} onChange={(successTitle) => update({ successTitle })} />
+          <TextInput label="WhatsApp button" hint="Leave empty to hide it" value={f.successWhatsapp} onChange={(successWhatsapp) => update({ successWhatsapp })} />
+          <TextInput label="“Send another” button" value={f.anotherRequest} onChange={(anotherRequest) => update({ anotherRequest })} />
+        </Grid>
+        <RichTextEditor label="Thank-you message" hint="You can use {name} {service} {ref}" rows={2} value={f.successMessage} onChange={(successMessage) => update({ successMessage })} />
+        <TextArea
+          label="WhatsApp message (sent when they tap the WhatsApp button)"
+          hint="You can use: {ref} {service} {name} {phone} {email} {people} {date} {message}. A line is skipped if its fields are empty."
+          rows={9}
+          value={f.whatsappTemplate}
+          onChange={(whatsappTemplate) => update({ whatsappTemplate })}
+        />
+      </Card>
+      <Card title="Error messages">
+        <Grid cols={3}>
+          <TextInput label="Required field missing" value={f.errors.required} onChange={(required) => setE({ required })} />
+          <TextInput label="Wrong mobile number" value={f.errors.phone} onChange={(phone) => setE({ phone })} />
+          <TextInput label="Wrong email" value={f.errors.email} onChange={(email) => setE({ email })} />
+          <TextInput label="Date in the past" value={f.errors.date} onChange={(date) => setE({ date })} />
+          <TextInput label="Consent not ticked" value={f.errors.consent} onChange={(consent) => setE({ consent })} />
+          <TextInput label="Could not send" value={f.errors.network} onChange={(network) => setE({ network })} />
+        </Grid>
+      </Card>
+    </>
+  );
+}
+
+function ServiceFormEditor({ draft, set, onError }: ScreenProps) {
+  return <ServiceFormFields value={draft.serviceForm} onChange={(v) => set('serviceForm', v)} onError={onError} />;
+}
+
+/** The /thank-you page. Also used as the section editor for the `thankYou` key. */
+export function ThankYouFields({ value: t, onChange }: { value: ThankYouContent; onChange: (v: ThankYouContent) => void; onError?: (m: string) => void }) {
+  const update = (patch: Partial<ThankYouContent>) => onChange({ ...t, ...patch });
+  const setName = (patch: Partial<ThankYouContent['formNames']>) => update({ formNames: { ...t.formNames, ...patch } });
+  return (
+    <>
+      <Card title="When is it used?">
+        <Toggle label="Send visitors to the Thank-you page after every form" checked={t.enabled} onChange={(enabled) => update({ enabled })} />
+        <p className="text-xs text-[#517362]">
+          Used by the booking popup, the enquiry form and the service request form (also its popup on price cards). Switch off to show each form’s own
+          success message instead. The page is hidden from Google, and with Google Analytics you can count visits to <span className="font-mono">/thank-you</span> as
+          conversions.
+        </p>
+      </Card>
+      <Card title="Main message" description="You can use {form} (which form was sent) and {ref} (the visitor’s reference number).">
+        <Grid>
+          <TextInput label="Small label" value={t.badge} onChange={(badge) => update({ badge })} />
+          <TextInput label="Heading" value={t.title} onChange={(title) => update({ title })} />
+        </Grid>
+        <RichTextEditor label="Message" rows={3} value={t.message} onChange={(message) => update({ message })} />
+        <TextInput label="Reference number label" value={t.refLabel} onChange={(refLabel) => update({ refLabel })} />
+      </Card>
+      <Card title="Form names" description="What {form} becomes for each form.">
+        <Grid cols={3}>
+          <TextInput label="Booking popup" value={t.formNames.booking} onChange={(booking) => setName({ booking })} />
+          <TextInput label="Enquiry form" value={t.formNames.enquiry} onChange={(enquiry) => setName({ enquiry })} />
+          <TextInput label="Service request form" value={t.formNames.service} onChange={(service) => setName({ service })} />
+        </Grid>
+      </Card>
+      <Card title="Buttons" description="Leave a button’s text empty to hide it.">
+        <Grid>
+          <TextInput label="WhatsApp button" value={t.whatsappButton} onChange={(whatsappButton) => update({ whatsappButton })} />
+          <TextInput label="WhatsApp message" hint="You can use {ref} and {form}" value={t.whatsappText} onChange={(whatsappText) => update({ whatsappText })} />
+          <TextInput label="Main button" value={t.primaryButton} onChange={(primaryButton) => update({ primaryButton })} />
+          <LinkPicker label="Main button goes to" value={t.primaryLink} onChange={(primaryLink) => update({ primaryLink })} />
+          <TextInput label="Second button" value={t.secondaryButton} onChange={(secondaryButton) => update({ secondaryButton })} />
+          <LinkPicker label="Second button goes to" value={t.secondaryLink} onChange={(secondaryLink) => update({ secondaryLink })} />
+        </Grid>
+      </Card>
+      <Card title="What happens next" description="Numbered steps under the message. Leave empty to hide the box. Phone numbers come from Contact Details.">
+        <TextInput label="Heading" value={t.nextStepsTitle} onChange={(nextStepsTitle) => update({ nextStepsTitle })} />
+        <LinesInput label="Steps" hint="One step per line" rows={5} value={t.nextSteps} onChange={(nextSteps) => update({ nextSteps })} />
+      </Card>
+    </>
+  );
+}
+
+function ThankYouEditor({ draft, set, onError }: ScreenProps) {
+  return <ThankYouFields value={draft.thankYou} onChange={(v) => set('thankYou', v)} onError={onError} />;
+}
+
 export const FORM_SCREENS: FormScreen[] = [
   {
     id: 'form-widget',
@@ -304,5 +472,23 @@ export const FORM_SCREENS: FormScreen[] = [
     where: '/#contact-us',
     keys: ['home', 'forms'],
     Editor: EnquiryEditor,
+  },
+  {
+    id: 'form-service',
+    label: 'Service Request Form',
+    desc: 'The service request form on the Contact Us page',
+    help: 'The form where visitors ask for a service (safari, hotel, transfer…): name, mobile, email, number of people, service, date and message. Edit the service list, field names and messages here. Every submission is saved in Forms → Service Requests. To place the form on another page, add a “Service request form” section to that page.',
+    where: '/contact-us#service-request',
+    keys: ['serviceForm'],
+    Editor: ServiceFormEditor,
+  },
+  {
+    id: 'form-thankyou',
+    label: 'Thank-you Page',
+    desc: 'The page visitors see after sending any form',
+    help: 'After the booking popup, enquiry form or service request form is sent, the visitor lands on this page with their reference number. Edit its heading, message, buttons and next steps here, or switch it off to show the form’s own success message.',
+    where: '/thank-you?ref=SRV-2026-ABC123&form=service',
+    keys: ['thankYou'],
+    Editor: ThankYouEditor,
   },
 ];

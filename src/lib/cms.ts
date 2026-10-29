@@ -54,7 +54,15 @@ interface BlockBase {
 
 export type Block =
   | (BlockBase & { type: 'cards'; columns: 2 | 3 | 4; style: 'card' | 'compact' | 'image'; items: CardItem[] })
-  | (BlockBase & { type: 'pricing'; tiers: PricingTier[]; note?: string; bookingPrefill?: string; buttonLabel?: string })
+  | (BlockBase & {
+      type: 'pricing';
+      tiers: PricingTier[];
+      note?: string;
+      bookingPrefill?: string;
+      buttonLabel?: string;
+      /** 'service': the button opens the Service Request form, listing this block's tier titles as the choices. */
+      enquiryForm?: 'booking' | 'service';
+    })
   | (BlockBase & { type: 'table'; columns: string[]; rows: string[][]; note?: string })
   | (BlockBase & { type: 'timeline'; items: TimelineItem[] })
   | (BlockBase & { type: 'faq'; items: { q: string; a: string }[] })
@@ -67,7 +75,8 @@ export type Block =
   | (BlockBase & { type: 'packages'; category?: string })
   | (BlockBase & { type: 'testimonials' })
   | (BlockBase & { type: 'zoneExplorer' })
-  | (BlockBase & { type: 'contactInfo' });
+  | (BlockBase & { type: 'contactInfo' })
+  | (BlockBase & { type: 'serviceRequest' });
 
 export type BlockType = Block['type'];
 
@@ -155,4 +164,4 @@ export function slugifyTyping(text: string): string {
   return slug && /[^a-z0-9]$/i.test(dashed) ? `${slug}-` : slug;
 }
 
-export const RESERVED_SLUGS = ['admin', 'api', 'packages', '_next', 'images', 'sitemap.xml', 'robots.txt'];
+export const RESERVED_SLUGS = ['admin', 'api', 'packages', 'thank-you', '_next', 'images', 'sitemap.xml', 'robots.txt'];

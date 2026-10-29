@@ -46,9 +46,10 @@ import {
   UserCog,
   X,
 } from 'lucide-react';
-import type { Enquiry } from '@/lib/supabase';
+import type { Enquiry, ServiceRequest } from '@/lib/supabase';
 import { DEFAULT_SITE_CONTENT, SITE_CONTENT_KEYS, SiteContent, SiteContentKey } from '@/lib/site-content';
 import EnquiriesPanel, { formatDateTime, StatusBadge } from './EnquiriesPanel';
+import ServiceRequestsPanel from './ServiceRequestsPanel';
 import { SECTION_EDITORS } from './SectionEditors';
 import CollectionManager, { type Collection } from './CollectionManager';
 import UrlManager from './UrlManager';
@@ -65,7 +66,7 @@ interface Admin {
   name: string;
 }
 
-type View = 'dashboard' | 'help' | 'enquiries' | 'profile' | 'urls' | Collection | SiteContentKey | `page:${string}` | `package:${string}` | `form-${string}`;
+type View = 'dashboard' | 'help' | 'enquiries' | 'service-requests' | 'profile' | 'urls' | Collection | SiteContentKey | `page:${string}` | `package:${string}` | `form-${string}`;
 
 type SectionGroup = 'Home Page' | 'Site Settings' | 'SEO & Google';
 
@@ -270,6 +271,8 @@ function AdminShell({ admin, setAdmin }: { admin: Admin; setAdmin: (a: Admin | n
 
   const [enquiries, setEnquiries] = useState<Enquiry[]>([]);
   const [enquiriesLoading, setEnquiriesLoading] = useState(true);
+  const [serviceRequests, setServiceRequests] = useState<ServiceRequest[]>([]);
+  const [serviceRequestsLoading, setServiceRequestsLoading] = useState(true);
 
   const notify = useCallback((kind: 'success' | 'error', message: string) => {
     // Each toast hides itself only; a newer toast is never cleared by an older timer.
@@ -299,6 +302,20 @@ function AdminShell({ admin, setAdmin }: { admin: Admin; setAdmin: (a: Admin | n
   const reloadEnquiries = () => {
     setEnquiriesLoading(true);
     fetchEnquiries();
+  };
+
+  const fetchServiceRequests = useCallback(
+    () =>
+      api<{ requests: ServiceRequest[] }>('/api/admin/service-requests')
+        .then(({ requests }) => setServiceRequests(requests))
+        .catch(handleError)
+        .finally(() => setServiceRequestsLoading(false)),
+    [handleError]
+  );
+
+  const reloadServiceRequests = () => {
+    setServiceRequestsLoading(true);
+    fetchServiceRequests();
   };
 
   const contentRef = useRef({ saved, draft });
@@ -337,14 +354,18 @@ function AdminShell({ admin, setAdmin }: { admin: Admin; setAdmin: (a: Admin | n
   useEffect(() => {
     loadContent();
     fetchEnquiries();
+    fetchServiceRequests();
     loadNav();
-  }, [loadContent, fetchEnquiries, loadNav]);
+  }, [loadContent, fetchEnquiries, fetchServiceRequests, loadNav]);
 
-  // New enquiries show up without reloading the admin.
+  // New enquiries and service requests show up without reloading the admin.
   useEffect(() => {
-    const timer = setInterval(fetchEnquiries, 60_000);
+    const timer = setInterval(() => {
+      fetchEnquiries();
+      fetchServiceRequests();
+    }, 60_000);
     return () => clearInterval(timer);
-  }, [fetchEnquiries]);
+  }, [fetchEnquiries, fetchServiceRequests]);
 
   const dirtyKeys = useMemo(
     () => SITE_CONTENT_KEYS.filter((k) => JSON.stringify(saved[k]) !== JSON.stringify(draft[k])),
@@ -392,6 +413,30 @@ function AdminShell({ admin, setAdmin }: { admin: Admin; setAdmin: (a: Admin | n
     }
   };
 
+  const updateServiceRequest = async (id: string, patch: Partial<Pick<ServiceRequest, 'status' | 'admin_notes'>>) => {
+    try {
+      const { request } = await api<{ request: ServiceRequest }>(`/api/admin/service-requests/${id}`, { method: 'PATCH', body: JSON.stringify(patch) });
+      setServiceRequests((list) => list.map((r) => (r.id === id ? request : r)));
+      notify('success', patch.status ? `Marked as ${patch.status}` : 'Notes saved');
+      return true;
+    } catch (err) {
+      handleError(err);
+      return false;
+    }
+  };
+
+  const deleteServiceRequest = async (id: string) => {
+    try {
+      await api(`/api/admin/service-requests/${id}`, { method: 'DELETE' });
+      setServiceRequests((list) => list.filter((r) => r.id !== id));
+      notify('success', 'Service request deleted');
+      return true;
+    } catch (err) {
+      handleError(err);
+      return false;
+    }
+  };
+
   const deleteEnquiry = async (id: string) => {
     try {
       await api(`/api/admin/enquiries/${id}`, { method: 'DELETE' });
@@ -431,6 +476,7 @@ function AdminShell({ admin, setAdmin }: { admin: Admin; setAdmin: (a: Admin | n
   );
 
   const newCount = enquiries.filter((e) => e.status === 'New Enquiry').length;
+  const newServiceCount = serviceRequests.filter((r) => r.status === 'New Enquiry').length;
   const section = SECTIONS.find((s) => s.key === view);
   const formScreen = FORM_SCREENS.find((f) => f.id === view);
   const pageId = view.startsWith('page:') ? view.slice(5) : null;
@@ -440,6 +486,7 @@ function AdminShell({ admin, setAdmin }: { admin: Admin; setAdmin: (a: Admin | n
     : view === 'help' ? 'Help & Guide'
     : formScreen ? `Forms › ${formScreen.label}`
     : view === 'enquiries' ? 'Enquiries'
+    : view === 'service-requests' ? 'Forms › Service Requests'
     : view === 'profile' ? 'My Account'
     : view === 'pages' ? 'All Pages'
     : view === 'packages' ? 'Tour Packages'
@@ -554,6 +601,14 @@ function AdminShell({ admin, setAdmin }: { admin: Admin; setAdmin: (a: Admin | n
                 navItem(fs.id, fs.label, ClipboardList, fs.keys.some((k) => dirtyKeys.includes(k)) && <span className="h-2 w-2 rounded-full bg-[#d97706]" title="Unsaved changes" />)
               )}
               {navItem('enquiries', 'Submitted Enquiries', Inbox)}
+              {navItem(
+                'service-requests',
+                'Service Requests',
+                Inbox,
+                newServiceCount > 0 && (
+                  <span className={`rounded-full px-1.5 text-[11px] font-bold ${view === 'service-requests' ? 'bg-white text-emerald-800' : 'bg-[#d97706] text-white'}`}>{newServiceCount}</span>
+                )
+              )}
             </div>
           </div>
           <div>
@@ -609,7 +664,7 @@ function AdminShell({ admin, setAdmin }: { admin: Admin; setAdmin: (a: Admin | n
           <LinkOptionsProvider options={linkOptions}>
           <div className={`mx-auto max-w-5xl ${section || formScreen ? '' : 'pb-10'}`}>
             {view === 'dashboard' && (
-              <Dashboard enquiries={enquiries} loading={enquiriesLoading} dirtyKeys={dirtyKeys} updatedAt={updatedAt} go={go} />
+              <Dashboard enquiries={enquiries} newServiceRequests={newServiceCount} loading={enquiriesLoading} dirtyKeys={dirtyKeys} updatedAt={updatedAt} go={go} />
             )}
             {view === 'help' && <HelpGuide go={go} />}
             {formScreen &&
@@ -647,6 +702,15 @@ function AdminShell({ admin, setAdmin }: { admin: Admin; setAdmin: (a: Admin | n
               ))}
             {view === 'enquiries' && (
               <EnquiriesPanel enquiries={enquiries} loading={enquiriesLoading} onRefresh={reloadEnquiries} onUpdate={updateEnquiry} onDelete={deleteEnquiry} />
+            )}
+            {view === 'service-requests' && (
+              <ServiceRequestsPanel
+                requests={serviceRequests}
+                loading={serviceRequestsLoading}
+                onRefresh={reloadServiceRequests}
+                onUpdate={updateServiceRequest}
+                onDelete={deleteServiceRequest}
+              />
             )}
             {(view === 'pages' || pageId) && (
               <CollectionManager key={view} collection="pages" initialId={pageId ?? undefined} api={api} notify={notify} onError={handleError} onItemsChange={syncPages} onUrlChange={reloadAfterUrlChange} />
@@ -713,8 +777,9 @@ function AdminShell({ admin, setAdmin }: { admin: Admin; setAdmin: (a: Admin | n
   );
 }
 
-function Dashboard({ enquiries, loading, dirtyKeys, updatedAt, go }: {
+function Dashboard({ enquiries, newServiceRequests, loading, dirtyKeys, updatedAt, go }: {
   enquiries: Enquiry[];
+  newServiceRequests: number;
   loading: boolean;
   dirtyKeys: SiteContentKey[];
   updatedAt: Partial<Record<SiteContentKey, string>>;
@@ -739,6 +804,18 @@ function Dashboard({ enquiries, loading, dirtyKeys, updatedAt, go }: {
           <LifeBuoy className="h-3.5 w-3.5" /> Open Help &amp; Guide
         </Button>
       </div>
+      {newServiceRequests > 0 && (
+        <button
+          type="button"
+          onClick={() => go('service-requests')}
+          className="flex w-full cursor-pointer items-center justify-between gap-3 rounded-2xl border border-amber-300 bg-amber-50 px-5 py-3 text-left text-sm font-semibold text-amber-900 transition hover:bg-amber-100"
+        >
+          <span>
+            {newServiceRequests} new service request{newServiceRequests === 1 ? '' : 's'} waiting for a callback
+          </span>
+          <ArrowRight className="h-4 w-4" />
+        </button>
+      )}
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6">
         {[
           { label: 'Edit homepage', icon: LayoutDashboard, to: 'hero' as View },

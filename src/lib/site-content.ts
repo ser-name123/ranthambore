@@ -195,6 +195,7 @@ export interface SeoContent {
   description: string;
   keywords: string;
   ogImage: string;
+  shareImageForAll: boolean; // use ogImage for every page's WhatsApp/Facebook preview, ignoring page images
   googleVerification: string;
   googleAnalyticsId: string;
 }
@@ -259,6 +260,7 @@ export interface BrandingContent {
   name: string; // "Ranthambore"
   tagline: string; // "Wild Life Tour"
   logo: string;
+  favicon: string; // browser tab / bookmark / phone home-screen icon (square)
 }
 
 export interface VehicleCard {
@@ -300,6 +302,51 @@ export interface FormsContent {
     anotherRequest: string; phoneLabel: string; whatsappLabel: string; privacyTitle: string; privacyText: string;
     consent: string; whatsappText: string; whatsappSuffix: string;
   };
+}
+
+/** The "Service Request Form" block (Contact Us page and any page it is added to). */
+export interface ServiceFormContent {
+  title: string;
+  subtitle: string;
+  /** linked = choices are the card titles of every price section whose button opens this form (kept in sync); manual = serviceOptions. */
+  optionsMode: 'linked' | 'manual';
+  serviceOptions: string[]; // the "Service" dropdown in manual mode (and the fallback when nothing is linked)
+  peopleMax: number;
+  labels: {
+    name: string; phone: string; email: string; people: string; service: string; date: string; message: string;
+    namePlaceholder: string; phonePlaceholder: string; emailPlaceholder: string; servicePlaceholder: string; messagePlaceholder: string;
+  };
+  emailRequired: boolean;
+  dateRequired: boolean;
+  consent: string; // empty = no consent checkbox
+  submit: string;
+  submitting: string;
+  successTitle: string;
+  successMessage: string; // {ref} {name} {service} are replaced
+  successWhatsapp: string; // empty hides the WhatsApp button
+  anotherRequest: string;
+  whatsappTemplate: string;
+  errors: { required: string; phone: string; email: string; date: string; consent: string; network: string };
+  /** Panel beside the form on pages (photo, reasons to book, quick contact). */
+  aside: { visible: boolean; image: string; badge: string; title: string; text: string; points: string[]; whatsappText: string };
+}
+
+/** The page every form goes to after a successful submit (/thank-you). */
+export interface ThankYouContent {
+  enabled: boolean; // off = forms show their own success message instead
+  badge: string;
+  title: string;
+  message: string; // rich text; {ref} and {form} are replaced
+  refLabel: string;
+  formNames: { booking: string; enquiry: string; service: string };
+  whatsappButton: string; // empty hides the button
+  whatsappText: string; // {ref} and {form} are replaced
+  primaryButton: string;
+  primaryLink: string;
+  secondaryButton: string; // empty hides the button
+  secondaryLink: string;
+  nextStepsTitle: string;
+  nextSteps: string[];
 }
 
 export interface UiLabels {
@@ -350,6 +397,8 @@ export interface SiteContent {
   branding: BrandingContent;
   ui: UiLabels;
   forms: FormsContent;
+  serviceForm: ServiceFormContent;
+  thankYou: ThankYouContent;
   vehicles: VehiclesContent;
   contact: ContactContent;
   navigation: NavigationContent;
@@ -375,6 +424,8 @@ export const SITE_CONTENT_KEYS: SiteContentKey[] = [
   'branding',
   'ui',
   'forms',
+  'serviceForm',
+  'thankYou',
   'vehicles',
   'contact',
   'navigation',
@@ -394,6 +445,8 @@ export const SITE_CONTENT_KEYS: SiteContentKey[] = [
 ];
 
 export const SITE_IMAGES = [
+  '/og-share.jpg',
+  '/icon-512.png',
   '/images/tiger_portrait.jpg',
   '/images/hero_tiger.jpg',
   '/images/tiger_stalking.jpg',
@@ -425,7 +478,7 @@ export const DEFAULT_SITE_CONTENT: SiteContent = {
     sitemapExtra: [],
     sitemapCustom: '',
   },
-  branding: { name: 'Ranthambore', tagline: 'Wild Life Tour', logo: '/logo.jpg' },
+  branding: { name: 'Ranthambore', tagline: 'Wild Life Tour', logo: '/logo.jpg', favicon: '/icon-512.png' },
   ui: {
     bookSafari: 'Book Safari',
     requestBooking: 'Request Safari Booking',
@@ -540,6 +593,97 @@ Please check real-time permit availability and provide a quote.`,
       privacyTitle: 'Privacy Assurance:',
       privacyText: 'Your contact details and travel dates are strictly used for your safari quotation. We never share visitor info with third parties or marketing spammers.',
     },
+  },
+  serviceForm: {
+    title: 'Request a Service',
+    optionsMode: 'linked',
+    subtitle: 'Tell us what you need and our Sawai Madhopur team will call you back with availability and a quote.',
+    serviceOptions: [
+      'Gypsy Safari Booking',
+      'Canter Safari Booking',
+      'Hotel / Resort Booking',
+      'Tour Package',
+      'Railway Station / Airport Transfer',
+      'Jaipur / Delhi Cab Transfer',
+      'Chambal Safari & Fort Excursion',
+      'Wildlife Photography Tour',
+      'Other',
+    ],
+    peopleMax: 50,
+    labels: {
+      name: 'Full Name *',
+      phone: 'Mobile Number *',
+      email: 'Email Address',
+      people: 'Number of People *',
+      service: 'Service Required *',
+      date: 'Preferred Date',
+      message: 'Message',
+      namePlaceholder: 'e.g. Rahul Sharma',
+      phonePlaceholder: 'e.g. +91 98765 43210',
+      emailPlaceholder: 'e.g. rahul@example.com',
+      servicePlaceholder: 'Select a service',
+      messagePlaceholder: 'Tell us about your plan: hotel preference, pickup point, special requests…',
+    },
+    emailRequired: false,
+    dateRequired: false,
+    consent: 'I agree to be contacted on phone / WhatsApp about this request and accept the [Terms & Conditions](/terms-conditions).',
+    submit: 'Send Service Request',
+    submitting: 'Sending…',
+    successTitle: 'Request Received!',
+    successMessage: 'Thank you {name}. Your request for {service} has been received (Ref: {ref}). Our team will contact you shortly.',
+    successWhatsapp: 'Continue on WhatsApp',
+    anotherRequest: 'Send Another Request',
+    whatsappTemplate: `Hello Ranthambore Wild Life Tour!
+
+I have sent a service request.
+• Ref: {ref}
+• Service: {service}
+• Name: {name}
+• Phone: {phone}
+• People: {people}
+• Date: {date}`,
+    errors: {
+      required: 'Please fill in all required fields.',
+      phone: 'Please enter a valid mobile number.',
+      email: 'Please enter a valid email address.',
+      date: 'Please choose today or a future date.',
+      consent: 'Please tick the consent box to continue.',
+      network: 'Could not send your request. Please try again or WhatsApp us.',
+    },
+    aside: {
+      visible: true,
+      image: '/images/tiger_lake.jpg',
+      badge: 'Local Sawai Madhopur Team',
+      title: 'Plan your Ranthambore trip with people who live here',
+      text: 'One request covers safari permits, hotel stays and transfers. We check live availability and call you back with a clear quote.',
+      points: [
+        'Local reservation desk in Sawai Madhopur',
+        'Official forest permits with government receipts',
+        'Safari, hotel and station pickup in one request',
+        'Your details are never shared with third parties',
+      ],
+      whatsappText: 'Hello Ranthambore Wild Life Tour, I would like to request a service.',
+    },
+  },
+  thankYou: {
+    enabled: true,
+    badge: 'Request Received',
+    title: 'Thank You! We Have Your Request',
+    message: 'Your {form} has reached our Sawai Madhopur team. We will check availability and contact you on your mobile number shortly.',
+    refLabel: 'Your reference number',
+    formNames: { booking: 'safari booking request', enquiry: 'safari enquiry', service: 'service request' },
+    whatsappButton: 'Chat with Us on WhatsApp',
+    whatsappText: 'Hello Ranthambore Wild Life Tour, I just sent a {form}. My reference number is {ref}.',
+    primaryButton: 'Back to Home',
+    primaryLink: '/',
+    secondaryButton: 'View Tour Packages',
+    secondaryLink: '/tour-packages',
+    nextStepsTitle: 'What happens next?',
+    nextSteps: [
+      'Our team checks live permit and hotel availability for your dates.',
+      'We call or WhatsApp you with the options and an exact quote.',
+      'You confirm, and we share your booking details and receipts.',
+    ],
   },
   vehicles: {
     gypsy: {
@@ -995,7 +1139,8 @@ Please check real-time permit availability and provide a quote.`,
       'Plan your unforgettable Ranthambore safari experience. Book authorized Maruti Gypsy & Canter permits, luxury wildlife resort stays, and custom tiger photography tours.',
     keywords:
       'Ranthambore safari booking, Ranthambore wildlife tours, Ranthambore tour packages, Jeep safari Ranthambore, Canter safari booking Ranthambore, Ranthambore tiger reserve, Sawai Madhopur wildlife packages',
-    ogImage: '/images/tiger_portrait.jpg',
+    ogImage: '/og-share.jpg',
+    shareImageForAll: true,
     googleVerification: '',
     googleAnalyticsId: '',
   },

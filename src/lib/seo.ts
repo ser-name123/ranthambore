@@ -21,7 +21,7 @@ export function canonicalFor(override: string | undefined, path: string): string
 export function buildMetadata(seo: PageSeo, fallback: { title: string; description: string; image: string }, path: string, site: SeoContent): Metadata {
   const title = seo.title || fallback.title;
   const description = seo.description || toPlainText(fallback.description) || site.description;
-  const image = seo.ogImage || fallback.image || site.ogImage;
+  const image = (site.shareImageForAll && site.ogImage) || seo.ogImage || fallback.image || site.ogImage;
   const keywords = seo.keywords.split(',').map((k) => k.trim()).filter(Boolean);
   const canonical = canonicalFor(seo.canonical, path);
 

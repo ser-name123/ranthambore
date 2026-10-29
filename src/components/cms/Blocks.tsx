@@ -17,6 +17,7 @@ import SpotlightCard from '@/components/SpotlightCard';
 import { CmsIcon } from './icons';
 import { Highlight, RichText } from './Text';
 import ContactInfo from './ContactInfo';
+import { ServiceRequestModal, ServiceRequestSection } from '@/components/ServiceRequestForm';
 
 const reveal = {
   initial: { opacity: 0, y: 20 },
@@ -30,6 +31,22 @@ const GRID_COLS: Record<2 | 3 | 4, string> = {
   3: 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3',
   4: 'grid-cols-2 lg:grid-cols-4',
 };
+
+const ENQUIRE_BUTTON = 'mt-4 w-full cursor-pointer rounded-xl bg-gradient-to-r from-emerald-700 to-[#d97706] py-2.5 text-xs font-bold text-white shadow-md transition hover:from-emerald-600';
+
+/** Price card button that opens the Service Request form with this card preselected. */
+function ServiceEnquireButton({ label, title, options, service }: { label: string; title: string; options: string[]; service: string }) {
+  const [open, setOpen] = useState(false);
+  const close = useCallback(() => setOpen(false), []);
+  return (
+    <>
+      <button type="button" onClick={() => setOpen(true)} className={ENQUIRE_BUTTON}>
+        {label}
+      </button>
+      {open && <ServiceRequestModal title={title} options={options} defaultService={service} onClose={close} />}
+    </>
+  );
+}
 
 /** Up to 4 price cards sit in a grid; more become a slider so none wrap onto a lonely second row. */
 function PricingLayout({ count, children }: { count: number; children: React.ReactNode }) {
@@ -304,13 +321,22 @@ export function BlockView({ block }: { block: Block }) {
                   ))}
                 </ul>
                 {tier.footnote && <p className="mt-4 rounded-lg bg-[#f4f8f5] px-3 py-2 text-[11px] font-semibold text-[#375847]">{tier.footnote}</p>}
-                <button
-                  type="button"
-                  onClick={() => openBookingModal({ vehicle: block.bookingPrefill ? `${block.bookingPrefill} - ${tier.title}` : tier.title })}
-                  className="mt-4 w-full cursor-pointer rounded-xl bg-gradient-to-r from-emerald-700 to-[#d97706] py-2.5 text-xs font-bold text-white shadow-md transition hover:from-emerald-600"
-                >
-                  {block.buttonLabel || ui.pageLabels.enquireNow}
-                </button>
+                {block.enquiryForm === 'service' ? (
+                  <ServiceEnquireButton
+                    label={block.buttonLabel || ui.pageLabels.enquireNow}
+                    title={(block.heading || block.bookingPrefill || tier.title).replace(/\*/g, '')}
+                    options={block.tiers.map((t) => t.title).filter(Boolean)}
+                    service={tier.title}
+                  />
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => openBookingModal({ vehicle: block.bookingPrefill ? `${block.bookingPrefill} - ${tier.title}` : tier.title })}
+                    className={ENQUIRE_BUTTON}
+                  >
+                    {block.buttonLabel || ui.pageLabels.enquireNow}
+                  </button>
+                )}
               </motion.div>
             ))}
           </PricingLayout>
@@ -528,6 +554,16 @@ export function BlockView({ block }: { block: Block }) {
         <>
           <BlockHeading block={block} />
           <ContactInfo />
+        </>
+      );
+
+    case 'serviceRequest':
+      return (
+        <>
+          <BlockHeading block={block} />
+          <motion.div {...reveal}>
+            <ServiceRequestSection />
+          </motion.div>
         </>
       );
 

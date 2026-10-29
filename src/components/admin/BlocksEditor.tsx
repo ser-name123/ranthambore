@@ -25,6 +25,7 @@ export const BLOCK_TYPES: { type: BlockType; label: string; hint: string }[] = [
   { type: 'testimonials', label: 'Guest reviews', hint: 'Reviews from “Guest Reviews”' },
   { type: 'zoneExplorer', label: 'Zones explorer', hint: 'Zones & timings from “Zones & Timings”' },
   { type: 'contactInfo', label: 'Contact details', hint: 'Phones, WhatsApp, email, address' },
+  { type: 'serviceRequest', label: 'Service request form', hint: 'Name, mobile, people, service, date, message' },
 ];
 
 const LABELS = Object.fromEntries(BLOCK_TYPES.map((b) => [b.type, b.label])) as Record<BlockType, string>;
@@ -42,6 +43,7 @@ export function newBlock(type: BlockType): Block {
     case 'richText': return { id, type, heading: 'New section', body: '' };
     case 'callout': return { id, type, tone: 'info', title: 'Important', text: '' };
     case 'cta': return { id, type, title: 'Ready to book your safari?', text: '', buttonLabel: 'Enquire Now', whatsappText: '' };
+    case 'serviceRequest': return { id, type, badge: 'Service Request', heading: 'Need a *Service*? Tell Us' };
     default: return { id, type } as Block;
   }
 }
@@ -156,6 +158,21 @@ function BlockFields({ block, update, onError }: { block: Block; update: (p: Par
               <TextInput label="Booking form prefill" hint="Tier title is appended, e.g. “Gypsy - Sharing Seat”" value={block.bookingPrefill ?? ''} onChange={(v) => set({ bookingPrefill: v })} />
               <TextInput label="Button text" value={block.buttonLabel ?? ''} onChange={(v) => set({ buttonLabel: v })} placeholder="Enquire Now" />
             </>
+          )}
+          <SelectInput
+            label="When a visitor presses the button"
+            value={block.enquiryForm ?? 'booking'}
+            options={[
+              { value: 'booking', label: 'Open the safari booking popup' },
+              { value: 'service', label: 'Open the Service Request form (choices = the card titles below)' },
+            ]}
+            onChange={(v) => set({ enquiryForm: v === 'service' ? 'service' : undefined })}
+          />
+          {block.enquiryForm === 'service' && (
+            <p className="rounded-lg bg-emerald-50 px-3 py-2 text-xs text-emerald-900">
+              The form opens with the pressed card already selected. Its “Service” list shows only these cards’ titles — add or rename a card and the list
+              updates by itself. Submissions arrive in Forms → Service Requests.
+            </p>
           )}
           <ListEditor<PricingTier>
             items={block.tiers}
@@ -346,6 +363,16 @@ function BlockFields({ block, update, onError }: { block: Block; update: (p: Par
         <>
           <CommonFields block={block} update={update} />
           <p className="text-xs text-[#517362]">Shows the details from “Contact Details”.</p>
+        </>
+      );
+
+    case 'serviceRequest':
+      return (
+        <>
+          <CommonFields block={block} update={update} />
+          <p className="text-xs text-[#517362]">
+            The form’s fields, service list and messages are edited in Forms → Service Request Form. Submissions appear in Forms → Service Requests.
+          </p>
         </>
       );
 

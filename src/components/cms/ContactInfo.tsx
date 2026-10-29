@@ -38,9 +38,13 @@ export default function ContactInfo({ compact = false }: { compact?: boolean }) 
   }
 
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    // Flex-wrap (not grid) so an incomplete last row is centred.
+    <div className="flex flex-wrap justify-center gap-4">
       {channels.map((c) => (
-        <div key={c.title} className={`flex flex-col gap-3 rounded-2xl border border-[#d2e4d9] bg-white p-5 shadow-sm ${c.icon === MapPin ? 'sm:col-span-2 lg:col-span-1' : ''}`}>
+        <div
+          key={c.title}
+          className="flex w-full flex-col gap-3 rounded-2xl border border-[#d2e4d9] bg-white p-5 shadow-sm sm:w-[calc((100%-1rem)/2)] lg:w-[calc((100%-2rem)/3)]"
+        >
           <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-emerald-200 bg-emerald-50 text-emerald-700">
             <c.icon className="h-5 w-5" />
           </span>

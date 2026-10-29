@@ -13,7 +13,7 @@ const supabase = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL, process.env.
   auth: { persistSession: false },
 });
 
-const BLOCK_TYPES = new Set(['cards', 'pricing', 'table', 'timeline', 'faq', 'checklist', 'imageText', 'richText', 'callout', 'cta', 'enquiryForm', 'packages', 'testimonials', 'zoneExplorer', 'contactInfo']);
+const BLOCK_TYPES = new Set(['cards', 'pricing', 'table', 'timeline', 'faq', 'checklist', 'imageText', 'richText', 'callout', 'cta', 'enquiryForm', 'packages', 'testimonials', 'zoneExplorer', 'contactInfo', 'serviceRequest']);
 // Pages listed here keep this order in the admin; others follow alphabetically.
 const PAGE_ORDER = ['safari-booking', 'gypsy-safari', 'canter-safari', 'core-zones-safari', 'buffer-zones-safari', 'tour-packages', 'services', 'resort-booking', 'taxi-transfers', 'chambal-safari', 'wildlife-photography-tour', 'safari-zones', 'safari-timings', 'travel-guide', 'safari-faq-rules', 'about-us', 'contact-us', 'privacy-policy', 'terms-conditions', 'cancellation-policy'];
 

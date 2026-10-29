@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import confetti from 'canvas-confetti';
 import { X, Send, CheckCircle2, MessageCircle, AlertCircle, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -18,7 +19,8 @@ const inputCls =
   'w-full bg-[#f8faf8] border border-[#d2e4d9] rounded-xl px-3 py-2 text-[#082318] text-xs focus:outline-none focus:border-emerald-600 focus:bg-white transition';
 
 export default function BookingModal({ isOpen, onClose, prefillData }: BookingModalProps) {
-  const { forms } = useSiteContent();
+  const { forms, thankYou } = useSiteContent();
+  const router = useRouter();
   const { labels, modal } = forms;
 
   const emptyForm = () => ({
@@ -90,6 +92,13 @@ export default function BookingModal({ isOpen, onClose, prefillData }: BookingMo
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || forms.errors.network);
 
+      // Admin → Forms → Thank-you Page: go there, unless it is switched off.
+      if (thankYou.enabled && data.referenceId) {
+        setFormData(emptyForm());
+        onClose();
+        router.push(`/thank-you?ref=${encodeURIComponent(data.referenceId)}&form=booking`);
+        return;
+      }
       setSuccessResult(data);
       setFormData(emptyForm());
       confetti({ particleCount: 60, spread: 60, origin: { y: 0.5 } });

@@ -126,3 +126,23 @@ INSERT INTO redirects (from_path, to_path, note) VALUES
   ('/about', '/about-us', 'Short URL'),
   ('/contact', '/contact-us', 'Short URL')
 ON CONFLICT (from_path) DO NOTHING;
+
+-- 9. Service requests from the "Service Request Form" (e.g. on Contact Us).
+CREATE TABLE IF NOT EXISTS service_requests (
+    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    reference_id TEXT UNIQUE NOT NULL,
+    created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    name TEXT NOT NULL,
+    phone TEXT NOT NULL,
+    email TEXT,
+    service TEXT NOT NULL,
+    people INTEGER NOT NULL DEFAULT 1 CHECK (people BETWEEN 1 AND 500),
+    preferred_date DATE,
+    message TEXT,
+    page_url TEXT,
+    consent BOOLEAN,
+    status TEXT NOT NULL DEFAULT 'New Enquiry', -- same statuses as enquiries
+    admin_notes TEXT
+);
+CREATE INDEX IF NOT EXISTS service_requests_created_at_idx ON service_requests (created_at DESC);
+ALTER TABLE service_requests ENABLE ROW LEVEL SECURITY;

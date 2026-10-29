@@ -2,6 +2,7 @@
 
 import { Highlight } from './cms/Text';
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { RichText } from './cms/Text';
 import confetti from 'canvas-confetti';
 import { Send, CheckCircle2, MessageCircle, Phone, Sparkles, AlertCircle } from 'lucide-react';
@@ -12,7 +13,8 @@ import { telHref, waHref } from '@/lib/site-content';
 import { Counter, OptionSelect } from './FormBits';
 
 export default function QuickEnquirySection() {
-  const { contact, home, forms } = useSiteContent();
+  const { contact, home, forms, thankYou } = useSiteContent();
+  const router = useRouter();
   const { labels, quick } = forms;
   const heading = home.enquiry;
   const [formData, setFormData] = useState({
@@ -69,6 +71,11 @@ export default function QuickEnquirySection() {
         throw new Error(data.error || forms.errors.network);
       }
 
+      // Admin → Forms → Thank-you Page: go there, unless it is switched off.
+      if (thankYou.enabled && data.referenceId) {
+        router.push(`/thank-you?ref=${encodeURIComponent(data.referenceId)}&form=enquiry`);
+        return;
+      }
       setSuccessResult(data);
       // Trigger festive celebration confetti
       confetti({

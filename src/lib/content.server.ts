@@ -1,7 +1,7 @@
 import { unstable_cache } from 'next/cache';
 import { getSupabaseAdmin, isSupabaseConfigured } from './supabase';
 import { DEFAULT_SITE_CONTENT, SITE_CONTENT_KEYS, SiteContent, SiteContentKey } from './site-content';
-import type { CmsPage, TourPackage } from './cms';
+import type { Block, CmsPage, TourPackage } from './cms';
 
 export const SITE_CONTENT_TAG = 'site-content';
 
@@ -130,4 +130,29 @@ export async function getDraftItem<T>(table: 'pages' | 'packages', slug: string)
 /** Uncached read for the admin panel, so editors always see what is stored. */
 export async function getSiteContentFresh(): Promise<SiteContent> {
   return loadSiteContent();
+}
+
+/**
+ * Card titles of every published price section whose button opens the Service Request form,
+ * in page order, without duplicates. New or renamed cards show up here automatically.
+ */
+export async function getLinkedServiceOptions(): Promise<string[]> {
+  const [pages, packages] = await Promise.all([getPublishedPages(), getPublishedPackages()]);
+  const titles = new Set<string>();
+  for (const { data } of [...pages, ...packages]) {
+    for (const block of (data.blocks ?? []) as Block[]) {
+      if (block.type === 'pricing' && block.enquiryForm === 'service') {
+        for (const tier of block.tiers) if (tier.title?.trim()) titles.add(tier.title.trim());
+      }
+    }
+  }
+  return [...titles];
+}
+
+/** Site content with the Service Request Form's choices resolved (see ServiceFormContent.optionsMode). */
+export async function getSiteContentResolved(): Promise<SiteContent> {
+  const content = await getSiteContent();
+  if (content.serviceForm.optionsMode !== 'linked') return content;
+  const linked = await getLinkedServiceOptions();
+  return linked.length ? { ...content, serviceForm: { ...content.serviceForm, serviceOptions: linked } } : content;
 }

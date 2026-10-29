@@ -19,6 +19,13 @@
       "type": "contactInfo"
     },
     {
+      "id": "service-request",
+      "type": "serviceRequest",
+      "badge": "Service Request",
+      "heading": "Need a *Service*? Send Us a Request",
+      "intro": "Safari, hotel, transfer or a full tour: choose the service, tell us the date and group size, and our local team will call you back."
+    },
+    {
       "id": "reservation-office",
       "type": "richText",
       "badge": "Physical Head Office",
