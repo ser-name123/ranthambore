@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { randomBytes } from 'crypto';
 import { getSupabaseAdmin, isSupabaseConfigured } from '@/lib/supabase';
-import { getLinkedServiceOptions, getSiteContent } from '@/lib/content.server';
+import { getLinkedServiceOptions, getSectionServiceOptions, getSiteContent } from '@/lib/content.server';
 import { fillTemplate, waHref } from '@/lib/site-content';
 import { markdownToHtml } from '@/lib/rich-text';
 
@@ -24,9 +24,10 @@ function escapeHtml(s: string): string {
  * or when nothing is linked yet. Matches what the browser shows (getSiteContentResolved).
  */
 async function allowedServices(f: { optionsMode: string; serviceOptions: string[] }): Promise<Set<string>> {
-  const linked = await getLinkedServiceOptions();
+  const [linked, sections] = await Promise.all([getLinkedServiceOptions(), getSectionServiceOptions()]);
   const useAdminList = f.optionsMode !== 'linked' || linked.length === 0;
-  return new Set([...linked, ...(useAdminList ? f.serviceOptions : [])]);
+  // Sections that set their own choices in the page editor (e.g. Cab Transfers → vehicle types).
+  return new Set([...linked, ...sections, ...(useAdminList ? f.serviceOptions : [])]);
 }
 
 /** Today in India, as YYYY-MM-DD. */

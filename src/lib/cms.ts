@@ -76,7 +76,15 @@ export type Block =
   | (BlockBase & { type: 'testimonials' })
   | (BlockBase & { type: 'zoneExplorer' })
   | (BlockBase & { type: 'contactInfo' })
-  | (BlockBase & { type: 'serviceRequest' });
+  | (BlockBase & {
+      type: 'serviceRequest';
+      /**
+       * Where the "Service" choices come from: '' = the form's own setting (Forms → Service Request Form),
+       * 'custom' = `options` below, or the id of another section on the same page (its card / row titles).
+       */
+      optionsFrom?: string;
+      options?: string[];
+    });
 
 export type BlockType = Block['type'];
 
@@ -165,3 +173,27 @@ export function slugifyTyping(text: string): string {
 }
 
 export const RESERVED_SLUGS = ['admin', 'api', 'packages', 'thank-you', '_next', 'images', 'sitemap.xml', 'robots.txt'];
+
+/** Titles a section can offer as form choices: price cards, cards, timeline steps or a table's first column. */
+export function blockChoiceTitles(block: Block): string[] {
+  const clean = (list: (string | undefined)[]) => [...new Set(list.map((t) => (t ?? '').trim()).filter(Boolean))];
+  switch (block.type) {
+    case 'pricing': return clean(block.tiers.map((t) => t.title));
+    case 'cards': return clean(block.items.map((i) => i.title));
+    case 'timeline': return clean(block.items.map((i) => i.title));
+    case 'table': return clean(block.rows.map((r) => r[0]));
+    default: return [];
+  }
+}
+
+/** The choices a Service Request section shows, or null to use the form's own setting. */
+export function serviceRequestChoices(block: Block, pageBlocks: Block[]): string[] | null {
+  if (block.type !== 'serviceRequest' || !block.optionsFrom) return null;
+  if (block.optionsFrom === 'custom') {
+    const list = (block.options ?? []).map((o) => o.trim()).filter(Boolean);
+    return list.length ? list : null;
+  }
+  const source = pageBlocks.find((b) => b.id === block.optionsFrom);
+  const titles = source ? blockChoiceTitles(source) : [];
+  return titles.length ? titles : null;
+}

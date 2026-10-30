@@ -123,7 +123,7 @@ const TOPICS: Topic[] = [
     hindi: 'Google mein page kaise dikhe — har page ke neeche “SEO” box mein likhiye.',
     steps: [
       'Each page and package has an “SEO” box at the bottom: Google title (about 60 characters), description (about 160) and share image. The preview shows how it looks on Google.',
-      'Canonical URL: leave it empty. Only if two pages show the same content, put the main page’s address in the copy’s canonical field.',
+      'Canonical URL is automatic: every page and package points to its own address, and follows by itself when you change a URL. You never need to fill it. Only if two pages show the same content, switch on “This page is a copy of another page” in the copy’s SEO box and enter the main page.',
       '“Hide from Google” keeps a page out of search results and the sitemap.',
       'Homepage title, your website address, Google Search Console and Analytics: SEO & Google → SEO & Google.',
       'robots.txt and sitemap.xml are made automatically. To use your own, open SEO & Google → Robots.txt & Sitemap, choose “Custom file” and paste or upload it. You can download both files there too.',

@@ -104,7 +104,7 @@ function BlockList({ blocks }: { blocks: Block[] }) {
     <>
       {blocks.map((block) => (
         <section key={block.id} id={block.id} className="scroll-mt-32">
-          <BlockView block={block} />
+          <BlockView block={block} pageBlocks={blocks} />
         </section>
       ))}
     </>

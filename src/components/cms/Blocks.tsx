@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AlertTriangle, ArrowRight, CheckCircle2, ChevronDown, ChevronLeft, ChevronRight, Info, MessageCircle, ShieldAlert, XCircle } from 'lucide-react';
-import type { Block, CardItem } from '@/lib/cms';
+import { serviceRequestChoices, type Block, type CardItem } from '@/lib/cms';
 import { waHref } from '@/lib/site-content';
 import { useBookingModal } from '@/context/BookingModalContext';
 import { usePackages, useSiteContent } from '@/context/SiteContentContext';
@@ -271,7 +271,8 @@ const TONES = {
   danger: { box: 'border-rose-300 bg-rose-50', icon: ShieldAlert, iconCls: 'text-rose-700' },
 };
 
-export function BlockView({ block }: { block: Block }) {
+/** `pageBlocks`: all sections of the page, for sections that read from their neighbours (service form choices). */
+export function BlockView({ block, pageBlocks = [] }: { block: Block; pageBlocks?: Block[] }) {
   const { openBookingModal } = useBookingModal();
   const { contact, ui } = useSiteContent();
   const packages = usePackages();
@@ -562,7 +563,7 @@ export function BlockView({ block }: { block: Block }) {
         <>
           <BlockHeading block={block} />
           <motion.div {...reveal}>
-            <ServiceRequestSection />
+            <ServiceRequestSection options={serviceRequestChoices(block, pageBlocks) ?? undefined} />
           </motion.div>
         </>
       );

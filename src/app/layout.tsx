@@ -38,11 +38,10 @@ export async function generateMetadata(): Promise<Metadata> {
     description: seo.description,
     keywords,
     authors: [{ name: seo.siteName }],
-    alternates: { canonical: seo.homeCanonical.trim() || "/" },
+    // No canonical here: each page sets its own (pages/packages automatically, the homepage in app/page.tsx).
     openGraph: {
       title: seo.title,
       description: seo.description,
-      url: seo.homeCanonical.trim() || "/",
       siteName: seo.siteName,
       images: [{ url: seo.ogImage, width: 1200, height: 630, alt: seo.siteName }],
       locale: "en_US",

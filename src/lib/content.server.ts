@@ -1,7 +1,7 @@
 import { unstable_cache } from 'next/cache';
 import { getSupabaseAdmin, isSupabaseConfigured } from './supabase';
 import { DEFAULT_SITE_CONTENT, SITE_CONTENT_KEYS, SiteContent, SiteContentKey } from './site-content';
-import type { Block, CmsPage, TourPackage } from './cms';
+import { serviceRequestChoices, type Block, type CmsPage, type TourPackage } from './cms';
 
 export const SITE_CONTENT_TAG = 'site-content';
 
@@ -155,4 +155,15 @@ export async function getSiteContentResolved(): Promise<SiteContent> {
   if (content.serviceForm.optionsMode !== 'linked') return content;
   const linked = await getLinkedServiceOptions();
   return linked.length ? { ...content, serviceForm: { ...content.serviceForm, serviceOptions: linked } } : content;
+}
+
+/** Choices offered by Service Request sections on published pages/packages that set their own list. */
+export async function getSectionServiceOptions(): Promise<string[]> {
+  const [pages, packages] = await Promise.all([getPublishedPages(), getPublishedPackages()]);
+  const titles = new Set<string>();
+  for (const { data } of [...pages, ...packages]) {
+    const blocks = (data.blocks ?? []) as Block[];
+    for (const block of blocks) for (const choice of serviceRequestChoices(block, blocks) ?? []) titles.add(choice);
+  }
+  return [...titles];
 }

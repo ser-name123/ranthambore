@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import RichTextEditor from './RichTextEditor';
 import { Plus } from 'lucide-react';
 import {
-  Block, BlockType, CardItem, ChecklistGroup, ICON_NAMES, IconName, newBlockId, PricingTier, TimelineItem, Tone,
+  Block, BlockType, blockChoiceTitles, CardItem, ChecklistGroup, ICON_NAMES, IconName, newBlockId, PricingTier, serviceRequestChoices, TimelineItem, Tone,
 } from '@/lib/cms';
 import { LinkPicker } from './LinkOptions';
 import { Button, Field, ImagePicker, inputClass, LinesInput, ListEditor, SelectInput, TextArea, TextInput, Toggle } from './ui';
@@ -104,7 +104,7 @@ function CommonFields({ block, update, withHeading = true }: { block: Block; upd
   );
 }
 
-function BlockFields({ block, update, onError }: { block: Block; update: (p: Partial<Block>) => void; onError: (m: string) => void }) {
+function BlockFields({ block, update, onError, pageBlocks = [] }: { block: Block; update: (p: Partial<Block>) => void; onError: (m: string) => void; pageBlocks?: Block[] }) {
   // `update` is typed for the union; each case narrows `block`.
   const set = update as (p: Record<string, unknown>) => void;
 
@@ -366,15 +366,38 @@ function BlockFields({ block, update, onError }: { block: Block; update: (p: Par
         </>
       );
 
-    case 'serviceRequest':
+    case 'serviceRequest': {
+      // Sections on this page that can supply choices (price cards, cards, timeline, table).
+      const sources = pageBlocks.filter((b) => b.id !== block.id && blockChoiceTitles(b).length > 0);
+      const from = block.optionsFrom ?? '';
+      const choices = serviceRequestChoices(block, pageBlocks);
       return (
         <>
           <CommonFields block={block} update={update} />
+          <SelectInput
+            label="Choices in the “Service” dropdown"
+            value={from}
+            options={[
+              { value: '', label: 'Same as the form setting (Forms → Service Request Form)' },
+              ...sources.map((b) => ({ value: b.id, label: `From the section “${(b.heading || LABELS[b.type]).replace(/\*/g, '')}”` })),
+              { value: 'custom', label: 'My own list for this page (typed below)' },
+            ]}
+            onChange={(v) => set({ optionsFrom: v || undefined })}
+          />
+          {from === 'custom' && (
+            <LinesInput label="Choices for this page" hint="One per line, in the order shown" value={block.options ?? []} onChange={(options) => set({ options })} />
+          )}
+          {from && from !== 'custom' && (
+            <p className="rounded-lg bg-emerald-50 px-3 py-2 text-xs text-emerald-900">
+              {choices?.length ? <>Visitors choose from: <strong>{choices.join(' · ')}</strong>. Edit that section and this list follows by itself.</> : 'That section has no titles yet, so the form setting is used.'}
+            </p>
+          )}
           <p className="text-xs text-[#517362]">
-            The form’s fields, service list and messages are edited in Forms → Service Request Form. Submissions appear in Forms → Service Requests.
+            The form’s field names, side panel and messages are edited in Forms → Service Request Form. Submissions appear in Forms → Service Requests and then go to the Thank-you page.
           </p>
         </>
       );
+    }
 
     default:
       return <p className="text-xs text-[#517362]">This section has no settings here. Its content comes from the matching homepage section in the sidebar.</p>;
@@ -401,7 +424,7 @@ export default function BlocksEditor({ blocks, onChange, onError }: { blocks: Bl
         }}
         renderItem={(b, u) => (
           <>
-            <BlockFields block={b} update={u as (p: Partial<Block>) => void} onError={onError} />
+            <BlockFields block={b} update={u as (p: Partial<Block>) => void} onError={onError} pageBlocks={blocks} />
             <TextInput label="Anchor id" hint="Used for #links and the table of contents" value={b.id} onChange={(v) => u({ id: v.replace(/[^a-z0-9-]/gi, '-').toLowerCase() } as Partial<Block>)} />
           </>
         )}

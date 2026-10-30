@@ -442,15 +442,45 @@ export function SeoCard({ seo, fallbackTitle, path, onChange, onError }: { seo: 
       <TextInput label="SEO title" hint={`${seo.title.length} / 60 characters · site name is added automatically`} value={seo.title} onChange={(v) => set({ title: v })} />
       <TextArea label="Meta description" hint={`${seo.description.length} / 160 characters`} rows={2} value={seo.description} onChange={(v) => set({ description: v })} />
       <TextInput label="Keywords" hint="Comma separated" value={seo.keywords} onChange={(v) => set({ keywords: v })} />
-      <TextInput
-        label="Canonical URL (optional)"
-        hint="Leave empty (recommended) — the page's own address is used. If this page is a copy of another page, enter the main page here, e.g. /gypsy-safari or https://…; it is then also left out of the sitemap."
-        value={seo.canonical ?? ''}
-        onChange={(v) => set({ canonical: v.trim() })}
-        placeholder={path}
-      />
+      <CanonicalField value={seo.canonical ?? ''} path={path} onChange={(canonical) => set({ canonical })} />
       <ImagePicker label="Share image" value={seo.ogImage} onChange={(v) => set({ ogImage: v })} onError={onError} />
       <Toggle label="Hide from Google (noindex)" checked={seo.noindex} onChange={(noindex) => set({ noindex })} />
     </Card>
+  );
+}
+
+/** Canonical is automatic (the page's own address, following URL changes); overriding it is opt-in. */
+function CanonicalField({ value, path, onChange }: { value: string; path: string; onChange: (v: string) => void }) {
+  const [wanted, setCustom] = useState(false);
+  // On when the editor switched it on, or a saved/restored version has an override.
+  const custom = wanted || !!value.trim();
+  return (
+    <div className="space-y-2 rounded-xl border border-[#d2e4d9] bg-[#f4f8f5] p-3">
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <p className="text-xs font-semibold text-[#183d2a]">Canonical URL</p>
+        {!custom && <span className="rounded-full border border-emerald-300 bg-emerald-50 px-2 py-0.5 text-[11px] font-bold text-emerald-800">Automatic</span>}
+      </div>
+      {!custom ? (
+        <p className="text-xs text-[#517362]">
+          <span className="font-mono text-[#082318]">{path}</span> — this page’s own address, set automatically and updated by itself if you change the URL. Nothing to fill in.
+        </p>
+      ) : (
+        <TextInput
+          label="Main page this one copies"
+          hint="Only for duplicate pages. Google is told to rank the page entered here instead, and this page is left out of the sitemap. Use /page-url or https://…"
+          value={value}
+          onChange={(v) => onChange(v.trim())}
+          placeholder="/main-page"
+        />
+      )}
+      <Toggle
+        label="This page is a copy of another page (point Google to the main page)"
+        checked={custom}
+        onChange={(on) => {
+          setCustom(on);
+          if (!on) onChange('');
+        }}
+      />
+    </div>
   );
 }

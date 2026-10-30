@@ -220,10 +220,11 @@ export function ServiceRequestModal({ title, options, defaultService, onClose }:
 }
 
 /** The form on a page: a photo panel with reasons to book and quick contact beside it (stacks on mobile). */
-export function ServiceRequestSection() {
+/** `options`: this section's own choices (from the page editor); otherwise the form's setting is used. */
+export function ServiceRequestSection({ options }: { options?: string[] }) {
   const { serviceForm: f, contact, ui } = useSiteContent();
   const a = f.aside;
-  if (!a.visible) return <div className="max-w-4xl"><ServiceRequestForm /></div>;
+  if (!a.visible) return <div className="max-w-4xl"><ServiceRequestForm options={options} /></div>;
 
   return (
     <div className="grid grid-cols-1 gap-6 lg:grid-cols-12 lg:gap-8">
@@ -291,7 +292,7 @@ export function ServiceRequestSection() {
       </aside>
       {/* Form first on phones, so visitors do not have to scroll past the panel */}
       <div className="order-1 lg:order-2 lg:col-span-7">
-        <ServiceRequestForm />
+        <ServiceRequestForm options={options} />
       </div>
     </div>
   );

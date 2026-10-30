@@ -448,8 +448,8 @@ function SeoEditor({ value, onChange, onError }: EditorProps<SeoContent>) {
             <TextInput label="Site name" hint="Added after every page title" value={value.siteName} onChange={(v) => set({ siteName: v })} />
             <TextInput label="Website URL" hint="Your live domain, e.g. https://ranthamborewildlifetour.com — used for canonical links, sitemap.xml and share cards" value={value.siteUrl} onChange={(v) => set({ siteUrl: v.trim() })} />
             <TextInput
-              label="Homepage canonical URL (optional)"
-              hint="Leave empty to use the website URL. Only change this if Google should treat another address as the main homepage."
+              label="Homepage canonical URL (automatic)"
+              hint="Leave empty: the website URL above is used automatically, and every other page gets its own address automatically too. Fill this only if Google should treat another address as the main homepage."
               value={value.homeCanonical}
               onChange={(v) => set({ homeCanonical: v.trim() })}
               placeholder="/"
