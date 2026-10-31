@@ -482,6 +482,12 @@ function SeoEditor({ value, onChange, onError }: EditorProps<SeoContent>) {
           <>
             <TextInput label="Search Console verification code" hint="Only the content value of the google-site-verification tag" value={value.googleVerification} onChange={(v) => set({ googleVerification: v.trim() })} />
             <TextInput label="Google Analytics 4 ID" hint="Format: G-XXXXXXXXXX. Leave empty to disable." value={value.googleAnalyticsId} onChange={(v) => set({ googleAnalyticsId: v.trim().toUpperCase() })} />
+            <TextInput
+              label="Meta (Facebook) Pixel ID"
+              hint="Only the number from fbq('init', '…'). Tracks page views on every page and a “Lead” on the Thank-you page. Leave empty to disable."
+              value={value.metaPixelId}
+              onChange={(v) => set({ metaPixelId: v.replace(/\D/g, '') })}
+            />
           </>
         )}
       </Card>

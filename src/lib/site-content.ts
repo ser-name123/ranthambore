@@ -198,6 +198,7 @@ export interface SeoContent {
   shareImageForAll: boolean; // use ogImage for every page's WhatsApp/Facebook preview, ignoring page images
   googleVerification: string;
   googleAnalyticsId: string;
+  metaPixelId: string; // Meta (Facebook) Pixel ID, digits only; empty = off
 }
 
 export interface SectionHeading {
@@ -1143,6 +1144,7 @@ I have sent a service request.
     shareImageForAll: true,
     googleVerification: 'wQk_J-lwDfVVn1kVBpI0mvDghRPdNzJF388wbqTw8Rw', // Google Search Console
     googleAnalyticsId: 'G-6VNYTXQP03', // Google Analytics 4
+    metaPixelId: '1153454137104332', // Meta (Facebook) Pixel
   },
 };
 

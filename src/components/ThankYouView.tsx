@@ -16,6 +16,12 @@ export default function ThankYouView({ reference, form }: { reference: string; f
   const [copied, setCopied] = useState(false);
   const values = { ref: reference, form: t.formNames[form] };
 
+  // A real submission (valid reference) counts as a Lead in Meta Ads, once per reference.
+  useEffect(() => {
+    const fbq = (window as unknown as { fbq?: (...args: unknown[]) => void }).fbq;
+    if (reference && fbq) fbq('track', 'Lead', { content_name: form }, { eventID: reference });
+  }, [reference, form]);
+
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     confetti({ particleCount: 80, spread: 70, origin: { y: 0.35 }, colors: ['#ea580c', '#f59e0b', '#22c55e', '#ffffff'] });
