@@ -1141,7 +1141,7 @@ I have sent a service request.
       'Ranthambore safari booking, Ranthambore wildlife tours, Ranthambore tour packages, Jeep safari Ranthambore, Canter safari booking Ranthambore, Ranthambore tiger reserve, Sawai Madhopur wildlife packages',
     ogImage: '/og-share.jpg',
     shareImageForAll: true,
-    googleVerification: '',
+    googleVerification: 'wQk_J-lwDfVVn1kVBpI0mvDghRPdNzJF388wbqTw8Rw', // Google Search Console
     googleAnalyticsId: '',
   },
 };
