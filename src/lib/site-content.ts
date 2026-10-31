@@ -1142,7 +1142,7 @@ I have sent a service request.
     ogImage: '/og-share.jpg',
     shareImageForAll: true,
     googleVerification: 'wQk_J-lwDfVVn1kVBpI0mvDghRPdNzJF388wbqTw8Rw', // Google Search Console
-    googleAnalyticsId: '',
+    googleAnalyticsId: 'G-6VNYTXQP03', // Google Analytics 4
   },
 };
 
